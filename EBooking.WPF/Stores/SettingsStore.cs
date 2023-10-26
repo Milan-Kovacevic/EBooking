@@ -71,10 +71,10 @@ namespace EBooking.WPF.Stores
         /// </summary>
         private static readonly ApplicationSettings _internalBackupSettings = new ApplicationSettings()
         {
-            LanguageCode = "en",
+            LanguageCode = "en-US",
             BaseTheme = Theme.Dark,
-            PrimaryColor = ThemeProvider.Instance.ThemePalettes.ElementAt(0).PrimaryColor,
-            SecondaryColor = ThemeProvider.Instance.ThemePalettes.ElementAt(0).SecondaryColor,
+            PrimaryColor = ThemeProvider.Instance.PrimaryColors.ElementAt(0).Value,
+            SecondaryColor = ThemeProvider.Instance.SecondaryColors.ElementAt(0).Value,
         };
         #endregion
     }

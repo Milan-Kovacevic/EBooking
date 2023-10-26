@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:CustomColorTheme
-                    BaseTheme="Light"
+                    BaseTheme="Dark"
                     PrimaryColor="IndianRed"
                     SecondaryColor="AntiqueWhite"
                     ColorAdjustment="{materialDesign:ColorAdjustment}" />

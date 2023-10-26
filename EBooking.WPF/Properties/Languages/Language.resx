@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value>Hiyoo</value>
+  <data name="en-US" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="MainWindow_Title" xml:space="preserve">
+    <value>Book your next trip or accommodation with E-Booking</value>
+  </data>
+  <data name="sr-Cyrl" xml:space="preserve">
+    <value>Serbian Cyrilic</value>
+  </data>
+  <data name="sr-Latn" xml:space="preserve">
+    <value>Serbian Latin</value>
   </data>
 </root>

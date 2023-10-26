@@ -18,10 +18,10 @@
     FontFamily="{DynamicResource MaterialDesignFont}"
     lex:LocalizeDictionary.DesignCulture="en-US"
     lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
-    lex:ResxLocalizationProvider.DefaultDictionary="Resource"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     FontSize="16"
     Height="700"
-    Width="1000">
+    Width="1100">
     <Window.Resources>
         <DataTemplate
             DataType="{x:Type vms:LoginViewModel}">
@@ -30,6 +30,10 @@
         <DataTemplate
             DataType="{x:Type vms:SettingsViewModel}">
             <views:SettingsView />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type vms:RegisterViewModel}">
+            <views:RegisterView />
         </DataTemplate>
     </Window.Resources>
     <materialDesign:DialogHost
@@ -85,7 +89,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Button
-                                    Height="50"
+                                    Height="45"
                                     Margin="-8"
                                     materialDesign:ButtonAssist.CornerRadius="0"
                                     Command="{Binding NavigateCommand}"
@@ -197,7 +201,7 @@
                             AutomationProperties.Name=""
                             FontSize="17"
                             FontWeight="Medium"
-                            Text="Book your next trip or accommodation with E-Booking" />
+                            Text="{lex:Loc MainWindow_Title}"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Grid>
@@ -210,6 +214,7 @@
                     <ScrollViewer
                         Grid.Row="0"
                         Margin="5"
+                        materialDesign:ElevationAssist.Elevation="Dp8"
                         materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
                         HorizontalScrollBarVisibility="Auto"
                         VerticalScrollBarVisibility="Auto">

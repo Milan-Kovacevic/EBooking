@@ -22,14 +22,14 @@ namespace EBooking.WPF.Properties.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    internal class Language {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource() {
+        internal Language() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace EBooking.WPF.Properties.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EBooking.WPF.Properties.Languages.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EBooking.WPF.Properties.Languages.Language", typeof(Language).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,38 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hiyoo.
+        ///   Looks up a localized string similar to English.
         /// </summary>
-        internal static string String1 {
+        internal static string en_US {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("en-US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book your next trip or accommodation with E-Booking.
+        /// </summary>
+        internal static string MainWindow_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian Cyrilic.
+        /// </summary>
+        internal static string sr_Cyrl {
+            get {
+                return ResourceManager.GetString("sr-Cyrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian Latin.
+        /// </summary>
+        internal static string sr_Latn {
+            get {
+                return ResourceManager.GetString("sr-Latn", resourceCulture);
             }
         }
     }

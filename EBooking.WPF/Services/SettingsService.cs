@@ -4,11 +4,11 @@ using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using WPFLocalizeExtension.Engine;
 
 namespace EBooking.WPF.Services
@@ -55,18 +55,22 @@ namespace EBooking.WPF.Services
 
         public void ChangePrimaryColor(Color primaryColor)
         {
-            var mediaPrimaryColor = Util.ConvertDrawingColorToMediaColor(primaryColor);
-            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(mediaPrimaryColor);
+            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(primaryColor);
             if (_settingsStore.IsSettingsLoaded)
-                _settingsStore.CurrentSettings.PrimaryColor = mediaPrimaryColor;
+                _settingsStore.CurrentSettings.PrimaryColor = primaryColor;
         }
 
         public void ChangeSecondaryColor(Color secondaryColor)
         {
-            var mediaSecondaryColor = Util.ConvertDrawingColorToMediaColor(secondaryColor);
-            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(mediaSecondaryColor);
+            ThemeProvider.Instance.ApplySecondaryColorThemeChange(secondaryColor);
             if (_settingsStore.IsSettingsLoaded)
-                _settingsStore.CurrentSettings.PrimaryColor = mediaSecondaryColor;
+                _settingsStore.CurrentSettings.PrimaryColor = secondaryColor;
+        }
+
+        public void ChangeLanguage(string language)
+        {
+            LanguageProvider.Instance.ApplyLanguageChange(language);
+            _settingsStore.CurrentSettings.LanguageCode = language;
         }
 
         public void SaveCurrentSettings()

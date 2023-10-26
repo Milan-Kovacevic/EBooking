@@ -22,6 +22,7 @@ namespace EBooking.WPF
 
         private readonly SettingsService settingsService;
         private readonly NavigationService navigateToLoginViewModel;
+        private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly string _connectionString;
         public App()
@@ -30,6 +31,7 @@ namespace EBooking.WPF
             settingsStore = new SettingsStore();
             settingsService = new SettingsService(settingsStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
+            navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             _connectionString = settingsService.LoadConnectionString() ?? "";
         }
@@ -39,21 +41,20 @@ namespace EBooking.WPF
             SQLiteDAOFactory daoFactory = new SQLiteDAOFactory(_connectionString);
             // Loading necessary stores
             settingsStore.LoadSettings();
-            // Creating initial view model of main window
-            navigationStore.CurrentViewModel = CreateSettingsViewModel();
-
             // Initializing main window
             MainWindow = new MainWindow()
             {
                 DataContext = CreateMainViewModel()
             };
+            // Creating initial view model of main window
+            navigationStore.CurrentViewModel = CreateSettingsViewModel();
             // Displaying main window
             MainWindow.Show();
         }
 
         private MenuViewModel CreateMenuViewModel()
         {
-            return new MenuViewModel(navigateToSettingsViewModel, navigateToLoginViewModel);
+            return new MenuViewModel(navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel);
         }
 
         private MainViewModel CreateMainViewModel()
@@ -64,6 +65,11 @@ namespace EBooking.WPF
         private LoginViewModel CreateLoginViewModel()
         {
             return new LoginViewModel();
+        }
+
+        private RegisterViewModel CreateRegisterViewModel()
+        {
+            return new RegisterViewModel();
         }
 
         private SettingsViewModel CreateSettingsViewModel()

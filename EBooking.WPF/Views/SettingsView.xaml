@@ -5,18 +5,181 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Views"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
-    <Grid Background="{DynamicResource MaterialDesignPaper}">
-        <ToggleButton IsChecked="{Binding IsDarkMode}"/>
+    <Grid
+        Background="{DynamicResource MaterialDesignPaper}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-        <Button
-            Width="200"
-            Margin="20"
-            VerticalAlignment="Bottom"
-            Command="{Binding SaveSettingsCommand}"
-            Content="Save" />
+        <materialDesign:Card
+            materialDesign:ElevationAssist.Elevation="Dp8"
+            UniformCornerRadius="10"
+            MaxWidth="500"
+            MaxHeight="600"
+            Margin="30 25 20 25"
+            Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="40 30 40 16"
+                    FontSize="24"
+                    TextWrapping="Wrap"
+                    FontWeight="Medium"
+                    TextAlignment="Center"
+                    Foreground="{DynamicResource SecondaryHueMidBrush}"
+                    Style="{DynamicResource MaterialDesignTextBlock}"
+                    Text="Change your account informations" />
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            materialDesign:ElevationAssist.Elevation="Dp8"
+            UniformCornerRadius="10"
+            MaxWidth="460"
+            MaxHeight="600"
+            Margin="20 25 30 25"
+            Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="55 30 55 16"
+                    FontSize="24"
+                    TextWrapping="Wrap"
+                    FontWeight="Medium"
+                    TextAlignment="Center"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    Style="{DynamicResource MaterialDesignTextBlock}"
+                    Text="Customize your application look and feel" />
+                <StackPanel
+                    Margin="50 20"
+                    Grid.Row="1">
+                    <StackPanel>
+                        <materialDesign:ColorZone Background="Transparent">
+                            <TextBlock
+                                Text="Select Display Language:"
+                                Margin="2 0 0 0"
+                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                        </materialDesign:ColorZone>
+
+                        <ComboBox
+                            Padding="2 0 0 6"
+                            FontSize="15"
+                            FontWeight="Medium"
+                            DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedLanguageItem}"
+                            SelectedIndex="{Binding SelectedLanguageIndex}"
+                            ItemsSource="{Binding AvailableLanguages}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Margin="0 20 0 0">
+                        <materialDesign:ColorZone
+                            Background="Transparent">
+                            <TextBlock
+                                Text="Select Primary Color:"
+                                Margin="2 0 0 0"
+                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                        </materialDesign:ColorZone>
+                        <ComboBox
+                            Padding="0 0 0 6"
+                            FontSize="15"
+                            FontWeight="Medium"
+                            DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedPrimaryColorItem}"
+                            SelectedIndex="{Binding SelectedPrimaryColorIndex}"
+                            ItemsSource="{Binding AvailablePrimaryColors}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Margin="0 20 0 0">
+                        <materialDesign:ColorZone
+                            Background="Transparent">
+                            <TextBlock
+                                Text="Select Secondary Color:"
+                                Margin="2 0 0 0"
+                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                        </materialDesign:ColorZone>
+                        <ComboBox
+                            Padding="0 0 0 6"
+                            FontSize="15"
+                            FontWeight="Medium"
+                            SelectedItem="{Binding SelectedSeconadryColor}"
+                            ItemsSource="{Binding SeconadryColors}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel
+                    Margin="50 10 50 35"
+                    Orientation="Vertical"
+                    Grid.Row="2">
+                    <Button
+                        Margin="5 0"
+                        Height="38"
+                        materialDesign:ButtonAssist.CornerRadius="8"
+                        Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                        Command="{Binding SaveSettingsCommand}">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="26"
+                                VerticalAlignment="Center"
+                                Kind="ContentSave" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontWeight="Medium"
+                                Text="Save Changes"
+                                Margin="4 0 0 0"
+                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Height="38"
+                        Margin="5 10 5 5"
+                        materialDesign:ButtonAssist.CornerRadius="8"
+                        Command="{Binding RevertSettingsCommand}"
+                        Style="{DynamicResource MaterialDesignOutlinedLightButton}">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                VerticalAlignment="Center"
+                                Width="24"
+                                Height="26"
+                                Kind="FileRevert" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontWeight="Medium"
+                                Text="Revert Changes"
+                                Margin="4 0 0 0"
+                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

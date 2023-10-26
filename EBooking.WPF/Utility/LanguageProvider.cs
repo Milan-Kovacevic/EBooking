@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBooking.WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,12 +12,10 @@ namespace EBooking.WPF.Utility
     internal class LanguageProvider
     {
         private readonly Dictionary<Language, string> applicationLanguages;
-        public IEnumerable<string> Languages { get => applicationLanguages.Values.ToList(); }
-
-        private Language currentLanguage;
-        public string CurrentLanguage { get => applicationLanguages[currentLanguage]; }
 
         public static LanguageProvider Instance { get; } = new LanguageProvider();
+
+        public IEnumerable<LanguageItem> Languages { get => applicationLanguages.Values.Select(l => new LanguageItem(l, Util.GetLocalizedValue(l))); }
 
         public enum Language
         {
@@ -31,19 +30,12 @@ namespace EBooking.WPF.Utility
                 { Language.SERBIAN_LATIN, "sr-Latn" },
                 { Language.SERBIAN_CYRIL, "sr-Cyrl" }
             };
-
-            currentLanguage = applicationLanguages.Keys.ToList()[0];
         }
 
-        /// <summary>
-        /// Saves language change to application settings and updates the UI Language
-        /// </summary>
-        /// <param name="language"></param>
         public void ApplyLanguageChange(string language)
         {
             var lang = ResolveLanguageCode(language);
             SetUILanguage(lang);
-            currentLanguage = lang;
         }
 
         #region Private Methods

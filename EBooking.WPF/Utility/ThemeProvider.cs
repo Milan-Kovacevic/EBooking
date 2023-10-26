@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using EBooking.WPF.Models;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,41 @@ namespace EBooking.WPF.Utility
 {
     internal class ThemeProvider
     {
-        public record class ThemePalette(Color PrimaryColor, Color SecondaryColor, string Key);
+        private record class ThemeColorPalette(string Key, Color Color);
 
-        private readonly List<ThemePalette> themePalettes;
-        public IEnumerable<ThemePalette> ThemePalettes { get => themePalettes; }
+        private readonly Dictionary<ThemeColor, ThemeColorPalette> primaryColors;
+        private readonly Dictionary<ThemeColor, ThemeColorPalette> secondaryColors;
+        public IEnumerable<ColorItem> PrimaryColors 
+        { 
+            get => primaryColors.Values
+                .Select(x => new ColorItem(x.Key, x.Color, Util.GetLocalizedValue(x.Key))); 
+        }
+        public IEnumerable<ColorItem> SecondaryColors
+        {
+            get => secondaryColors.Values
+                .Select(x => new ColorItem(x.Key, x.Color, Util.GetLocalizedValue(x.Key)));
+        }
 
         public static ThemeProvider Instance { get; } = new ThemeProvider();
 
+        enum ThemeColor
+        {
+            RED, BLUE, CYAN, GREEN, ORANGE
+        }
+
         private ThemeProvider()
         {
-            themePalettes = new List<ThemePalette>
+            primaryColors = new Dictionary<ThemeColor, ThemeColorPalette>()
             {
-                new ThemePalette(Color.FromRgb(0, 188, 212), Color.FromRgb(0, 96, 100), "Cyan" ),
-                new ThemePalette(Color.FromArgb(255, 100, 100, 100), Color.FromArgb(255, 0, 200, 50), "Red" )
+                { ThemeColor.RED, new ThemeColorPalette("color-red", Color.FromRgb(255, 0, 0)) },
+                { ThemeColor.GREEN, new ThemeColorPalette("color-green", Color.FromRgb(0, 255, 0)) },
+            };
+
+            // TODO
+            secondaryColors = new Dictionary<ThemeColor, ThemeColorPalette>()
+            {
+                { ThemeColor.CYAN, new ThemeColorPalette("color-cyan", Color.FromRgb(100, 20, 60)) },
+                { ThemeColor.BLUE, new ThemeColorPalette("color-blue", Color.FromRgb(0, 0, 255)) },
             };
         }
 

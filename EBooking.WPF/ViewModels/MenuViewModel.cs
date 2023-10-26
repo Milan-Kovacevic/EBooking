@@ -32,30 +32,39 @@ namespace EBooking.WPF.ViewModels
 
         private readonly NavigationService _navigateToSettingsViewModel;
         private readonly NavigationService _navigateToLoginViewModel;
+        private readonly NavigationService _navigateToRegisterViewModel;
 
-        public MenuViewModel(NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel)
+        public MenuViewModel(NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel)
         {
             _navigateToSettingsViewModel = navigateToSettingsViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;
+            _navigateToRegisterViewModel = navigateToRegisterViewModel;
 
             MenuItems = new List<MenuItem>()
             {
                 new MenuItem("Login", PackIconKind.Login, NavigateToLogin),
+                new MenuItem("Register", PackIconKind.Register, NavigateToRegister),
                 new MenuItem("Settings", PackIconKind.Settings, NavigateToSettings),
             };
             selectedItem = MenuItems.ElementAt(0);
-        }
-
-        public void NavigateToSettings()
-        {
-            _navigateToSettingsViewModel.Navigate();
-            SelectedItem = MenuItems.ElementAt(1);
         }
 
         public void NavigateToLogin()
         {
             _navigateToLoginViewModel.Navigate();
             SelectedItem = MenuItems.ElementAt(0);
+        }
+
+        public void NavigateToRegister()
+        {
+            _navigateToRegisterViewModel.Navigate();
+            SelectedItem = MenuItems.ElementAt(1);
+        }
+
+        public void NavigateToSettings()
+        {
+            _navigateToSettingsViewModel.Navigate();
+            SelectedItem = MenuItems.ElementAt(2);
         }
     }
 }
