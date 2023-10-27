@@ -18,9 +18,11 @@ namespace EBooking.WPF
     public partial class App : Application
     {
         private readonly NavigationStore navigationStore;
+        private readonly MessageQueueStore messageQueueStore;
         private readonly SettingsStore settingsStore;
 
         private readonly SettingsService settingsService;
+        private readonly MessageQueueService messageQueueService;
         private readonly NavigationService navigateToLoginViewModel;
         private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
@@ -28,8 +30,10 @@ namespace EBooking.WPF
         public App()
         {
             navigationStore = new NavigationStore();
+            messageQueueStore = new MessageQueueStore();
             settingsStore = new SettingsStore();
             settingsService = new SettingsService(settingsStore);
+            messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
@@ -50,6 +54,7 @@ namespace EBooking.WPF
             navigationStore.CurrentViewModel = CreateSettingsViewModel();
             // Displaying main window
             MainWindow.Show();
+            messageQueueService.Enqueue("Welcome back!");
         }
 
         private MenuViewModel CreateMenuViewModel()
@@ -59,7 +64,7 @@ namespace EBooking.WPF
 
         private MainViewModel CreateMainViewModel()
         {
-            return new MainViewModel(navigationStore, settingsService, CreateMenuViewModel());
+            return new MainViewModel(messageQueueStore, navigationStore, settingsService, CreateMenuViewModel());
         }
 
         private LoginViewModel CreateLoginViewModel()
@@ -74,7 +79,7 @@ namespace EBooking.WPF
 
         private SettingsViewModel CreateSettingsViewModel()
         {
-            return new SettingsViewModel(settingsStore, settingsService);
+            return new SettingsViewModel(messageQueueService, settingsStore, settingsService);
         }
     }
 }

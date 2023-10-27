@@ -12,7 +12,7 @@ namespace EBooking.WPF.Models
     {
         public required string LanguageCode { get; set; }
         public required IBaseTheme BaseTheme { get; set; }
-        public required Color PrimaryColor { get; set; }
-        public required Color SecondaryColor { get; set; }
+        public required string PrimaryColorCode { get; set; }
+        public required string SecondaryColorCode { get; set; }
     }
 }

@@ -8,11 +8,11 @@
     <Setting Name="BaseTheme" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="PrimaryColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">IndianRed</Value>
+    <Setting Name="PrimaryColorCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">color-red</Value>
     </Setting>
-    <Setting Name="SecondaryColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">AntiqueWhite</Value>
+    <Setting Name="SecondaryColorCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">color-blue</Value>
     </Setting>
   </Settings>
 </SettingsFile>

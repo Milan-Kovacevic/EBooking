@@ -3,6 +3,7 @@ using EBooking.WPF.Utility;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
@@ -29,15 +30,10 @@ namespace EBooking.WPF.Services
             if (currentSettings == null)
                 return;
 
-            PaletteHelper paletteHelper = new PaletteHelper();
-            var currentTheme = paletteHelper.GetTheme();
-            currentTheme.SetBaseTheme(currentSettings.BaseTheme);
-            currentTheme.SetPrimaryColor(currentSettings.PrimaryColor);
-            currentTheme.SetSecondaryColor(currentSettings.SecondaryColor);
-            paletteHelper.SetTheme(currentTheme);
-
-            var cultureInfo = new CultureInfo(currentSettings.LanguageCode);
-            LocalizeDictionary.Instance.Culture = cultureInfo;
+            ThemeProvider.Instance.ApplyBaseThemeChange(currentSettings.BaseTheme);
+            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(currentSettings.PrimaryColorCode);
+            ThemeProvider.Instance.ApplySecondaryColorThemeChange(currentSettings.SecondaryColorCode);
+            LanguageProvider.Instance.ApplyLanguageChange(currentSettings.LanguageCode);
         }
 
         public void ChangeBaseTheme(bool isDarkTheme)
@@ -53,18 +49,18 @@ namespace EBooking.WPF.Services
                 _settingsStore.CurrentSettings.BaseTheme = baseTheme;
         }
 
-        public void ChangePrimaryColor(Color primaryColor)
+        public void ChangePrimaryColor(string primaryColorCode)
         {
-            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(primaryColor);
+            ThemeProvider.Instance.ApplyPrimaryColorThemeChange(primaryColorCode);
             if (_settingsStore.IsSettingsLoaded)
-                _settingsStore.CurrentSettings.PrimaryColor = primaryColor;
+                _settingsStore.CurrentSettings.PrimaryColorCode = primaryColorCode;
         }
 
-        public void ChangeSecondaryColor(Color secondaryColor)
+        public void ChangeSecondaryColor(string secondaryColorCode)
         {
-            ThemeProvider.Instance.ApplySecondaryColorThemeChange(secondaryColor);
+            ThemeProvider.Instance.ApplySecondaryColorThemeChange(secondaryColorCode);
             if (_settingsStore.IsSettingsLoaded)
-                _settingsStore.CurrentSettings.PrimaryColor = secondaryColor;
+                _settingsStore.CurrentSettings.SecondaryColorCode = secondaryColorCode;
         }
 
         public void ChangeLanguage(string language)

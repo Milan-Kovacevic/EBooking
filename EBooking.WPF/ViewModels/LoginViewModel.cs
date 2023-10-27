@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using EBooking.WPF.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class LoginViewModel : ObservableObject, IViewModelBase
     {
-        public string Key => nameof(LoginViewModel);
+        public string GetId()
+        {
+            return MenuProvider.GetCode(MenuProvider.MenuItem.LOGIN);
+        }
     }
 }

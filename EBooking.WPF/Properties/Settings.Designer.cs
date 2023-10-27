@@ -49,25 +49,25 @@ namespace EBooking.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("IndianRed")]
-        public global::System.Drawing.Color PrimaryColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("color-red")]
+        public string PrimaryColorCode {
             get {
-                return ((global::System.Drawing.Color)(this["PrimaryColor"]));
+                return ((string)(this["PrimaryColorCode"]));
             }
             set {
-                this["PrimaryColor"] = value;
+                this["PrimaryColorCode"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AntiqueWhite")]
-        public global::System.Drawing.Color SecondaryColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("color-blue")]
+        public string SecondaryColorCode {
             get {
-                return ((global::System.Drawing.Color)(this["SecondaryColor"]));
+                return ((string)(this["SecondaryColorCode"]));
             }
             set {
-                this["SecondaryColor"] = value;
+                this["SecondaryColorCode"] = value;
             }
         }
     }

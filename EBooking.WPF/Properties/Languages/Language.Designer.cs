@@ -61,6 +61,42 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blue.
+        /// </summary>
+        internal static string color_blue {
+            get {
+                return ResourceManager.GetString("color-blue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purple.
+        /// </summary>
+        internal static string color_purple {
+            get {
+                return ResourceManager.GetString("color-purple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red.
+        /// </summary>
+        internal static string color_red {
+            get {
+                return ResourceManager.GetString("color-red", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teal.
+        /// </summary>
+        internal static string color_teal {
+            get {
+                return ResourceManager.GetString("color-teal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         internal static string en_US {
@@ -75,6 +111,87 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string MainWindow_Title {
             get {
                 return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Menu_LoginTitle {
+            get {
+                return ResourceManager.GetString("Menu_LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Menu_RegisterTitle {
+            get {
+                return ResourceManager.GetString("Menu_RegisterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Menu_SettingsTitle {
+            get {
+                return ResourceManager.GetString("Menu_SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Informations.
+        /// </summary>
+        internal static string Settings_InfoTitle {
+            get {
+                return ResourceManager.GetString("Settings_InfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Look and Feel.
+        /// </summary>
+        internal static string Settings_LookAndFeelTitle {
+            get {
+                return ResourceManager.GetString("Settings_LookAndFeelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Display Language.
+        /// </summary>
+        internal static string Settings_SelectLanguageLabel {
+            get {
+                return ResourceManager.GetString("Settings_SelectLanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Primary Color.
+        /// </summary>
+        internal static string Settings_SelectPrimaryColorLabel {
+            get {
+                return ResourceManager.GetString("Settings_SelectPrimaryColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Secondary Color.
+        /// </summary>
+        internal static string Settings_SelectSecondaryColorLabel {
+            get {
+                return ResourceManager.GetString("Settings_SelectSecondaryColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change account informations or customize application look and feel.
+        /// </summary>
+        internal static string Settings_Title {
+            get {
+                return ResourceManager.GetString("Settings_Title", resourceCulture);
             }
         }
         

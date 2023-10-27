@@ -13,55 +13,72 @@ namespace EBooking.WPF.Utility
     {
         private record class ThemeColorPalette(string Key, Color Color);
 
-        private readonly Dictionary<ThemeColor, ThemeColorPalette> primaryColors;
-        private readonly Dictionary<ThemeColor, ThemeColorPalette> secondaryColors;
-        public IEnumerable<ColorItem> PrimaryColors 
-        { 
-            get => primaryColors.Values
-                .Select(x => new ColorItem(x.Key, x.Color, Util.GetLocalizedValue(x.Key))); 
+        private readonly Dictionary<string, Color> primaryColors;
+        private readonly Dictionary<string, Color> secondaryColors;
+        public IEnumerable<ColorItem> PrimaryColors
+        {
+            get => primaryColors
+                .Select(x => new ColorItem(x.Key, x.Value, Util.GetLocalizedValue(x.Key)));
         }
         public IEnumerable<ColorItem> SecondaryColors
         {
-            get => secondaryColors.Values
-                .Select(x => new ColorItem(x.Key, x.Color, Util.GetLocalizedValue(x.Key)));
+            get => secondaryColors
+                .Select(x => new ColorItem(x.Key, x.Value, Util.GetLocalizedValue(x.Key)));
         }
 
         public static ThemeProvider Instance { get; } = new ThemeProvider();
 
-        enum ThemeColor
-        {
-            RED, BLUE, CYAN, GREEN, ORANGE
-        }
-
         private ThemeProvider()
         {
-            primaryColors = new Dictionary<ThemeColor, ThemeColorPalette>()
+            // DESERIALIZE DICTIONARY EXTERNALY OF AVAILABLE THEME COLORS
+            primaryColors = new Dictionary<string, Color>()
             {
-                { ThemeColor.RED, new ThemeColorPalette("color-red", Color.FromRgb(255, 0, 0)) },
-                { ThemeColor.GREEN, new ThemeColorPalette("color-green", Color.FromRgb(0, 255, 0)) },
+                { "color-blue", Color.FromRgb(11, 98, 152) },
+                { "color-red",Color.FromRgb(190, 49, 68) },
+                { "color-purple", Color.FromRgb(159, 90, 253) },
             };
 
-            // TODO
-            secondaryColors = new Dictionary<ThemeColor, ThemeColorPalette>()
+            secondaryColors = new Dictionary<string, Color>()
             {
-                { ThemeColor.CYAN, new ThemeColorPalette("color-cyan", Color.FromRgb(100, 20, 60)) },
-                { ThemeColor.BLUE, new ThemeColorPalette("color-blue", Color.FromRgb(0, 0, 255)) },
+                { "color-red", Color.FromRgb(220, 121, 134) },
+                { "color-blue", Color.FromRgb(27, 158, 238) },
+                { "color-teal", Color.FromRgb(100, 204, 197) },
             };
         }
 
-        public void ApplyPrimaryColorThemeChange(Color primaryColor)
+        public void ApplyPrimaryColorThemeChange(string primaryColorKey)
         {
-            SetUIPrimaryColorTheme(primaryColor);
+            string key = ResolvePrimaryColorCode(primaryColorKey);
+            SetUIPrimaryColorTheme(primaryColors[key]);
         }
 
-        public void ApplySecondaryColorThemeChange(Color secondaryColor)
+        public void ApplySecondaryColorThemeChange(string secondaryColorKey)
         {
-            SetUISecondaryColorTheme(secondaryColor);
+            string key = ResolveSecondaryColorCode(secondaryColorKey);
+            SetUISecondaryColorTheme(secondaryColors[key]);
         }
 
         public void ApplyBaseThemeChange(IBaseTheme baseTheme)
         {
             SetUIBaseTheme(baseTheme);
+        }
+
+        public string ResolvePrimaryColorCode(string expectedCode)
+        {
+            string key = expectedCode;
+            if (!primaryColors.ContainsKey(expectedCode))
+                key = primaryColors.ElementAt(0).Key;
+
+            return key;
+        }
+
+        public string ResolveSecondaryColorCode(string expectedCode)
+        {
+            string key = expectedCode;
+            if (!secondaryColors.ContainsKey(expectedCode))
+                key = secondaryColors.ElementAt(0).Key;
+
+            return key;
         }
 
         #region Private Methods

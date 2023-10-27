@@ -1,34 +1,55 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using EBooking.WPF.Messages;
+using EBooking.WPF.Models;
 using EBooking.WPF.Services;
+using EBooking.WPF.Utility;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EBooking.WPF.ViewModels
 {
-    public partial class MenuViewModel : ObservableObject, IViewModelBase
+    public partial class MenuViewModel : ObservableObject, IViewModelBase, IRecipient<LanguageChangeMessage>
     {
-        public record class MenuItem
+        public partial class MenuViewItem : ObservableObject
         {
-            public string Name { get; }
+            [ObservableProperty]
+            public string name;
             public PackIconKind Kind { get; }
             public IRelayCommand NavigateCommand { get; }
 
-            public MenuItem(string name, PackIconKind kind, Action navigationAction, Func<bool>? canExecute = null)
+            public MenuViewItem(string name, PackIconKind kind, Action navigationAction, Func<bool>? canExecute = null)
             {
-                Name = name;
+                this.name = name;
                 Kind = kind;
                 NavigateCommand = new RelayCommand(navigationAction, canExecute ??= () => true);
             }
         }
-        public IEnumerable<MenuItem> MenuItems { get; }
+
+        private string currentViewModelKey;
+        public string CurrentViewModelKey
+        {
+            get => currentViewModelKey;
+            set
+            {
+                currentViewModelKey = value;
+                int index = MenuProvider.GetIndexOfCode(currentViewModelKey);
+                if (index != -1)
+                    SelectedItem = MenuItems[index];
+            }
+        }
 
         [ObservableProperty]
-        private MenuItem selectedItem;
+        private ObservableCollection<MenuViewItem> menuItems;
+
+        [ObservableProperty]
+        private MenuViewItem selectedItem;
 
         private readonly NavigationService _navigateToSettingsViewModel;
         private readonly NavigationService _navigateToLoginViewModel;
@@ -40,31 +61,46 @@ namespace EBooking.WPF.ViewModels
             _navigateToLoginViewModel = navigateToLoginViewModel;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
 
-            MenuItems = new List<MenuItem>()
+            menuItems = new ObservableCollection<MenuViewItem>()
             {
-                new MenuItem("Login", PackIconKind.Login, NavigateToLogin),
-                new MenuItem("Register", PackIconKind.Register, NavigateToRegister),
-                new MenuItem("Settings", PackIconKind.Settings, NavigateToSettings),
+                new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin),
+                new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister),
+                new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
             };
-            selectedItem = MenuItems.ElementAt(0);
+            selectedItem = MenuItems.ElementAt(2);
+            currentViewModelKey = MenuProvider.GetCodeByIndex(2);
+
+            WeakReferenceMessenger.Default.RegisterAll(this);
         }
 
         public void NavigateToLogin()
         {
             _navigateToLoginViewModel.Navigate();
-            SelectedItem = MenuItems.ElementAt(0);
         }
 
         public void NavigateToRegister()
         {
             _navigateToRegisterViewModel.Navigate();
-            SelectedItem = MenuItems.ElementAt(1);
         }
 
         public void NavigateToSettings()
         {
             _navigateToSettingsViewModel.Navigate();
-            SelectedItem = MenuItems.ElementAt(2);
+        }
+
+        public void Receive(LanguageChangeMessage message)
+        {
+            for (int i = 0; i < MenuItems.Count; i++)
+            {
+                MenuItems[i].Name = Util.GetLocalizedValue(MenuProvider.GetCodeByIndex(i));
+            }
+        }
+
+        public string Key => nameof(MenuViewModel);
+
+        public void Dispose()
+        {
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
     }
 }

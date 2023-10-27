@@ -39,8 +39,8 @@ namespace EBooking.WPF.Stores
             {
                 LanguageCode = settings.LanguageCode,
                 BaseTheme = theme,
-                PrimaryColor = Util.ConvertDrawingColorToMediaColor(settings.PrimaryColor),
-                SecondaryColor = Util.ConvertDrawingColorToMediaColor(settings.SecondaryColor),
+                PrimaryColorCode = settings.PrimaryColorCode,
+                SecondaryColorCode = settings.SecondaryColorCode,
             };
             _currentSettings = appSettings;
         }
@@ -59,8 +59,8 @@ namespace EBooking.WPF.Stores
 
             settings.LanguageCode = CurrentSettings.LanguageCode;
             settings.BaseTheme = (int)theme;
-            settings.PrimaryColor = Util.ConvertMediaColorToDrawingColor(CurrentSettings.PrimaryColor);
-            settings.SecondaryColor = Util.ConvertMediaColorToDrawingColor(CurrentSettings.SecondaryColor);
+            settings.PrimaryColorCode = CurrentSettings.PrimaryColorCode;
+            settings.SecondaryColorCode = CurrentSettings.SecondaryColorCode;
             Properties.Settings.Default.Save();
         }
 
@@ -71,10 +71,10 @@ namespace EBooking.WPF.Stores
         /// </summary>
         private static readonly ApplicationSettings _internalBackupSettings = new ApplicationSettings()
         {
-            LanguageCode = "en-US",
+            LanguageCode = LanguageProvider.Instance.Languages.ElementAt(0).Key,
             BaseTheme = Theme.Dark,
-            PrimaryColor = ThemeProvider.Instance.PrimaryColors.ElementAt(0).Value,
-            SecondaryColor = ThemeProvider.Instance.SecondaryColors.ElementAt(0).Value,
+            PrimaryColorCode = ThemeProvider.Instance.PrimaryColors.ElementAt(0).Key,
+            SecondaryColorCode = ThemeProvider.Instance.SecondaryColors.ElementAt(0).Key,
         };
         #endregion
     }

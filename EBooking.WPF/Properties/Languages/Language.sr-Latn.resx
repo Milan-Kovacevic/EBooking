@@ -117,11 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="color-blue" xml:space="preserve">
+    <value>Plava</value>
+  </data>
+  <data name="color-purple" xml:space="preserve">
+    <value>Ljubičasta</value>
+  </data>
+  <data name="color-red" xml:space="preserve">
+    <value>Crvena</value>
+  </data>
+  <data name="color-teal" xml:space="preserve">
+    <value>Plavozelena</value>
+  </data>
   <data name="en-US" xml:space="preserve">
     <value>Engleski</value>
   </data>
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Rezervišite Vaše sledeće putovanje ili smještaj sa E-Booking</value>
+  </data>
+  <data name="Menu_LoginTitle" xml:space="preserve">
+    <value>Prijavi se</value>
+  </data>
+  <data name="Menu_RegisterTitle" xml:space="preserve">
+    <value>Registruj se</value>
+  </data>
+  <data name="Menu_SettingsTitle" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
+  <data name="Settings_InfoTitle" xml:space="preserve">
+    <value>Informacije o nalogu</value>
+  </data>
+  <data name="Settings_LookAndFeelTitle" xml:space="preserve">
+    <value>Izgled i osjećaj aplikacije</value>
+  </data>
+  <data name="Settings_SelectLanguageLabel" xml:space="preserve">
+    <value>Izaberite jezik za prikaz</value>
+  </data>
+  <data name="Settings_SelectPrimaryColorLabel" xml:space="preserve">
+    <value>Izaberite osnovnu boju</value>
+  </data>
+  <data name="Settings_SelectSecondaryColorLabel" xml:space="preserve">
+    <value>Izaberite sporednu boju</value>
+  </data>
+  <data name="Settings_Title" xml:space="preserve">
+    <value>Promijenite informacije o nalogu ili prilagodite izgled i osjećaj aplikacije</value>
   </data>
   <data name="sr-Cyrl" xml:space="preserve">
     <value>Srpski ćirilica</value>

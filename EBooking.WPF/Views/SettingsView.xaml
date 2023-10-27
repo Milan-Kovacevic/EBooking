@@ -7,50 +7,23 @@
     xmlns:local="clr-namespace:EBooking.WPF.Views"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="sr-Latn"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter
+            x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Grid
         Background="{DynamicResource MaterialDesignPaper}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
         <materialDesign:Card
             materialDesign:ElevationAssist.Elevation="Dp8"
             UniformCornerRadius="10"
-            MaxWidth="500"
-            MaxHeight="600"
-            Margin="30 25 20 25"
-            Grid.Column="0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="auto" />
-                    <RowDefinition
-                        Height="*" />
-                    <RowDefinition
-                        Height="auto" />
-                </Grid.RowDefinitions>
-                <TextBlock
-                    Margin="40 30 40 16"
-                    FontSize="24"
-                    TextWrapping="Wrap"
-                    FontWeight="Medium"
-                    TextAlignment="Center"
-                    Foreground="{DynamicResource SecondaryHueMidBrush}"
-                    Style="{DynamicResource MaterialDesignTextBlock}"
-                    Text="Change your account informations" />
-            </Grid>
-        </materialDesign:Card>
-
-        <materialDesign:Card
-            materialDesign:ElevationAssist.Elevation="Dp8"
-            UniformCornerRadius="10"
-            MaxWidth="460"
-            MaxHeight="600"
-            Margin="20 25 30 25"
+            Padding="10"
+            MaxWidth="900"
+            MaxHeight="640"
+            Margin="25"
             Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -58,127 +31,309 @@
                         Height="auto" />
                     <RowDefinition
                         Height="*" />
-                    <RowDefinition
-                        Height="auto" />
                 </Grid.RowDefinitions>
-                <TextBlock
-                    Margin="55 30 55 16"
-                    FontSize="24"
-                    TextWrapping="Wrap"
-                    FontWeight="Medium"
-                    TextAlignment="Center"
-                    Foreground="{DynamicResource PrimaryHueMidBrush}"
-                    Style="{DynamicResource MaterialDesignTextBlock}"
-                    Text="Customize your application look and feel" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="10*" />
+                    <ColumnDefinition
+                        Width="9*" />
+                </Grid.ColumnDefinitions>
                 <StackPanel
-                    Margin="50 20"
-                    Grid.Row="1">
-                    <StackPanel>
-                        <materialDesign:ColorZone Background="Transparent">
-                            <TextBlock
-                                Text="Select Display Language:"
-                                Margin="2 0 0 0"
-                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
-                        </materialDesign:ColorZone>
-
-                        <ComboBox
-                            Padding="2 0 0 6"
-                            FontSize="15"
-                            FontWeight="Medium"
-                            DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedLanguageItem}"
-                            SelectedIndex="{Binding SelectedLanguageIndex}"
-                            ItemsSource="{Binding AvailableLanguages}"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
-                    </StackPanel>
-
-                    <StackPanel
-                        Margin="0 20 0 0">
-                        <materialDesign:ColorZone
-                            Background="Transparent">
-                            <TextBlock
-                                Text="Select Primary Color:"
-                                Margin="2 0 0 0"
-                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
-                        </materialDesign:ColorZone>
-                        <ComboBox
-                            Padding="0 0 0 6"
-                            FontSize="15"
-                            FontWeight="Medium"
-                            DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedPrimaryColorItem}"
-                            SelectedIndex="{Binding SelectedPrimaryColorIndex}"
-                            ItemsSource="{Binding AvailablePrimaryColors}"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
-                    </StackPanel>
-
-                    <StackPanel
-                        Margin="0 20 0 0">
-                        <materialDesign:ColorZone
-                            Background="Transparent">
-                            <TextBlock
-                                Text="Select Secondary Color:"
-                                Margin="2 0 0 0"
-                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
-                        </materialDesign:ColorZone>
-                        <ComboBox
-                            Padding="0 0 0 6"
-                            FontSize="15"
-                            FontWeight="Medium"
-                            SelectedItem="{Binding SelectedSeconadryColor}"
-                            ItemsSource="{Binding SeconadryColors}"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
-                    </StackPanel>
+                    Margin="0 0 0 15"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0">
+                    <TextBlock
+                        MaxWidth="600"
+                        Margin="45 15 45 40"
+                        FontSize="24"
+                        TextWrapping="Wrap"
+                        FontWeight="Medium"
+                        TextAlignment="Center"
+                        Foreground="{DynamicResource PrimaryHueLightBrush}"
+                        Style="{DynamicResource MaterialDesignTextBlock}"
+                        Text="{lex:Loc Settings_Title}" />
                 </StackPanel>
 
-                <StackPanel
-                    Margin="50 10 50 35"
-                    Orientation="Vertical"
-                    Grid.Row="2">
-                    <Button
+                <Grid
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="25 0 35 20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="auto" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Center"
+                            Kind="Circle"
+                            Height="10"
+                            Margin="0 0 6 0"
+                            Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                            Width="10" />
+                        <TextBlock
+                            FontSize="17"
+                            TextWrapping="Wrap"
+                            FontWeight="Medium"
+                            FontStyle="Italic"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center"
+                            Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                            Style="{DynamicResource MaterialDesignTextBlock}"
+                            Text="{lex:Loc Settings_LookAndFeelTitle}" />
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0 10"
+                        Grid.Row="1">
+                        <StackPanel>
+                            <materialDesign:ColorZone
+                                Background="Transparent">
+                                <TextBlock
+                                    Text="{lex:Loc Settings_SelectLanguageLabel}"
+                                    Margin="2 0 0 -6"
+                                    Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                            </materialDesign:ColorZone>
+
+                            <ComboBox
+                                Padding="6 0 0 6"
+                                FontSize="15"
+                                DisplayMemberPath="Name"
+                                SelectedItem="{Binding SelectedLanguageItem}"
+                                SelectedIndex="{Binding SelectedLanguageIndex}"
+                                Foreground="{DynamicResource SecondaryHueMidBrush}"
+                                ItemsSource="{Binding AvailableLanguages}"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="0 20 0 0">
+                            <materialDesign:ColorZone
+                                Background="Transparent">
+                                <TextBlock
+                                    Text="{lex:Loc Settings_SelectPrimaryColorLabel}"
+                                    Margin="2 0 0 -6"
+                                    Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                            </materialDesign:ColorZone>
+                            <ComboBox
+                                Padding="6 0 0 6"
+                                FontSize="15"
+                                DisplayMemberPath="Name"
+                                SelectedItem="{Binding SelectedPrimaryColorItem}"
+                                SelectedIndex="{Binding SelectedPrimaryColorIndex}"
+                                Foreground="{DynamicResource SecondaryHueMidBrush}"
+                                ItemsSource="{Binding AvailablePrimaryColors}"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Margin="0 20 0 0">
+                            <materialDesign:ColorZone
+                                Background="Transparent">
+                                <TextBlock
+                                    Text="{lex:Loc Settings_SelectSecondaryColorLabel}"
+                                    Margin="2 0 0 -6"
+                                    Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                            </materialDesign:ColorZone>
+                            <ComboBox
+                                Padding="6 0 0 6"
+                                FontSize="15"
+                                DisplayMemberPath="Name"
+                                SelectedItem="{Binding SelectedSecondaryColorItem}"
+                                SelectedIndex="{Binding SelectedSecondaryColorIndex}"
+                                Foreground="{DynamicResource SecondaryHueMidBrush}"
+                                ItemsSource="{Binding AvailableSecondaryColors}"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="5 25 5 0"
+                        Orientation="Vertical"
+                        Grid.Row="2">
+                        <TextBlock
+                            Visibility="{Binding SettingsChanged, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Text="Save is required*"
+                            FontStyle="Italic"
+                            FontWeight="Medium"
+                            HorizontalAlignment="Right"
+                            FontSize="12"
+                            Foreground="{DynamicResource SecondaryHueMidBrush}"
+                            Margin="5 10 5 8" />
+                        <Button
+                            Margin="5 0"
+                            HorizontalAlignment="Stretch"
+                            Height="38"
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                            Command="{Binding SaveSettingsCommand}">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    VerticalAlignment="Center"
+                                    Kind="ContentSave" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontWeight="Medium"
+                                    Text="Save Changes"
+                                    Margin="4 0 0 0"
+                                    Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Height="38"
+                            Margin="5 10 5 0"
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            Command="{Binding RevertSettingsCommand}"
+                            Style="{DynamicResource MaterialDesignOutlinedButton}">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    VerticalAlignment="Center"
+                                    Width="24"
+                                    Height="24"
+                                    Kind="FileRevert" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontWeight="Medium"
+                                    Text="Revert Changes"
+                                    Margin="4 0 0 0"
+                                    Style="{DynamicResource MaterialDesignBody1TextBlock}" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <Grid
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="20 0 10 20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="auto" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Grid.Row="0"
                         Margin="5 0"
-                        Height="38"
-                        materialDesign:ButtonAssist.CornerRadius="8"
-                        Style="{DynamicResource MaterialDesignFlatMidBgButton}"
-                        Command="{Binding SaveSettingsCommand}">
-                        <StackPanel
-                            Orientation="Horizontal">
-                            <materialDesign:PackIcon
-                                Width="24"
-                                Height="26"
-                                VerticalAlignment="Center"
-                                Kind="ContentSave" />
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                FontWeight="Medium"
-                                Text="Save Changes"
-                                Margin="4 0 0 0"
-                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
-                        </StackPanel>
-                    </Button>
-
-                    <Button
-                        Height="38"
-                        Margin="5 10 5 5"
-                        materialDesign:ButtonAssist.CornerRadius="8"
-                        Command="{Binding RevertSettingsCommand}"
-                        Style="{DynamicResource MaterialDesignOutlinedLightButton}">
-                        <StackPanel
-                            Orientation="Horizontal">
-                            <materialDesign:PackIcon
-                                VerticalAlignment="Center"
-                                Width="24"
-                                Height="26"
-                                Kind="FileRevert" />
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                FontWeight="Medium"
-                                Text="Revert Changes"
-                                Margin="4 0 0 0"
-                                Style="{DynamicResource MaterialDesignBody1TextBlock}" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Center"
+                            Kind="Circle"
+                            Height="10"
+                            Margin="0 0 6 0"
+                            Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                            Width="10" />
+                        <TextBlock
+                            FontSize="17"
+                            TextWrapping="Wrap"
+                            FontWeight="Medium"
+                            FontStyle="Italic"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center"
+                            Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                            Style="{DynamicResource MaterialDesignTextBlock}"
+                            Text="{lex:Loc Settings_InfoTitle}" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0 6 10 10">
+                        <TextBox
+                            Margin="2 0 2 2"
+                            Padding="4 2 4 2"
+                            FontSize="16"
+                            materialDesign:HintAssist.HelperText="Required*"
+                            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                            MaxLength="64"
+                            Text="{Binding DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                            materialDesign:HintAssist.FloatingOffset="0 -16"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                                    HorizontalAlignment="Stretch"
+                                    Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        VerticalAlignment="Stretch"
+                                        Margin="0 0 4 0"
+                                        Kind="UserOutline"
+                                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                                    <Label
+                                        Style="{DynamicResource MaterialDesignLabel}"
+                                        VerticalAlignment="Stretch"
+                                        Content="Display Name" />
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                        <PasswordBox
+                            Margin="2 18 2 2"
+                            Padding="4 2 4 2"
+                            FontSize="16"
+                            materialDesign:HintAssist.HelperText="Required*"
+                            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                            MaxLength="64"
+                            materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                            materialDesign:HintAssist.FloatingOffset="0 -16"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                                    HorizontalAlignment="Stretch"
+                                    Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        VerticalAlignment="Stretch"
+                                        Margin="0 0 4 0"
+                                        Kind="PasswordOutline"
+                                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                                    <Label
+                                        Style="{DynamicResource MaterialDesignLabel}"
+                                        VerticalAlignment="Stretch"
+                                        Content="Password" />
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </PasswordBox>
+                        <PasswordBox
+                            Margin="2 14 2 2"
+                            Padding="4 2 4 2"
+                            FontSize="16"
+                            materialDesign:HintAssist.HelperText="Required*"
+                            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                            MaxLength="64"
+                            materialDesign:PasswordBoxAssist.Password="{Binding RepeatPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                            materialDesign:HintAssist.FloatingOffset="0 -16"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                                    HorizontalAlignment="Stretch"
+                                    Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        VerticalAlignment="Stretch"
+                                        Margin="0 0 4 0"
+                                        Kind="PasswordOutline"
+                                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                                    <Label
+                                        Style="{DynamicResource MaterialDesignLabel}"
+                                        VerticalAlignment="Stretch"
+                                        Content="Repeat Password" />
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </PasswordBox>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </materialDesign:Card>
     </Grid>

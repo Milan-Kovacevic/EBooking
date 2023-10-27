@@ -28,9 +28,11 @@ namespace EBooking.WPF.ViewModels
 
         [ObservableProperty]
         private IViewModelBase currentViewModel;
+        public ISnackbarMessageQueue MainMessageQueue { get; }
+
         public MenuViewModel MenuBinding { get; set; }
 
-        public MainViewModel(NavigationStore navigationStore, SettingsService settingsService, MenuViewModel menuViewModel)
+        public MainViewModel(MessageQueueStore messageQueueStore, NavigationStore navigationStore, SettingsService settingsService, MenuViewModel menuViewModel)
         {
             _navigationStore = navigationStore;
             currentViewModel = _navigationStore.CurrentViewModel;
@@ -38,13 +40,14 @@ namespace EBooking.WPF.ViewModels
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChangedAction;
             settingsService.ApplyCurrentSettings();
             MenuBinding = menuViewModel;
-
             isDarkMode = settingsService.IsDarkThemeSet();
+            MainMessageQueue = messageQueueStore.SnackbarMessageQueue;
         }
 
         private void OnCurrentViewModelChangedAction()
         {
             CurrentViewModel = _navigationStore.CurrentViewModel;
+            MenuBinding.CurrentViewModelKey = CurrentViewModel.GetId();
         }
 
         [RelayCommand]

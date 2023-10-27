@@ -20,7 +20,7 @@
     lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
     lex:ResxLocalizationProvider.DefaultDictionary="Language"
     FontSize="16"
-    Height="700"
+    Height="780"
     Width="1100">
     <Window.Resources>
         <DataTemplate
@@ -78,7 +78,7 @@
                         Margin="0 6 0 16"
                         ItemsSource="{Binding MenuItems}"
                         PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp"
-                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                         ItemContainerStyle="{DynamicResource MaterialDesignNavigationPrimaryListBoxItem}"
                         Style="{DynamicResource MaterialDesignNavigationPrimaryListBox}">
                         <ListBox.Resources>
@@ -208,8 +208,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition
                             Height="*" />
-                        <RowDefinition
-                            Height="auto" />
                     </Grid.RowDefinitions>
                     <ScrollViewer
                         Grid.Row="0"
@@ -224,9 +222,11 @@
                             Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}" />
                     </ScrollViewer>
                     <materialDesign:Snackbar
+                        Panel.ZIndex="1"
                         x:Name="MainSnackbar"
-                        Grid.Row="1"
-                        MessageQueue="{materialDesign:MessageQueue}" />
+                        Grid.Row="0"
+                        Width="400"
+                        MessageQueue="{Binding MainMessageQueue, Mode=OneTime}" />
                 </Grid>
             </DockPanel>
         </materialDesign:DrawerHost>
