@@ -9,7 +9,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="PrimaryColorCode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">color-red</Value>
+      <Value Profile="(Default)">color-blue</Value>
     </Setting>
     <Setting Name="SecondaryColorCode" Type="System.String" Scope="User">
       <Value Profile="(Default)">color-blue</Value>

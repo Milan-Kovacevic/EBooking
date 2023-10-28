@@ -49,7 +49,7 @@ namespace EBooking.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("color-red")]
+        [global::System.Configuration.DefaultSettingValueAttribute("color-blue")]
         public string PrimaryColorCode {
             get {
                 return ((string)(this["PrimaryColorCode"]));

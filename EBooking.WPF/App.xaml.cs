@@ -1,4 +1,5 @@
-﻿using EBooking.EntityFramework.DataAccess;
+﻿using EBooking.Domain.DAOs;
+using EBooking.EntityFramework.DataAccess;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using EBooking.WPF.ViewModels;
@@ -29,6 +30,7 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly NavigationService navigateToLandingViewModel;
+        private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
         public App()
@@ -44,12 +46,13 @@ namespace EBooking.WPF
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
+
             _connectionString = settingsService.LoadConnectionString() ?? "";
+            daoFactory = new SQLiteDAOFactory(_connectionString);
         }
 
         private void OnApplicationStartup(object sender, StartupEventArgs e)
         {
-            SQLiteDAOFactory daoFactory = new SQLiteDAOFactory(_connectionString);
             // Loading necessary stores
             settingsStore.LoadSettings();
             // Initializing main window

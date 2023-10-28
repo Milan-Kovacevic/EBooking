@@ -13,6 +13,12 @@ namespace EBooking.EntityFramework.DataAccess
 {
     public class SQLiteDAOFactory : IGenericDAOFactory
     {
+        private readonly ILocationDAO _locationDao;
+        public ILocationDAO LocationDao
+        {
+            get => _locationDao;
+        }
+
         /// <summary>
         /// Class extenders have ability to change validation of connection string (ex. Based on type of DBMS - SQLite or MySQL),<br/>
         /// but to keep the same logic for creation of dao classes.<br/>
@@ -53,6 +59,7 @@ namespace EBooking.EntityFramework.DataAccess
             }
 
             // Initialization of DAOs implementations...
+            _locationDao = new LocationDataAccess(contextFactory);
         }
     }
 }
