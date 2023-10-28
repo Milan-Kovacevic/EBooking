@@ -24,6 +24,10 @@
     Width="1100">
     <Window.Resources>
         <DataTemplate
+            DataType="{x:Type vms:LandingViewModel}">
+            <views:LandingView />
+        </DataTemplate>
+        <DataTemplate
             DataType="{x:Type vms:LoginViewModel}">
             <views:LoginView />
         </DataTemplate>
@@ -35,6 +39,24 @@
             DataType="{x:Type vms:RegisterViewModel}">
             <views:RegisterView />
         </DataTemplate>
+
+        <Style
+            x:Key="DisabledMenuItemStyle"
+            BasedOn="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+            TargetType="ListBoxItem">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsEnabled}"
+                    Value="False">
+                    <Setter
+                        Property="IsEnabled"
+                        Value="False" />
+                    <Setter
+                        Property="Foreground"
+                        Value="Gray" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <materialDesign:DialogHost
         DialogTheme="Inherit"
@@ -79,7 +101,7 @@
                         ItemsSource="{Binding MenuItems}"
                         PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp"
                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                        ItemContainerStyle="{DynamicResource MaterialDesignNavigationPrimaryListBoxItem}"
+                        
                         Style="{DynamicResource MaterialDesignNavigationPrimaryListBox}">
                         <ListBox.Resources>
                             <Style
@@ -89,6 +111,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Button
+                                    IsEnabled="{Binding IsEnabled}"
                                     Height="45"
                                     Margin="-8"
                                     materialDesign:ButtonAssist.CornerRadius="0"
@@ -114,14 +137,17 @@
                                     </StackPanel>
                                 </Button>
                             </DataTemplate>
-                            
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <StaticResource
+                                ResourceKey="DisabledMenuItemStyle" />
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
             <DockPanel>
                 <materialDesign:ColorZone
-                    Padding="14 12"
+                    Padding="14 16"
                     materialDesign:ElevationAssist.Elevation="Dp3"
                     DockPanel.Dock="Top"
                     Mode="PrimaryMid">
@@ -194,9 +220,42 @@
                                     HorizontalAlignment="Right" />
                             </Grid>
                         </materialDesign:PopupBox>
+                        <Button
+                            Margin="16 -4 8 -4"
+                            ToolTip="Logout"
+                            Visibility="{Binding IsLogoutEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            DockPanel.Dock="Right"
+                            Command="{Binding LogoutCommand}"
+                            Style="{DynamicResource MaterialDesignIconForegroundButton}"
+                            Height="36"
+                            Width="36"
+                            Cursor="Hand"
+                            Padding="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                            <materialDesign:PackIcon
+                                Kind="LogoutVariant"
+                                Width="26"
+                                Height="26" />
+                        </Button>
+                        <ToggleButton
+                            Margin="16 -4 0 -4"
+                            Width="36"
+                            Height="36"
+                            ToolTip="Go to landing page"
+                            Command="{Binding HomeCommand}"
+                            Style="{DynamicResource MaterialDesignIconForegroundButton}"
+                            Cursor="Hand"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                            <materialDesign:PackIcon
+                                Kind="Home"
+                                Width="29"
+                                Height="29" />
+                        </ToggleButton>
                         <TextBlock
-                            Margin="14 0 10 0"
-                            HorizontalAlignment="Left"
+                            Margin="10 0 10 0"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             AutomationProperties.Name=""
                             FontSize="17"

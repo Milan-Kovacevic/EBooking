@@ -24,5 +24,10 @@ namespace EBooking.WPF.Services
             if(_navigationStore.CurrentViewModel.CanNavigateFrom())
                 _navigationStore.CurrentViewModel = createViewModel();
         }
+
+        public bool CanNavigate()
+        {
+            return _navigationStore.CurrentViewModel.CanNavigateFrom();
+        }
     }
 }

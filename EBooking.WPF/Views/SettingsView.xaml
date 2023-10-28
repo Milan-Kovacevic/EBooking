@@ -11,10 +11,6 @@
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
-    <UserControl.Resources>
-        <BooleanToVisibilityConverter
-            x:Key="BooleanToVisibilityConverter" />
-    </UserControl.Resources>
     <Grid
         Background="{DynamicResource MaterialDesignPaper}">
         <materialDesign:Card
@@ -23,8 +19,7 @@
             Padding="10"
             MaxWidth="900"
             MaxHeight="640"
-            Margin="25"
-            Grid.Column="1">
+            Margin="25">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition

@@ -20,23 +20,30 @@ namespace EBooking.WPF
         private readonly NavigationStore navigationStore;
         private readonly MessageQueueStore messageQueueStore;
         private readonly SettingsStore settingsStore;
+        private readonly UserStore userStore;
 
+        private readonly UserService userService;
         private readonly SettingsService settingsService;
         private readonly MessageQueueService messageQueueService;
         private readonly NavigationService navigateToLoginViewModel;
         private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
+        private readonly NavigationService navigateToLandingViewModel;
         private readonly string _connectionString;
+
         public App()
         {
             navigationStore = new NavigationStore();
+            userStore = new UserStore();
             messageQueueStore = new MessageQueueStore();
             settingsStore = new SettingsStore();
+            userService = new UserService(userStore);
             settingsService = new SettingsService(settingsStore);
             messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
+            navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
             _connectionString = settingsService.LoadConnectionString() ?? "";
         }
 
@@ -51,7 +58,7 @@ namespace EBooking.WPF
                 DataContext = CreateMainViewModel()
             };
             // Creating initial view model of main window
-            navigationStore.CurrentViewModel = CreateSettingsViewModel();
+            navigationStore.CurrentViewModel = CreateLandingViewModel();
             // Displaying main window
             MainWindow.Show();
             messageQueueService.Enqueue("Welcome back!");
@@ -59,22 +66,27 @@ namespace EBooking.WPF
 
         private MenuViewModel CreateMenuViewModel()
         {
-            return new MenuViewModel(navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel);
+            return new MenuViewModel(userStore, navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel);
+        }
+
+        private LandingViewModel CreateLandingViewModel()
+        {
+            return new LandingViewModel(userStore, navigateToRegisterViewModel, navigateToLoginViewModel);
         }
 
         private MainViewModel CreateMainViewModel()
         {
-            return new MainViewModel(messageQueueStore, navigationStore, settingsService, CreateMenuViewModel());
+            return new MainViewModel(messageQueueStore, navigationStore, userStore, userService, settingsService, CreateMenuViewModel(), navigateToLandingViewModel);
         }
 
         private LoginViewModel CreateLoginViewModel()
         {
-            return new LoginViewModel();
+            return new LoginViewModel(userService, navigateToRegisterViewModel, navigateToLandingViewModel);
         }
 
         private RegisterViewModel CreateRegisterViewModel()
         {
-            return new RegisterViewModel();
+            return new RegisterViewModel(messageQueueService);
         }
 
         private SettingsViewModel CreateSettingsViewModel()

@@ -19,10 +19,6 @@ namespace EBooking.WPF.ViewModels
     {
         [ObservableProperty]
         private bool settingsChanged;
-        partial void OnSettingsChangedChanged(bool value)
-        {
-
-        }
         [ObservableProperty]
         private List<LanguageItem> availableLanguages;
         [ObservableProperty]
@@ -135,11 +131,7 @@ namespace EBooking.WPF.ViewModels
                 RevertSettings();
         }
 
-        public string GetId()
-        {
-            return MenuProvider.GetCode(MenuProvider.MenuItem.SETTINGS);
-        }
-
+        public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.SETTINGS);
 
         public bool CanNavigateFrom()
         {

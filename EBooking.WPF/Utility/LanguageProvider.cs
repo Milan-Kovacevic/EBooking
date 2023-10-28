@@ -23,7 +23,9 @@ namespace EBooking.WPF.Utility
 
         public enum Language
         {
-            ENGLISH_US, SERBIAN_LATIN, SERBIAN_CYRIL
+            ENGLISH_US, 
+            SERBIAN_LATIN, 
+            SERBIAN_CYRIL
         }
 
         private LanguageProvider()

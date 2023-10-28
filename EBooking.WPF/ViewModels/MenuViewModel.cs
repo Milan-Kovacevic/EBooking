@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using EBooking.WPF.Messages;
 using EBooking.WPF.Models;
 using EBooking.WPF.Services;
+using EBooking.WPF.Stores;
 using EBooking.WPF.Utility;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -20,13 +21,16 @@ namespace EBooking.WPF.ViewModels
         public partial class MenuViewItem : ObservableObject
         {
             [ObservableProperty]
-            public string name;
+            private string name;
+            [ObservableProperty]
+            private bool isEnabled;
             public PackIconKind Kind { get; }
             public IRelayCommand NavigateCommand { get; }
 
             public MenuViewItem(string name, PackIconKind kind, Action navigationAction, Func<bool>? canExecute = null)
             {
                 this.name = name;
+                isEnabled = true;
                 Kind = kind;
                 NavigateCommand = new RelayCommand(navigationAction, canExecute ??= () => true);
             }
@@ -42,6 +46,8 @@ namespace EBooking.WPF.ViewModels
                 int index = MenuProvider.GetIndexOfCode(currentViewModelKey);
                 if (index != -1)
                     SelectedItem = MenuItems[index];
+                else
+                    SelectedItem = null;
             }
         }
 
@@ -49,28 +55,38 @@ namespace EBooking.WPF.ViewModels
         private ObservableCollection<MenuViewItem> menuItems;
 
         [ObservableProperty]
-        private MenuViewItem selectedItem;
+        private MenuViewItem? selectedItem;
 
         private readonly NavigationService _navigateToSettingsViewModel;
         private readonly NavigationService _navigateToLoginViewModel;
         private readonly NavigationService _navigateToRegisterViewModel;
+        private readonly UserStore _userStore;
 
-        public MenuViewModel(NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel)
+        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel)
         {
             _navigateToSettingsViewModel = navigateToSettingsViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
-
+            _userStore = userStore;
+            _userStore.CurrentUserChanged += OnCurrentUserChanged;
             menuItems = new ObservableCollection<MenuViewItem>()
             {
                 new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin),
                 new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister),
                 new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
             };
-            selectedItem = MenuItems.ElementAt(2);
-            currentViewModelKey = MenuProvider.GetCodeByIndex(2);
+            selectedItem = null;
+            currentViewModelKey = string.Empty;
 
             WeakReferenceMessenger.Default.RegisterAll(this);
+        }
+
+        private void OnCurrentUserChanged()
+        {
+            if(_userStore.IsLoggedIn)
+                MenuItems.ElementAt(0).IsEnabled = false;
+            else
+                MenuItems.ElementAt(0).IsEnabled = true;
         }
 
         public void NavigateToLogin()
@@ -101,6 +117,7 @@ namespace EBooking.WPF.ViewModels
         public void Dispose()
         {
             WeakReferenceMessenger.Default.UnregisterAll(this);
+            _userStore.CurrentUserChanged -= OnCurrentUserChanged;
         }
     }
 }
