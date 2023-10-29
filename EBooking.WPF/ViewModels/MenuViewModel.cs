@@ -60,13 +60,15 @@ namespace EBooking.WPF.ViewModels
         private readonly NavigationService _navigateToSettingsViewModel;
         private readonly NavigationService _navigateToLoginViewModel;
         private readonly NavigationService _navigateToRegisterViewModel;
+        private readonly NavigationService _navigateToCodebookViewModel;
         private readonly UserStore _userStore;
 
-        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel)
+        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel, NavigationService navigateToCodebookViewModel)
         {
             _navigateToSettingsViewModel = navigateToSettingsViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
+            _navigateToCodebookViewModel = navigateToCodebookViewModel;
             _userStore = userStore;
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
             menuItems = new ObservableCollection<MenuViewItem>()
@@ -74,6 +76,7 @@ namespace EBooking.WPF.ViewModels
                 new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin),
                 new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister),
                 new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
+                new MenuViewItem(string.Empty, PackIconKind.BookAdd, NavigateToCodebook),
             };
             selectedItem = null;
             currentViewModelKey = string.Empty;
@@ -102,6 +105,11 @@ namespace EBooking.WPF.ViewModels
         public void NavigateToSettings()
         {
             _navigateToSettingsViewModel.Navigate();
+        }
+
+        public void NavigateToCodebook()
+        {
+            _navigateToCodebookViewModel.Navigate();
         }
 
         public void Receive(LanguageChangeMessage message)

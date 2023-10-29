@@ -115,6 +115,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Codebooks.
+        /// </summary>
+        internal static string Menu_CodebookTitle {
+            get {
+                return ResourceManager.GetString("Menu_CodebookTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Menu_LoginTitle {

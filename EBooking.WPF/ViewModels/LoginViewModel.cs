@@ -62,9 +62,6 @@ namespace EBooking.WPF.ViewModels
             _navigateToRegisterViewModel.Navigate();
         }
 
-        public string GetId()
-        {
-            return MenuProvider.GetCode(MenuProvider.MenuItem.LOGIN);
-        }
+        public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.LOGIN);
     }
 }

@@ -12,7 +12,8 @@ namespace EBooking.WPF.Utility
         {
             LOGIN,
             REGISTER,
-            SETTINGS
+            SETTINGS,
+            CODEBOOK
         }
 
         private static readonly Dictionary<MenuItem, string> menuItemCodes;
@@ -26,6 +27,7 @@ namespace EBooking.WPF.Utility
                 { MenuItem.LOGIN, "Menu_LoginTitle" },
                 { MenuItem.REGISTER, "Menu_RegisterTitle" },
                 { MenuItem.SETTINGS, "Menu_SettingsTitle" },
+                { MenuItem.CODEBOOK, "Menu_CodebookTitle" },
             };
         }
 

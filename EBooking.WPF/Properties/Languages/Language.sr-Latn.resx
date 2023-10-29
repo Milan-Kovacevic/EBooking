@@ -135,6 +135,9 @@
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Rezervišite Vaše sledeće putovanje ili smještaj sa E-Booking</value>
   </data>
+  <data name="Menu_CodebookTitle" xml:space="preserve">
+    <value>Šifarnici</value>
+  </data>
   <data name="Menu_LoginTitle" xml:space="preserve">
     <value>Prijavi se</value>
   </data>
