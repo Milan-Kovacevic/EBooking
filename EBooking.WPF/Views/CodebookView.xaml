@@ -61,6 +61,8 @@
                         HorizontalContentAlignment="Center"
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid"
                         materialDesign:ElevationAssist.Elevation="Dp2"
+                        DataContext="{Binding CurrentCodebook}"
+                        SelectedIndex="{Binding DataContext.SelectedCodebookIndex, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                         Style="{StaticResource MaterialDesignFilledUniformTabControl}">
                         <TabItem>
                             <TabItem.Header>
@@ -400,12 +402,11 @@
                             </TabItem.Header>
                             <TextBlock
                                 Margin="8"
-                                Text="Filled, centered, uniform width, tab 2" />
+                                Text="Unit features" />
                         </TabItem>
 
                     </TabControl>
                 </materialDesign:Card>
-
             </Grid>
         </materialDesign:Card>
     </Grid>

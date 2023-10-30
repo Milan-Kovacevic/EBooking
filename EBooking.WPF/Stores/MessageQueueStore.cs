@@ -19,12 +19,9 @@ namespace EBooking.WPF.Stores
             }
         }
 
-        public MessageQueueStore()
+        public MessageQueueStore(ISnackbarMessageQueue messageQueue)
         {
-            _snackbarMessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(2))
-            {
-                DiscardDuplicates = true,
-            };
+            _snackbarMessageQueue = messageQueue;
         }
     }
 }

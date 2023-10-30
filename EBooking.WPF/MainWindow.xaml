@@ -21,7 +21,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Language"
     FontSize="16"
     Height="780"
-    Width="1100">
+    Width="1280">
     <Window.Resources>
         <DataTemplate
             DataType="{x:Type vms:LandingViewModel}">

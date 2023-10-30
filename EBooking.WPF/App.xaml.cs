@@ -3,6 +3,7 @@ using EBooking.EntityFramework.DataAccess;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using EBooking.WPF.ViewModels;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -38,7 +39,7 @@ namespace EBooking.WPF
         {
             navigationStore = new NavigationStore();
             userStore = new UserStore();
-            messageQueueStore = new MessageQueueStore();
+            messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
             settingsStore = new SettingsStore();
             userService = new UserService(userStore);
             settingsService = new SettingsService(settingsStore);
@@ -69,6 +70,8 @@ namespace EBooking.WPF
             messageQueueService.Enqueue("Welcome back!");
         }
 
+
+        // TODO: ADD DEPENDENCY INJECTION
         private MenuViewModel CreateMenuViewModel()
         {
             return new MenuViewModel(userStore, navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel, navigateToCodebookViewModel);
@@ -101,7 +104,12 @@ namespace EBooking.WPF
 
         private CodebookViewModel CreateCodebookViewModel()
         {
-            return new CodebookViewModel();
+            return new CodebookViewModel(CreateLocationsViewModel);
+        }
+
+        private LocationsViewModel CreateLocationsViewModel()
+        {
+            return new LocationsViewModel();
         }
 
     }
