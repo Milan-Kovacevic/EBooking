@@ -32,6 +32,7 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly NavigationService navigateToLandingViewModel;
         private readonly NavigationService navigateToCodebookViewModel;
+        private readonly DialogHostService dialogHostService;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -49,6 +50,7 @@ namespace EBooking.WPF
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
+            dialogHostService = new DialogHostService();
 
             _connectionString = settingsService.LoadConnectionString() ?? "";
             daoFactory = new SQLiteDAOFactory(_connectionString);
@@ -84,7 +86,7 @@ namespace EBooking.WPF
 
         private MainViewModel CreateMainViewModel()
         {
-            return new MainViewModel(messageQueueStore, navigationStore, userStore, userService, settingsService, CreateMenuViewModel(), navigateToLandingViewModel);
+            return new MainViewModel(messageQueueStore, navigationStore, userStore, userService, settingsService, CreateMenuViewModel(), navigateToLandingViewModel, dialogHostService);
         }
 
         private LoginViewModel CreateLoginViewModel()
@@ -109,7 +111,7 @@ namespace EBooking.WPF
 
         private LocationsViewModel CreateLocationsViewModel()
         {
-            return new LocationsViewModel();
+            return new LocationsViewModel(dialogHostService);
         }
 
     }

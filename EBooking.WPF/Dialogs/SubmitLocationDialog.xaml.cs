@@ -23,7 +23,7 @@ namespace EBooking.WPF.Dialogs
     /// </summary>
     public partial class SubmitLocationDialog : UserControl
     {
-        public SubmitLocationDialog(Action<Location> onSubmitAction, LocationItemViewModel? vm = null)
+        public SubmitLocationDialog(Action<SubmitLocationViewModel> onSubmitAction, LocationItemViewModel? vm = null)
         {
             InitializeComponent();
             DataContext = new SubmitLocationViewModel(onSubmitAction, vm);

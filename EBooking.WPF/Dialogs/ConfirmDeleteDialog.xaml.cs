@@ -20,8 +20,6 @@ namespace EBooking.WPF.Dialogs
     /// </summary>
     public partial class ConfirmDeleteDialog : UserControl
     {
-
-
         public ICommand OnYesCommand
         {
             get { return (ICommand)GetValue(OnYesCommandProperty); }

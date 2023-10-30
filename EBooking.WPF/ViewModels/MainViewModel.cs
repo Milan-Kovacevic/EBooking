@@ -21,6 +21,7 @@ namespace EBooking.WPF.ViewModels
         private readonly SettingsService _settingsService;
         private readonly UserService _userService;
         private readonly NavigationService _navigateToLandingViewModel;
+        private readonly DialogHostService _dialogHostService;
 
         [ObservableProperty]
         private bool isDarkMode;
@@ -39,12 +40,13 @@ namespace EBooking.WPF.ViewModels
 
         public MenuViewModel MenuBinding { get; set; }
 
-        public MainViewModel(MessageQueueStore messageQueueStore, NavigationStore navigationStore, UserStore userStore, UserService userService, SettingsService settingsService, MenuViewModel menuViewModel, NavigationService navigateToLandingViewModel)
+        public MainViewModel(MessageQueueStore messageQueueStore, NavigationStore navigationStore, UserStore userStore, UserService userService, SettingsService settingsService, MenuViewModel menuViewModel, NavigationService navigateToLandingViewModel, DialogHostService dialogHostService)
         {
             _navigationStore = navigationStore;
             _userStore = userStore;
             _userService = userService;
             _settingsService = settingsService;
+            _dialogHostService = dialogHostService;
             _navigateToLandingViewModel = navigateToLandingViewModel;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChangedAction;
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
@@ -73,8 +75,7 @@ namespace EBooking.WPF.ViewModels
         [RelayCommand]
         public async Task ExitApplication()
         {
-            var dialogContent = new ConfirmExitDialog();
-            await DialogHost.Show(dialogContent, "RootDialog");
+            await _dialogHostService.ShowExitApplicationDialog();
         }
 
         [RelayCommand]

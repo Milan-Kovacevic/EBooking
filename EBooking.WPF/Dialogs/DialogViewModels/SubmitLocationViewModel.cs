@@ -26,8 +26,8 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         public IRelayCommand SubmitCommand { get; }
 
-        private readonly Action<Location> _onSubmitAction;
-        public SubmitLocationViewModel(Action<Location> onSubmitAction, LocationItemViewModel? vm = null)
+        private readonly Action<SubmitLocationViewModel> _onSubmitAction;
+        public SubmitLocationViewModel(Action<SubmitLocationViewModel> onSubmitAction, LocationItemViewModel? vm = null)
         {
             _onSubmitAction = onSubmitAction;
 
@@ -45,8 +45,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         private void Submit()
         {
-            Location location = new Location() { Country = CountryName, City = CityName };
-            _onSubmitAction(location);
+            _onSubmitAction(this);
         }
     }
 }

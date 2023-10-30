@@ -34,7 +34,7 @@ namespace EBooking.WPF.ViewModels
         public CodebookViewModel(Func<LocationsViewModel> createLocationsViewModel)
         {
             _createLocationsViewModel = createLocationsViewModel;
-            currentCodebook = new LocationsViewModel();
+            currentCodebook = _createLocationsViewModel();
             selectedCodebookIndex = 0;
         }
 

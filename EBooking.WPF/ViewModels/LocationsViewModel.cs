@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
 using EBooking.WPF.Dialogs;
+using EBooking.WPF.Services;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections;
@@ -55,69 +56,64 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        private async Task DeleteSelectedLocations()
+        public async Task DeleteSelectedLocations()
         {
-            var dialogContent = new ConfirmDeleteDialog();
-            dialogContent.OnYesCommand = new RelayCommand(() =>
+            await _dialogHostService.ShowConfirmDeleteDialog(() =>
             {
-                DialogHost.Close("RootDialog");
+                _dialogHostService.CloseDialogHost();
             });
-            await DialogHost.Show(dialogContent, "RootDialog");
         }
 
         [RelayCommand]
-        private void SearchLocations()
+        public void SearchLocations()
         {
             Locations.Refresh();
         }
 
         [RelayCommand]
-        private async Task AddLocation()
+        public async Task AddLocation()
         {
-            var onLocationAddAction = (Location location) =>
+            await _dialogHostService.ShowAddLocationDialog((locationVM) =>
             {
-                _locations.Add(new LocationItemViewModel() { City = location.City, Country = location.Country, LocationId = _locations.Count + 1 });
-                DialogHost.Close("RootDialog");
-            };
-            var dialogContent = new SubmitLocationDialog(onLocationAddAction);
-            await DialogHost.Show(dialogContent, "RootDialog");
+                _locations.Add(new LocationItemViewModel() { City = locationVM.CityName, Country = locationVM.CountryName, LocationId = _locations.Count + 1 });
+                _dialogHostService.CloseDialogHost();
+            });
         }
 
         [RelayCommand]
-        private async Task DeleteLocation(object param)
+        public async Task DeleteLocation(object param)
         {
             if (param is not LocationItemViewModel vm)
                 return;
-            var dialogContent = new ConfirmDeleteDialog();
-            dialogContent.OnYesCommand = new RelayCommand(() =>
+
+            await _dialogHostService.ShowConfirmDeleteDialog(() =>
             {
                 _locations.Remove(vm);
-                DialogHost.Close("RootDialog");
+                _dialogHostService.CloseDialogHost();
             });
-            await DialogHost.Show(dialogContent, "RootDialog");
         }
 
         [RelayCommand]
-        private async Task EditLocation(object param)
+        public async Task EditLocation(object param)
         {
             if (param is not LocationItemViewModel vm)
                 return;
 
-            var onLocationEditAction = (Location location) =>
+            await _dialogHostService.ShowEditLocationDialog((locationVM) =>
             {
                 var element = _locations.First(x => x.LocationId == vm.LocationId);
-                element.Country = location.Country;
-                element.City = location.City;
+                element.Country = locationVM.CountryName;
+                element.City = locationVM.CityName;
                 Locations.Refresh();
-                if (DialogHost.IsDialogOpen("RootDialog"))
-                    DialogHost.Close("RootDialog");
-            };
-            var dialogContent = new SubmitLocationDialog(onLocationEditAction, vm);
-            await DialogHost.Show(dialogContent, "RootDialog");
+                _dialogHostService.CloseDialogHost();
+            }, vm);
         }
 
-        public LocationsViewModel()
+        private readonly DialogHostService _dialogHostService;
+
+        public LocationsViewModel(DialogHostService dialogHostService)
         {
+            _dialogHostService = dialogHostService;
             searchText = string.Empty;
             _locations = new ObservableCollection<LocationItemViewModel>()
             {
