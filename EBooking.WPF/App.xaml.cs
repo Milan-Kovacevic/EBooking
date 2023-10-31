@@ -106,12 +106,17 @@ namespace EBooking.WPF
 
         private CodebookViewModel CreateCodebookViewModel()
         {
-            return new CodebookViewModel(CreateLocationsViewModel);
+            return new CodebookViewModel(CreateLocationsViewModel, CreateUnitFeaturesViewModel);
         }
 
         private LocationsViewModel CreateLocationsViewModel()
         {
             return new LocationsViewModel(dialogHostService);
+        }
+
+        private UnitFeaturesViewModel CreateUnitFeaturesViewModel()
+        {
+            return new UnitFeaturesViewModel(dialogHostService);
         }
 
     }

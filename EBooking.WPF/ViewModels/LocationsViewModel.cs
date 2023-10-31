@@ -1,16 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using EBooking.Domain.DTOs;
-using EBooking.WPF.Dialogs;
 using EBooking.WPF.Services;
-using MaterialDesignThemes.Wpf;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
@@ -22,18 +15,9 @@ namespace EBooking.WPF.ViewModels
         private string searchText;
         partial void OnSearchTextChanged(string value)
         {
-            if (value == null)
-            {
-                try
-                {
-                    Locations.Refresh();
-                }
-                catch
-                {
-                }
-            }
-            else if (value == string.Empty)
-                Locations.Refresh();
+            if (value != null && value != string.Empty)
+                return;
+            SearchLocations();
         }
 
         private readonly ObservableCollection<LocationItemViewModel> _locations;
@@ -55,19 +39,42 @@ namespace EBooking.WPF.ViewModels
             }
         }
 
-        [RelayCommand]
-        public async Task DeleteSelectedLocations()
+        private readonly DialogHostService _dialogHostService;
+
+        public LocationsViewModel(DialogHostService dialogHostService)
         {
-            await _dialogHostService.ShowConfirmDeleteDialog(() =>
+            _dialogHostService = dialogHostService;
+            searchText = string.Empty;
+            _locations = new ObservableCollection<LocationItemViewModel>()
             {
-                _dialogHostService.CloseDialogHost();
-            });
+                new LocationItemViewModel(){ LocationId = 1, Country="Serbia", City="Belgrade" },
+                new LocationItemViewModel(){ LocationId = 2, Country="Serbia", City="Novi Sad" },
+                new LocationItemViewModel(){ LocationId = 3, Country="Bosnia and Herzegovina", City="Banja Luka" },
+                new LocationItemViewModel(){ LocationId = 4, Country="Serbia", City="Kragujevac" },
+                new LocationItemViewModel(){ LocationId = 5, Country="Bosnia and Herzegovina", City="Gradiska" },
+                new LocationItemViewModel(){ LocationId = 6, Country="Bosnia and Herzegovina", City="Sarajevo" },
+                new LocationItemViewModel(){ LocationId = 7, Country="Montenegro", City="Budva" },
+                new LocationItemViewModel(){ LocationId = 8, Country="Croatia", City="Zagreb" },
+            };
+            Locations = CollectionViewSource.GetDefaultView(_locations);
+            Locations.Filter = FilterLocations;
         }
+
+        public void Dispose() { }
+
+        #region Locations CRUD Commands
 
         [RelayCommand]
         public void SearchLocations()
         {
-            Locations.Refresh();
+            try
+            {
+                Locations.Refresh();
+            }
+            catch
+            {
+
+            }
         }
 
         [RelayCommand]
@@ -94,6 +101,15 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
+        public async Task DeleteSelectedLocations()
+        {
+            await _dialogHostService.ShowConfirmDeleteDialog(() =>
+            {
+                _dialogHostService.CloseDialogHost();
+            });
+        }
+
+        [RelayCommand]
         public async Task EditLocation(object param)
         {
             if (param is not LocationItemViewModel vm)
@@ -108,28 +124,8 @@ namespace EBooking.WPF.ViewModels
                 _dialogHostService.CloseDialogHost();
             }, vm);
         }
-
-        private readonly DialogHostService _dialogHostService;
-
-        public LocationsViewModel(DialogHostService dialogHostService)
-        {
-            _dialogHostService = dialogHostService;
-            searchText = string.Empty;
-            _locations = new ObservableCollection<LocationItemViewModel>()
-            {
-                new LocationItemViewModel(){ LocationId = 1, Country="Serbia", City="Belgrade" },
-                new LocationItemViewModel(){ LocationId = 2, Country="Serbia", City="Novi Sad" },
-                new LocationItemViewModel(){ LocationId = 3, Country="Bosnia and Herzegovina", City="Banja Luka" },
-                new LocationItemViewModel(){ LocationId = 4, Country="Serbia", City="Kragujevac" },
-                new LocationItemViewModel(){ LocationId = 5, Country="Bosnia and Herzegovina", City="Gradiska" },
-                new LocationItemViewModel(){ LocationId = 6, Country="Bosnia and Herzegovina", City="Sarajevo" },
-                new LocationItemViewModel(){ LocationId = 7, Country="Montenegro", City="Budva" },
-                new LocationItemViewModel(){ LocationId = 8, Country="Croatia", City="Zagreb" },
-            };
-            Locations = CollectionViewSource.GetDefaultView(_locations);
-            Locations.Filter = FilterLocations;
-        }
-
+        #endregion
+        #region ViewModel Helper Functions
         private bool FilterLocations(object obj)
         {
             if (obj is null || obj is not LocationItemViewModel vm)
@@ -150,5 +146,6 @@ namespace EBooking.WPF.ViewModels
                 }
             }
         }
+        #endregion
     }
 }

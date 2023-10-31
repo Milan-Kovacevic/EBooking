@@ -19,23 +19,22 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class CodebookViewModel : ObservableObject, IViewModelBase
     {
-        [ObservableProperty]
-        private ObservableObject currentCodebook;
+        public LocationsViewModel LocationsViewModel { get; }
+        public UnitFeaturesViewModel UnitFeaturesViewModel { get; }
+
         [ObservableProperty]
         private int selectedCodebookIndex;
-        partial void OnSelectedCodebookIndexChanged(int value)
+
+        public CodebookViewModel(Func<LocationsViewModel> createLocationsViewModel, Func<UnitFeaturesViewModel> createUnitFeaturesViewModel)
         {
-            if (value == 0)
-                CurrentCodebook = _createLocationsViewModel();
+            LocationsViewModel = createLocationsViewModel();
+            UnitFeaturesViewModel = createUnitFeaturesViewModel();
         }
 
-        private readonly Func<LocationsViewModel> _createLocationsViewModel;
-
-        public CodebookViewModel(Func<LocationsViewModel> createLocationsViewModel)
+        public void Dispose()
         {
-            _createLocationsViewModel = createLocationsViewModel;
-            currentCodebook = _createLocationsViewModel();
-            selectedCodebookIndex = 0;
+            LocationsViewModel.Dispose();
+            UnitFeaturesViewModel.Dispose();
         }
 
         public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.CODEBOOK);

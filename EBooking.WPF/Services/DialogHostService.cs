@@ -40,6 +40,20 @@ namespace EBooking.WPF.Services
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
+        public async Task ShowAddUnitFeatureDialog(Action<SubmitUnitFeatureViewModel> onFeatureAddAction)
+        {
+            var dialogContent = new SubmitUnitFeatureDialog(onFeatureAddAction);
+            dialogContent.DialogTitle.Text = "Create New Unit Feature";
+            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+        }
+
+        public async Task ShowEditUnitFeatureDialog(Action<SubmitUnitFeatureViewModel> onFeatureEditAction, UnitFeatureItemViewModel viewModel)
+        {
+            var dialogContent = new SubmitUnitFeatureDialog(onFeatureEditAction, viewModel);
+            dialogContent.DialogTitle.Text = "Edit Unit Feature";
+            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+        }
+
         public void CloseDialogHost()
         {
             if (DialogHost.IsDialogOpen(DIALOG_HOST_ROOT_NAME))
