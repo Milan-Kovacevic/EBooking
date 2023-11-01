@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using WPFLocalizeExtension.Engine;
@@ -26,6 +27,18 @@ namespace EBooking.WPF.Utility
             return LocalizeDictionary.Instance
                 .GetLocalizedObject("EBooking.WPF", "Language", key, LocalizeDictionary.Instance.Culture)?.ToString() 
                 ?? key;
+        }
+
+        public static string ComputeHash(string value)
+        {
+            using (var myHash = SHA256.Create())
+            {
+                var byteArray = Encoding.UTF8.GetBytes(value);
+                var hashedResult = myHash.ComputeHash(byteArray);
+
+                string result = string.Concat(Array.ConvertAll(hashedResult, h => h.ToString("X2")));
+                return result;
+            }
         }
     }
 }

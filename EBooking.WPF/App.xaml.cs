@@ -40,12 +40,15 @@ namespace EBooking.WPF
 
         public App()
         {
-            navigationStore = new NavigationStore();
-            userStore = new UserStore();
-            messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
             settingsStore = new SettingsStore();
-            userService = new UserService(userStore);
             settingsService = new SettingsService(settingsStore);
+            _connectionString = settingsService.LoadConnectionString() ?? "";
+            daoFactory = new SQLiteDAOFactory(_connectionString);
+           
+            navigationStore = new NavigationStore();
+            userStore = new UserStore(daoFactory.UserDao);
+            messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
+            userService = new UserService(userStore);
             messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
@@ -55,9 +58,6 @@ namespace EBooking.WPF
             navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
             dialogHostService = new DialogHostService();
-
-            _connectionString = settingsService.LoadConnectionString() ?? "";
-            daoFactory = new SQLiteDAOFactory(_connectionString);
         }
 
 
@@ -96,12 +96,12 @@ namespace EBooking.WPF
 
         private LoginViewModel CreateLoginViewModel()
         {
-            return new LoginViewModel(userService, navigateToRegisterViewModel, navigateToLandingViewModel);
+            return new LoginViewModel(messageQueueService, userService, navigateToRegisterViewModel, navigateToLandingViewModel);
         }
 
         private RegisterViewModel CreateRegisterViewModel()
         {
-            return new RegisterViewModel(messageQueueService);
+            return new RegisterViewModel(messageQueueService, userService);
         }
 
         private SettingsViewModel CreateSettingsViewModel()

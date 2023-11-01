@@ -43,6 +43,14 @@
             DataType="{x:Type vms:CodebookViewModel}">
             <views:CodebookView />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type vms:AccommodationsViewModel}">
+            <views:AccommodationsView />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type vms:FlightsViewModel}">
+            <views:FlightsView />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"
@@ -115,7 +123,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Button
-                                    IsEnabled="{Binding IsEnabled}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                     Height="45"
                                     Margin="-8"
                                     materialDesign:ButtonAssist.CornerRadius="0"

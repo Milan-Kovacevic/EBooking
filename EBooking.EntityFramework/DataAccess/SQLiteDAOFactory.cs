@@ -19,6 +19,12 @@ namespace EBooking.EntityFramework.DataAccess
             get => _locationDao;
         }
 
+        private readonly IUserDAO _userDao;
+        public IUserDAO UserDao
+        {
+            get => _userDao;
+        }
+
         /// <summary>
         /// Class extenders have ability to change validation of connection string (ex. Based on type of DBMS - SQLite or MySQL),<br/>
         /// but to keep the same logic for creation of dao classes.<br/>
@@ -60,6 +66,7 @@ namespace EBooking.EntityFramework.DataAccess
 
             // Initialization of DAOs implementations...
             _locationDao = new LocationDataAccess(contextFactory);
+            _userDao = new UserDataAccess(contextFactory);
         }
     }
 }

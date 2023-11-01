@@ -23,6 +23,8 @@ namespace EBooking.WPF.ViewModels
         [NotifyDataErrorInfo]
         [NotifyCanExecuteChangedFor(nameof(LoginCommand))]
         private string password;
+        [ObservableProperty]
+        private bool isLoading;
 
         public IRelayCommand LoginCommand { get; }
         public IRelayCommand RegisterCommand { get; }
@@ -30,23 +32,35 @@ namespace EBooking.WPF.ViewModels
         private readonly NavigationService _navigateToRegisterViewModel;
         private readonly NavigationService _navigateToLandingViewModel;
         private readonly UserService _userService;
+        private readonly MessageQueueService _messageQueueService;
 
-        public LoginViewModel(UserService userService, NavigationService navigateToRegisterViewModel, NavigationService navigateToLandingViewModel)
+        public LoginViewModel(MessageQueueService messageQueueService, UserService userService, NavigationService navigateToRegisterViewModel, NavigationService navigateToLandingViewModel)
         {
             _userService = userService;
+            _messageQueueService = messageQueueService;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
             _navigateToLandingViewModel = navigateToLandingViewModel;
             username = string.Empty;
             password = string.Empty;
+            isLoading = false;
 
-            LoginCommand = new RelayCommand(Login, CanLogin);
+            LoginCommand = new AsyncRelayCommand(Login, CanLogin);
             RegisterCommand = new RelayCommand(Register);
         }
 
-        private void Login()
+        private async Task Login()
         {
-            _userService.Login();
-            _navigateToLandingViewModel.Navigate();
+            IsLoading = true;
+            await Task.Delay(1000);
+            bool isSuccessfull = await _userService.Login(Username, Password);
+            if (isSuccessfull)
+            {
+                _messageQueueService.Enqueue("Login was successfull!");
+                _navigateToLandingViewModel.Navigate();
+            }   
+            else
+                _messageQueueService.Enqueue("Invalid login credentials. Please, try again.");
+            IsLoading = false;
         }
         
         private bool CanLogin()

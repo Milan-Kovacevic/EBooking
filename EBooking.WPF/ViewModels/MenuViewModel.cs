@@ -24,13 +24,17 @@ namespace EBooking.WPF.ViewModels
             private string name;
             [ObservableProperty]
             private bool isEnabled;
+            partial void OnIsEnabledChanged(bool value)
+            {
+
+            }
             public PackIconKind Kind { get; }
             public IRelayCommand NavigateCommand { get; }
 
             public MenuViewItem(string name, PackIconKind kind, Action navigationAction, Func<bool>? canExecute = null)
             {
                 this.name = name;
-                isEnabled = true;
+                isEnabled = false;
                 Kind = kind;
                 NavigateCommand = new RelayCommand(navigationAction, canExecute ??= () => true);
             }
@@ -77,8 +81,8 @@ namespace EBooking.WPF.ViewModels
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
             menuItems = new ObservableCollection<MenuViewItem>()
             {
-                new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin),
-                new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister),
+                new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin) { IsEnabled = true},
+                new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister) { IsEnabled = true},
                 new MenuViewItem(string.Empty, PackIconKind.Hotel, NavigateToAccommodations),
                 new MenuViewItem(string.Empty, PackIconKind.Flight, NavigateToFlights),
                 new MenuViewItem(string.Empty, PackIconKind.BookAdd, NavigateToCodebook),
@@ -92,10 +96,12 @@ namespace EBooking.WPF.ViewModels
 
         private void OnCurrentUserChanged()
         {
-            if(_userStore.IsLoggedIn)
-                MenuItems.ElementAt(0).IsEnabled = false;
+            if (_userStore.IsAdmin)
+                EnableAdminMenuItems();
+            else if (_userStore.IsEmployee)
+                EnableEmployeeMenuItems();
             else
-                MenuItems.ElementAt(0).IsEnabled = true;
+                EnableLoggedOfUserMenuItems();
         }
 
         public void NavigateToLogin()
@@ -127,6 +133,36 @@ namespace EBooking.WPF.ViewModels
         {
             _navigateToCodebookViewModel.Navigate();
         }
+
+        #region Helper Methods
+        private void EnableAdminMenuItems()
+        {
+            MenuItems.ElementAt(0).IsEnabled = false;
+            MenuItems.ElementAt(1).IsEnabled = true;
+            MenuItems.ElementAt(2).IsEnabled = true;
+            MenuItems.ElementAt(3).IsEnabled = true;
+            MenuItems.ElementAt(4).IsEnabled = true;
+            MenuItems.ElementAt(5).IsEnabled = true;
+        }
+        private void EnableEmployeeMenuItems()
+        {
+            MenuItems.ElementAt(0).IsEnabled = false;
+            MenuItems.ElementAt(1).IsEnabled = true;
+            MenuItems.ElementAt(2).IsEnabled = true;
+            MenuItems.ElementAt(3).IsEnabled = true;
+            MenuItems.ElementAt(4).IsEnabled = false;
+            MenuItems.ElementAt(5).IsEnabled = true;
+        }
+        private void EnableLoggedOfUserMenuItems()
+        {
+            MenuItems.ElementAt(0).IsEnabled = true;
+            MenuItems.ElementAt(1).IsEnabled = true;
+            MenuItems.ElementAt(2).IsEnabled = false;
+            MenuItems.ElementAt(3).IsEnabled = false;
+            MenuItems.ElementAt(4).IsEnabled = false;
+            MenuItems.ElementAt(5).IsEnabled = false;
+        }
+        #endregion
 
         public void Receive(LanguageChangeMessage message)
         {

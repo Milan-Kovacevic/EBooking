@@ -44,21 +44,37 @@ namespace EBooking.WPF.ViewModels
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyDataErrorInfo]
+        [NotifyPropertyChangedFor(nameof(RepeatPassword))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
         private string password;
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyDataErrorInfo]
+        [NotifyPropertyChangedFor(nameof(Password))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [CustomValidation(typeof(RegisterViewModel), nameof(ValidateRepeatPassword))]
         private string repeatPassword;
+
+        // Custom validation
+        public static ValidationResult? ValidateRepeatPassword(string password, ValidationContext context)
+        {
+            var instance = (RegisterViewModel)context.ObjectInstance;
+            var isValid = instance.Password == password;
+
+            if (isValid)
+                return ValidationResult.Success;
+            return new ValidationResult("Passwords must match!");
+        }
 
         public IRelayCommand RegisterCommand { get; }
 
         private readonly MessageQueueService _messageQueueService;
+        private readonly UserService _userService;
 
-        public RegisterViewModel(MessageQueueService messageQueueService)
+        public RegisterViewModel(MessageQueueService messageQueueService, UserService userService)
         {
             _messageQueueService = messageQueueService;
+            _userService = userService;
             selectedTabIndex = 0;
             employeeFirstName = string.Empty;
             employeeLastName = string.Empty;
@@ -67,12 +83,22 @@ namespace EBooking.WPF.ViewModels
             password = string.Empty;
             repeatPassword = string.Empty;
 
-            RegisterCommand = new RelayCommand(Register, CanRegister);
+            RegisterCommand = new AsyncRelayCommand(Register, CanRegister);
         }
 
-        private void Register()
+        private async Task Register()
         {
-            _messageQueueService.Enqueue("Registration was successfull!");
+            bool isSuccessfull;
+            if (IsAdminRegistrationActive)
+                isSuccessfull = await _userService.RegisterAsAdministrator(Username, Password, AdminDisplayName);
+            else
+                isSuccessfull = await _userService.RegisterAsEmployee(Username, Password, EmployeeFirstName, EmployeeLastName);
+
+            if(isSuccessfull)
+                _messageQueueService.Enqueue("Registration was successfull!");
+            else
+                _messageQueueService.Enqueue("Registration was unsuccessfull!");
+
         }
 
         private bool CanRegister()
@@ -96,6 +122,8 @@ namespace EBooking.WPF.ViewModels
             EmployeeLastName = string.Empty;
             AdminDisplayName = string.Empty;
         }
+
+        private bool IsAdminRegistrationActive => SelectedTabIndex == 1;
 
         public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.REGISTER);
     }

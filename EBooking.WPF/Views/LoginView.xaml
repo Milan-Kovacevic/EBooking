@@ -124,6 +124,9 @@
                         Margin="5 0"
                         HorizontalAlignment="Stretch"
                         Height="40"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsLoading}"
+                        materialDesign:ButtonProgressAssist.Value="-1"
                         materialDesign:ButtonAssist.CornerRadius="8"
                         Style="{DynamicResource MaterialDesignFlatMidBgButton}"
                         Command="{Binding LoginCommand}">
