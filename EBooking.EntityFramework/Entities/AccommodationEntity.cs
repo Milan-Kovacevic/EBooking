@@ -31,6 +31,7 @@ namespace EBooking.EntityFramework.Entities
         [ForeignKey("Administrator")]
         public int UserId { get; set; }
         public AdministratorEntity Administrator { get; set; }
+        public List<AccommodationUnitEntity> AccommodationUnits { get; set; }
 
     }
 }

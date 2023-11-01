@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AgileObjects.AgileMapper.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
 using EBooking.WPF.Services;
@@ -21,7 +22,7 @@ namespace EBooking.WPF.ViewModels
             SearchUnitFeatures();
         }
 
-        private readonly ObservableCollection<UnitFeatureItemViewModel> _unitFeatures;
+        private ObservableCollection<UnitFeatureItemViewModel> _unitFeatures;
         public ICollectionView UnitFeatures { get; }
         public bool? IsAllItemsSelected
         {
@@ -100,7 +101,11 @@ namespace EBooking.WPF.ViewModels
         {
             await _dialogHostService.ShowConfirmDeleteDialog(() =>
             {
+                for (int i = _unitFeatures.Count - 1; i >= 0; i--)
+                    if (_unitFeatures[i].IsSelected)
+                        _unitFeatures.RemoveAt(i);
                 _dialogHostService.CloseDialogHost();
+                IsAllItemsSelected = false;
             });
         }
 

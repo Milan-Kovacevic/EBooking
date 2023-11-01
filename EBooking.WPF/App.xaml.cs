@@ -31,6 +31,8 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly NavigationService navigateToLandingViewModel;
+        private readonly NavigationService navigateToAccommodationsViewModel;
+        private readonly NavigationService navigateToFlightsViewModel;
         private readonly NavigationService navigateToCodebookViewModel;
         private readonly DialogHostService dialogHostService;
         private readonly IGenericDAOFactory daoFactory;
@@ -49,12 +51,15 @@ namespace EBooking.WPF
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
+            navigateToAccommodationsViewModel = new NavigationService(navigationStore, CreateAccommodationsViewModel);
+            navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
             dialogHostService = new DialogHostService();
 
             _connectionString = settingsService.LoadConnectionString() ?? "";
             daoFactory = new SQLiteDAOFactory(_connectionString);
         }
+
 
         private void OnApplicationStartup(object sender, StartupEventArgs e)
         {
@@ -76,7 +81,7 @@ namespace EBooking.WPF
         // TODO: ADD DEPENDENCY INJECTION
         private MenuViewModel CreateMenuViewModel()
         {
-            return new MenuViewModel(userStore, navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel, navigateToCodebookViewModel);
+            return new MenuViewModel(userStore, navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel, navigateToCodebookViewModel, navigateToAccommodationsViewModel, navigateToFlightsViewModel);
         }
 
         private LandingViewModel CreateLandingViewModel()
@@ -102,6 +107,16 @@ namespace EBooking.WPF
         private SettingsViewModel CreateSettingsViewModel()
         {
             return new SettingsViewModel(messageQueueService, settingsStore, settingsService);
+        }
+
+        private AccommodationsViewModel CreateAccommodationsViewModel()
+        {
+            return new AccommodationsViewModel();
+        }
+
+        private FlightsViewModel CreateFlightsViewModel()
+        {
+            return new FlightsViewModel();
         }
 
         private CodebookViewModel CreateCodebookViewModel()

@@ -135,8 +135,14 @@
   <data name="MainWindow_Title" xml:space="preserve">
     <value>Book your next trip or accommodation with E-Booking</value>
   </data>
+  <data name="Menu_AccommodationsTitle" xml:space="preserve">
+    <value>Accommodations</value>
+  </data>
   <data name="Menu_CodebookTitle" xml:space="preserve">
     <value>Codebooks</value>
+  </data>
+  <data name="Menu_FlightsTitle" xml:space="preserve">
+    <value>Flights</value>
   </data>
   <data name="Menu_LoginTitle" xml:space="preserve">
     <value>Login</value>

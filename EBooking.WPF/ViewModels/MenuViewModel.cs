@@ -61,22 +61,28 @@ namespace EBooking.WPF.ViewModels
         private readonly NavigationService _navigateToLoginViewModel;
         private readonly NavigationService _navigateToRegisterViewModel;
         private readonly NavigationService _navigateToCodebookViewModel;
+        private readonly NavigationService _navigateToAccommodationsViewModel;
+        private readonly NavigationService _navigateToFlightsViewModel;
         private readonly UserStore _userStore;
 
-        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel, NavigationService navigateToCodebookViewModel)
+        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel, NavigationService navigateToCodebookViewModel, NavigationService navigateToAccommodationsViewModel, NavigationService navigateToFlightsViewModel)
         {
             _navigateToSettingsViewModel = navigateToSettingsViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
             _navigateToCodebookViewModel = navigateToCodebookViewModel;
+            _navigateToAccommodationsViewModel = navigateToAccommodationsViewModel;
+            _navigateToFlightsViewModel = navigateToFlightsViewModel;
             _userStore = userStore;
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
             menuItems = new ObservableCollection<MenuViewItem>()
             {
                 new MenuViewItem(string.Empty, PackIconKind.Login, NavigateToLogin),
                 new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister),
-                new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
+                new MenuViewItem(string.Empty, PackIconKind.Hotel, NavigateToAccommodations),
+                new MenuViewItem(string.Empty, PackIconKind.Flight, NavigateToFlights),
                 new MenuViewItem(string.Empty, PackIconKind.BookAdd, NavigateToCodebook),
+                new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
             };
             selectedItem = null;
             currentViewModelKey = string.Empty;
@@ -107,6 +113,16 @@ namespace EBooking.WPF.ViewModels
             _navigateToSettingsViewModel.Navigate();
         }
 
+        public void NavigateToAccommodations()
+        {
+            _navigateToAccommodationsViewModel.Navigate();
+        }
+
+        public void NavigateToFlights()
+        {
+            _navigateToFlightsViewModel.Navigate();
+        }
+
         public void NavigateToCodebook()
         {
             _navigateToCodebookViewModel.Navigate();
@@ -119,8 +135,6 @@ namespace EBooking.WPF.ViewModels
                 MenuItems[i].Name = Util.GetLocalizedValue(MenuProvider.GetCodeByIndex(i));
             }
         }
-
-        public string Key => nameof(MenuViewModel);
 
         public void Dispose()
         {

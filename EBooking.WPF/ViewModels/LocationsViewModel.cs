@@ -105,7 +105,11 @@ namespace EBooking.WPF.ViewModels
         {
             await _dialogHostService.ShowConfirmDeleteDialog(() =>
             {
+                for (int i = _locations.Count - 1; i >= 0; i--)
+                    if (_locations[i].IsSelected)
+                        _locations.RemoveAt(i);
                 _dialogHostService.CloseDialogHost();
+                IsAllItemsSelected = false;
             });
         }
 

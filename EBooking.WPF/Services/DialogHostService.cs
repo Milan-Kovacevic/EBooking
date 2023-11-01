@@ -31,12 +31,14 @@ namespace EBooking.WPF.Services
         public async Task ShowAddLocationDialog(Action<SubmitLocationViewModel> onLocationAddAction)
         {
             var dialogContent = new SubmitLocationDialog(onLocationAddAction);
+            dialogContent.DialogTitle.Text = "Create New Location";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
         public async Task ShowEditLocationDialog(Action<SubmitLocationViewModel> onLocationEditAction, LocationItemViewModel viewModel)
         {
             var dialogContent = new SubmitLocationDialog(onLocationEditAction, viewModel);
+            dialogContent.DialogTitle.Text = "Edit Location";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 

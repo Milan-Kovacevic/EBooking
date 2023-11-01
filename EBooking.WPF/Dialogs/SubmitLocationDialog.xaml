@@ -20,7 +20,7 @@
                 Height="auto" />
         </Grid.RowDefinitions>
         <TextBlock
-            x:Name="Title"
+            x:Name="DialogTitle"
             Margin="25 10 25 20"
             Grid.Row="0"
             Text="Create new location"

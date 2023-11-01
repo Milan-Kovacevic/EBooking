@@ -115,11 +115,29 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accommodations.
+        /// </summary>
+        internal static string Menu_AccommodationsTitle {
+            get {
+                return ResourceManager.GetString("Menu_AccommodationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Codebooks.
         /// </summary>
         internal static string Menu_CodebookTitle {
             get {
                 return ResourceManager.GetString("Menu_CodebookTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flights.
+        /// </summary>
+        internal static string Menu_FlightsTitle {
+            get {
+                return ResourceManager.GetString("Menu_FlightsTitle", resourceCulture);
             }
         }
         
