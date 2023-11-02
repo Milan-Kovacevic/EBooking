@@ -113,7 +113,6 @@
                         ItemsSource="{Binding MenuItems}"
                         PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp"
                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                        
                         Style="{DynamicResource MaterialDesignNavigationPrimaryListBox}">
                         <ListBox.Resources>
                             <Style
@@ -272,7 +271,7 @@
                             AutomationProperties.Name=""
                             FontSize="17"
                             FontWeight="Medium"
-                            Text="{lex:Loc MainWindow_Title}"/>
+                            Text="{lex:Loc MainWindow_Title}" />
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Grid>
@@ -280,18 +279,11 @@
                         <RowDefinition
                             Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer
-                        Grid.Row="0"
+                    <ContentControl
                         Margin="5"
-                        materialDesign:ElevationAssist.Elevation="Dp8"
-                        materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
-                        HorizontalScrollBarVisibility="Auto"
-                        VerticalScrollBarVisibility="Auto">
-                        <ContentControl
-                            VerticalAlignment="Stretch"
-                            HorizontalAlignment="Stretch"
-                            Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}" />
-                    </ScrollViewer>
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}" />
                     <materialDesign:Snackbar
                         Panel.ZIndex="1"
                         x:Name="MainSnackbar"

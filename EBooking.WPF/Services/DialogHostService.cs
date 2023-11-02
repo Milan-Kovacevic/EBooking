@@ -56,6 +56,12 @@ namespace EBooking.WPF.Services
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
+        public async Task ShowFilterAccommodationsDialog()
+        {
+            var dialogContent = new FilterAccommodationsDialog();
+            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+        }
+
         public void CloseDialogHost()
         {
             if (DialogHost.IsDialogOpen(DIALOG_HOST_ROOT_NAME))

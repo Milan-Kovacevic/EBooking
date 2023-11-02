@@ -111,7 +111,7 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel();
+            return new AccommodationsViewModel(dialogHostService);
         }
 
         private FlightsViewModel CreateFlightsViewModel()

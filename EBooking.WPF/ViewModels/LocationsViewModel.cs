@@ -124,7 +124,6 @@ namespace EBooking.WPF.ViewModels
                 var element = _locations.First(x => x.LocationId == vm.LocationId);
                 element.Country = locationVM.CountryName;
                 element.City = locationVM.CityName;
-                Locations.Refresh();
                 _dialogHostService.CloseDialogHost();
             }, vm);
         }
