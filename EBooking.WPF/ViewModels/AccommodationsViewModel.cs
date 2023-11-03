@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
 using EBooking.WPF.Services;
+using EBooking.WPF.Stores;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +30,8 @@ namespace EBooking.WPF.ViewModels
         }
         [ObservableProperty]
         private bool isFilterSelected;
-
+        [ObservableProperty]
+        private bool isAdmin;
 
         [RelayCommand]
         public void SearchAccommodations()
@@ -54,12 +57,15 @@ namespace EBooking.WPF.ViewModels
         }
 
         private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
 
-        public AccommodationsViewModel(DialogHostService dialogHostService)
+        public AccommodationsViewModel(DialogHostService dialogHostService, UserStore userStore)
         {
             _dialogHostService = dialogHostService;
+            _userStore = userStore;
             searchText = string.Empty;
             isFilterSelected = false;
+            isAdmin = userStore.IsAdmin;
             _accommodations = new ObservableCollection<AccommodationItemViewModel>()
             {
                 new AccommodationItemViewModel() {Name="Apartment1", Type = "Apartment", Address = "Address template 1", Location = "Serbia, Belgrade", NumOfUnits = 2},

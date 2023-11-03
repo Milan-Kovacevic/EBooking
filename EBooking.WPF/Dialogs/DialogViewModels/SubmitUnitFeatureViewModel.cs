@@ -20,14 +20,14 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         public IRelayCommand SubmitCommand { get; }
 
-        private readonly Action<SubmitUnitFeatureViewModel> _onSubmitAction;
+        private readonly Func<SubmitUnitFeatureViewModel, Task> _onSubmitAction;
 
-        public SubmitUnitFeatureViewModel(Action<SubmitUnitFeatureViewModel> onSubmitAction, UnitFeatureItemViewModel? vm = null)
+        public SubmitUnitFeatureViewModel(Func<SubmitUnitFeatureViewModel, Task> onSubmitAction, UnitFeatureItemViewModel? vm = null)
         {
             _onSubmitAction = onSubmitAction;
 
             featureName = vm?.Name ?? string.Empty;
-            SubmitCommand = new RelayCommand(Submit, CanSubmit);
+            SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 
         private bool CanSubmit()
@@ -36,9 +36,9 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
                 && !HasErrors;
         }
 
-        private void Submit()
+        private async Task Submit()
         {
-            _onSubmitAction(this);
+            await _onSubmitAction(this);
         }
     }
 }

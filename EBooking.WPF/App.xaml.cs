@@ -23,8 +23,12 @@ namespace EBooking.WPF
         private readonly MessageQueueStore messageQueueStore;
         private readonly SettingsStore settingsStore;
         private readonly UserStore userStore;
+        private readonly LocationsStore locationsStore;
+        private readonly UnitFeaturesStore unitFeaturesStore;
 
         private readonly UserService userService;
+        private readonly LocationsService locationsService;
+        private readonly UnitFeaturesService unitFeaturesService;
         private readonly SettingsService settingsService;
         private readonly MessageQueueService messageQueueService;
         private readonly NavigationService navigateToLoginViewModel;
@@ -47,8 +51,12 @@ namespace EBooking.WPF
            
             navigationStore = new NavigationStore();
             userStore = new UserStore(daoFactory.UserDao);
+            locationsStore = new LocationsStore(daoFactory.LocationDao);
+            unitFeaturesStore = new UnitFeaturesStore(daoFactory.UnitFeatureDao);
             messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
             userService = new UserService(userStore);
+            locationsService = new LocationsService(locationsStore);
+            unitFeaturesService = new UnitFeaturesService(unitFeaturesStore);
             messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
@@ -60,11 +68,19 @@ namespace EBooking.WPF
             dialogHostService = new DialogHostService();
         }
 
+        private async void InitStores()
+        {
+            settingsStore.LoadSettings();
+            await userStore.Load();
+            await locationsStore.Load();
+            await unitFeaturesStore.Load();
+        }
+
 
         private void OnApplicationStartup(object sender, StartupEventArgs e)
         {
             // Loading necessary stores
-            settingsStore.LoadSettings();
+            InitStores();
             // Initializing main window
             MainWindow = new MainWindow()
             {
@@ -111,7 +127,7 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel(dialogHostService);
+            return new AccommodationsViewModel(dialogHostService, userStore);
         }
 
         private FlightsViewModel CreateFlightsViewModel()
@@ -126,12 +142,12 @@ namespace EBooking.WPF
 
         private LocationsViewModel CreateLocationsViewModel()
         {
-            return new LocationsViewModel(dialogHostService);
+            return new LocationsViewModel(locationsStore, locationsService, dialogHostService);
         }
 
         private UnitFeaturesViewModel CreateUnitFeaturesViewModel()
         {
-            return new UnitFeaturesViewModel(dialogHostService);
+            return new UnitFeaturesViewModel(unitFeaturesStore, unitFeaturesService, dialogHostService);
         }
 
     }

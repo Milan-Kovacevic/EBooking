@@ -1,8 +1,12 @@
-﻿using AgileObjects.AgileMapper.Extensions;
+﻿using AgileObjects.AgileMapper;
+using AgileObjects.AgileMapper.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
+using EBooking.WPF.Dialogs.DialogViewModels;
 using EBooking.WPF.Services;
+using EBooking.WPF.Stores;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -41,25 +45,49 @@ namespace EBooking.WPF.ViewModels
             }
         }
 
+        private readonly UnitFeaturesStore _unitFeaturesStore;
+        private readonly UnitFeaturesService _unitFeaturesService;
         private readonly DialogHostService _dialogHostService;
 
-        public UnitFeaturesViewModel(DialogHostService dialogHostService)
+        public UnitFeaturesViewModel(UnitFeaturesStore unitFeaturesStore, UnitFeaturesService unitFeaturesService, DialogHostService dialogHostService)
         {
+            _unitFeaturesStore = unitFeaturesStore;
+            _unitFeaturesStore.UnitFeatureAdded += OnUnitFeatureAdded;
+            _unitFeaturesStore.UnitFeatureUpdated += OnUnitFeatureUpdated;
+            _unitFeaturesStore.UnitFeatureDeleted += OnUnitFeatureDeleted;
+            _unitFeaturesService = unitFeaturesService;
             _dialogHostService = dialogHostService;
             searchText = string.Empty;
-            _unitFeatures = new ObservableCollection<UnitFeatureItemViewModel>()
-            {
-                new UnitFeatureItemViewModel(){FeatureId = 1, Name ="Free WIFI"},
-                new UnitFeatureItemViewModel(){FeatureId = 2, Name ="Kitchen"},
-                new UnitFeatureItemViewModel(){FeatureId = 3, Name ="Balcony"}
-            };
+            _unitFeatures = new ObservableCollection<UnitFeatureItemViewModel>(unitFeaturesStore.UnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeatureItemViewModel>()));
             UnitFeatures = CollectionViewSource.GetDefaultView(_unitFeatures);
             UnitFeatures.Filter = FilterUnitFeatures;
         }
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+            _unitFeaturesStore.UnitFeatureAdded -= OnUnitFeatureAdded;
+            _unitFeaturesStore.UnitFeatureUpdated -= OnUnitFeatureUpdated;
+            _unitFeaturesStore.UnitFeatureDeleted -= OnUnitFeatureDeleted;
+        }
 
         #region Unit Features CRUD Commands
+
+        private void OnUnitFeatureAdded(UnitFeature feature)
+        {
+            _unitFeatures.Add(Mapper.Map(feature).ToANew<UnitFeatureItemViewModel>());
+        }
+        private void OnUnitFeatureUpdated(UnitFeature feature)
+        {
+            var featureItemVm = _unitFeatures.FirstOrDefault(f => f.FeatureId == feature.FeatureId);
+            Mapper.Map(feature).Over(featureItemVm);
+        }
+        private void OnUnitFeatureDeleted(int id)
+        {
+            var featureItemVm = _unitFeatures.FirstOrDefault(f => f.FeatureId == id);
+
+            if (featureItemVm is not null)
+                _unitFeatures.Remove(featureItemVm);
+        }
 
         [RelayCommand]
         public void SearchUnitFeatures()
@@ -69,19 +97,18 @@ namespace EBooking.WPF.ViewModels
                 UnitFeatures.Refresh();
             }
             catch
-            {
-
-            }
+            { }
         }
 
         [RelayCommand]
         public async Task AddUnitFeature()
         {
-            await _dialogHostService.ShowAddUnitFeatureDialog((featureVM) =>
-            {
-                _unitFeatures.Add(new UnitFeatureItemViewModel() { Name = featureVM.FeatureName, FeatureId = _unitFeatures.Count + 1 });
-                _dialogHostService.CloseDialogHost();
-            });
+            await _dialogHostService.ShowAddUnitFeatureDialog(AddUnitFeatureAction);
+        }
+        private async Task AddUnitFeatureAction(SubmitUnitFeatureViewModel featureVM)
+        {
+            await _unitFeaturesService.AddUnitFeature(new UnitFeature() { Name = featureVM.FeatureName });
+            _dialogHostService.CloseDialogHost();
         }
 
         [RelayCommand]
@@ -89,21 +116,28 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not UnitFeatureItemViewModel vm)
                 return;
-            await _dialogHostService.ShowConfirmDeleteDialog(() =>
-            {
-                _unitFeatures.Remove(vm);
-                _dialogHostService.CloseDialogHost();
-            });
+            await _dialogHostService.ShowConfirmDeleteDialog(async () => await DeleteUnitFeatureAction(vm.FeatureId));
+        }
+        private async Task DeleteUnitFeatureAction(int id)
+        {
+            await _unitFeaturesService.DeleteUnitFeature(id);
+            _dialogHostService.CloseDialogHost();
         }
 
         [RelayCommand]
         public async Task DeleteSelectedFeatures()
         {
-            await _dialogHostService.ShowConfirmDeleteDialog(() =>
+            await _dialogHostService.ShowConfirmDeleteDialog(async () =>
             {
+                List<Task> tasks = new List<Task>();
                 for (int i = _unitFeatures.Count - 1; i >= 0; i--)
+                {
                     if (_unitFeatures[i].IsSelected)
-                        _unitFeatures.RemoveAt(i);
+                    {
+                        tasks.Add(_unitFeaturesService.DeleteUnitFeature(_unitFeatures[i].FeatureId));
+                    }
+                }
+                await Task.WhenAll(tasks);
                 _dialogHostService.CloseDialogHost();
                 IsAllItemsSelected = false;
             });
@@ -114,13 +148,12 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not UnitFeatureItemViewModel vm)
                 return;
-            await _dialogHostService.ShowEditUnitFeatureDialog((featureVM) =>
-            {
-                var element = _unitFeatures.First(x => x.FeatureId == vm.FeatureId);
-                element.Name = featureVM.FeatureName;
-                UnitFeatures.Refresh();
-                _dialogHostService.CloseDialogHost();
-            }, vm);
+            await _dialogHostService.ShowEditUnitFeatureDialog(EditUnitFeatureAction, vm);
+        }
+        private async Task EditUnitFeatureAction(SubmitUnitFeatureViewModel featureVM)
+        {
+            await _unitFeaturesService.UpdateUnitFeature(new UnitFeature() { Name = featureVM.FeatureName });
+            _dialogHostService.CloseDialogHost();
         }
 
         #endregion

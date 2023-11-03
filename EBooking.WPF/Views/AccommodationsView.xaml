@@ -43,6 +43,7 @@
                 Panel.ZIndex="1"
                 Height="36"
                 Padding="0"
+                Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"
                 Command="{Binding AddAccommodationCommand}"
                 materialDesign:ElevationAssist.Elevation="Dp6"
                 Style="{DynamicResource MaterialDesignFloatingActionMiniLightButton}">

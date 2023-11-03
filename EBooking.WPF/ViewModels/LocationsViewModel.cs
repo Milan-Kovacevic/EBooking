@@ -1,11 +1,18 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AgileObjects.AgileMapper;
+using AgileObjects.AgileMapper.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EBooking.Domain.DTOs;
+using EBooking.WPF.Dialogs.DialogViewModels;
 using EBooking.WPF.Services;
+using EBooking.WPF.Stores;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace EBooking.WPF.ViewModels
 {
@@ -39,30 +46,51 @@ namespace EBooking.WPF.ViewModels
             }
         }
 
+        private readonly LocationsStore _locationsStore;
+        private readonly LocationsService _locationsService;
         private readonly DialogHostService _dialogHostService;
 
-        public LocationsViewModel(DialogHostService dialogHostService)
+        public LocationsViewModel(LocationsStore locationsStore, LocationsService locationsService, DialogHostService dialogHostService)
         {
+            _locationsService = locationsService;
             _dialogHostService = dialogHostService;
+            _locationsStore = locationsStore;
+            _locationsStore.LocationAdded += OnLocationAdded;
+            _locationsStore.LocationUpdated += OnLocationUpdated;
+            _locationsStore.LocationDeleted += OnLocationDeleted;
+
             searchText = string.Empty;
-            _locations = new ObservableCollection<LocationItemViewModel>()
-            {
-                new LocationItemViewModel(){ LocationId = 1, Country="Serbia", City="Belgrade" },
-                new LocationItemViewModel(){ LocationId = 2, Country="Serbia", City="Novi Sad" },
-                new LocationItemViewModel(){ LocationId = 3, Country="Bosnia and Herzegovina", City="Banja Luka" },
-                new LocationItemViewModel(){ LocationId = 4, Country="Serbia", City="Kragujevac" },
-                new LocationItemViewModel(){ LocationId = 5, Country="Bosnia and Herzegovina", City="Gradiska" },
-                new LocationItemViewModel(){ LocationId = 6, Country="Bosnia and Herzegovina", City="Sarajevo" },
-                new LocationItemViewModel(){ LocationId = 7, Country="Montenegro", City="Budva" },
-                new LocationItemViewModel(){ LocationId = 8, Country="Croatia", City="Zagreb" },
-            };
+
+            _locations = new ObservableCollection<LocationItemViewModel>(locationsStore.Locations.Select(x => Mapper.Map(x).ToANew<LocationItemViewModel>()));
             Locations = CollectionViewSource.GetDefaultView(_locations);
             Locations.Filter = FilterLocations;
         }
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+            _locationsStore.LocationAdded -= OnLocationAdded;
+            _locationsStore.LocationUpdated -= OnLocationUpdated;
+            _locationsStore.LocationDeleted -= OnLocationDeleted;
+        }
 
         #region Locations CRUD Commands
+
+        private void OnLocationAdded(Location location)
+        {
+            _locations.Add(Mapper.Map(location).ToANew<LocationItemViewModel>());
+        }
+        private void OnLocationUpdated(Location location)
+        {
+            var locationItemVm = _locations.FirstOrDefault(f => f.LocationId == location.LocationId);
+            Mapper.Map(location).Over(locationItemVm);
+        }
+        private void OnLocationDeleted(int id)
+        {
+            var locationItemVm = _locations.FirstOrDefault(f => f.LocationId == id);
+
+            if (locationItemVm is not null)
+                _locations.Remove(locationItemVm);
+        }
 
         [RelayCommand]
         public void SearchLocations()
@@ -72,19 +100,18 @@ namespace EBooking.WPF.ViewModels
                 Locations.Refresh();
             }
             catch
-            {
-
-            }
+            { }
         }
 
         [RelayCommand]
         public async Task AddLocation()
         {
-            await _dialogHostService.ShowAddLocationDialog((locationVM) =>
-            {
-                _locations.Add(new LocationItemViewModel() { City = locationVM.CityName, Country = locationVM.CountryName, LocationId = _locations.Count + 1 });
-                _dialogHostService.CloseDialogHost();
-            });
+            await _dialogHostService.ShowAddLocationDialog(AddLocationAction);
+        }
+        private async Task AddLocationAction(SubmitLocationViewModel locationVM)
+        {
+            await _locationsService.AddLocation(new Location() { City = locationVM.CityName, Country = locationVM.CountryName });
+            _dialogHostService.CloseDialogHost();
         }
 
         [RelayCommand]
@@ -93,21 +120,28 @@ namespace EBooking.WPF.ViewModels
             if (param is not LocationItemViewModel vm)
                 return;
 
-            await _dialogHostService.ShowConfirmDeleteDialog(() =>
-            {
-                _locations.Remove(vm);
-                _dialogHostService.CloseDialogHost();
-            });
+            await _dialogHostService.ShowConfirmDeleteDialog(async () => await DeleteLocationAction(vm.LocationId));
+        }
+        private async Task DeleteLocationAction(int id)
+        {
+            await _locationsService.DeleteLocation(id);
+            _dialogHostService.CloseDialogHost();
         }
 
         [RelayCommand]
         public async Task DeleteSelectedLocations()
         {
-            await _dialogHostService.ShowConfirmDeleteDialog(() =>
+            await _dialogHostService.ShowConfirmDeleteDialog(async () =>
             {
+                List<Task> tasks = new List<Task>();
                 for (int i = _locations.Count - 1; i >= 0; i--)
+                {
                     if (_locations[i].IsSelected)
-                        _locations.RemoveAt(i);
+                    {
+                        tasks.Add(_locationsService.DeleteLocation(_locations[i].LocationId));
+                    }
+                }
+                await Task.WhenAll(tasks);
                 _dialogHostService.CloseDialogHost();
                 IsAllItemsSelected = false;
             });
@@ -119,14 +153,14 @@ namespace EBooking.WPF.ViewModels
             if (param is not LocationItemViewModel vm)
                 return;
 
-            await _dialogHostService.ShowEditLocationDialog((locationVM) =>
-            {
-                var element = _locations.First(x => x.LocationId == vm.LocationId);
-                element.Country = locationVM.CountryName;
-                element.City = locationVM.CityName;
-                _dialogHostService.CloseDialogHost();
-            }, vm);
+            await _dialogHostService.ShowEditLocationDialog(UpdateLocationAction, vm);
         }
+        private async Task UpdateLocationAction(SubmitLocationViewModel locationVM)
+        {
+            await _locationsService.UpdateLocation(new Location() { City = locationVM.CityName, Country = locationVM.CountryName });
+            _dialogHostService.CloseDialogHost();
+        }
+
         #endregion
         #region ViewModel Helper Functions
         private bool FilterLocations(object obj)

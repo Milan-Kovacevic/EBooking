@@ -21,35 +21,35 @@ namespace EBooking.WPF.Services
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
-        public async Task ShowConfirmDeleteDialog(Action onDeleteAction)
+        public async Task ShowConfirmDeleteDialog(Func<Task> onDeleteAction)
         {
             var dialogContent = new ConfirmDeleteDialog();
-            dialogContent.OnYesCommand = new RelayCommand(onDeleteAction);
+            dialogContent.OnYesCommand = new AsyncRelayCommand(onDeleteAction);
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
-        public async Task ShowAddLocationDialog(Action<SubmitLocationViewModel> onLocationAddAction)
+        public async Task ShowAddLocationDialog(Func<SubmitLocationViewModel, Task> onLocationAddAction)
         {
             var dialogContent = new SubmitLocationDialog(onLocationAddAction);
             dialogContent.DialogTitle.Text = "Create New Location";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
-        public async Task ShowEditLocationDialog(Action<SubmitLocationViewModel> onLocationEditAction, LocationItemViewModel viewModel)
+        public async Task ShowEditLocationDialog(Func<SubmitLocationViewModel, Task> onLocationEditAction, LocationItemViewModel viewModel)
         {
             var dialogContent = new SubmitLocationDialog(onLocationEditAction, viewModel);
             dialogContent.DialogTitle.Text = "Edit Location";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
-        public async Task ShowAddUnitFeatureDialog(Action<SubmitUnitFeatureViewModel> onFeatureAddAction)
+        public async Task ShowAddUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onFeatureAddAction)
         {
             var dialogContent = new SubmitUnitFeatureDialog(onFeatureAddAction);
             dialogContent.DialogTitle.Text = "Create New Unit Feature";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 
-        public async Task ShowEditUnitFeatureDialog(Action<SubmitUnitFeatureViewModel> onFeatureEditAction, UnitFeatureItemViewModel viewModel)
+        public async Task ShowEditUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onFeatureEditAction, UnitFeatureItemViewModel viewModel)
         {
             var dialogContent = new SubmitUnitFeatureDialog(onFeatureEditAction, viewModel);
             dialogContent.DialogTitle.Text = "Edit Unit Feature";

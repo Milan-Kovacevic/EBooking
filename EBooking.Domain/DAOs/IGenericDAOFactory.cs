@@ -8,7 +8,9 @@ namespace EBooking.Domain.DAOs
 {
     public interface IGenericDAOFactory
     {
-        public ILocationDAO LocationDao { get; }
         public IUserDAO UserDao { get; }
+        public ILocationDAO LocationDao { get; }
+        public IUnitFeatureDao UnitFeatureDao { get; }
+        
     }
 }

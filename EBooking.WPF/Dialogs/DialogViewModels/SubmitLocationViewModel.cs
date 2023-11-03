@@ -26,14 +26,14 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         public IRelayCommand SubmitCommand { get; }
 
-        private readonly Action<SubmitLocationViewModel> _onSubmitAction;
-        public SubmitLocationViewModel(Action<SubmitLocationViewModel> onSubmitAction, LocationItemViewModel? vm = null)
+        private readonly Func<SubmitLocationViewModel, Task> _onSubmitAction;
+        public SubmitLocationViewModel(Func<SubmitLocationViewModel, Task> onSubmitAction, LocationItemViewModel? vm = null)
         {
             _onSubmitAction = onSubmitAction;
 
             countryName = vm?.Country ?? string.Empty;
             cityName = vm?.City ?? string.Empty;
-            SubmitCommand = new RelayCommand(Submit, CanSubmit);
+            SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 
         private bool CanSubmit()
@@ -43,9 +43,9 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
                 !HasErrors;
         }
 
-        private void Submit()
+        private async Task Submit()
         {
-            _onSubmitAction(this);
+            await _onSubmitAction(this);
         }
     }
 }

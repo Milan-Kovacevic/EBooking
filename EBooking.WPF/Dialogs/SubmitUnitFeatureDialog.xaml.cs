@@ -22,7 +22,7 @@ namespace EBooking.WPF.Dialogs
     /// </summary>
     public partial class SubmitUnitFeatureDialog : UserControl
     {
-        public SubmitUnitFeatureDialog(Action<SubmitUnitFeatureViewModel> onSubmitAction, UnitFeatureItemViewModel? vm = null)
+        public SubmitUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onSubmitAction, UnitFeatureItemViewModel? vm = null)
         {
             InitializeComponent();
             DataContext = new SubmitUnitFeatureViewModel(onSubmitAction, vm);
