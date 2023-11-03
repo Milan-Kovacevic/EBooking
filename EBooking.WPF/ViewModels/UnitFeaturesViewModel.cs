@@ -152,7 +152,7 @@ namespace EBooking.WPF.ViewModels
         }
         private async Task EditUnitFeatureAction(SubmitUnitFeatureViewModel featureVM)
         {
-            await _unitFeaturesService.UpdateUnitFeature(new UnitFeature() { Name = featureVM.FeatureName });
+            await _unitFeaturesService.UpdateUnitFeature(new UnitFeature() { Name = featureVM.FeatureName, FeatureId = featureVM.FeatureId });
             _dialogHostService.CloseDialogHost();
         }
 

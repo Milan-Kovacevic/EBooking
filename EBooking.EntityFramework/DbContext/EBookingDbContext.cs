@@ -18,6 +18,8 @@ namespace EBooking.EntityFramework.DbContext
         public DbSet<AccommodationUnitEntity> AccommodationUnits { get; set; }
         public DbSet<UnitFeatureEntity> UnitFeatures { get; set; }
         public DbSet<AccommodationUnitReservationEntity> UnitReservations { get; set; }
+        public DbSet<FlightEntity> Flights { get; set; }
+        public DbSet<TripReservationEntity> TripReservations { get; set; }
 
         public EBookingDbContext(DbContextOptions options) : base(options) { }
 
@@ -32,6 +34,9 @@ namespace EBooking.EntityFramework.DbContext
             modelBuilder.Entity<AccommodationEntity>().HasIndex(x => x.AccommodationId);
             modelBuilder.Entity<AccommodationUnitEntity>().HasIndex(x => x.UnitId);
             modelBuilder.Entity<UnitFeatureEntity>().HasIndex(x => x.FeatureId);
+            modelBuilder.Entity<FlightEntity>().HasIndex(x => x.FlightId);
+            modelBuilder.Entity<AccommodationUnitReservationEntity>().HasIndex(x => x.UnitReservationId);
+            modelBuilder.Entity<TripReservationEntity>().HasIndex(x => x.TripId);
             base.OnModelCreating(modelBuilder);
         }
     }

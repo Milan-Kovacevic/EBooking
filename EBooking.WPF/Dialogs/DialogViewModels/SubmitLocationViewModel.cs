@@ -13,6 +13,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 {
     public partial class SubmitLocationViewModel : ObservableValidator
     {
+        public int LocationId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -33,6 +34,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
             countryName = vm?.Country ?? string.Empty;
             cityName = vm?.City ?? string.Empty;
+            LocationId = vm?.LocationId ?? 0;
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 

@@ -121,6 +121,68 @@ namespace EBooking.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Flight",
+                columns: table => new
+                {
+                    FlightId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FlightClass = table.Column<int>(type: "INTEGER", nullable: false),
+                    AvioCompanyName = table.Column<string>(type: "TEXT", nullable: false),
+                    TicketPrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    FlightCapacity = table.Column<int>(type: "INTEGER", nullable: false),
+                    DepartureTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ArrivalTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    FromLocationId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ToLocationId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flight", x => x.FlightId);
+                    table.ForeignKey(
+                        name: "FK_Flight_Administrator_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Administrator",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Flight_Location_FromLocationId",
+                        column: x => x.FromLocationId,
+                        principalTable: "Location",
+                        principalColumn: "LocationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Flight_Location_ToLocationId",
+                        column: x => x.ToLocationId,
+                        principalTable: "Location",
+                        principalColumn: "LocationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TripReservation",
+                columns: table => new
+                {
+                    TripId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    OnName = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<int>(type: "INTEGER", nullable: false),
+                    NumberOfSeats = table.Column<int>(type: "INTEGER", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TripReservation", x => x.TripId);
+                    table.ForeignKey(
+                        name: "FK_TripReservation_Employee_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employee",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AccommodationUnit",
                 columns: table => new
                 {
@@ -146,9 +208,35 @@ namespace EBooking.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FlightOnTripReservation",
+                columns: table => new
+                {
+                    TripId = table.Column<int>(type: "INTEGER", nullable: false),
+                    FlightId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FlightOnTripReservation", x => new { x.TripId, x.FlightId });
+                    table.ForeignKey(
+                        name: "FK_FlightOnTripReservation_Flight_FlightId",
+                        column: x => x.FlightId,
+                        principalTable: "Flight",
+                        principalColumn: "FlightId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FlightOnTripReservation_TripReservation_TripId",
+                        column: x => x.TripId,
+                        principalTable: "TripReservation",
+                        principalColumn: "TripId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AccommodationUnitReservation",
                 columns: table => new
                 {
+                    UnitReservationId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
                     UnitId = table.Column<int>(type: "INTEGER", nullable: false),
                     OnName = table.Column<string>(type: "TEXT", nullable: false),
@@ -160,7 +248,7 @@ namespace EBooking.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccommodationUnitReservation", x => new { x.EmployeeId, x.UnitId });
+                    table.PrimaryKey("PK_AccommodationUnitReservation", x => x.UnitReservationId);
                     table.ForeignKey(
                         name: "FK_AccommodationUnitReservation_AccommodationUnit_UnitId",
                         column: x => x.UnitId,
@@ -225,9 +313,19 @@ namespace EBooking.EntityFramework.Migrations
                 column: "UnitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AccommodationUnitReservation_EmployeeId",
+                table: "AccommodationUnitReservation",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AccommodationUnitReservation_UnitId",
                 table: "AccommodationUnitReservation",
                 column: "UnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccommodationUnitReservation_UnitReservationId",
+                table: "AccommodationUnitReservation",
+                column: "UnitReservationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Administrator_UserId",
@@ -247,9 +345,44 @@ namespace EBooking.EntityFramework.Migrations
                 column: "UnitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Flight_FlightId",
+                table: "Flight",
+                column: "FlightId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flight_FromLocationId",
+                table: "Flight",
+                column: "FromLocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flight_ToLocationId",
+                table: "Flight",
+                column: "ToLocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flight_UserId",
+                table: "Flight",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FlightOnTripReservation_FlightId",
+                table: "FlightOnTripReservation",
+                column: "FlightId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Location_LocationId",
                 table: "Location",
                 column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripReservation_EmployeeId",
+                table: "TripReservation",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripReservation_TripId",
+                table: "TripReservation",
+                column: "TripId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UnitFeature_FeatureId",
@@ -279,7 +412,7 @@ namespace EBooking.EntityFramework.Migrations
                 name: "FeatureOnUnit");
 
             migrationBuilder.DropTable(
-                name: "Employee");
+                name: "FlightOnTripReservation");
 
             migrationBuilder.DropTable(
                 name: "AccommodationUnit");
@@ -288,7 +421,16 @@ namespace EBooking.EntityFramework.Migrations
                 name: "UnitFeature");
 
             migrationBuilder.DropTable(
+                name: "Flight");
+
+            migrationBuilder.DropTable(
+                name: "TripReservation");
+
+            migrationBuilder.DropTable(
                 name: "Accommodation");
+
+            migrationBuilder.DropTable(
+                name: "Employee");
 
             migrationBuilder.DropTable(
                 name: "Administrator");

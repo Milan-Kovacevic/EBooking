@@ -110,7 +110,7 @@ namespace EBooking.WPF.ViewModels
         }
         private async Task AddLocationAction(SubmitLocationViewModel locationVM)
         {
-            await _locationsService.AddLocation(new Location() { City = locationVM.CityName, Country = locationVM.CountryName });
+            await _locationsService.AddLocation(locationVM.CountryName, locationVM.CityName);
             _dialogHostService.CloseDialogHost();
         }
 
@@ -157,7 +157,7 @@ namespace EBooking.WPF.ViewModels
         }
         private async Task UpdateLocationAction(SubmitLocationViewModel locationVM)
         {
-            await _locationsService.UpdateLocation(new Location() { City = locationVM.CityName, Country = locationVM.CountryName });
+            await _locationsService.UpdateLocation(locationVM.LocationId, locationVM.CountryName, locationVM.CityName);
             _dialogHostService.CloseDialogHost();
         }
 

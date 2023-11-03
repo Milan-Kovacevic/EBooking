@@ -103,6 +103,7 @@
                     Panel.ZIndex="1"
                     Height="42"
                     Padding="4"
+                    IsEnabled="False"
                     Margin="6 0 0 0"
                     Command="{Binding FilterAccommodationsCommand}"
                     Foreground="{DynamicResource PrimaryHueMidBrush}"

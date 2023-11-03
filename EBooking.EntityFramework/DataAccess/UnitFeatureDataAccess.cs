@@ -1,6 +1,10 @@
-﻿using EBooking.Domain.DAOs;
+﻿using AgileObjects.AgileMapper;
+using EBooking.Domain.DAOs;
 using EBooking.Domain.DTOs;
 using EBooking.EntityFramework.DbContext;
+using EBooking.EntityFramework.Entities;
+using EBooking.EntityFramework.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +13,93 @@ using System.Threading.Tasks;
 
 namespace EBooking.EntityFramework.DataAccess
 {
-    internal class UnitFeatureDataAccess : DataAccessBase, IUnitFeatureDao
+    internal class UnitFeatureDataAccess : DataAccessBase, IUnitFeatureDAO
     {
         public UnitFeatureDataAccess(EBookingDbContextFactory contextFactory) : base(contextFactory)
-        {}
+        { }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            using (EBookingDbContext context = _contextFactory.Create())
+            {
+                var entity = await context.UnitFeatures.FirstOrDefaultAsync(x => x.FeatureId == id);
+                if (entity == null)
+                    throw new DataAccessException();
+                context.UnitFeatures.Remove(entity);
+
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw new DataAccessException(ex.Message, ex);
+                }
+
+                return true;
+            }
         }
 
-        public Task<IEnumerable<UnitFeature>> GetAll()
+        public async Task<IEnumerable<UnitFeature>> GetAll()
         {
-            throw new NotImplementedException();
+            using (EBookingDbContext context = _contextFactory.Create())
+            {
+                return await context.UnitFeatures.Project().To<UnitFeature>().ToListAsync();
+            }
         }
 
-        public Task<UnitFeature> GetById(int id)
+        public async Task<UnitFeature> GetById(int id)
         {
-            throw new NotImplementedException();
+            using (EBookingDbContext context = _contextFactory.Create())
+            {
+                var entity = await context.UnitFeatures.FirstOrDefaultAsync(x => x.FeatureId == id);
+                if (entity is null)
+                    throw new DataAccessException();
+
+                return Mapper.Map(entity).ToANew<UnitFeature>();
+            }
         }
 
-        public Task<UnitFeature> Insert(UnitFeature entity)
+        public async Task<UnitFeature> Insert(UnitFeature entity)
         {
-            throw new NotImplementedException();
+            using (EBookingDbContext context = _contextFactory.Create())
+            {
+                var feature = Mapper.Map(entity).ToANew<UnitFeatureEntity>();
+                var result = await context.UnitFeatures.AddAsync(feature);
+
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw new DataAccessException(ex.Message, ex);
+                }
+
+                return Mapper.Map(result.Entity).Over(entity);
+            }
         }
 
-        public Task Update(UnitFeature entity)
+        public async Task Update(UnitFeature entity)
         {
-            throw new NotImplementedException();
+            using (EBookingDbContext context = _contextFactory.Create())
+            {
+                var result = await context.UnitFeatures.FirstOrDefaultAsync(x => x.FeatureId == entity.FeatureId);
+                if (result == null)
+                    throw new DataAccessException();
+
+                Mapper.Map(entity).Over(result);
+                context.UnitFeatures.Update(result);
+
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw new DataAccessException(ex.Message, ex);
+                }
+            }
         }
     }
 }

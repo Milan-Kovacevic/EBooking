@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EBooking.Domain.DAOs
 {
-    public interface IUnitFeatureDAO : IGenericDAO<UnitFeature, int>
+    public interface IAccommodationDAO : IGenericDAO<Accommodation, int>
     {
     }
 }

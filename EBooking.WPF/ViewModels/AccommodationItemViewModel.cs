@@ -16,10 +16,7 @@ namespace EBooking.WPF.ViewModels
         private string type;
         partial void OnTypeChanged(string value)
         {
-            if (value.ToUpper() == AccommodationType.APARTMENT.ToString())
-                IsApartment = true;
-            else if (value.ToUpper() == AccommodationType.HOTEL.ToString())
-                IsApartment = false;
+            SetIsApartment(value);
         }
         [ObservableProperty]
         private string location;
@@ -34,10 +31,20 @@ namespace EBooking.WPF.ViewModels
         {
             name = string.Empty;
             type = string.Empty;
-            isApartment = false;
             location = string.Empty;
             address = string.Empty;
             numOfUnits = 0;
+            SetIsApartment(type);
+        }
+
+        private void SetIsApartment(string value)
+        {
+            if (value.ToUpper() == AccommodationType.APARTMENT.ToString())
+                IsApartment = true;
+            else if (value.ToUpper() == AccommodationType.HOTEL.ToString())
+                IsApartment = false;
+            else
+                IsApartment = false;
         }
     }
 }

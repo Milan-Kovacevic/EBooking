@@ -9,18 +9,23 @@ using System.Threading.Tasks;
 
 namespace EBooking.EntityFramework.Entities
 {
-    [PrimaryKey(nameof(EmployeeId), nameof(UnitId))]
     [Table("AccommodationUnitReservation")]
     internal class AccommodationUnitReservationEntity
     {
         [Key]
-        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UnitReservationId { get; set; }
+
+        [Required]
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
-        [Key]
-        [Column(Order = 2)]
+        public EmployeeEntity Employee { get; set; }
+
+        [Required]
         [ForeignKey("Unit")]
         public int UnitId { get; set; }
+        public AccommodationUnitEntity Unit { get; set; }
+
         [Required]
         public string OnName { get; set; }
         [Required]
@@ -33,8 +38,5 @@ namespace EBooking.EntityFramework.Entities
         public int NumberOfChildren { get; set; }
         [Required]
         public decimal TotalPrice { get; set; }
-
-        public EmployeeEntity Employee { get; set; }
-        public AccommodationUnitEntity Unit { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace EBooking.WPF.Stores
 {
     public class UnitFeaturesStore
     {
-        private readonly IUnitFeatureDao _unitFeatureDao;
+        private readonly IUnitFeatureDAO _unitFeatureDao;
         private readonly List<UnitFeature> _unitFeatures;
 
         public IEnumerable<UnitFeature> UnitFeatures { get => _unitFeatures; }
@@ -19,7 +19,7 @@ namespace EBooking.WPF.Stores
         public event Action<UnitFeature>? UnitFeatureUpdated;
         public event Action<int>? UnitFeatureDeleted;
 
-        public UnitFeaturesStore(IUnitFeatureDao unitFeatureDao)
+        public UnitFeaturesStore(IUnitFeatureDAO unitFeatureDao)
         {
             _unitFeatureDao = unitFeatureDao;
             _unitFeatures = new List<UnitFeature>();
@@ -27,26 +27,25 @@ namespace EBooking.WPF.Stores
 
         public async Task Load()
         {
-            //var loadedFeatures = await _unitFeatureDao.GetAll();
-            //
-            //_unitFeatures.Clear();
-            //_unitFeatures.AddRange(loadedFeatures);
-            //
-            //UnitFeatureLoaded?.Invoke();
+            var loadedFeatures = await _unitFeatureDao.GetAll();
+
+            _unitFeatures.Clear();
+            _unitFeatures.AddRange(loadedFeatures);
+
+            UnitFeatureLoaded?.Invoke();
         }
 
         public async Task Insert(UnitFeature feature)
         {
-            //var result = await _unitFeatureDao.Insert(feature);
-            feature.FeatureId = 100;
-            _unitFeatures.Add(feature);
-            //
-            //UnitFeatureAdded?.Invoke(result);
+            var result = await _unitFeatureDao.Insert(feature);
+            _unitFeatures.Add(result);
+
+            UnitFeatureAdded?.Invoke(result);
         }
 
         public async Task Update(UnitFeature feature)
         {
-            //await _unitFeatureDao.Update(feature);
+            await _unitFeatureDao.Update(feature);
             int featureIndex = _unitFeatures.FindIndex(f => f.FeatureId == feature.FeatureId);
             if (featureIndex == -1)
                 _unitFeatures.Add(feature);
@@ -58,7 +57,7 @@ namespace EBooking.WPF.Stores
 
         public async Task Delete(int id)
         {
-            //await _unitFeatureDao.Delete(id);
+            await _unitFeatureDao.Delete(id);
             _unitFeatures.RemoveAll(x => x.FeatureId == id);
 
             UnitFeatureDeleted?.Invoke(id);

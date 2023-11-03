@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Dialogs;
 using EBooking.WPF.Dialogs.DialogViewModels;
+using EBooking.WPF.Stores;
 using EBooking.WPF.ViewModels;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -14,6 +15,12 @@ namespace EBooking.WPF.Services
     public class DialogHostService
     {
         private static readonly string DIALOG_HOST_ROOT_NAME = "RootDialog";
+        private readonly LocationsStore _locationsStore;
+
+        public DialogHostService(LocationsStore locationsStore)
+        {
+            _locationsStore = locationsStore;
+        }
 
         public async Task ShowExitApplicationDialog()
         {
@@ -53,6 +60,13 @@ namespace EBooking.WPF.Services
         {
             var dialogContent = new SubmitUnitFeatureDialog(onFeatureEditAction, viewModel);
             dialogContent.DialogTitle.Text = "Edit Unit Feature";
+            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+        }
+
+        public async Task ShowAddAccommodationDialog(Func<SubmitAccommodationViewModel, Task> onAccommodationAddAction)
+        {
+            var dialogContent = new SubmitAccommodationDialog(_locationsStore, onAccommodationAddAction);
+            dialogContent.DialogTitle.Text = "Create New Accommodation";
             await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
         }
 

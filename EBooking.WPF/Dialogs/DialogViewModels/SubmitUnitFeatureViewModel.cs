@@ -12,6 +12,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 {
     public partial class SubmitUnitFeatureViewModel : ObservableValidator
     {
+        public int FeatureId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -27,6 +28,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
             _onSubmitAction = onSubmitAction;
 
             featureName = vm?.Name ?? string.Empty;
+            FeatureId = vm?.FeatureId ?? 0;
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 

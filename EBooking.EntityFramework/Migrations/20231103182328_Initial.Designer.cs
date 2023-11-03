@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EBooking.EntityFramework.Migrations
 {
     [DbContext(typeof(EBookingDbContext))]
-    [Migration("20231025124249_Initial")]
+    [Migration("20231103182328_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -93,13 +93,12 @@ namespace EBooking.EntityFramework.Migrations
 
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationUnitReservationEntity", b =>
                 {
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(1);
+                    b.Property<int>("UnitReservationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("UnitId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnOrder(2);
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("NumberOfAdults")
                         .HasColumnType("INTEGER");
@@ -120,9 +119,16 @@ namespace EBooking.EntityFramework.Migrations
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("EmployeeId", "UnitId");
+                    b.Property<int>("UnitId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("UnitReservationId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("UnitId");
+
+                    b.HasIndex("UnitReservationId");
 
                     b.ToTable("AccommodationUnitReservation");
                 });
@@ -144,6 +150,70 @@ namespace EBooking.EntityFramework.Migrations
                     b.ToTable("FeatureOnUnit");
                 });
 
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.FlightEntity", b =>
+                {
+                    b.Property<int>("FlightId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AvioCompanyName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("FlightCapacity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FlightClass")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FromLocationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("TicketPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ToLocationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("FlightId");
+
+                    b.HasIndex("FlightId");
+
+                    b.HasIndex("FromLocationId");
+
+                    b.HasIndex("ToLocationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Flight");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.FlightOnTripReservationEntity", b =>
+                {
+                    b.Property<int>("TripId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("FlightId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
+
+                    b.HasKey("TripId", "FlightId");
+
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("FlightOnTripReservation");
+                });
+
             modelBuilder.Entity("EBooking.EntityFramework.Entities.LocationEntity", b =>
                 {
                     b.Property<int>("LocationId")
@@ -163,6 +233,37 @@ namespace EBooking.EntityFramework.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Location");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
+                {
+                    b.Property<int>("TripId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("NumberOfSeats")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OnName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TripId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("TripId");
+
+                    b.ToTable("TripReservation");
                 });
 
             modelBuilder.Entity("EBooking.EntityFramework.Entities.UnitFeatureEntity", b =>
@@ -257,7 +358,7 @@ namespace EBooking.EntityFramework.Migrations
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationUnitEntity", b =>
                 {
                     b.HasOne("EBooking.EntityFramework.Entities.AccommodationEntity", "Accommodation")
-                        .WithMany()
+                        .WithMany("AccommodationUnits")
                         .HasForeignKey("AccommodationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -268,7 +369,7 @@ namespace EBooking.EntityFramework.Migrations
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationUnitReservationEntity", b =>
                 {
                     b.HasOne("EBooking.EntityFramework.Entities.EmployeeEntity", "Employee")
-                        .WithMany()
+                        .WithMany("UnitReservations")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -303,6 +404,63 @@ namespace EBooking.EntityFramework.Migrations
                     b.Navigation("UnitFeature");
                 });
 
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.FlightEntity", b =>
+                {
+                    b.HasOne("EBooking.EntityFramework.Entities.LocationEntity", "FromLocation")
+                        .WithMany()
+                        .HasForeignKey("FromLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EBooking.EntityFramework.Entities.LocationEntity", "ToLocation")
+                        .WithMany()
+                        .HasForeignKey("ToLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EBooking.EntityFramework.Entities.AdministratorEntity", "Administrator")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Administrator");
+
+                    b.Navigation("FromLocation");
+
+                    b.Navigation("ToLocation");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.FlightOnTripReservationEntity", b =>
+                {
+                    b.HasOne("EBooking.EntityFramework.Entities.FlightEntity", "Flight")
+                        .WithMany()
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EBooking.EntityFramework.Entities.TripReservationEntity", "TripReservation")
+                        .WithMany("Flights")
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
+
+                    b.Navigation("TripReservation");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
+                {
+                    b.HasOne("EBooking.EntityFramework.Entities.EmployeeEntity", "Employee")
+                        .WithMany("TripReservations")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AdministratorEntity", b =>
                 {
                     b.HasOne("EBooking.EntityFramework.Entities.UserEntity", null)
@@ -321,9 +479,26 @@ namespace EBooking.EntityFramework.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationEntity", b =>
+                {
+                    b.Navigation("AccommodationUnits");
+                });
+
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationUnitEntity", b =>
                 {
                     b.Navigation("Features");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
+                {
+                    b.Navigation("Flights");
+                });
+
+            modelBuilder.Entity("EBooking.EntityFramework.Entities.EmployeeEntity", b =>
+                {
+                    b.Navigation("TripReservations");
+
+                    b.Navigation("UnitReservations");
                 });
 #pragma warning restore 612, 618
         }

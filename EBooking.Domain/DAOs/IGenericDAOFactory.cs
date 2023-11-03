@@ -10,7 +10,11 @@ namespace EBooking.Domain.DAOs
     {
         public IUserDAO UserDao { get; }
         public ILocationDAO LocationDao { get; }
-        public IUnitFeatureDao UnitFeatureDao { get; }
+        public IUnitFeatureDAO UnitFeatureDao { get; }
+        public IAccommodationDAO AccommodationDao { get; }
+        public IFlightDAO FlightDao { get; }
+        public IUnitReservationDAO UnitReservationDao { get; }
+        public ITripReservationDAO TripReservationDao { get; }
         
     }
 }

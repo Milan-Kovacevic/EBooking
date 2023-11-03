@@ -17,16 +17,19 @@ namespace EBooking.WPF.Services
             _locationsStore = locationsStore;
         }
 
-        public Task AddLocation(Location location)
+        public Task AddLocation(string countryName, string cityName)
         {
+            var location = new Location() { Country = countryName, City = cityName };
             return _locationsStore.Insert(location);
         }
 
-        public Task UpdateLocation(Location location)
+        public Task UpdateLocation(int locationId, string countryName, string cityName)
         {
-            if (_locationsStore.Locations.Any(x => x.LocationId == location.LocationId))
-                return _locationsStore.Update(location);
-            return Task.CompletedTask;
+            if (!_locationsStore.Locations.Any(x => x.LocationId == locationId)) 
+                return Task.CompletedTask;
+            var location = new Location() { LocationId = locationId, Country = countryName, City = cityName };
+            return _locationsStore.Update(location);
+            
         }
 
         public Task DeleteLocation(int locationId)

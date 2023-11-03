@@ -65,7 +65,7 @@ namespace EBooking.WPF
             navigateToAccommodationsViewModel = new NavigationService(navigationStore, CreateAccommodationsViewModel);
             navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
-            dialogHostService = new DialogHostService();
+            dialogHostService = new DialogHostService(locationsStore);
         }
 
         private async void InitStores()

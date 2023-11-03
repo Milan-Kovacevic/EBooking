@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
+using EBooking.WPF.Dialogs.DialogViewModels;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -45,9 +46,14 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        public void AddAccommodation()
+        public async Task AddAccommodation()
         {
-
+            await _dialogHostService.ShowAddAccommodationDialog(AddAccommodationAction);
+        }
+        private async Task AddAccommodationAction(SubmitAccommodationViewModel accommodationVM)
+        {
+            _accommodations.Add(new AccommodationItemViewModel() { Name = accommodationVM.Name, Type = accommodationVM.Type.ToString(), Address = accommodationVM.Address, Location = accommodationVM.Location.ToString() });
+            _dialogHostService.CloseDialogHost();
         }
 
         [RelayCommand]

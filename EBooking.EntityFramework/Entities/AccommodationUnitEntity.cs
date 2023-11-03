@@ -30,6 +30,6 @@ namespace EBooking.EntityFramework.Entities
         [ForeignKey("Accommodation")]
         public int AccommodationId { get; set; }
         public AccommodationEntity Accommodation { get; set; }
-        public List<FeatureOnUnitEntity>  Features { get; set; }
+        public List<FeatureOnUnitEntity> Features { get; set; }
     }
 }

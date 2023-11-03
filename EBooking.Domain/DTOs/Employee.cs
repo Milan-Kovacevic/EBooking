@@ -10,5 +10,8 @@ namespace EBooking.Domain.DTOs
     {
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
+
+        public List<UnitReservation> UnitReservations { get; set; } = new();
+        public List<TripReservation> TripReservations { get; set; } = new();
     }
 }
