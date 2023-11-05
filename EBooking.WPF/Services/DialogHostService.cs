@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Dialogs;
-using EBooking.WPF.Dialogs.DialogViewModels;
 using EBooking.WPF.Stores;
 using EBooking.WPF.ViewModels;
 using MaterialDesignThemes.Wpf;
@@ -15,65 +14,81 @@ namespace EBooking.WPF.Services
     public class DialogHostService
     {
         private static readonly string DIALOG_HOST_ROOT_NAME = "RootDialog";
-        private readonly LocationsStore _locationsStore;
+        private readonly DialogNavigationService _navigateToExitApplicationDialogViewModel;
+        private readonly DialogNavigationService _navigateToLocationDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToLocationAddDialogViewModel;
+        private readonly DialogNavigationService _navigateToLocationEditDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitFeatureDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitFeatureAddDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitFeatureEditDialogViewModel;
+        private readonly DialogNavigationService _navigateToMultiDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToAccommodatioAddDialogViewModel;
 
-        public DialogHostService(LocationsStore locationsStore)
+        public DialogHostService(
+            DialogNavigationService navigateToExitApplicationDialogViewModel,
+            DialogNavigationService navigateToLocationDeleteDialogViewModel,
+            DialogNavigationService navigateToLocationAddDialogViewModel,
+            DialogNavigationService navigateToLocationEditDialogViewModel,
+            DialogNavigationService navigateToUnitFeatureDeleteDialogViewModel,
+            DialogNavigationService navigateToUnitFeatureAddDialogViewModel,
+            DialogNavigationService navigateToUnitFeatureEditDialogViewModel,
+            DialogNavigationService navigateToMultiDeleteDialogViewModel,
+            DialogNavigationService navigateToAccommodatioAddDialogViewModel)
         {
-            _locationsStore = locationsStore;
+            _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
+            _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
+            _navigateToLocationAddDialogViewModel = navigateToLocationAddDialogViewModel;
+            _navigateToLocationEditDialogViewModel = navigateToLocationEditDialogViewModel;
+            _navigateToUnitFeatureDeleteDialogViewModel = navigateToUnitFeatureDeleteDialogViewModel;
+            _navigateToUnitFeatureAddDialogViewModel = navigateToUnitFeatureAddDialogViewModel;
+            _navigateToUnitFeatureEditDialogViewModel = navigateToUnitFeatureEditDialogViewModel;
+            _navigateToMultiDeleteDialogViewModel = navigateToMultiDeleteDialogViewModel;
+            _navigateToAccommodatioAddDialogViewModel = navigateToAccommodatioAddDialogViewModel;
         }
 
-        public async Task ShowExitApplicationDialog()
+        public void OpenExitApplicationDialog()
         {
-            var dialogContent = new ConfirmExitDialog();
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToExitApplicationDialogViewModel.Navigate();
         }
 
-        public async Task ShowConfirmDeleteDialog(Func<Task> onDeleteAction)
+        public void OpenLocationDeleteDialog()
         {
-            var dialogContent = new ConfirmDeleteDialog();
-            dialogContent.OnYesCommand = new AsyncRelayCommand(onDeleteAction);
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToLocationDeleteDialogViewModel.Navigate();
         }
 
-        public async Task ShowAddLocationDialog(Func<SubmitLocationViewModel, Task> onLocationAddAction)
+        public void OpenLocationAddDialog()
         {
-            var dialogContent = new SubmitLocationDialog(onLocationAddAction);
-            dialogContent.DialogTitle.Text = "Create New Location";
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToLocationAddDialogViewModel.Navigate();
         }
 
-        public async Task ShowEditLocationDialog(Func<SubmitLocationViewModel, Task> onLocationEditAction, LocationItemViewModel viewModel)
+        public void OpenLocationEditDialog()
         {
-            var dialogContent = new SubmitLocationDialog(onLocationEditAction, viewModel);
-            dialogContent.DialogTitle.Text = "Edit Location";
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToLocationEditDialogViewModel.Navigate();
         }
 
-        public async Task ShowAddUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onFeatureAddAction)
+        public void OpenUnitFeatureDeleteDialog()
         {
-            var dialogContent = new SubmitUnitFeatureDialog(onFeatureAddAction);
-            dialogContent.DialogTitle.Text = "Create New Unit Feature";
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToUnitFeatureDeleteDialogViewModel.Navigate();
         }
 
-        public async Task ShowEditUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onFeatureEditAction, UnitFeatureItemViewModel viewModel)
+        public void OpenUnitFeatureAddDialog()
         {
-            var dialogContent = new SubmitUnitFeatureDialog(onFeatureEditAction, viewModel);
-            dialogContent.DialogTitle.Text = "Edit Unit Feature";
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToUnitFeatureAddDialogViewModel.Navigate();
         }
 
-        public async Task ShowAddAccommodationDialog(Func<SubmitAccommodationViewModel, Task> onAccommodationAddAction)
+        public void OpenUnitFeatureEditDialog()
         {
-            var dialogContent = new SubmitAccommodationDialog(_locationsStore, onAccommodationAddAction);
-            dialogContent.DialogTitle.Text = "Create New Accommodation";
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToUnitFeatureEditDialogViewModel.Navigate();
         }
 
-        public async Task ShowFilterAccommodationsDialog()
+        public void OpenConfirmMultiDeleteDialog()
         {
-            var dialogContent = new FilterAccommodationsDialog();
-            await DialogHost.Show(dialogContent, DIALOG_HOST_ROOT_NAME);
+            _navigateToMultiDeleteDialogViewModel.Navigate();
+        }
+
+        public void OpenAccommodationAddDialog()
+        {
+            _navigateToAccommodatioAddDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

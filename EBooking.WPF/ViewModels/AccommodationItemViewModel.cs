@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using EBooking.Domain.DTOs;
 using EBooking.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,39 @@ namespace EBooking.WPF.ViewModels
     public partial class AccommodationItemViewModel : ObservableObject
     {
         [ObservableProperty]
+        private int accommodationId;
+        [ObservableProperty]
         private string name;
         [ObservableProperty]
-        private string type;
-        partial void OnTypeChanged(string value)
+        private string typeText;
+        private AccommodationType? _type;
+        public AccommodationType? Type
         {
-            SetIsApartment(value);
+            get => _type;
+            set
+            {
+                _type = value;
+                if (value is not null)
+                {
+                    TypeText = $"{value.ToString()?.ToLowerInvariant()}";
+                    SetIsApartment(value);
+                }   
+            }
         }
+
         [ObservableProperty]
-        private string location;
+        private string locationText;
+        private Location? _location;
+        public Location? Location
+        {
+            get => _location;
+            set
+            {
+                _location = value;
+                if (value is not null)
+                    LocationText = $"{value.Country}, {value.City}";
+            }
+        }
         [ObservableProperty]
         private string address;
         [ObservableProperty]
@@ -30,18 +55,22 @@ namespace EBooking.WPF.ViewModels
         public AccommodationItemViewModel()
         {
             name = string.Empty;
-            type = string.Empty;
-            location = string.Empty;
+            typeText = string.Empty;
+            _type = null;
+            locationText = string.Empty;
+            _location = null;
             address = string.Empty;
             numOfUnits = 0;
-            SetIsApartment(type);
+            isApartment = false;
         }
 
-        private void SetIsApartment(string value)
+        private void SetIsApartment(AccommodationType? value)
         {
-            if (value.ToUpper() == AccommodationType.APARTMENT.ToString())
+            if (value is null)
+                IsApartment = false;
+            else if (value == AccommodationType.APARTMENT)
                 IsApartment = true;
-            else if (value.ToUpper() == AccommodationType.HOTEL.ToString())
+            else if (value == AccommodationType.HOTEL)
                 IsApartment = false;
             else
                 IsApartment = false;

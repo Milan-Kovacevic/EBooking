@@ -14,6 +14,7 @@ namespace EBooking.WPF.Stores
         private readonly List<UnitFeature> _unitFeatures;
 
         public IEnumerable<UnitFeature> UnitFeatures { get => _unitFeatures; }
+        public UnitFeature? SelectedUnitFeature { get; set; }
         public event Action? UnitFeatureLoaded;
         public event Action<UnitFeature>? UnitFeatureAdded;
         public event Action<UnitFeature>? UnitFeatureUpdated;

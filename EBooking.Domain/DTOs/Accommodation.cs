@@ -15,8 +15,10 @@ namespace EBooking.Domain.DTOs
         public required string Name { get; set; }
         public AccommodationType Type { get; set; }
         public required string Address { get; set; }
-        public required Location Location { get; set; }
-        public required Administrator Administrator { get; set; }
+        public int LocationId { get; set; }
+        public Location? Location { get; set; }
+        public int UserId { get; set; }
+        public Administrator? Administrator { get; set; }
         public List<AccommodationUnit> AccommodationUnits { get; set; } = new();
     }
 }

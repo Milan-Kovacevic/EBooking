@@ -1,11 +1,12 @@
-﻿<UserControl x:Class="EBooking.WPF.Dialogs.ConfirmExitDialog"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EBooking.WPF.Dialogs"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" >
+﻿<UserControl
+    x:Class="EBooking.WPF.Dialogs.Views.ConfirmDeleteDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Dialogs"
+    mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid
         Margin="20"
         Width="200"
@@ -17,22 +18,20 @@
         <TextBlock
             Margin="1"
             Grid.Row="0"
-            Text="Are you sure you want to exit application?"
-            TextWrapping="Wrap"
-            x:Name="Message" />
+            Text="{Binding MessageText, Mode=OneTime}"
+            TextWrapping="Wrap" />
         <StackPanel
             Grid.Row="1"
             Margin="0 24 0 0"
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button
-                x:Name="ConfirmExit"
                 HorizontalAlignment="Right"
-                Click="ConfirmExit_Click"
                 Margin="0 0 2 0"
                 IsDefault="True"
                 Content="YES"
-                Style="{StaticResource MaterialDesignFlatButton}"/>
+                Command="{Binding DeleteCommand}"
+                Style="{StaticResource MaterialDesignFlatButton}" />
             <Button
                 HorizontalAlignment="Right"
                 Content="NO"

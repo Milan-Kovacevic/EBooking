@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EBooking.WPF.Services;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,39 +9,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EBooking.WPF.Dialogs.DialogViewModels
+namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class SubmitUnitFeatureViewModel : ObservableValidator
+    public partial class UnitFeatureAddDialogViewModel : ObservableValidator, IViewModelBase
     {
-        public int FeatureId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string featureName;
 
+        private readonly UnitFeaturesService _unitFeatureService;
+        private readonly DialogHostService _dialogHostService;
         public IRelayCommand SubmitCommand { get; }
 
-        private readonly Func<SubmitUnitFeatureViewModel, Task> _onSubmitAction;
-
-        public SubmitUnitFeatureViewModel(Func<SubmitUnitFeatureViewModel, Task> onSubmitAction, UnitFeatureItemViewModel? vm = null)
+        public UnitFeatureAddDialogViewModel(UnitFeaturesService unitFeatureService, DialogHostService dialogHostService)
         {
-            _onSubmitAction = onSubmitAction;
+            _unitFeatureService = unitFeatureService;
+            _dialogHostService = dialogHostService;
 
-            featureName = vm?.Name ?? string.Empty;
-            FeatureId = vm?.FeatureId ?? 0;
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
+            featureName = string.Empty;
         }
 
         private bool CanSubmit()
         {
-            return FeatureName != string.Empty
-                && !HasErrors;
+            return FeatureName != string.Empty && !HasErrors;
         }
 
         private async Task Submit()
         {
-            await _onSubmitAction(this);
+            await _unitFeatureService.AddUnitFeature(FeatureName);
+            _dialogHostService.CloseDialogHost();
         }
     }
 }

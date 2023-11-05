@@ -2,8 +2,9 @@
 using AgileObjects.AgileMapper.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using EBooking.Domain.DTOs;
-using EBooking.WPF.Dialogs.DialogViewModels;
+using EBooking.WPF.Messages;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ using System.Windows.Data;
 
 namespace EBooking.WPF.ViewModels
 {
-    public partial class UnitFeaturesViewModel : ObservableObject, IViewModelBase
+    public partial class UnitFeaturesViewModel : ObservableObject, IViewModelBase, IRecipient<DeleteSelectedDialogResultMessage>
     {
         [ObservableProperty]
         private string searchText;
@@ -61,6 +62,7 @@ namespace EBooking.WPF.ViewModels
             _unitFeatures = new ObservableCollection<UnitFeatureItemViewModel>(unitFeaturesStore.UnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeatureItemViewModel>()));
             UnitFeatures = CollectionViewSource.GetDefaultView(_unitFeatures);
             UnitFeatures.Filter = FilterUnitFeatures;
+            WeakReferenceMessenger.Default.RegisterAll(this);
         }
 
         public void Dispose()
@@ -68,6 +70,7 @@ namespace EBooking.WPF.ViewModels
             _unitFeaturesStore.UnitFeatureAdded -= OnUnitFeatureAdded;
             _unitFeaturesStore.UnitFeatureUpdated -= OnUnitFeatureUpdated;
             _unitFeaturesStore.UnitFeatureDeleted -= OnUnitFeatureDeleted;
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
         #region Unit Features CRUD Commands
@@ -101,59 +104,49 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        public async Task AddUnitFeature()
+        public void AddUnitFeature()
         {
-            await _dialogHostService.ShowAddUnitFeatureDialog(AddUnitFeatureAction);
-        }
-        private async Task AddUnitFeatureAction(SubmitUnitFeatureViewModel featureVM)
-        {
-            await _unitFeaturesService.AddUnitFeature(new UnitFeature() { Name = featureVM.FeatureName });
-            _dialogHostService.CloseDialogHost();
+            _dialogHostService.OpenUnitFeatureAddDialog();
         }
 
         [RelayCommand]
-        public async Task DeleteUnitFeature(object param)
+        public void DeleteUnitFeature(object param)
         {
             if (param is not UnitFeatureItemViewModel vm)
                 return;
-            await _dialogHostService.ShowConfirmDeleteDialog(async () => await DeleteUnitFeatureAction(vm.FeatureId));
-        }
-        private async Task DeleteUnitFeatureAction(int id)
-        {
-            await _unitFeaturesService.DeleteUnitFeature(id);
-            _dialogHostService.CloseDialogHost();
+            _unitFeaturesService.SetSelectedUnitFeature(vm.FeatureId);
+            _dialogHostService.OpenUnitFeatureDeleteDialog();
         }
 
         [RelayCommand]
-        public async Task DeleteSelectedFeatures()
+        public void DeleteSelectedFeatures()
         {
-            await _dialogHostService.ShowConfirmDeleteDialog(async () =>
+            _dialogHostService.OpenConfirmMultiDeleteDialog();
+        }
+
+        public async void Receive(DeleteSelectedDialogResultMessage message)
+        {
+            if (message.DialogResult == false)
+                return;
+            List<Task> tasks = new List<Task>();
+            for (int i = _unitFeatures.Count - 1; i >= 0; i--)
             {
-                List<Task> tasks = new List<Task>();
-                for (int i = _unitFeatures.Count - 1; i >= 0; i--)
+                if (_unitFeatures[i].IsSelected)
                 {
-                    if (_unitFeatures[i].IsSelected)
-                    {
-                        tasks.Add(_unitFeaturesService.DeleteUnitFeature(_unitFeatures[i].FeatureId));
-                    }
+                    tasks.Add(_unitFeaturesService.DeleteUnitFeature(_unitFeatures[i].FeatureId));
                 }
-                await Task.WhenAll(tasks);
-                _dialogHostService.CloseDialogHost();
-                IsAllItemsSelected = false;
-            });
+            }
+            await Task.WhenAll(tasks);
+            IsAllItemsSelected = false;
         }
 
         [RelayCommand]
-        public async Task EditUnitFeature(object param)
+        public void EditUnitFeature(object param)
         {
             if (param is not UnitFeatureItemViewModel vm)
                 return;
-            await _dialogHostService.ShowEditUnitFeatureDialog(EditUnitFeatureAction, vm);
-        }
-        private async Task EditUnitFeatureAction(SubmitUnitFeatureViewModel featureVM)
-        {
-            await _unitFeaturesService.UpdateUnitFeature(new UnitFeature() { Name = featureVM.FeatureName, FeatureId = featureVM.FeatureId });
-            _dialogHostService.CloseDialogHost();
+            _unitFeaturesService.SetSelectedUnitFeature(vm.FeatureId);
+            _dialogHostService.OpenUnitFeatureEditDialog();
         }
 
         #endregion

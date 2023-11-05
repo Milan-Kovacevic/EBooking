@@ -38,5 +38,19 @@ namespace EBooking.WPF.Services
                 return _locationsStore.Delete(locationId);
             return Task.CompletedTask;
         }
+
+        public void SetSelectedLocation(int locationId)
+        {
+            var result = _locationsStore.Locations.FirstOrDefault(x => x.LocationId == locationId);
+            _locationsStore.SelectedLocation = result;
+        }
+        public Location? GetSelectedLocation()
+        {
+            return _locationsStore.SelectedLocation;
+        }
+        public void ClearSelectedLocation()
+        {
+            _locationsStore.SelectedLocation = null;
+        }
     }
 }

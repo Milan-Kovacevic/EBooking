@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using EBooking.Domain.DTOs;
+using EBooking.WPF.Services;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EBooking.WPF.Dialogs.DialogViewModels
+namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class SubmitLocationViewModel : ObservableValidator
+    public partial class LocationAddDialogViewModel : ObservableValidator, IViewModelBase
     {
-        public int LocationId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -25,16 +24,16 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
         [NotifyDataErrorInfo]
         private string cityName;
 
+        private readonly LocationsService _locationsService;
+        private readonly DialogHostService _dialogHostService;
         public IRelayCommand SubmitCommand { get; }
 
-        private readonly Func<SubmitLocationViewModel, Task> _onSubmitAction;
-        public SubmitLocationViewModel(Func<SubmitLocationViewModel, Task> onSubmitAction, LocationItemViewModel? vm = null)
+        public LocationAddDialogViewModel(LocationsService locationsService, DialogHostService dialogHostService)
         {
-            _onSubmitAction = onSubmitAction;
-
-            countryName = vm?.Country ?? string.Empty;
-            cityName = vm?.City ?? string.Empty;
-            LocationId = vm?.LocationId ?? 0;
+            _locationsService = locationsService;
+            _dialogHostService = dialogHostService;
+            countryName = string.Empty;
+            cityName = string.Empty;
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 
@@ -47,7 +46,8 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         private async Task Submit()
         {
-            await _onSubmitAction(this);
+            await _locationsService.AddLocation(CountryName, CityName);
+            _dialogHostService.CloseDialogHost();
         }
     }
 }

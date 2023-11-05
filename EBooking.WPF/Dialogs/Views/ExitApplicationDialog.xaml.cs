@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for ConfirmExitDialog.xaml
+    /// Interaction logic for ExitApplicationDialog.xaml
     /// </summary>
-    public partial class ConfirmExitDialog : UserControl
+    public partial class ExitApplicationDialog : UserControl
     {
-        public ConfirmExitDialog()
+        public ExitApplicationDialog()
         {
             InitializeComponent();
-        }
-
-        private void ConfirmExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

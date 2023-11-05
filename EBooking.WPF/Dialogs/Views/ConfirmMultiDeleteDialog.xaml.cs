@@ -1,5 +1,6 @@
-﻿using EBooking.WPF.Dialogs.DialogViewModels;
-using EBooking.WPF.ViewModels;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using EBooking.WPF.Messages;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for SubmitUnitFeatureDialog.xaml
+    /// Interaction logic for ConfirmMultiDeleteDialog.xaml
     /// </summary>
-    public partial class SubmitUnitFeatureDialog : UserControl
+    public partial class ConfirmMultiDeleteDialog : UserControl
     {
-        public SubmitUnitFeatureDialog(Func<SubmitUnitFeatureViewModel, Task> onSubmitAction, UnitFeatureItemViewModel? vm = null)
+        public ConfirmMultiDeleteDialog()
         {
             InitializeComponent();
-            DataContext = new SubmitUnitFeatureViewModel(onSubmitAction, vm);
         }
     }
 }

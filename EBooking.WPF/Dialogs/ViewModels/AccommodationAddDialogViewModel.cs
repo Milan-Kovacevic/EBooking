@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
 using EBooking.Domain.Enums;
+using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,11 +13,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EBooking.WPF.Dialogs.DialogViewModels
+namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class SubmitAccommodationViewModel : ObservableValidator
+    public partial class AccommodationAddDialogViewModel : ObservableValidator, IViewModelBase
     {
-        public int AccommodationId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -55,13 +56,18 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
         public IEnumerable<AccommodationTypeModel> AccommodationTypes { get; }
         public IEnumerable<LocationModel> Locations { get; }
 
-        private readonly Func<SubmitAccommodationViewModel, Task> _onSubmitAction;
         private readonly LocationsStore _locationsStore;
+        private readonly UserStore _userStore;
+        private readonly AccommodationService _accommodationService;
+        private readonly DialogHostService _dialogHostService;
 
-        public SubmitAccommodationViewModel(LocationsStore locationsStore, Func<SubmitAccommodationViewModel, Task> onSubmitAction)
+        public AccommodationAddDialogViewModel(LocationsStore locationsStore, UserStore userStore, AccommodationService accommodationService, DialogHostService dialogHostService)
         {
             _locationsStore = locationsStore;
-            _onSubmitAction = onSubmitAction;
+            _userStore = userStore;
+            _accommodationService = accommodationService;
+            _dialogHostService = dialogHostService;
+
             Locations = _locationsStore.Locations.Select(x => Mapper.Map(x).ToANew<LocationModel>());
             AccommodationTypes = new List<AccommodationTypeModel>()
             {
@@ -74,6 +80,7 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
             type = null;
             location = null;
             address = string.Empty;
+
         }
 
         private bool CanSubmit()
@@ -87,7 +94,15 @@ namespace EBooking.WPF.Dialogs.DialogViewModels
 
         private async Task Submit()
         {
-            await _onSubmitAction(this);
+            await _accommodationService.AddAccommodation(new Accommodation()
+            {
+                Name = Name,
+                Type = Type.Type,
+                Address = Address,
+                LocationId = Location.LocationId,
+                UserId = _userStore.CurrentUser?.UserId ?? 0
+            });
+            _dialogHostService.CloseDialogHost();
         }
     }
 }

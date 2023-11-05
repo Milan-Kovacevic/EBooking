@@ -1,5 +1,6 @@
 ﻿using EBooking.Domain.DAOs;
 using EBooking.EntityFramework.DataAccess;
+using EBooking.WPF.Dialogs.ViewModels;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using EBooking.WPF.ViewModels;
@@ -20,17 +21,21 @@ namespace EBooking.WPF
     public partial class App : Application
     {
         private readonly NavigationStore navigationStore;
+        private readonly DialogNavigationStore dialogNavigationStore;
         private readonly MessageQueueStore messageQueueStore;
         private readonly SettingsStore settingsStore;
         private readonly UserStore userStore;
         private readonly LocationsStore locationsStore;
         private readonly UnitFeaturesStore unitFeaturesStore;
+        private readonly AccommodationStore accommodationStore;
 
         private readonly UserService userService;
         private readonly LocationsService locationsService;
         private readonly UnitFeaturesService unitFeaturesService;
+        private readonly AccommodationService accommodationService;
         private readonly SettingsService settingsService;
         private readonly MessageQueueService messageQueueService;
+
         private readonly NavigationService navigateToLoginViewModel;
         private readonly NavigationService navigateToRegisterViewModel;
         private readonly NavigationService navigateToSettingsViewModel;
@@ -39,6 +44,15 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToFlightsViewModel;
         private readonly NavigationService navigateToCodebookViewModel;
         private readonly DialogHostService dialogHostService;
+        private readonly DialogNavigationService navigateToExitApplicationDialogViewModel;
+        private readonly DialogNavigationService navigateToLocationDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToLocationAddDialogViewModel;
+        private readonly DialogNavigationService navigateToLocationEditDialogViewModel;
+        private readonly DialogNavigationService navigateToUnitFeatureDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToUnitFeatureAddDialogViewModel;
+        private readonly DialogNavigationService navigateToUnitFeatureEditDialogViewModel;
+        private readonly DialogNavigationService navigateToMultiDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToAccommodationAddDialogViewModel;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -48,15 +62,18 @@ namespace EBooking.WPF
             settingsService = new SettingsService(settingsStore);
             _connectionString = settingsService.LoadConnectionString() ?? "";
             daoFactory = new SQLiteDAOFactory(_connectionString);
-           
+
             navigationStore = new NavigationStore();
+            dialogNavigationStore = new DialogNavigationStore();
             userStore = new UserStore(daoFactory.UserDao);
             locationsStore = new LocationsStore(daoFactory.LocationDao);
             unitFeaturesStore = new UnitFeaturesStore(daoFactory.UnitFeatureDao);
+            accommodationStore = new AccommodationStore(daoFactory.AccommodationDao);
             messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
             userService = new UserService(userStore);
             locationsService = new LocationsService(locationsStore);
             unitFeaturesService = new UnitFeaturesService(unitFeaturesStore);
+            accommodationService = new AccommodationService(accommodationStore);
             messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
@@ -65,7 +82,16 @@ namespace EBooking.WPF
             navigateToAccommodationsViewModel = new NavigationService(navigationStore, CreateAccommodationsViewModel);
             navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
-            dialogHostService = new DialogHostService(locationsStore);
+            navigateToExitApplicationDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateExitApplicationDialogViewModel);
+            navigateToLocationDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateLocationDeleteDialogViewModel);
+            navigateToLocationAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateLocationAddDialogViewModel);
+            navigateToLocationEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateLocationEditDialogViewModel);
+            navigateToUnitFeatureDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitFeatureDeleteDialogViewModel);
+            navigateToUnitFeatureAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitFeatureAddDialogViewModel);
+            navigateToUnitFeatureEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitFeatureEditDialogViewModel);
+            navigateToMultiDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateMultiDeleteDialogViewModel);
+            navigateToAccommodationAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateAccommodationAddDialogViewModel);
+            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel);
         }
 
         private async void InitStores()
@@ -74,6 +100,7 @@ namespace EBooking.WPF
             await userStore.Load();
             await locationsStore.Load();
             await unitFeaturesStore.Load();
+            await accommodationStore.Load();
         }
 
 
@@ -93,8 +120,8 @@ namespace EBooking.WPF
             messageQueueService.Enqueue("Welcome back!");
         }
 
-
         // TODO: ADD DEPENDENCY INJECTION
+        #region ViewModels Instantiation
         private MenuViewModel CreateMenuViewModel()
         {
             return new MenuViewModel(userStore, navigateToSettingsViewModel, navigateToLoginViewModel, navigateToRegisterViewModel, navigateToCodebookViewModel, navigateToAccommodationsViewModel, navigateToFlightsViewModel);
@@ -107,7 +134,7 @@ namespace EBooking.WPF
 
         private MainViewModel CreateMainViewModel()
         {
-            return new MainViewModel(messageQueueStore, navigationStore, userStore, userService, settingsService, CreateMenuViewModel(), navigateToLandingViewModel, dialogHostService);
+            return new MainViewModel(messageQueueStore, navigationStore, dialogNavigationStore, userStore, userService, settingsService, CreateMenuViewModel(), navigateToLandingViewModel, dialogHostService);
         }
 
         private LoginViewModel CreateLoginViewModel()
@@ -127,7 +154,7 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel(dialogHostService, userStore);
+            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore);
         }
 
         private FlightsViewModel CreateFlightsViewModel()
@@ -149,6 +176,44 @@ namespace EBooking.WPF
         {
             return new UnitFeaturesViewModel(unitFeaturesStore, unitFeaturesService, dialogHostService);
         }
-
+        #endregion
+        #region DialogViewModels Instantiation
+        public ExitApplicationDialogViewModel CreateExitApplicationDialogViewModel()
+        {
+            return new ExitApplicationDialogViewModel(dialogHostService);
+        }
+        public LocationAddDialogViewModel CreateLocationAddDialogViewModel()
+        {
+            return new LocationAddDialogViewModel(locationsService, dialogHostService);
+        }
+        public LocationDeleteDialogViewModel CreateLocationDeleteDialogViewModel()
+        {
+            return new LocationDeleteDialogViewModel(locationsService, dialogHostService);
+        }
+        public LocationEditDialogViewModel CreateLocationEditDialogViewModel()
+        {
+            return new LocationEditDialogViewModel(locationsService, dialogHostService);
+        }
+        public UnitFeatureDeleteDialogViewModel CreateUnitFeatureDeleteDialogViewModel()
+        {
+            return new UnitFeatureDeleteDialogViewModel(unitFeaturesService, dialogHostService);
+        }
+        public UnitFeatureAddDialogViewModel CreateUnitFeatureAddDialogViewModel()
+        {
+            return new UnitFeatureAddDialogViewModel(unitFeaturesService, dialogHostService);
+        }
+        public UnitFeatureEditDialogViewModel CreateUnitFeatureEditDialogViewModel()
+        {
+            return new UnitFeatureEditDialogViewModel(unitFeaturesService, dialogHostService);
+        }
+        public MultiDeleteDialogViewModel CreateMultiDeleteDialogViewModel()
+        {
+            return new MultiDeleteDialogViewModel(dialogHostService);
+        }
+        public AccommodationAddDialogViewModel CreateAccommodationAddDialogViewModel()
+        {
+            return new AccommodationAddDialogViewModel(locationsStore, userStore, accommodationService, dialogHostService);
+        }
+        #endregion
     }
 }

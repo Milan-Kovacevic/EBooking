@@ -17,14 +17,16 @@ namespace EBooking.WPF.Services
             _unitFeaturesStore = unitFeaturesStore;
         }
 
-        public Task AddUnitFeature(UnitFeature feature)
+        public Task AddUnitFeature(string name)
         {
+            var feature = new UnitFeature() { Name = name };
             return _unitFeaturesStore.Insert(feature);
         }
 
-        public Task UpdateUnitFeature(UnitFeature feature)
+        public Task UpdateUnitFeature(int featureId, string name)
         {
-            if (_unitFeaturesStore.UnitFeatures.Any(x => x.FeatureId == feature.FeatureId))
+            var feature = new UnitFeature() { FeatureId = featureId, Name = name };
+            if (_unitFeaturesStore.UnitFeatures.Any(x => x.FeatureId == featureId))
                 return _unitFeaturesStore.Update(feature);
             return Task.CompletedTask;
         }
@@ -34,6 +36,20 @@ namespace EBooking.WPF.Services
             if (_unitFeaturesStore.UnitFeatures.Any(x => x.FeatureId == featureId))
                 return _unitFeaturesStore.Delete(featureId);
             return Task.CompletedTask;
+        }
+
+        public void SetSelectedUnitFeature(int featureId)
+        {
+            var result = _unitFeaturesStore.UnitFeatures.FirstOrDefault(x => x.FeatureId == featureId);
+            _unitFeaturesStore.SelectedUnitFeature = result;
+        }
+        public UnitFeature? GetSelectedUnitFeature()
+        {
+            return _unitFeaturesStore.SelectedUnitFeature;
+        }
+        public void ClearSelectedUnitFeature()
+        {
+            _unitFeaturesStore.SelectedUnitFeature = null;
         }
     }
 }

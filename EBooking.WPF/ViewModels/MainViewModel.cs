@@ -17,6 +17,7 @@ namespace EBooking.WPF.ViewModels
     public partial class MainViewModel : ObservableObject, IViewModelBase
     {
         private readonly NavigationStore _navigationStore;
+        private readonly DialogNavigationStore _dialogNavigationStore;
         private readonly UserStore _userStore;
         private readonly SettingsService _settingsService;
         private readonly UserService _userService;
@@ -34,27 +35,36 @@ namespace EBooking.WPF.ViewModels
         [ObservableProperty]
         private IViewModelBase currentViewModel;
         [ObservableProperty]
+        private IViewModelBase? currentDialogViewModel;
+        [ObservableProperty]
+        private bool isDialogOpen;
+        [ObservableProperty]
         private bool isLogoutEnabled;
 
         public ISnackbarMessageQueue MainMessageQueue { get; }
 
         public MenuViewModel MenuBinding { get; set; }
 
-        public MainViewModel(MessageQueueStore messageQueueStore, NavigationStore navigationStore, UserStore userStore, UserService userService, SettingsService settingsService, MenuViewModel menuViewModel, NavigationService navigateToLandingViewModel, DialogHostService dialogHostService)
+        public MainViewModel(MessageQueueStore messageQueueStore, NavigationStore navigationStore, DialogNavigationStore dialogNavigationStore, UserStore userStore, UserService userService, SettingsService settingsService, MenuViewModel menuViewModel, NavigationService navigateToLandingViewModel, DialogHostService dialogHostService)
         {
             _navigationStore = navigationStore;
+            _dialogNavigationStore = dialogNavigationStore;
             _userStore = userStore;
             _userService = userService;
             _settingsService = settingsService;
             _dialogHostService = dialogHostService;
             _navigateToLandingViewModel = navigateToLandingViewModel;
-            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChangedAction;
+
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChangedAction;
+            _dialogNavigationStore.CurrentDialogViewModelChanged += OnCurrentDialogViewModelChangedAction;
             currentViewModel = _navigationStore.CurrentViewModel;
+            currentDialogViewModel = _dialogNavigationStore.CurrentDialogViewModel;
             settingsService.ApplyCurrentSettings();
             MenuBinding = menuViewModel;
             isDarkMode = settingsService.IsDarkThemeSet();
             isLogoutEnabled = false;
+            isDialogOpen = false;
             MainMessageQueue = messageQueueStore.SnackbarMessageQueue;
         }
 
@@ -62,6 +72,13 @@ namespace EBooking.WPF.ViewModels
         {
             CurrentViewModel = _navigationStore.CurrentViewModel;
             MenuBinding.CurrentViewModelKey = CurrentViewModel.GetId();
+        }
+
+        private void OnCurrentDialogViewModelChangedAction()
+        {
+            CurrentDialogViewModel = _dialogNavigationStore.CurrentDialogViewModel;
+            if (CurrentDialogViewModel is not null)
+                IsDialogOpen = true;
         }
 
         private void OnCurrentUserChanged()
@@ -73,9 +90,9 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        public async Task ExitApplication()
+        public void ExitApplication()
         {
-            await _dialogHostService.ShowExitApplicationDialog();
+            _dialogHostService.OpenExitApplicationDialog();
         }
 
         [RelayCommand]
@@ -97,6 +114,7 @@ namespace EBooking.WPF.ViewModels
             CurrentViewModel?.Dispose();
             MenuBinding?.Dispose();
             _navigationStore.CurrentViewModelChanged -= OnCurrentViewModelChangedAction;
+            _dialogNavigationStore.CurrentDialogViewModelChanged -= OnCurrentDialogViewModelChangedAction;
             _userStore.CurrentUserChanged -= OnCurrentUserChanged;
         }
     }

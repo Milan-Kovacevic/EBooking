@@ -14,6 +14,7 @@ namespace EBooking.WPF.Stores
         private readonly List<Location> _locations;
 
         public IEnumerable<Location> Locations { get => _locations; }
+        public Location? SelectedLocation { get; set; }
         public event Action? LocationLoaded;
         public event Action<Location>? LocationAdded;
         public event Action<Location>? LocationUpdated;

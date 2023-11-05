@@ -2,13 +2,15 @@
 using AgileObjects.AgileMapper.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using EBooking.Domain.DTOs;
-using EBooking.WPF.Dialogs.DialogViewModels;
+using EBooking.WPF.Messages;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
@@ -16,7 +18,7 @@ using System.Windows.Input;
 
 namespace EBooking.WPF.ViewModels
 {
-    public partial class LocationsViewModel : ObservableObject, IViewModelBase
+    public partial class LocationsViewModel : ObservableObject, IViewModelBase, IRecipient<DeleteSelectedDialogResultMessage>
     {
         [ObservableProperty]
         private string searchText;
@@ -64,6 +66,7 @@ namespace EBooking.WPF.ViewModels
             _locations = new ObservableCollection<LocationItemViewModel>(locationsStore.Locations.Select(x => Mapper.Map(x).ToANew<LocationItemViewModel>()));
             Locations = CollectionViewSource.GetDefaultView(_locations);
             Locations.Filter = FilterLocations;
+            WeakReferenceMessenger.Default.RegisterAll(this);
         }
 
         public void Dispose()
@@ -71,10 +74,10 @@ namespace EBooking.WPF.ViewModels
             _locationsStore.LocationAdded -= OnLocationAdded;
             _locationsStore.LocationUpdated -= OnLocationUpdated;
             _locationsStore.LocationDeleted -= OnLocationDeleted;
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
         #region Locations CRUD Commands
-
         private void OnLocationAdded(Location location)
         {
             _locations.Add(Mapper.Map(location).ToANew<LocationItemViewModel>());
@@ -104,61 +107,49 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        public async Task AddLocation()
+        public void AddLocation()
         {
-            await _dialogHostService.ShowAddLocationDialog(AddLocationAction);
-        }
-        private async Task AddLocationAction(SubmitLocationViewModel locationVM)
-        {
-            await _locationsService.AddLocation(locationVM.CountryName, locationVM.CityName);
-            _dialogHostService.CloseDialogHost();
+            _dialogHostService.OpenLocationAddDialog();
         }
 
         [RelayCommand]
-        public async Task DeleteLocation(object param)
+        public void DeleteLocation(object param)
         {
             if (param is not LocationItemViewModel vm)
                 return;
-
-            await _dialogHostService.ShowConfirmDeleteDialog(async () => await DeleteLocationAction(vm.LocationId));
-        }
-        private async Task DeleteLocationAction(int id)
-        {
-            await _locationsService.DeleteLocation(id);
-            _dialogHostService.CloseDialogHost();
+            _locationsService.SetSelectedLocation(vm.LocationId);
+            _dialogHostService.OpenLocationDeleteDialog();
         }
 
         [RelayCommand]
-        public async Task DeleteSelectedLocations()
+        public void DeleteSelectedLocations()
         {
-            await _dialogHostService.ShowConfirmDeleteDialog(async () =>
+            _dialogHostService.OpenConfirmMultiDeleteDialog();
+        }
+
+        public async void Receive(DeleteSelectedDialogResultMessage message)
+        {
+            if (message.DialogResult == false)
+                return;
+            List<Task> tasks = new List<Task>();
+            for (int i = _locations.Count - 1; i >= 0; i--)
             {
-                List<Task> tasks = new List<Task>();
-                for (int i = _locations.Count - 1; i >= 0; i--)
+                if (_locations[i].IsSelected)
                 {
-                    if (_locations[i].IsSelected)
-                    {
-                        tasks.Add(_locationsService.DeleteLocation(_locations[i].LocationId));
-                    }
+                    tasks.Add(_locationsService.DeleteLocation(_locations[i].LocationId));
                 }
-                await Task.WhenAll(tasks);
-                _dialogHostService.CloseDialogHost();
-                IsAllItemsSelected = false;
-            });
+            }
+            await Task.WhenAll(tasks);
+            IsAllItemsSelected = false;
         }
 
         [RelayCommand]
-        public async Task EditLocation(object param)
+        public void EditLocation(object param)
         {
             if (param is not LocationItemViewModel vm)
                 return;
-
-            await _dialogHostService.ShowEditLocationDialog(UpdateLocationAction, vm);
-        }
-        private async Task UpdateLocationAction(SubmitLocationViewModel locationVM)
-        {
-            await _locationsService.UpdateLocation(locationVM.LocationId, locationVM.CountryName, locationVM.CityName);
-            _dialogHostService.CloseDialogHost();
+            _locationsService.SetSelectedLocation(vm.LocationId);
+            _dialogHostService.OpenLocationEditDialog();
         }
 
         #endregion
@@ -183,6 +174,7 @@ namespace EBooking.WPF.ViewModels
                 }
             }
         }
+
         #endregion
     }
 }

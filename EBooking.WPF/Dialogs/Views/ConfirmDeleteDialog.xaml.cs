@@ -13,27 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
     /// Interaction logic for ConfirmDeleteDialog.xaml
     /// </summary>
     public partial class ConfirmDeleteDialog : UserControl
     {
-        public ICommand OnYesCommand
-        {
-            get { return (ICommand)GetValue(OnYesCommandProperty); }
-            set { SetValue(OnYesCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty OnYesCommandProperty =
-            DependencyProperty.Register("OnYesCommand", typeof(ICommand), typeof(ConfirmDeleteDialog), new PropertyMetadata(null));
-
-
         public ConfirmDeleteDialog()
         {
             InitializeComponent();
-            DataContext = this;
         }
     }
 }

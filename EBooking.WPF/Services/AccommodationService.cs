@@ -22,14 +22,14 @@ namespace EBooking.WPF.Services
             return _accommodationStore.Insert(accommodation);
         }
 
-        public Task UpdateLocation(Accommodation accommodation)
+        public Task UpdateAccommodation(Accommodation accommodation)
         {
             if (_accommodationStore.Accommodations.Any(x => x.AccommodationId == accommodation.AccommodationId))
                 return _accommodationStore.Update(accommodation);
             return Task.CompletedTask;
         }
 
-        public Task DeleteLocation(int accommodationId)
+        public Task DeleteAccommodation(int accommodationId)
         {
             if (_accommodationStore.Accommodations.Any(x => x.AccommodationId == accommodationId))
                 return _accommodationStore.Delete(accommodationId);

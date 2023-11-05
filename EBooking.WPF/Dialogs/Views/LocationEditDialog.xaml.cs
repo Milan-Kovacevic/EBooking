@@ -1,5 +1,5 @@
-﻿using EBooking.WPF.Dialogs.DialogViewModels;
-using EBooking.WPF.Stores;
+﻿using EBooking.Domain.DTOs;
+using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +15,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for SubmitAccommodationDialog.xaml
+    /// Interaction logic for LocationEditDialog.xaml
     /// </summary>
-    public partial class SubmitAccommodationDialog : UserControl
+    public partial class LocationEditDialog : UserControl
     {
-        public SubmitAccommodationDialog(LocationsStore locationsStore, Func<SubmitAccommodationViewModel, Task> onSubmitAction)
+        public LocationEditDialog()
         {
             InitializeComponent();
-            DataContext = new SubmitAccommodationViewModel(locationsStore, onSubmitAction);
         }
     }
 }

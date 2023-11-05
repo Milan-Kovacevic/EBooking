@@ -266,7 +266,7 @@
                                                             Foreground="{DynamicResource SecondaryHueMidBrush}"
                                                             FontWeight="Medium"
                                                             VerticalAlignment="Center"
-                                                            Text="{Binding Type}"
+                                                            Text="{Binding TypeText}"
                                                             FontSize="14" />
                                                     </StackPanel>
                                                 </StackPanel>
@@ -296,7 +296,7 @@
                                                         Margin="0 4 0 8"
                                                         FontSize="14"
                                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                        Text="{Binding Location}"
+                                                        Text="{Binding LocationText}"
                                                         TextWrapping="Wrap" />
                                                     <StackPanel
                                                         Orientation="Horizontal">

@@ -1,7 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AgileObjects.AgileMapper;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
-using EBooking.WPF.Dialogs.DialogViewModels;
+using EBooking.Domain.Enums;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -34,6 +35,51 @@ namespace EBooking.WPF.ViewModels
         [ObservableProperty]
         private bool isAdmin;
 
+        private readonly AccommodationStore _accommodationStore;
+        private readonly AccommodationService _accommodationService;
+        private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
+
+        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore)
+        {
+            _accommodationStore = accommodationStore;
+            _accommodationService = accommodationService;
+            _dialogHostService = dialogHostService;
+            _userStore = userStore;
+            _accommodationStore.AccommodationAdded += OnAccommodationAdded;
+            _accommodationStore.AccommodationUpdated += OnAccommodationUpdated;
+            _accommodationStore.AccommodationDeleted += OnAccommodationDeleted;
+
+            searchText = string.Empty;
+            isFilterSelected = false;
+            isAdmin = userStore.IsAdmin;
+            _accommodations = new ObservableCollection<AccommodationItemViewModel>(accommodationStore.Accommodations.Select(x => Mapper.Map(x).ToANew<AccommodationItemViewModel>()));
+            Accommodations = CollectionViewSource.GetDefaultView(_accommodations);
+            Accommodations.Filter = FilterAccommodations;
+        }
+
+        public void Dispose()
+        {
+            _accommodationStore.AccommodationAdded -= OnAccommodationAdded;
+            _accommodationStore.AccommodationUpdated -= OnAccommodationUpdated;
+            _accommodationStore.AccommodationDeleted -= OnAccommodationDeleted;
+        }
+
+        #region Accommodations CRUD Commands
+        private void OnAccommodationAdded(Accommodation accommodation)
+        {
+            _accommodations.Add(Mapper.Map(accommodation).ToANew<AccommodationItemViewModel>());
+        }
+
+        private void OnAccommodationUpdated(Accommodation accommodation)
+        {
+            throw new NotImplementedException();
+        }
+        private void OnAccommodationDeleted(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
         [RelayCommand]
         public void SearchAccommodations()
         {
@@ -46,43 +92,17 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
-        public async Task AddAccommodation()
+        public void AddAccommodation()
         {
-            await _dialogHostService.ShowAddAccommodationDialog(AddAccommodationAction);
-        }
-        private async Task AddAccommodationAction(SubmitAccommodationViewModel accommodationVM)
-        {
-            _accommodations.Add(new AccommodationItemViewModel() { Name = accommodationVM.Name, Type = accommodationVM.Type.ToString(), Address = accommodationVM.Address, Location = accommodationVM.Location.ToString() });
-            _dialogHostService.CloseDialogHost();
+            _dialogHostService.OpenAccommodationAddDialog();
         }
 
         [RelayCommand]
         public async Task FilterAccommodations()
         {
-            await _dialogHostService.ShowFilterAccommodationsDialog();
+            await Task.Delay(200);
         }
-
-        private readonly DialogHostService _dialogHostService;
-        private readonly UserStore _userStore;
-
-        public AccommodationsViewModel(DialogHostService dialogHostService, UserStore userStore)
-        {
-            _dialogHostService = dialogHostService;
-            _userStore = userStore;
-            searchText = string.Empty;
-            isFilterSelected = false;
-            isAdmin = userStore.IsAdmin;
-            _accommodations = new ObservableCollection<AccommodationItemViewModel>()
-            {
-                new AccommodationItemViewModel() {Name="Apartment1", Type = "Apartment", Address = "Address template 1", Location = "Serbia, Belgrade", NumOfUnits = 2},
-                new AccommodationItemViewModel() {Name="Apartment2, Apartment3", Type = "Apartment", Address = "Address template 19", Location = "Serbia, Belgrade", NumOfUnits = 0},
-                new AccommodationItemViewModel() {Name="Long name hotel1", Type = "Hotel", Address = "Address test 2", Location = "Serbia, Novi Sad", NumOfUnits = 3},
-                new AccommodationItemViewModel() {Name="Apartment4", Type = "Apartment", Address = "Address template 3, address template 3...", Location = "Serbia, Novi Sad", NumOfUnits = 1},
-                new AccommodationItemViewModel() {Name="Hotel name2", Type = "Hotel", Address = "Address test 3", Location = "Bosnia and Herzegovina, Banja Luka", NumOfUnits = 3},
-            };
-            Accommodations = CollectionViewSource.GetDefaultView(_accommodations);
-            Accommodations.Filter = FilterAccommodations;
-        }
+        #endregion
 
         private bool FilterAccommodations(object obj)
         {

@@ -8,7 +8,9 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:EBooking.WPF"
     xmlns:views="clr-namespace:EBooking.WPF.Views"
+    xmlns:dialogViews="clr-namespace:EBooking.WPF.Dialogs.Views"
     xmlns:vms="clr-namespace:EBooking.WPF.ViewModels"
+    xmlns:dialogVms="clr-namespace:EBooking.WPF.Dialogs.ViewModels"
     mc:Ignorable="d"
     Title="EBooking"
     WindowStartupLocation="CenterScreen"
@@ -52,6 +54,44 @@
             <views:FlightsView />
         </DataTemplate>
 
+        <DataTemplate
+            DataType="{x:Type dialogVms:ExitApplicationDialogViewModel}">
+            <dialogViews:ExitApplicationDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:LocationDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:LocationAddDialogViewModel}">
+            <dialogViews:LocationAddDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:LocationEditDialogViewModel}">
+            <dialogViews:LocationEditDialog />
+        </DataTemplate>
+
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitFeatureDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitFeatureAddDialogViewModel}">
+            <dialogViews:UnitFeatureAddDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitFeatureEditDialogViewModel}">
+            <dialogViews:UnitFeatureEditDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:MultiDeleteDialogViewModel}">
+            <dialogViews:ConfirmMultiDeleteDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationAddDialogViewModel}">
+            <dialogViews:AccommodationAddDialog />
+        </DataTemplate>
+
         <Style
             x:Key="DisabledMenuItemStyle"
             BasedOn="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
@@ -73,7 +113,16 @@
     <materialDesign:DialogHost
         DialogTheme="Inherit"
         Identifier="RootDialog"
+        IsOpen="{Binding IsDialogOpen}"
+        CloseOnClickAway="False"
         SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <materialDesign:DialogHost.DialogContent>
+            <ContentControl
+                Margin="0"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Content="{Binding CurrentDialogViewModel, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}" />
+        </materialDesign:DialogHost.DialogContent>
         <materialDesign:DrawerHost
             IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
@@ -208,6 +257,7 @@
                                         Text="Light" />
                                     <ToggleButton
                                         Grid.Column="1"
+                                        Cursor="Hand"
                                         IsChecked="{Binding IsDarkMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         HorizontalAlignment="Center" />
                                     <TextBlock
