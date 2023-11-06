@@ -50,6 +50,10 @@
             <views:AccommodationsView />
         </DataTemplate>
         <DataTemplate
+            DataType="{x:Type vms:AccommodationUnitsViewModel}">
+            <views:AccommodationUnitsView />
+        </DataTemplate>
+        <DataTemplate
             DataType="{x:Type vms:FlightsViewModel}">
             <views:FlightsView />
         </DataTemplate>
@@ -88,8 +92,16 @@
             <dialogViews:ConfirmMultiDeleteDialog />
         </DataTemplate>
         <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
+        <DataTemplate
             DataType="{x:Type dialogVms:AccommodationAddDialogViewModel}">
-            <dialogViews:AccommodationAddDialog />
+            <dialogViews:AccommodationSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationEditDialogViewModel}">
+            <dialogViews:AccommodationSubmitDialog />
         </DataTemplate>
 
         <Style

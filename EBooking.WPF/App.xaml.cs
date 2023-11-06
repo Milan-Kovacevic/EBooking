@@ -41,6 +41,7 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly NavigationService navigateToLandingViewModel;
         private readonly NavigationService navigateToAccommodationsViewModel;
+        private readonly NavigationService navigateToAccommodationUnitsViewModel;
         private readonly NavigationService navigateToFlightsViewModel;
         private readonly NavigationService navigateToCodebookViewModel;
         private readonly DialogHostService dialogHostService;
@@ -52,7 +53,9 @@ namespace EBooking.WPF
         private readonly DialogNavigationService navigateToUnitFeatureAddDialogViewModel;
         private readonly DialogNavigationService navigateToUnitFeatureEditDialogViewModel;
         private readonly DialogNavigationService navigateToMultiDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToAccommodationDeleteDialogViewModel;
         private readonly DialogNavigationService navigateToAccommodationAddDialogViewModel;
+        private readonly DialogNavigationService navigateToAccommodationEditDialogViewModel;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -80,6 +83,7 @@ namespace EBooking.WPF
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
             navigateToAccommodationsViewModel = new NavigationService(navigationStore, CreateAccommodationsViewModel);
+            navigateToAccommodationUnitsViewModel = new NavigationService(navigationStore, CreateAccommodationUnitsViewModel);
             navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
             navigateToExitApplicationDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateExitApplicationDialogViewModel);
@@ -90,8 +94,10 @@ namespace EBooking.WPF
             navigateToUnitFeatureAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitFeatureAddDialogViewModel);
             navigateToUnitFeatureEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitFeatureEditDialogViewModel);
             navigateToMultiDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateMultiDeleteDialogViewModel);
+            navigateToAccommodationDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateAccommodationDeleteDialogViewModel);
             navigateToAccommodationAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateAccommodationAddDialogViewModel);
-            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel);
+            navigateToAccommodationEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateAccommodationEditDialogViewModel);
+            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel);
         }
 
         private async void InitStores()
@@ -154,7 +160,12 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore);
+            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore, navigateToAccommodationUnitsViewModel);
+        }
+
+        private AccommodationUnitsViewModel CreateAccommodationUnitsViewModel()
+        {
+            return new AccommodationUnitsViewModel(accommodationStore, navigateToAccommodationsViewModel);
         }
 
         private FlightsViewModel CreateFlightsViewModel()
@@ -177,7 +188,9 @@ namespace EBooking.WPF
             return new UnitFeaturesViewModel(unitFeaturesStore, unitFeaturesService, dialogHostService);
         }
         #endregion
+
         #region DialogViewModels Instantiation
+
         public ExitApplicationDialogViewModel CreateExitApplicationDialogViewModel()
         {
             return new ExitApplicationDialogViewModel(dialogHostService);
@@ -210,9 +223,17 @@ namespace EBooking.WPF
         {
             return new MultiDeleteDialogViewModel(dialogHostService);
         }
+        public AccommodationDeleteDialogViewModel CreateAccommodationDeleteDialogViewModel()
+        {
+            return new AccommodationDeleteDialogViewModel(accommodationService, dialogHostService);
+        }
         public AccommodationAddDialogViewModel CreateAccommodationAddDialogViewModel()
         {
             return new AccommodationAddDialogViewModel(locationsStore, userStore, accommodationService, dialogHostService);
+        }
+        public AccommodationEditDialogViewModel CreateAccommodationEditDialogViewModel()
+        {
+            return new AccommodationEditDialogViewModel(locationsStore, userStore, accommodationService, dialogHostService);
         }
         #endregion
     }

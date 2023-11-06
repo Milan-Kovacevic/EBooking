@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for FilterAccommodationsDialog.xaml
+    /// Interaction logic for AccommodationUnitsView.xaml
     /// </summary>
-    public partial class FilterAccommodationsDialog : UserControl
+    public partial class AccommodationUnitsView : UserControl
     {
-        public FilterAccommodationsDialog()
+        public AccommodationUnitsView()
         {
             InitializeComponent();
         }

@@ -35,5 +35,19 @@ namespace EBooking.WPF.Services
                 return _accommodationStore.Delete(accommodationId);
             return Task.CompletedTask;
         }
+
+        public void SetSelectedAccommodation(int accommodationId)
+        {
+            var result = _accommodationStore.Accommodations.FirstOrDefault(x => x.AccommodationId == accommodationId);
+            _accommodationStore.SelectedAccommodation = result;
+        }
+        public Accommodation? GetSelectedAccommodation()
+        {
+            return _accommodationStore.SelectedAccommodation;
+        }
+        public void ClearSelectedAccommodation()
+        {
+            _accommodationStore.SelectedAccommodation = null;
+        }
     }
 }

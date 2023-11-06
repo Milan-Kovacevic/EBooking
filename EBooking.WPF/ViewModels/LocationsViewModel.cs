@@ -90,7 +90,6 @@ namespace EBooking.WPF.ViewModels
         private void OnLocationDeleted(int id)
         {
             var locationItemVm = _locations.FirstOrDefault(f => f.LocationId == id);
-
             if (locationItemVm is not null)
                 _locations.Remove(locationItemVm);
         }

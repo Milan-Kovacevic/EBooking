@@ -5,6 +5,7 @@ using EBooking.Domain.DTOs;
 using EBooking.Domain.Enums;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class AccommodationsViewModel : ObservableObject, IViewModelBase
     {
-        private readonly ObservableCollection<AccommodationItemViewModel> _accommodations;
+        private ObservableCollection<AccommodationItemViewModel> _accommodations;
         public ICollectionView Accommodations { get; }
 
         [ObservableProperty]
@@ -38,14 +39,15 @@ namespace EBooking.WPF.ViewModels
         private readonly AccommodationStore _accommodationStore;
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
-        private readonly UserStore _userStore;
+        private readonly NavigationService _navigateToAccommodationUnitsViewModel;
 
-        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore)
+        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationUnitsViewModel)
         {
             _accommodationStore = accommodationStore;
             _accommodationService = accommodationService;
             _dialogHostService = dialogHostService;
-            _userStore = userStore;
+            _navigateToAccommodationUnitsViewModel = navigateToAccommodationUnitsViewModel;
+            _accommodationStore.AccommodationLoaded += OnAccommodationLoaded;
             _accommodationStore.AccommodationAdded += OnAccommodationAdded;
             _accommodationStore.AccommodationUpdated += OnAccommodationUpdated;
             _accommodationStore.AccommodationDeleted += OnAccommodationDeleted;
@@ -53,19 +55,33 @@ namespace EBooking.WPF.ViewModels
             searchText = string.Empty;
             isFilterSelected = false;
             isAdmin = userStore.IsAdmin;
-            _accommodations = new ObservableCollection<AccommodationItemViewModel>(accommodationStore.Accommodations.Select(x => Mapper.Map(x).ToANew<AccommodationItemViewModel>()));
+            _accommodations = new ObservableCollection<AccommodationItemViewModel>();
             Accommodations = CollectionViewSource.GetDefaultView(_accommodations);
             Accommodations.Filter = FilterAccommodations;
+            LoadAccommodations();
+        }
+
+        public async void LoadAccommodations()
+        {
+            await _accommodationStore.Load();
         }
 
         public void Dispose()
         {
+            _accommodationStore.AccommodationLoaded -= OnAccommodationLoaded;
             _accommodationStore.AccommodationAdded -= OnAccommodationAdded;
             _accommodationStore.AccommodationUpdated -= OnAccommodationUpdated;
             _accommodationStore.AccommodationDeleted -= OnAccommodationDeleted;
         }
 
         #region Accommodations CRUD Commands
+        private void OnAccommodationLoaded()
+        {
+            _accommodations.Clear();
+            foreach (var item in _accommodationStore.Accommodations)
+                _accommodations.Add(Mapper.Map(item).ToANew<AccommodationItemViewModel>());
+        }
+
         private void OnAccommodationAdded(Accommodation accommodation)
         {
             _accommodations.Add(Mapper.Map(accommodation).ToANew<AccommodationItemViewModel>());
@@ -73,11 +89,14 @@ namespace EBooking.WPF.ViewModels
 
         private void OnAccommodationUpdated(Accommodation accommodation)
         {
-            throw new NotImplementedException();
+            var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == accommodation.AccommodationId);
+            Mapper.Map(accommodation).Over(accommodationItemVm);
         }
-        private void OnAccommodationDeleted(int obj)
+        private void OnAccommodationDeleted(int id)
         {
-            throw new NotImplementedException();
+            var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == id);
+            if (accommodationItemVm is not null)
+                _accommodations.Remove(accommodationItemVm);
         }
 
         [RelayCommand]
@@ -98,9 +117,36 @@ namespace EBooking.WPF.ViewModels
         }
 
         [RelayCommand]
+        public void DeleteAccommodation(object param)
+        {
+            if (param is not AccommodationItemViewModel vm)
+                return;
+            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
+            _dialogHostService.OpenAccommodationDeleteDialog();
+        }
+
+        [RelayCommand]
+        public void EditAccommodation(object param)
+        {
+            if (param is not AccommodationItemViewModel vm)
+                return;
+            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
+            _dialogHostService.OpenAccommodationEditDialog();
+        }
+
+        [RelayCommand]
         public async Task FilterAccommodations()
         {
             await Task.Delay(200);
+        }
+
+        public void ShowAccommodationDetails(object param)
+        {
+            if (param is not AccommodationItemViewModel vm)
+                return;
+
+            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
+            _navigateToAccommodationUnitsViewModel.Navigate();
         }
         #endregion
 
@@ -112,5 +158,7 @@ namespace EBooking.WPF.ViewModels
                 return true;
             return vm.Name.ToLower().Contains(SearchText.ToLower()) || vm.Address.ToLower().Contains(SearchText.ToLower());
         }
+
+        public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.ACCOMMODATIONS);
     }
 }

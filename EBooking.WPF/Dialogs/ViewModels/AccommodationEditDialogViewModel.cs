@@ -16,10 +16,11 @@ using System.Threading.Tasks;
 
 namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class AccommodationAddDialogViewModel : ObservableValidator, IViewModelBase
+    public partial class AccommodationEditDialogViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
         private string dialogTitle;
+        public int AccommodationId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -50,7 +51,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
 
-        public AccommodationAddDialogViewModel(LocationsStore locationsStore, UserStore userStore, AccommodationService accommodationService, DialogHostService dialogHostService)
+        public AccommodationEditDialogViewModel(LocationsStore locationsStore, UserStore userStore, AccommodationService accommodationService, DialogHostService dialogHostService)
         {
             _locationsStore = locationsStore;
             _userStore = userStore;
@@ -61,15 +62,16 @@ namespace EBooking.WPF.Dialogs.ViewModels
             AccommodationTypes = new List<AccommodationTypeModel>()
             {
                 new AccommodationTypeModel(AccommodationType.APARTMENT),
-                new AccommodationTypeModel(AccommodationType.HOTEL),
+                 new AccommodationTypeModel(AccommodationType.HOTEL),
             };
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Create New Accommodation";
-            name = string.Empty;
-            type = null;
-            location = null;
-            address = string.Empty;
-
+            dialogTitle = "Edit Accommodation";
+            var accommodation = accommodationService.GetSelectedAccommodation();
+            name = accommodation?.Name ?? string.Empty;
+            type = new AccommodationTypeModel(accommodation?.Type ?? AccommodationType.APARTMENT);
+            location = Mapper.Map(accommodation?.Location).ToANew<LocationModel>();
+            address = accommodation?.Address ?? string.Empty;
+            AccommodationId = accommodation?.AccommodationId ?? 0;
         }
 
         private bool CanSubmit()
@@ -83,13 +85,14 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         private async Task Submit()
         {
-            await _accommodationService.AddAccommodation(new Accommodation()
+            await _accommodationService.UpdateAccommodation(new Accommodation()
             {
                 Name = Name,
                 Type = Type?.Type ?? AccommodationType.APARTMENT,
                 Address = Address,
                 LocationId = Location?.LocationId ?? 0,
-                UserId = _userStore.CurrentUser?.UserId ?? 0
+                UserId = _userStore.CurrentUser?.UserId ?? 0,
+                AccommodationId = AccommodationId
             });
             _dialogHostService.CloseDialogHost();
         }

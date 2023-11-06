@@ -14,6 +14,7 @@ namespace EBooking.WPF.Stores
         private readonly List<Accommodation> _accommodations;
 
         public IEnumerable<Accommodation> Accommodations { get => _accommodations; }
+        public Accommodation? SelectedAccommodation { get; set; }
         public event Action? AccommodationLoaded;
         public event Action<Accommodation>? AccommodationAdded;
         public event Action<Accommodation>? AccommodationUpdated;
@@ -46,13 +47,14 @@ namespace EBooking.WPF.Stores
         public async Task Update(Accommodation accommodation)
         {
             await _accommodationDao.Update(accommodation);
-            int accommodationIndex = _accommodations.FindIndex(f => f.AccommodationId == accommodation.AccommodationId);
+            var result = await _accommodationDao.GetById(accommodation.AccommodationId);
+            int accommodationIndex = _accommodations.FindIndex(f => f.AccommodationId == result.AccommodationId);
             if (accommodationIndex == -1)
-                _accommodations.Add(accommodation);
+                _accommodations.Add(result);
             else
-                _accommodations[accommodationIndex] = accommodation;
+                _accommodations[accommodationIndex] = result;
 
-            AccommodationUpdated?.Invoke(accommodation);
+            AccommodationUpdated?.Invoke(result);
         }
 
         public async Task Delete(int id)

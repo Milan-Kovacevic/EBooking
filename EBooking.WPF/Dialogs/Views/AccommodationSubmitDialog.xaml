@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="EBooking.WPF.Dialogs.Views.AccommodationAddDialog"
+    x:Class="EBooking.WPF.Dialogs.Views.AccommodationSubmitDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -23,7 +23,7 @@
             x:Name="DialogTitle"
             Margin="25 10 25 12"
             Grid.Row="0"
-            Text="Create New Accommodation"
+            Text="{Binding DialogTitle,Mode=OneTime}"
             FontSize="26"
             HorizontalAlignment="Center"
             Foreground="{DynamicResource PrimaryHueLightBrush}"

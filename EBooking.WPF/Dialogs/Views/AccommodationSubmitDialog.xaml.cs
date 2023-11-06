@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for AccommodationAddDialog.xaml
+    /// Interaction logic for AccommodationSubmitDialog.xaml
     /// </summary>
-    public partial class AccommodationAddDialog : UserControl
+    public partial class AccommodationSubmitDialog : UserControl
     {
-        public AccommodationAddDialog()
+        public AccommodationSubmitDialog()
         {
             InitializeComponent();
         }

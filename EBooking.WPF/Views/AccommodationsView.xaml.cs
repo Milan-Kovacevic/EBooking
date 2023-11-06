@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBooking.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace EBooking.WPF.Views
         public AccommodationsView()
         {
             InitializeComponent();
+        }
+
+        private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(DataContext is AccommodationsViewModel vm && sender is ScrollViewer sv)
+            {
+                vm.ShowAccommodationDetails(sv.DataContext);
+            }
         }
     }
 }
