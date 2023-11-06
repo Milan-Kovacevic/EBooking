@@ -24,7 +24,6 @@ namespace EBooking.EntityFramework.Entities
         public int NumberOfBeds { get; set; }
         [Required]
         public decimal PricePerNight { get; set; }
-        public decimal? UnitSize { get; set; }
 
         [Required]
         [ForeignKey("Accommodation")]

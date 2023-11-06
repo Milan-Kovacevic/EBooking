@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
 using EBooking.Domain.Enums;
+using EBooking.WPF.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,8 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class AccommodationItemViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private bool isOwner;
         [ObservableProperty]
         private int accommodationId;
         [ObservableProperty]
@@ -52,8 +56,12 @@ namespace EBooking.WPF.ViewModels
         [ObservableProperty]
         private bool isApartment;
 
-        public AccommodationItemViewModel()
+        private readonly AccommodationService _accommodationService;
+        private readonly DialogHostService _dialogHostService;
+
+        public AccommodationItemViewModel(AccommodationService accommodationService, DialogHostService dialogHostService)
         {
+            isOwner = false;
             name = string.Empty;
             typeText = string.Empty;
             _type = null;
@@ -62,6 +70,8 @@ namespace EBooking.WPF.ViewModels
             address = string.Empty;
             numOfUnits = 0;
             isApartment = false;
+            _accommodationService = accommodationService;
+            _dialogHostService = dialogHostService;
         }
 
         private void SetIsApartment(AccommodationType? value)
@@ -75,5 +85,20 @@ namespace EBooking.WPF.ViewModels
             else
                 IsApartment = false;
         }
+
+        [RelayCommand]
+        public void DeleteAccommodation()
+        {
+            _accommodationService.SetSelectedAccommodation(AccommodationId);
+            _dialogHostService.OpenAccommodationDeleteDialog();
+        }
+
+        [RelayCommand]
+        public void EditAccommodation()
+        {
+            _accommodationService.SetSelectedAccommodation(AccommodationId);
+            _dialogHostService.OpenAccommodationEditDialog();
+        }
+
     }
 }

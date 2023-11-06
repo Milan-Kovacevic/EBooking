@@ -109,7 +109,6 @@ namespace EBooking.WPF
             await accommodationStore.Load();
         }
 
-
         private void OnApplicationStartup(object sender, StartupEventArgs e)
         {
             // Loading necessary stores
@@ -165,7 +164,7 @@ namespace EBooking.WPF
 
         private AccommodationUnitsViewModel CreateAccommodationUnitsViewModel()
         {
-            return new AccommodationUnitsViewModel(accommodationStore, navigateToAccommodationsViewModel);
+            return new AccommodationUnitsViewModel(accommodationStore, navigateToAccommodationsViewModel, userStore);
         }
 
         private FlightsViewModel CreateFlightsViewModel()

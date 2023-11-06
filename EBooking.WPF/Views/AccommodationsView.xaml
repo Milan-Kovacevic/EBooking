@@ -164,7 +164,7 @@
                                                 Height="*" />
                                         </Grid.RowDefinitions>
                                         <materialDesign:PopupBox
-                                            Visibility="{Binding DataContext.IsAdmin, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                            Visibility="{Binding IsOwner, Converter={StaticResource BooleanToVisibilityConverter}}"
                                             Panel.ZIndex="2"
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Top"
@@ -195,7 +195,7 @@
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Center"
                                                     Style="{DynamicResource MaterialDesignFlatLightButton}"
-                                                    Command="{Binding DataContext.EditAccommodationCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                    Command="{Binding EditAccommodationCommand}"
                                                     CommandParameter="{Binding}" />
                                                 <Separator
                                                     Grid.Row="1"
@@ -209,7 +209,7 @@
                                                     Margin="8 0"
                                                     HorizontalAlignment="Stretch"
                                                     Style="{DynamicResource MaterialDesignFlatSecondaryButton}"
-                                                    Command="{Binding DataContext.DeleteAccommodationCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                    Command="{Binding DeleteAccommodationCommand}"
                                                     CommandParameter="{Binding}"
                                                     VerticalAlignment="Center" />
                                             </StackPanel>
@@ -380,7 +380,6 @@
                                                 </Grid>
                                             </Border>
                                         </ScrollViewer>
-
                                     </Grid>
                                 </materialDesign:Card>
                             </DataTemplate>

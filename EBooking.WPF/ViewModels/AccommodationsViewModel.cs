@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
@@ -37,6 +38,7 @@ namespace EBooking.WPF.ViewModels
         private bool isAdmin;
 
         private readonly AccommodationStore _accommodationStore;
+        private readonly UserStore _userStore;
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
         private readonly NavigationService _navigateToAccommodationUnitsViewModel;
@@ -44,6 +46,7 @@ namespace EBooking.WPF.ViewModels
         public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationUnitsViewModel)
         {
             _accommodationStore = accommodationStore;
+            _userStore = userStore;
             _accommodationService = accommodationService;
             _dialogHostService = dialogHostService;
             _navigateToAccommodationUnitsViewModel = navigateToAccommodationUnitsViewModel;
@@ -79,12 +82,20 @@ namespace EBooking.WPF.ViewModels
         {
             _accommodations.Clear();
             foreach (var item in _accommodationStore.Accommodations)
-                _accommodations.Add(Mapper.Map(item).ToANew<AccommodationItemViewModel>());
+                AddNewAccommodationItem(item);
         }
 
         private void OnAccommodationAdded(Accommodation accommodation)
         {
-            _accommodations.Add(Mapper.Map(accommodation).ToANew<AccommodationItemViewModel>());
+            AddNewAccommodationItem(accommodation);
+        }
+
+        private void AddNewAccommodationItem(Accommodation accommodation)
+        {
+            var accommodationItem = new AccommodationItemViewModel(_accommodationService, _dialogHostService);
+            Mapper.Map(accommodation).Over(accommodationItem);
+            accommodationItem.IsOwner = _userStore.CurrentUser?.UserId == accommodation.UserId;
+            _accommodations.Add(accommodationItem);
         }
 
         private void OnAccommodationUpdated(Accommodation accommodation)
@@ -114,24 +125,6 @@ namespace EBooking.WPF.ViewModels
         public void AddAccommodation()
         {
             _dialogHostService.OpenAccommodationAddDialog();
-        }
-
-        [RelayCommand]
-        public void DeleteAccommodation(object param)
-        {
-            if (param is not AccommodationItemViewModel vm)
-                return;
-            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
-            _dialogHostService.OpenAccommodationDeleteDialog();
-        }
-
-        [RelayCommand]
-        public void EditAccommodation(object param)
-        {
-            if (param is not AccommodationItemViewModel vm)
-                return;
-            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
-            _dialogHostService.OpenAccommodationEditDialog();
         }
 
         [RelayCommand]

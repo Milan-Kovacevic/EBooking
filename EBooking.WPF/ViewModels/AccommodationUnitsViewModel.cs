@@ -22,20 +22,39 @@ namespace EBooking.WPF.ViewModels
         private readonly AccommodationStore _accommodationStore;
         private readonly NavigationService _navigateToAccommodationsViewModel;
 
-        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, NavigationService navigateToAccommodationsViewModel)
+        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, NavigationService navigateToAccommodationsViewModel, UserStore userStore)
         {
             _accommodationStore = accommodationStore;
             _navigateToAccommodationsViewModel = navigateToAccommodationsViewModel;
             _accommodationUnits = new ObservableCollection<AccommodationUnitItemViewModel>() {
-                new AccommodationUnitItemViewModel(){ Name = "Apartment building 1", NumberOfBeds = 1, PricePerNight = 250.99m },
-                new AccommodationUnitItemViewModel(){ Name = "Apartment building 2", NumberOfBeds = 4, PricePerNight = 810.49m },
+                new AccommodationUnitItemViewModel(){
+                    Name = "Apartment building 1",
+                    NumberOfBeds = 1,
+                    PricePerNight = 250.99m,
+                    AvailableFrom = new DateTime(2023, 2, 1),
+                    AvailableTo = new DateTime(2023, 7, 1),
+                    IsOwner = true,
+                Features = new ObservableCollection<UnitFeature>(){
+                    new UnitFeature(){ Name = "Free WiFi" },
+                    new UnitFeature(){ Name = "Spacious Garage" },
+                } },
+                new AccommodationUnitItemViewModel(){
+                    Name = "Apartment building 2",
+                    NumberOfBeds = 4,
+                    PricePerNight = 810.49m,
+                    AvailableFrom = new DateTime(2023, 2, 1),
+                    AvailableTo = new DateTime(2023, 7, 1),
+                    IsOwner = true },
             };
             AccommodationUnits = CollectionViewSource.GetDefaultView(_accommodationUnits);
 
+            isAdminOwner = userStore.IsAdmin;
             accommodationName = _accommodationStore.SelectedAccommodation?.Name ?? string.Empty;
             accommodationAddress = _accommodationStore.SelectedAccommodation?.Address ?? string.Empty;
             var location = _accommodationStore.SelectedAccommodation?.Location;
-            accommodationLocation =  $"{location?.Country}, {location?.City}";
+            accommodationLocation = $"{location?.Country}, {location?.City}";
+
+            isAdminOwner = _accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
         }
 
         public void Dispose()
@@ -43,6 +62,8 @@ namespace EBooking.WPF.ViewModels
 
         }
 
+        [ObservableProperty]
+        private bool isAdminOwner;
         [ObservableProperty]
         private string accommodationName;
         [ObservableProperty]
@@ -54,6 +75,24 @@ namespace EBooking.WPF.ViewModels
         public void ReturnBack()
         {
             _navigateToAccommodationsViewModel.Navigate();
+        }
+
+        [RelayCommand]
+        public void AddAccommodationUnit()
+        {
+
+        }
+
+        [RelayCommand]
+        public void EditAccommodationUnit(object param)
+        {
+
+        }
+
+        [RelayCommand]
+        public void DeleteAccommodationUnit(object param)
+        {
+
         }
     }
 }
