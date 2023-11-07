@@ -37,6 +37,12 @@ namespace EBooking.EntityFramework.DataAccess
             get => _accommodationDao;
         }
 
+        private readonly IAccommodationUnitDAO _accommodationUnitDao;
+        public IAccommodationUnitDAO AccommodationUnitDao
+        {
+            get => _accommodationUnitDao;
+        }
+
         private readonly IFlightDAO _flightDao;
         public IFlightDAO FlightDao
         {
@@ -99,6 +105,7 @@ namespace EBooking.EntityFramework.DataAccess
             _userDao = new UserDataAccess(contextFactory);
             _unitFeatureDao = new UnitFeatureDataAccess(contextFactory);
             _accommodationDao = new AccommodationDataAccess(contextFactory);
+            _accommodationUnitDao = new AccommodationUnitDataAccess(contextFactory);
             _flightDao = new FlightDataAccess(contextFactory);
             _unitReservationDao = new UnitReservationDataAccess(contextFactory);
             _tripReservationDao = new TripReservationDataAccess(contextFactory);

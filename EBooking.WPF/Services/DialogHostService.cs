@@ -25,6 +25,9 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToAccommodatioAddDialogViewModel;
         private readonly DialogNavigationService _navigateToAccommodationEditDialogViewModel;
         private readonly DialogNavigationService _navigateToAccommodationDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToAccommodationUnitAddDialogViewModel;
+        private readonly DialogNavigationService _navigateToAccommodationUnitDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToAccommodationUnitEditDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -37,7 +40,10 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToMultiDeleteDialogViewModel,
             DialogNavigationService navigateToAccommodatioAddDialogViewModel,
             DialogNavigationService navigateToAccommodationEditDialogViewModel,
-            DialogNavigationService navigateToAccommodationDeleteDialogViewModel)
+            DialogNavigationService navigateToAccommodationDeleteDialogViewModel,
+            DialogNavigationService navigateToAccommodationUnitAddDialogViewModel,
+            DialogNavigationService navigateToAccommodationUnitDeleteDialogViewModel,
+            DialogNavigationService navigateToAccommodationUnitEditDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -50,6 +56,9 @@ namespace EBooking.WPF.Services
             _navigateToAccommodatioAddDialogViewModel = navigateToAccommodatioAddDialogViewModel;
             _navigateToAccommodationEditDialogViewModel = navigateToAccommodationEditDialogViewModel;
             _navigateToAccommodationDeleteDialogViewModel = navigateToAccommodationDeleteDialogViewModel;
+            _navigateToAccommodationUnitAddDialogViewModel = navigateToAccommodationUnitAddDialogViewModel;
+            _navigateToAccommodationUnitDeleteDialogViewModel = navigateToAccommodationUnitDeleteDialogViewModel;
+            _navigateToAccommodationUnitEditDialogViewModel = navigateToAccommodationUnitEditDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -105,6 +114,21 @@ namespace EBooking.WPF.Services
         public void OpenAccommodationEditDialog()
         {
             _navigateToAccommodationEditDialogViewModel.Navigate();
+        }
+
+        public void OpenAccommodationUnitAddDialog()
+        {
+            _navigateToAccommodationUnitAddDialogViewModel.Navigate();
+        }
+
+        public void OpenAccommodationUnitEditDialog()
+        {
+            _navigateToAccommodationUnitEditDialogViewModel.Navigate();
+        }
+
+        public void OpenAccommodationUnitDeleteDialog()
+        {
+            _navigateToAccommodationUnitDeleteDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

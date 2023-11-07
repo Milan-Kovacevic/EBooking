@@ -95,6 +95,7 @@ namespace EBooking.WPF.ViewModels
             var accommodationItem = new AccommodationItemViewModel(_accommodationService, _dialogHostService);
             Mapper.Map(accommodation).Over(accommodationItem);
             accommodationItem.IsOwner = _userStore.CurrentUser?.UserId == accommodation.UserId;
+            accommodationItem.NumOfUnits = accommodation.AccommodationUnits.Count;
             _accommodations.Add(accommodationItem);
         }
 
@@ -103,6 +104,7 @@ namespace EBooking.WPF.ViewModels
             var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == accommodation.AccommodationId);
             Mapper.Map(accommodation).Over(accommodationItemVm);
         }
+
         private void OnAccommodationDeleted(int id)
         {
             var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == id);
@@ -130,6 +132,7 @@ namespace EBooking.WPF.ViewModels
         [RelayCommand]
         public async Task FilterAccommodations()
         {
+            // TODO
             await Task.Delay(200);
         }
 

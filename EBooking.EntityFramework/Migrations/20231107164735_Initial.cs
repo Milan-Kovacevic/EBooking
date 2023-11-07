@@ -193,7 +193,6 @@ namespace EBooking.EntityFramework.Migrations
                     AvailableTo = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NumberOfBeds = table.Column<int>(type: "INTEGER", nullable: false),
                     PricePerNight = table.Column<decimal>(type: "TEXT", nullable: false),
-                    UnitSize = table.Column<decimal>(type: "TEXT", nullable: true),
                     AccommodationId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

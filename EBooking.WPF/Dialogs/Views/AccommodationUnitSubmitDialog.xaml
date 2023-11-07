@@ -1,0 +1,232 @@
+﻿<UserControl
+    x:Class="EBooking.WPF.Dialogs.Views.AccommodationUnitSubmitDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Dialogs"
+    mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid
+        Margin="10 20"
+        MinWidth="650"
+        Background="{DynamicResource MaterialDesignPaper}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="DialogTitle"
+            Margin="25 10 25 20"
+            Grid.Row="0"
+            FontWeight="Medium"
+            Text="{Binding DialogTitle,Mode=OneTime}"
+            FontSize="26"
+            HorizontalAlignment="Center"
+            Foreground="{DynamicResource PrimaryHueLightBrush}"
+            TextWrapping="Wrap" />
+        <Grid
+            Grid.Row="1"
+            Margin="20 15 10 35">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="4*" />
+                <ColumnDefinition
+                    Width="3*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Width="300"
+                Margin="10 0 30 0"
+                Grid.Column="0">
+                <TextBlock
+                    Margin="5 0 0 8"
+                    Text="Basic Informations"
+                    FontSize="16"
+                    HorizontalAlignment="Left"
+                    Foreground="{DynamicResource PrimaryHueLightBrush}"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    Margin="2 0 2 2"
+                    Padding="4 2 4 2"
+                    FontSize="14"
+                    materialDesign:HintAssist.HelperText="Required*"
+                    materialDesign:HintAssist.Hint="Unit Name"
+                    materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                    materialDesign:HintAssist.FloatingOffset="0 -14"
+                    MaxLength="128"
+                    Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                    Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}">
+                </TextBox>
+                <DatePicker
+                    Margin="2 20 2 2"
+                    Padding="4 2 4 2"
+                    FontSize="14"
+                    materialDesign:HintAssist.HelperText="Required*"
+                    materialDesign:HintAssist.Hint="Available From"
+                    materialDesign:HintAssist.FloatingOffset="0 -16"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    SelectedDate="{Binding AvailableFrom, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                </DatePicker>
+                <DatePicker
+                    Margin="2 20 2 2"
+                    Padding="4 2 4 2"
+                    FontSize="14"
+                    materialDesign:HintAssist.HelperText="Required*"
+                    materialDesign:HintAssist.Hint="Available To"
+                    materialDesign:HintAssist.FloatingOffset="0 -16"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    SelectedDate="{Binding AvailableTo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                </DatePicker>
+                <TextBox
+                    Margin="2 20 2 2"
+                    Padding="4 2 4 2"
+                    FontSize="14"
+                    materialDesign:HintAssist.HelperText="Required*"
+                    materialDesign:HintAssist.Hint="Number Of Beds"
+                    materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                    materialDesign:HintAssist.FloatingOffset="0 -14"
+                    Text="{Binding NumberOfBeds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                    Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}">
+                </TextBox>
+                <TextBox
+                    Margin="2 20 2 2"
+                    Padding="4 2 4 2"
+                    FontSize="14"
+                    materialDesign:HintAssist.HelperText="Required*"
+                    materialDesign:HintAssist.Hint="Price Per Night"
+                    materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                    materialDesign:HintAssist.FloatingOffset="0 -14"
+                    Text="{Binding PricePerNight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                    Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}">
+                </TextBox>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="1">
+                <TextBlock
+                    Margin="5 0 0 8"
+                    Text="Unit Features"
+                    FontSize="16"
+                    HorizontalAlignment="Left"
+                    Foreground="{DynamicResource PrimaryHueLightBrush}"
+                    TextWrapping="Wrap" />
+                <StackPanel
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal">
+                    <ComboBox
+                        Cursor="Hand"
+                        Margin="2 0 0 2"
+                        Padding="4 2 4 2"
+                        FontSize="14"
+                        Width="215"
+                        IsEditable="True"
+                        materialDesign:HintAssist.HelperText="Add features to this unit..."
+                        materialDesign:HintAssist.Hint="Select Feature"
+                        materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                        materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                        materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                        materialDesign:HintAssist.FloatingOffset="0 -14"
+                        ItemsSource="{Binding UnitFeatures}"
+                        SelectedItem="{Binding SelectedFeature, Mode=TwoWay}"
+                        Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
+                        Foreground="{DynamicResource PrimaryHueMidBrush}">
+                    </ComboBox>
+                    <Button
+                        Margin="2 0 0 2"
+                        Width="30"
+                        Height="30"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding AddFeatureCommand}"
+                        Style="{DynamicResource MaterialDesignIconButton}">
+                        <materialDesign:PackIcon
+                            Kind="Add"
+                            Width="24"
+                            Height="24"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    </Button>
+                </StackPanel>
+                <ScrollViewer
+                    materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled"
+                    Margin="5 30 15 0">
+                    <ListBox
+                        Height="220"
+                        materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                        SelectedIndex="{Binding SelectedAddedFeatureIndex}"
+                        ItemsSource="{Binding SelectedFeatures}">
+                        <ListBox.InputBindings>
+                            <KeyBinding
+                                Key="Delete"
+                                Command="{Binding RemoveSelectedFeatureCommand}"/>
+                        </ListBox.InputBindings>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel
+                                    Margin="0 0"
+                                    Cursor="Hand"
+                                    Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        Kind="CircleBox"
+                                        Width="10"
+                                        Height="10"
+                                        Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                        Margin="2 0 6 0"
+                                        VerticalAlignment="Center" />
+                                    <TextBlock
+                                        Foreground="{DynamicResource MaterialDesignBody}"
+                                        FontSize="14"
+                                        FontWeight="Regular"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Name}"
+                                        Style="{DynamicResource HorizontalExpanderContentTextBlock}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="15 10 15 8"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                HorizontalAlignment="Right"
+                Margin="0 0 2 0"
+                MinWidth="120"
+                FontSize="14"
+                IsDefault="True"
+                Content="SUBMIT"
+                Command="{Binding SubmitCommand}"
+                Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+            <Button
+                HorizontalAlignment="Right"
+                MinWidth="100"
+                FontSize="14"
+                Margin="8 0 0 0"
+                Content="CANCEL"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

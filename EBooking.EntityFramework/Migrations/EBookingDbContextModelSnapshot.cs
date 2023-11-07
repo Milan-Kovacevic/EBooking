@@ -76,9 +76,6 @@ namespace EBooking.EntityFramework.Migrations
                     b.Property<decimal>("PricePerNight")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal?>("UnitSize")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("UnitId");
 
                     b.HasIndex("AccommodationId");

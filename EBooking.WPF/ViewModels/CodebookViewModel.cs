@@ -25,10 +25,10 @@ namespace EBooking.WPF.ViewModels
         [ObservableProperty]
         private int selectedCodebookIndex;
 
-        public CodebookViewModel(Func<LocationsViewModel> createLocationsViewModel, Func<UnitFeaturesViewModel> createUnitFeaturesViewModel)
+        public CodebookViewModel(LocationsViewModel locationsViewModel, UnitFeaturesViewModel unitFeaturesViewModel)
         {
-            LocationsViewModel = createLocationsViewModel();
-            UnitFeaturesViewModel = createUnitFeaturesViewModel();
+            LocationsViewModel = locationsViewModel;
+            UnitFeaturesViewModel = unitFeaturesViewModel;
         }
 
         public void Dispose()

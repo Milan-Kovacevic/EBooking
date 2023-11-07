@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EBooking.EntityFramework.Migrations
 {
     [DbContext(typeof(EBookingDbContext))]
-    [Migration("20231103182328_Initial")]
+    [Migration("20231107164735_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -77,9 +77,6 @@ namespace EBooking.EntityFramework.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("PricePerNight")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("UnitSize")
                         .HasColumnType("TEXT");
 
                     b.HasKey("UnitId");

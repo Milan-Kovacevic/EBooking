@@ -74,7 +74,6 @@
             DataType="{x:Type dialogVms:LocationEditDialogViewModel}">
             <dialogViews:LocationEditDialog />
         </DataTemplate>
-
         <DataTemplate
             DataType="{x:Type dialogVms:UnitFeatureDeleteDialogViewModel}">
             <dialogViews:ConfirmDeleteDialog />
@@ -102,6 +101,18 @@
         <DataTemplate
             DataType="{x:Type dialogVms:AccommodationEditDialogViewModel}">
             <dialogViews:AccommodationSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationUnitAddDialogViewModel}">
+            <dialogViews:AccommodationUnitSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationUnitEditDialogViewModel}">
+            <dialogViews:AccommodationUnitSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:AccommodationUnitDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
         </DataTemplate>
 
         <Style

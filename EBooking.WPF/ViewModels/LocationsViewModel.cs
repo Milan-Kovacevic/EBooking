@@ -57,20 +57,28 @@ namespace EBooking.WPF.ViewModels
             _locationsService = locationsService;
             _dialogHostService = dialogHostService;
             _locationsStore = locationsStore;
+            _locationsStore.LocationLoaded += OnLocationsLoaded;
             _locationsStore.LocationAdded += OnLocationAdded;
             _locationsStore.LocationUpdated += OnLocationUpdated;
             _locationsStore.LocationDeleted += OnLocationDeleted;
 
             searchText = string.Empty;
 
-            _locations = new ObservableCollection<LocationItemViewModel>(locationsStore.Locations.Select(x => Mapper.Map(x).ToANew<LocationItemViewModel>()));
+            _locations = new ObservableCollection<LocationItemViewModel>();
             Locations = CollectionViewSource.GetDefaultView(_locations);
             Locations.Filter = FilterLocations;
             WeakReferenceMessenger.Default.RegisterAll(this);
+            LoadLocations();
+        }
+
+        private async void LoadLocations()
+        {
+            await _locationsStore.Load();
         }
 
         public void Dispose()
         {
+            _locationsStore.LocationLoaded -= OnLocationsLoaded;
             _locationsStore.LocationAdded -= OnLocationAdded;
             _locationsStore.LocationUpdated -= OnLocationUpdated;
             _locationsStore.LocationDeleted -= OnLocationDeleted;
@@ -78,6 +86,14 @@ namespace EBooking.WPF.ViewModels
         }
 
         #region Locations CRUD Commands
+        private void OnLocationsLoaded()
+        {
+            _locations.Clear();
+            foreach(var item in _locationsStore.Locations)
+            {
+                _locations.Add(Mapper.Map(item).ToANew<LocationItemViewModel>());
+            }
+        }
         private void OnLocationAdded(Location location)
         {
             _locations.Add(Mapper.Map(location).ToANew<LocationItemViewModel>());

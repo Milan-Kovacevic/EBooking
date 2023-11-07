@@ -53,20 +53,28 @@ namespace EBooking.WPF.ViewModels
         public UnitFeaturesViewModel(UnitFeaturesStore unitFeaturesStore, UnitFeaturesService unitFeaturesService, DialogHostService dialogHostService)
         {
             _unitFeaturesStore = unitFeaturesStore;
+            _unitFeaturesStore.UnitFeatureLoaded += OnUnitFeaturesLoaded;
             _unitFeaturesStore.UnitFeatureAdded += OnUnitFeatureAdded;
             _unitFeaturesStore.UnitFeatureUpdated += OnUnitFeatureUpdated;
             _unitFeaturesStore.UnitFeatureDeleted += OnUnitFeatureDeleted;
             _unitFeaturesService = unitFeaturesService;
             _dialogHostService = dialogHostService;
             searchText = string.Empty;
-            _unitFeatures = new ObservableCollection<UnitFeatureItemViewModel>(unitFeaturesStore.UnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeatureItemViewModel>()));
+            _unitFeatures = new ObservableCollection<UnitFeatureItemViewModel>();
             UnitFeatures = CollectionViewSource.GetDefaultView(_unitFeatures);
             UnitFeatures.Filter = FilterUnitFeatures;
             WeakReferenceMessenger.Default.RegisterAll(this);
+            LoadUnitFeatures();
+        }
+
+        private async void LoadUnitFeatures()
+        {
+            await _unitFeaturesStore.Load();
         }
 
         public void Dispose()
         {
+            _unitFeaturesStore.UnitFeatureLoaded -= OnUnitFeaturesLoaded;
             _unitFeaturesStore.UnitFeatureAdded -= OnUnitFeatureAdded;
             _unitFeaturesStore.UnitFeatureUpdated -= OnUnitFeatureUpdated;
             _unitFeaturesStore.UnitFeatureDeleted -= OnUnitFeatureDeleted;
@@ -74,6 +82,14 @@ namespace EBooking.WPF.ViewModels
         }
 
         #region Unit Features CRUD Commands
+        private void OnUnitFeaturesLoaded()
+        {
+            _unitFeatures.Clear();
+            foreach (var item in _unitFeaturesStore.UnitFeatures)
+            {
+                _unitFeatures.Add(Mapper.Map(item).ToANew<UnitFeatureItemViewModel>());
+            }
+        }
 
         private void OnUnitFeatureAdded(UnitFeature feature)
         {

@@ -21,8 +21,8 @@
                 materialDesign:ElevationAssist.Elevation="Dp8"
                 UniformCornerRadius="10"
                 Padding="10"
-                MaxWidth="1100"
-                MaxHeight="760"
+                MaxWidth="1050"
+                MaxHeight="690"
                 Margin="25">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -75,7 +75,7 @@
                         Visibility="{Binding IsAdminOwner, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding AddAccommodationUnitCommand}"
                         materialDesign:ElevationAssist.Elevation="Dp6"
-                        Style="{DynamicResource MaterialDesignFloatingActionMiniLightButton}">
+                        Style="{DynamicResource MaterialDesignFloatingActionMiniSecondaryButton}">
                         <materialDesign:PackIcon
                             Kind="Add"
                             Width="20"
@@ -107,7 +107,7 @@
                             </StackPanel>
                         </materialDesign:ColorZone>
                         <StackPanel
-                            Margin="0 8 0 0"
+                            Margin="0 6 0 0"
                             Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Kind="Location"
@@ -118,6 +118,7 @@
                                 Height="18" />
                             <TextBlock
                                 HorizontalAlignment="Stretch"
+                                FontStyle="Italic"
                                 FontSize="13"
                                 VerticalAlignment="Center"
                                 FontWeight="Medium"
@@ -127,6 +128,7 @@
                         </StackPanel>
                         <TextBlock
                             HorizontalAlignment="Stretch"
+                            FontStyle="Italic"
                             FontSize="13"
                             FontWeight="Medium"
                             Foreground="{DynamicResource PrimaryHueLightBrush}"
@@ -135,7 +137,7 @@
                     </StackPanel>
                     <Border
                         Padding="12"
-                        Margin="8 10 8 10"
+                        Margin="8 5 8 10"
                         Grid.Row="2">
                         <ScrollViewer
                             materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
@@ -172,7 +174,7 @@
                                                 CornerRadius="8">
                                                 <materialDesign:Card
                                                     UniformCornerRadius="8"
-                                                    materialDesign:ElevationAssist.Elevation="Dp4">
+                                                    materialDesign:ElevationAssist.Elevation="Dp8">
                                                     <ScrollViewer
                                                         materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
                                                         VerticalScrollBarVisibility="Auto"
@@ -315,12 +317,12 @@
                                                                                             Margin="2 0 6 0"
                                                                                             VerticalAlignment="Center" />
                                                                                         <TextBlock
-                                                                                            FontSize="13"
+                                                                                            FontSize="14"
+                                                                                            FontWeight="Medium"
                                                                                             VerticalAlignment="Center"
                                                                                             Text="{Binding Name}"
                                                                                             Style="{DynamicResource HorizontalExpanderContentTextBlock}" />
                                                                                     </StackPanel>
-
                                                                                 </DataTemplate>
                                                                             </ItemsControl.ItemTemplate>
                                                                         </ItemsControl>

@@ -69,7 +69,6 @@ namespace EBooking.WPF.Dialogs.ViewModels
             type = null;
             location = null;
             address = string.Empty;
-
         }
 
         private bool CanSubmit()
