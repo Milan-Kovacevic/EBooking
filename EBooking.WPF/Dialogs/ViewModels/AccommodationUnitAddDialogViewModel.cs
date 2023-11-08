@@ -34,7 +34,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyPropertyChangedFor(nameof(AvailableTo))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateAvailableFromDate))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDate))]
         [NotifyDataErrorInfo]
         private DateTime? availableFrom;
         partial void OnAvailableFromChanged(DateTime? value)
@@ -46,7 +46,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyPropertyChangedFor(nameof(AvailableFrom))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateAvailableToDateOnAdd))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnAdd))]
         [NotifyDataErrorInfo]
         private DateTime? availableTo;
 
@@ -54,13 +54,13 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateNumberOfBeds))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         private string numberOfBeds;
 
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePricePerNight))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveDecimalNumber))]
         [NotifyDataErrorInfo]
         private string pricePerNight;
 

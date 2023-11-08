@@ -1,0 +1,147 @@
+﻿<UserControl
+    x:Class="EBooking.WPF.Dialogs.Views.AccommodationUnitReservationDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Dialogs"
+    mc:Ignorable="d"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid
+        Margin="10 20"
+        MinWidth="420"
+        Background="{DynamicResource MaterialDesignPaper}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="DialogTitle"
+            Margin="25 10 25 15"
+            Width="380"
+            TextAlignment="Center"
+            Grid.Row="0"
+            FontWeight="Medium"
+            Text="{Binding DialogTitle,Mode=OneTime}"
+            FontSize="24"
+            HorizontalAlignment="Center"
+            Foreground="{DynamicResource PrimaryHueLightBrush}"
+            TextWrapping="Wrap" />
+        <StackPanel
+            Grid.Row="1"
+            Margin="20 15 20 15"
+            Width="340"
+            Grid.Column="0">
+            <TextBox
+                Margin="2 0 2 2"
+                Padding="4 2 4 2"
+                FontSize="14"
+                materialDesign:HintAssist.HelperText="Required*"
+                materialDesign:HintAssist.Hint="Reservation On Name"
+                materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                materialDesign:HintAssist.FloatingOffset="0 -14"
+                MaxLength="128"
+                Text="{Binding OnName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+            </TextBox>
+            <DatePicker
+                Margin="2 20 2 2"
+                Padding="4 2 4 2"
+                FontSize="14"
+                materialDesign:HintAssist.HelperText="Required*"
+                materialDesign:HintAssist.Hint="Reservation From"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
+                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                SelectedDate="{Binding ReservationFrom, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+            </DatePicker>
+            <DatePicker
+                Margin="2 20 2 2"
+                Padding="4 2 4 2"
+                FontSize="14"
+                materialDesign:HintAssist.HelperText="Required*"
+                materialDesign:HintAssist.Hint="Reservation To"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
+                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                SelectedDate="{Binding ReservationTo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+            </DatePicker>
+            <TextBox
+                Margin="2 20 2 2"
+                Padding="4 2 4 2"
+                FontSize="14"
+                materialDesign:HintAssist.HelperText="Required*"
+                materialDesign:HintAssist.Hint="Number Of Adults"
+                materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                materialDesign:HintAssist.FloatingOffset="0 -14"
+                Text="{Binding NumberOfAdults, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+            </TextBox>
+            <TextBox
+                Margin="2 20 2 2"
+                Padding="4 2 4 2"
+                FontSize="14"
+                materialDesign:HintAssist.HelperText="Required*"
+                materialDesign:HintAssist.Hint="Number Of Children"
+                materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
+                materialDesign:HintAssist.FloatingOffset="0 -14"
+                Text="{Binding NumberOfChildren, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+            </TextBox>
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="6 30 2 2">
+                <TextBlock
+                    Text="Total Price: "
+                    FontSize="14"
+                    Foreground="{DynamicResource SecondaryHueMidBrush}" />
+                <TextBlock
+                    Text="{Binding TotalPrice}"
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Style="{DynamicResource MaterialDesignBody2TextBlock}" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="15 10 15 8"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                HorizontalAlignment="Right"
+                Margin="0 0 2 0"
+                MinWidth="120"
+                FontSize="14"
+                IsDefault="True"
+                Content="SUBMIT"
+                Command="{Binding SubmitCommand}"
+                Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+            <Button
+                HorizontalAlignment="Right"
+                MinWidth="100"
+                FontSize="14"
+                Margin="8 0 0 0"
+                Content="CANCEL"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

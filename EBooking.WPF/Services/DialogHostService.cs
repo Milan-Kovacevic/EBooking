@@ -28,6 +28,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToAccommodationUnitAddDialogViewModel;
         private readonly DialogNavigationService _navigateToAccommodationUnitDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToAccommodationUnitEditDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitReservationAddDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -43,7 +44,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToAccommodationDeleteDialogViewModel,
             DialogNavigationService navigateToAccommodationUnitAddDialogViewModel,
             DialogNavigationService navigateToAccommodationUnitDeleteDialogViewModel,
-            DialogNavigationService navigateToAccommodationUnitEditDialogViewModel)
+            DialogNavigationService navigateToAccommodationUnitEditDialogViewModel,
+            DialogNavigationService navigateToUnitReservationAddDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -59,6 +61,7 @@ namespace EBooking.WPF.Services
             _navigateToAccommodationUnitAddDialogViewModel = navigateToAccommodationUnitAddDialogViewModel;
             _navigateToAccommodationUnitDeleteDialogViewModel = navigateToAccommodationUnitDeleteDialogViewModel;
             _navigateToAccommodationUnitEditDialogViewModel = navigateToAccommodationUnitEditDialogViewModel;
+            _navigateToUnitReservationAddDialogViewModel = navigateToUnitReservationAddDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -129,6 +132,11 @@ namespace EBooking.WPF.Services
         public void OpenAccommodationUnitDeleteDialog()
         {
             _navigateToAccommodationUnitDeleteDialogViewModel.Navigate();
+        }
+
+        public void OpenUnitReservationAddDialog()
+        {
+            _navigateToUnitReservationAddDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

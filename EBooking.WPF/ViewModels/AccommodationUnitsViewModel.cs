@@ -40,14 +40,13 @@ namespace EBooking.WPF.ViewModels
 
             _accommodationUnits = new ObservableCollection<AccommodationUnitItemViewModel>();
             AccommodationUnits = CollectionViewSource.GetDefaultView(_accommodationUnits);
-
-            isAdminOwner = userStore.IsAdmin;
             accommodationName = _accommodationStore.SelectedAccommodation?.Name ?? string.Empty;
             accommodationAddress = _accommodationStore.SelectedAccommodation?.Address ?? string.Empty;
             var location = _accommodationStore.SelectedAccommodation?.Location;
             accommodationLocation = $"{location?.Country}, {location?.City}";
 
             isAdminOwner = _accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
+            isEmployee = userStore.IsEmployee;
             _accommodationUnitStore.CurrentAccommodation = _accommodationStore.SelectedAccommodation;
         }
 
@@ -61,6 +60,8 @@ namespace EBooking.WPF.ViewModels
 
         [ObservableProperty]
         private bool isAdminOwner;
+        [ObservableProperty]
+        private bool isEmployee;
         [ObservableProperty]
         private string accommodationName;
         [ObservableProperty]
@@ -130,6 +131,12 @@ namespace EBooking.WPF.ViewModels
                 return;
             _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
             _dialogHostService.OpenAccommodationUnitDeleteDialog();
+        }
+
+        [RelayCommand]
+        public void MakeUnitReservation(object param)
+        {
+            _dialogHostService.OpenUnitReservationAddDialog();
         }
 
         #endregion

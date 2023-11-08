@@ -150,6 +150,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Button
+                                                Visibility="{Binding DataContext.IsEmployee, RelativeSource={RelativeSource AncestorType={x:Type local:AccommodationUnitsView}}, Converter={StaticResource BooleanToVisibilityConverter}}"
                                                 materialDesign:ButtonAssist.CornerRadius="4"
                                                 Panel.ZIndex="1"
                                                 Width="30"
@@ -159,6 +160,8 @@
                                                 HorizontalAlignment="Right"
                                                 Margin="0 2 0 0"
                                                 ToolTip="Book Now"
+                                                Command="{Binding DataContext.MakeUnitReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AccommodationUnitsView}}}"
+                                                CommandParameter="{Binding}"
                                                 Background="{DynamicResource PrimaryHueLightBrush}">
                                                 <materialDesign:PackIcon
                                                     Kind="BookMultipleAdd"

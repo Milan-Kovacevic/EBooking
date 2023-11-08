@@ -22,6 +22,15 @@ namespace EBooking.WPF.Utility
             return new ValidationResult("Future date required");
         }
 
+        public static ValidationResult? ValidateReservationFromDate(DateTime date, ValidationContext context)
+        {
+            var isValid = date >= DateTime.Now.Date;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Future date required");
+        }
+
         public static ValidationResult? ValidateAvailableToDateOnAdd(DateTime date, ValidationContext context)
         {
             var instance = (AccommodationUnitAddDialogViewModel)context.ObjectInstance;
@@ -42,27 +51,32 @@ namespace EBooking.WPF.Utility
             return new ValidationResult("Must be higher than from date");
         }
 
-        public static ValidationResult? ValidateNumberOfBeds(string number, ValidationContext context)
+        public static ValidationResult? ValidateReservationToDateOnAdd(DateTime date, ValidationContext context)
         {
-            if(!int.TryParse(number, out var result))
-                return new ValidationResult("Positive number is required");
-
-            var isValid = result >= 0 && result <= 20;
+            var instance = (UnitReservationAddDialogViewModel)context.ObjectInstance;
+            var isValid = date > instance.ReservationFrom;
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Number of beds can be between 0 and 20");
+            return new ValidationResult("Must be higher than from date");
         }
 
-        public static ValidationResult? ValidatePricePerNight(string price, ValidationContext context)
+        public static ValidationResult? ValidatePositiveDecimalNumber(string number, ValidationContext context)
         {
-            if (!decimal.TryParse(price, out var result))
-                return new ValidationResult("Positive price is required");
-            var isValid = result >= 0.0m;
-            if (isValid)
-                return ValidationResult.Success;
+            bool isDecimal = decimal.TryParse(number, out var result);
+            bool isValid = isDecimal && result >= 0;
+            if (!isValid)
+                return new ValidationResult("Positive decimal number is required");
+            return ValidationResult.Success;
+        }
 
-            return new ValidationResult("Invalid price specified");
+        public static ValidationResult? ValidatePositiveIntegerNumber(string number, ValidationContext context)
+        {
+            bool isNumber = int.TryParse(number, out var result);
+            bool isValid = isNumber && result >= 0;
+            if (!isValid)
+                return new ValidationResult("Positive integer number is required");
+            return ValidationResult.Success;
         }
         #endregion
     }
