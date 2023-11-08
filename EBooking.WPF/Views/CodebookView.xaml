@@ -58,6 +58,8 @@
                     </StackPanel>
 
                     <materialDesign:Card
+                        UniformCornerRadius="8"
+                        materialDesign:ElevationAssist.Elevation="Dp3"
                         Grid.Row="1"
                         Margin="0 5 0 0">
                         <TabControl

@@ -43,7 +43,7 @@ namespace EBooking.WPF
         private readonly NavigationService navigateToSettingsViewModel;
         private readonly NavigationService navigateToLandingViewModel;
         private readonly NavigationService navigateToAccommodationsViewModel;
-        private readonly NavigationService navigateToAccommodationUnitsViewModel;
+        private readonly NavigationService navigateToAccommodationDetailsViewModel;
         private readonly NavigationService navigateToFlightsViewModel;
         private readonly NavigationService navigateToCodebookViewModel;
         private readonly DialogHostService dialogHostService;
@@ -90,7 +90,7 @@ namespace EBooking.WPF
             navigateToSettingsViewModel = new NavigationService(navigationStore, CreateSettingsViewModel);
             navigateToLandingViewModel = new NavigationService(navigationStore, CreateLandingViewModel);
             navigateToAccommodationsViewModel = new NavigationService(navigationStore, CreateAccommodationsViewModel);
-            navigateToAccommodationUnitsViewModel = new NavigationService(navigationStore, CreateAccommodationUnitsViewModel);
+            navigateToAccommodationDetailsViewModel = new NavigationService(navigationStore, CreateAccommodationDetailsViewModel);
             navigateToFlightsViewModel = new NavigationService(navigationStore, CreateFlightsViewModel);
             navigateToCodebookViewModel = new NavigationService(navigationStore, CreateCodebookViewModel);
             navigateToExitApplicationDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateExitApplicationDialogViewModel);
@@ -170,12 +170,17 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore, navigateToAccommodationUnitsViewModel);
+            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore, navigateToAccommodationDetailsViewModel);
+        }
+
+        private AccommodationDetailsViewModel CreateAccommodationDetailsViewModel()
+        {
+            return new AccommodationDetailsViewModel(accommodationStore, navigateToAccommodationsViewModel, CreateAccommodationUnitsViewModel());
         }
 
         private AccommodationUnitsViewModel CreateAccommodationUnitsViewModel()
         {
-            return new AccommodationUnitsViewModel(accommodationStore, accommodationUnitStore, navigateToAccommodationsViewModel, userStore, dialogHostService, accommodationUnitService);
+            return new AccommodationUnitsViewModel(accommodationStore, accommodationUnitStore, userStore, dialogHostService, accommodationUnitService);
         }
 
         private FlightsViewModel CreateFlightsViewModel()

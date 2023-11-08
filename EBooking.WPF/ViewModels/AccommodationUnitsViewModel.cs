@@ -20,17 +20,13 @@ namespace EBooking.WPF.ViewModels
         private ObservableCollection<AccommodationUnitItemViewModel> _accommodationUnits;
         public ICollectionView AccommodationUnits { get; }
 
-        private readonly AccommodationStore _accommodationStore;
         private readonly AccommodationUnitStore _accommodationUnitStore;
-        private readonly NavigationService _navigateToAccommodationsViewModel;
         private readonly DialogHostService _dialogHostService;
         private readonly AccommodationUnitService _accommodationUnitService;
 
-        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, AccommodationUnitStore accommodationUnitStore, NavigationService navigateToAccommodationsViewModel, UserStore userStore, DialogHostService dialogHostService, AccommodationUnitService accommodationUnitService)
+        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, AccommodationUnitStore accommodationUnitStore, UserStore userStore, DialogHostService dialogHostService, AccommodationUnitService accommodationUnitService)
         {
-            _accommodationStore = accommodationStore;
             _accommodationUnitStore = accommodationUnitStore;
-            _navigateToAccommodationsViewModel = navigateToAccommodationsViewModel;
             _dialogHostService = dialogHostService;
             _accommodationUnitService = accommodationUnitService;
             _accommodationUnitStore.AccommodationUnitLoaded += OnAccommodationUnitsLoaded;
@@ -40,14 +36,9 @@ namespace EBooking.WPF.ViewModels
 
             _accommodationUnits = new ObservableCollection<AccommodationUnitItemViewModel>();
             AccommodationUnits = CollectionViewSource.GetDefaultView(_accommodationUnits);
-            accommodationName = _accommodationStore.SelectedAccommodation?.Name ?? string.Empty;
-            accommodationAddress = _accommodationStore.SelectedAccommodation?.Address ?? string.Empty;
-            var location = _accommodationStore.SelectedAccommodation?.Location;
-            accommodationLocation = $"{location?.Country}, {location?.City}";
-
-            isAdminOwner = _accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
+            isAdminOwner = accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
             isEmployee = userStore.IsEmployee;
-            _accommodationUnitStore.CurrentAccommodation = _accommodationStore.SelectedAccommodation;
+            _accommodationUnitStore.CurrentAccommodation = accommodationStore.SelectedAccommodation;
         }
 
         public void Dispose()
@@ -62,19 +53,6 @@ namespace EBooking.WPF.ViewModels
         private bool isAdminOwner;
         [ObservableProperty]
         private bool isEmployee;
-        [ObservableProperty]
-        private string accommodationName;
-        [ObservableProperty]
-        private string accommodationAddress;
-        [ObservableProperty]
-        private string accommodationLocation;
-
-        [RelayCommand]
-        public void ReturnBack()
-        {
-            _navigateToAccommodationsViewModel.Navigate();
-        }
-
 
         #region Accommodation Units CRUD Commands
         private void OnAccommodationUnitsLoaded()
@@ -91,7 +69,7 @@ namespace EBooking.WPF.ViewModels
 
         private void AddNewAccommodationUnitItem(AccommodationUnit accommodationUnit)
         {
-            var accommodationUnitItem = new AccommodationUnitItemViewModel();
+            var accommodationUnitItem = new AccommodationUnitItemViewModel(_accommodationUnitService, _dialogHostService);
             Mapper.Map(accommodationUnit).Over(accommodationUnitItem);
             _accommodationUnits.Add(accommodationUnitItem);
         }
@@ -113,24 +91,6 @@ namespace EBooking.WPF.ViewModels
         public void AddAccommodationUnit()
         {
             _dialogHostService.OpenAccommodationUnitAddDialog();
-        }
-
-        [RelayCommand]
-        public void EditAccommodationUnit(object param)
-        {
-            if (param is not AccommodationUnitItemViewModel vm)
-                return;
-            _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
-            _dialogHostService.OpenAccommodationUnitEditDialog();
-        }
-
-        [RelayCommand]
-        public void DeleteAccommodationUnit(object param)
-        {
-            if (param is not AccommodationUnitItemViewModel vm)
-                return;
-            _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
-            _dialogHostService.OpenAccommodationUnitDeleteDialog();
         }
 
         [RelayCommand]

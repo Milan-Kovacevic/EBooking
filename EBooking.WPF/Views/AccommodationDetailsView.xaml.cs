@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EBooking.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for AccommodationUnitsView.xaml
+    /// Interaction logic for AccommodationDetailsView.xaml
     /// </summary>
-    public partial class AccommodationUnitsView : UserControl
+    public partial class AccommodationDetailsView : UserControl
     {
-        public AccommodationUnitsView()
+        public AccommodationDetailsView()
         {
             InitializeComponent();
         }

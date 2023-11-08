@@ -46,7 +46,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyPropertyChangedFor(nameof(AvailableFrom))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnAdd))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateAvailableToDateOnAdd))]
         [NotifyDataErrorInfo]
         private DateTime? availableTo;
 

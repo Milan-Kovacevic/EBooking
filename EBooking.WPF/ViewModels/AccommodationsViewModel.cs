@@ -41,15 +41,15 @@ namespace EBooking.WPF.ViewModels
         private readonly UserStore _userStore;
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
-        private readonly NavigationService _navigateToAccommodationUnitsViewModel;
+        private readonly NavigationService _navigateToAccommodationDetailsViewModel;
 
-        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationUnitsViewModel)
+        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationDetailsViewModel)
         {
             _accommodationStore = accommodationStore;
             _userStore = userStore;
             _accommodationService = accommodationService;
             _dialogHostService = dialogHostService;
-            _navigateToAccommodationUnitsViewModel = navigateToAccommodationUnitsViewModel;
+            _navigateToAccommodationDetailsViewModel = navigateToAccommodationDetailsViewModel;
             _accommodationStore.AccommodationLoaded += OnAccommodationLoaded;
             _accommodationStore.AccommodationAdded += OnAccommodationAdded;
             _accommodationStore.AccommodationUpdated += OnAccommodationUpdated;
@@ -142,7 +142,7 @@ namespace EBooking.WPF.ViewModels
                 return;
 
             _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
-            _navigateToAccommodationUnitsViewModel.Navigate();
+            _navigateToAccommodationDetailsViewModel.Navigate();
         }
         #endregion
 

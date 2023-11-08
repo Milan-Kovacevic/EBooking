@@ -22,7 +22,7 @@
     lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
     lex:ResxLocalizationProvider.DefaultDictionary="Language"
     FontSize="16"
-    Height="780"
+    Height="800"
     Width="1280">
     <Window.Resources>
         <DataTemplate
@@ -50,8 +50,8 @@
             <views:AccommodationsView />
         </DataTemplate>
         <DataTemplate
-            DataType="{x:Type vms:AccommodationUnitsViewModel}">
-            <views:AccommodationUnitsView />
+            DataType="{x:Type vms:AccommodationDetailsViewModel}">
+            <views:AccommodationDetailsView />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type vms:FlightsViewModel}">

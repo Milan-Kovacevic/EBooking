@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
+using EBooking.WPF.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,8 +50,13 @@ namespace EBooking.WPF.ViewModels
             }
         }
 
-        public AccommodationUnitItemViewModel()
+        private readonly AccommodationUnitService _accommodationUnitService;
+        private readonly DialogHostService _dialogHostService;
+
+        public AccommodationUnitItemViewModel(AccommodationUnitService accommodationUnitService, DialogHostService dialogHostService)
         {
+            _accommodationUnitService = accommodationUnitService;
+            _dialogHostService = dialogHostService;
             unitId = 0;
             name = string.Empty;
             availabilityPeriod = string.Empty;
@@ -63,6 +70,25 @@ namespace EBooking.WPF.ViewModels
         private void SetAvailabilityPeriod()
         {
             AvailabilityPeriod = $"{AvailableFrom:dd.MM.yyyy} - {AvailableTo:dd.MM.yyyy}";
+        }
+
+
+        [RelayCommand]
+        public void EditAccommodationUnit(object param)
+        {
+            if (param is not AccommodationUnitItemViewModel vm)
+                return;
+            _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
+            _dialogHostService.OpenAccommodationUnitEditDialog();
+        }
+
+        [RelayCommand]
+        public void DeleteAccommodationUnit(object param)
+        {
+            if (param is not AccommodationUnitItemViewModel vm)
+                return;
+            _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
+            _dialogHostService.OpenAccommodationUnitDeleteDialog();
         }
     }
 }
