@@ -140,6 +140,15 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenConfirmMultiDeleteDialog();
         }
 
+        [RelayCommand]
+        public void EditUnitFeature(object param)
+        {
+            if (param is not UnitFeatureItemViewModel vm)
+                return;
+            _unitFeaturesService.SetSelectedUnitFeature(vm.FeatureId);
+            _dialogHostService.OpenUnitFeatureEditDialog();
+        }
+
         public async void Receive(DeleteSelectedDialogResultMessage message)
         {
             if (message.DialogResult == false)
@@ -154,15 +163,6 @@ namespace EBooking.WPF.ViewModels
             }
             await Task.WhenAll(tasks);
             IsAllItemsSelected = false;
-        }
-
-        [RelayCommand]
-        public void EditUnitFeature(object param)
-        {
-            if (param is not UnitFeatureItemViewModel vm)
-                return;
-            _unitFeaturesService.SetSelectedUnitFeature(vm.FeatureId);
-            _dialogHostService.OpenUnitFeatureEditDialog();
         }
 
         #endregion

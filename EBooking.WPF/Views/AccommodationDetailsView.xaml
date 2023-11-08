@@ -445,7 +445,7 @@
                                 </Grid>
                             </TabItem>
                             <TabItem
-                                DataContext="{Binding UnitFeaturesViewModel}">
+                                DataContext="{Binding UnitReservationsViewModel}">
                                 <TabItem.Header>
                                     <materialDesign:ColorZone
                                         Mode="PrimaryMid"
@@ -489,7 +489,7 @@
                                             VerticalContentAlignment="Center"
                                             VerticalAlignment="Center"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
-                                            materialDesign:HintAssist.HelperText="Find accommodation unit reservations.."
+                                            materialDesign:HintAssist.HelperText="Find units reservations.."
                                             materialDesign:HintAssist.Hint="Search..."
                                             materialDesign:TextFieldAssist.HasLeadingIcon="True"
                                             materialDesign:TextFieldAssist.LeadingIcon="Search"
@@ -502,7 +502,7 @@
                                             <TextBox.InputBindings>
                                                 <KeyBinding
                                                     Key="Enter"
-                                                    Command="{Binding SearchUnitFeaturesCommand}" />
+                                                    Command="{Binding SearchUnitReservationsCommand}" />
                                             </TextBox.InputBindings>
                                         </TextBox>
                                         <Button
@@ -511,11 +511,11 @@
                                             Height="42"
                                             Padding="4"
                                             Margin="8 0 0 0"
-                                            Command="{Binding SearchUnitFeaturesCommand}"
+                                            Command="{Binding SearchUnitReservationsCommand}"
                                             Foreground="{DynamicResource SecondaryHueMidBrush}"
                                             Style="{DynamicResource MaterialDesignIconButton}"
                                             BorderThickness="0"
-                                            ToolTip="Search unit features">
+                                            ToolTip="Search unit reservations">
                                             <materialDesign:PackIcon
                                                 Kind="SearchExpand"
                                                 Width="25"
@@ -527,11 +527,11 @@
                                             Height="42"
                                             Padding="4"
                                             Margin="4 0"
-                                            Command="{Binding DeleteSelectedFeaturesCommand}"
+                                            Command="{Binding DeleteSelectedUnitReservationsCommand}"
                                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                                             Style="{DynamicResource MaterialDesignIconButton}"
                                             BorderThickness="0"
-                                            ToolTip="Delete selected unit features">
+                                            ToolTip="Delete selected unit reservations">
                                             <materialDesign:PackIcon
                                                 Kind="DeleteSweepOutline"
                                                 Width="28"
@@ -544,6 +544,7 @@
                                         x:Name="UnitFeaturesDataContextProxy"
                                         DataContext="{Binding}" />
                                     <DataGrid
+                                        x:Name="UnitReservationsDataGrid"
                                         Grid.Row="1"
                                         TextSearch.Text="{Binding SearchText}"
                                         Margin="20 15 20 20"
@@ -554,18 +555,17 @@
                                         AutoGenerateColumns="False"
                                         CanUserAddRows="False"
                                         HeadersVisibility="All"
-                                        IsReadOnly="False"
-                                        FontSize="15"
+                                        FontSize="14"
                                         MaxHeight="270"
                                         CanUserReorderColumns="False"
                                         materialDesign:DataGridAssist.ColumnHeaderPadding="14 12 14 12"
                                         materialDesign:DataGridAssist.CellPadding="14 6 14 6"
-                                        ItemsSource="{Binding UnitFeatures}"
+                                        ItemsSource="{Binding UnitReservations}"
                                         SelectionUnit="FullRow">
                                         <DataGrid.Columns>
                                             <DataGridCheckBoxColumn
                                                 CanUserSort="False"
-                                                MinWidth="70"
+                                                MinWidth="60"
                                                 Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                 <DataGridCheckBoxColumn.Header>
                                                     <Border
@@ -584,51 +584,13 @@
                                                     </Style>
                                                 </DataGridCheckBoxColumn.HeaderStyle>
                                             </DataGridCheckBoxColumn>
-                                            <DataGridTextColumn
-                                                IsReadOnly="True"
-                                                MinWidth="80"
-                                                Binding="{Binding FeatureId}"
-                                                Header="ID">
-                                                <DataGridTextColumn.HeaderStyle>
-                                                    <Style
-                                                        TargetType="{x:Type DataGridColumnHeader}"
-                                                        BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                                        <Setter
-                                                            Property="ContentTemplate">
-                                                            <Setter.Value>
-                                                                <DataTemplate>
-                                                                    <TextBlock
-                                                                        Text="{Binding}"
-                                                                        TextAlignment="Center"
-                                                                        TextWrapping="Wrap" />
-                                                                </DataTemplate>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter
-                                                            Property="HorizontalContentAlignment"
-                                                            Value="Center" />
-                                                    </Style>
-                                                </DataGridTextColumn.HeaderStyle>
-                                                <DataGridTextColumn.ElementStyle>
-                                                    <Style
-                                                        TargetType="{x:Type TextBlock}"
-                                                        BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
-                                                        <Setter
-                                                            Property="HorizontalAlignment"
-                                                            Value="Center" />
-                                                        <Setter
-                                                            Property="VerticalAlignment"
-                                                            Value="Center" />
-                                                    </Style>
-                                                </DataGridTextColumn.ElementStyle>
-                                            </DataGridTextColumn>
                                             <materialDesign:DataGridTextColumn
-                                                MinWidth="500"
+                                                MinWidth="210"
                                                 FontSize="14"
                                                 IsReadOnly="True"
                                                 EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-                                                Header="Feature Name"
-                                                Binding="{Binding Name}">
+                                                Header="Reservation On Name"
+                                                Binding="{Binding OnName}">
                                                 <materialDesign:DataGridTextColumn.ElementStyle>
                                                     <Style
                                                         TargetType="{x:Type TextBlock}"
@@ -642,7 +604,87 @@
                                                     </Style>
                                                 </materialDesign:DataGridTextColumn.ElementStyle>
                                             </materialDesign:DataGridTextColumn>
-
+                                            <materialDesign:DataGridTextColumn
+                                                MinWidth="190"
+                                                FontSize="14"
+                                                IsReadOnly="True"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                                                Header="Reservation Period"
+                                                Binding="{Binding ReservationPeriod}">
+                                                <materialDesign:DataGridTextColumn.ElementStyle>
+                                                    <Style
+                                                        TargetType="{x:Type TextBlock}"
+                                                        BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                                        <Setter
+                                                            Property="HorizontalAlignment"
+                                                            Value="Left" />
+                                                        <Setter
+                                                            Property="VerticalAlignment"
+                                                            Value="Center" />
+                                                    </Style>
+                                                </materialDesign:DataGridTextColumn.ElementStyle>
+                                            </materialDesign:DataGridTextColumn>
+                                            <materialDesign:DataGridTextColumn
+                                                MinWidth="210"
+                                                FontSize="14"
+                                                IsReadOnly="True"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                                                Header="NumberOfPeople"
+                                                Binding="{Binding NumberOfPeople}">
+                                                <materialDesign:DataGridTextColumn.HeaderStyle>
+                                                    <Style
+                                                        TargetType="{x:Type DataGridColumnHeader}"
+                                                        BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                                        <Setter
+                                                            Property="HorizontalContentAlignment"
+                                                            Value="Right" />
+                                                    </Style>
+                                                </materialDesign:DataGridTextColumn.HeaderStyle>
+                                                <materialDesign:DataGridTextColumn.ElementStyle>
+                                                    <Style
+                                                        TargetType="{x:Type TextBlock}"
+                                                        BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                                        <Setter
+                                                            Property="HorizontalAlignment"
+                                                            Value="Right" />
+                                                        <Setter
+                                                            Property="VerticalAlignment"
+                                                            Value="Center" />
+                                                    </Style>
+                                                </materialDesign:DataGridTextColumn.ElementStyle>
+                                            </materialDesign:DataGridTextColumn>
+                                            <materialDesign:DataGridTextColumn
+                                                MinWidth="160"
+                                                FontSize="14"
+                                                IsReadOnly="True"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                                                Header="Total Price"
+                                                Binding="{Binding TotalPrice}">
+                                                <materialDesign:DataGridTextColumn.HeaderStyle>
+                                                    <Style
+                                                        TargetType="{x:Type DataGridColumnHeader}"
+                                                        BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                                        <Setter
+                                                            Property="HorizontalContentAlignment"
+                                                            Value="Right" />
+                                                    </Style>
+                                                </materialDesign:DataGridTextColumn.HeaderStyle>
+                                                <materialDesign:DataGridTextColumn.ElementStyle>
+                                                    <Style
+                                                        TargetType="{x:Type TextBlock}"
+                                                        BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                                        <Setter
+                                                            Property="HorizontalAlignment"
+                                                            Value="Right" />
+                                                        <Setter
+                                                            Property="FontWeight"
+                                                            Value="Medium" />
+                                                        <Setter
+                                                            Property="VerticalAlignment"
+                                                            Value="Center" />
+                                                    </Style>
+                                                </materialDesign:DataGridTextColumn.ElementStyle>
+                                            </materialDesign:DataGridTextColumn>
                                             <DataGridTemplateColumn
                                                 MinWidth="100"
                                                 IsReadOnly="True"
@@ -656,7 +698,7 @@
                                                             <Setter.Value>
                                                                 <DataTemplate>
                                                                     <TextBlock
-                                                                        FontSize="15"
+                                                                        FontSize="14"
                                                                         Text="{Binding}"
                                                                         TextAlignment="Center"
                                                                         TextWrapping="Wrap" />
@@ -672,6 +714,7 @@
                                                     <DataTemplate>
                                                         <materialDesign:PopupBox
                                                             Padding="0 5"
+                                                            IsEnabled="{Binding IsOwner}"
                                                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                                                             HorizontalAlignment="Center"
                                                             PlacementMode="BottomAndAlignRightEdges"
@@ -687,7 +730,7 @@
                                                                     HorizontalAlignment="Stretch"
                                                                     VerticalAlignment="Center"
                                                                     Style="{DynamicResource MaterialDesignFlatLightButton}"
-                                                                    Command="{Binding DataContext.EditUnitFeatureCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                                    Command="{Binding DataContext.EditUnitReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                                                     CommandParameter="{Binding}" />
                                                                 <Separator
                                                                     Grid.Row="1"
@@ -701,7 +744,7 @@
                                                                     Margin="10 0"
                                                                     HorizontalAlignment="Stretch"
                                                                     Style="{DynamicResource MaterialDesignFlatSecondaryButton}"
-                                                                    Command="{Binding DataContext.DeleteUnitFeatureCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                                    Command="{Binding DataContext.DeleteUnitReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                                                     CommandParameter="{Binding}"
                                                                     VerticalAlignment="Center" />
                                                             </StackPanel>

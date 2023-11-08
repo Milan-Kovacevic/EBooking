@@ -13,6 +13,7 @@ namespace EBooking.WPF.ViewModels
     public partial class AccommodationDetailsViewModel : ObservableObject, IViewModelBase
     {
         public AccommodationUnitsViewModel AccommodationUnitsViewModel { get; set; }
+        public UnitReservationsViewModel UnitReservationsViewModel { get; set; }
         [ObservableProperty]
         private string accommodationName;
         [ObservableProperty]
@@ -24,7 +25,7 @@ namespace EBooking.WPF.ViewModels
 
         private readonly NavigationService _navigateToAccommodationsViewModel;
 
-        public AccommodationDetailsViewModel(AccommodationStore accommodationStore, NavigationService navigateToAccommodationsViewModel, AccommodationUnitsViewModel accommodationUnitsViewModel)
+        public AccommodationDetailsViewModel(AccommodationStore accommodationStore, NavigationService navigateToAccommodationsViewModel, AccommodationUnitsViewModel accommodationUnitsViewModel, UnitReservationsViewModel unitReservationsViewModel)
         {
             _navigateToAccommodationsViewModel = navigateToAccommodationsViewModel;
             accommodationName = accommodationStore.SelectedAccommodation?.Name ?? string.Empty;
@@ -33,6 +34,7 @@ namespace EBooking.WPF.ViewModels
             accommodationLocation = $"{location?.Country}, {location?.City}";
             selectedTabMenuIndex = 0;
             AccommodationUnitsViewModel = accommodationUnitsViewModel;
+            UnitReservationsViewModel = unitReservationsViewModel;
         }
 
         [RelayCommand]
