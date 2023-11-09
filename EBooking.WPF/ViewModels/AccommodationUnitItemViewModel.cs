@@ -90,5 +90,14 @@ namespace EBooking.WPF.ViewModels
             _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
             _dialogHostService.OpenAccommodationUnitDeleteDialog();
         }
+
+        [RelayCommand]
+        public void MakeUnitReservation(object param)
+        {
+            if (param is not AccommodationUnitItemViewModel vm)
+                return;
+            _accommodationUnitService.SetSelectedAccommodationUnit(vm.UnitId);
+            _dialogHostService.OpenUnitReservationAddDialog();
+        }
     }
 }

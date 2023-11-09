@@ -22,7 +22,12 @@ namespace EBooking.WPF.ViewModels
         private string accommodationLocation;
         [ObservableProperty]
         private int selectedTabMenuIndex;
-
+        partial void OnSelectedTabMenuIndexChanged(int value)
+        {
+            if (IsUnitReservationsView)
+                UnitReservationsViewModel.LoadUnitReservations();
+        }
+        private bool IsUnitReservationsView { get => SelectedTabMenuIndex == 1; }
         private readonly NavigationService _navigateToAccommodationsViewModel;
 
         public AccommodationDetailsViewModel(AccommodationStore accommodationStore, NavigationService navigateToAccommodationsViewModel, AccommodationUnitsViewModel accommodationUnitsViewModel, UnitReservationsViewModel unitReservationsViewModel)
@@ -43,5 +48,10 @@ namespace EBooking.WPF.ViewModels
             _navigateToAccommodationsViewModel.Navigate();
         }
 
+        public void Dispose()
+        {
+            AccommodationUnitsViewModel?.Dispose();
+            UnitReservationsViewModel?.Dispose();
+        }
     }
 }

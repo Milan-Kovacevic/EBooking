@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EBooking.Domain.DTOs;
 using EBooking.WPF.Services;
+using EBooking.WPF.Stores;
 using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
@@ -32,6 +34,8 @@ namespace EBooking.WPF.Dialogs.ViewModels
         partial void OnReservationFromChanged(DateTime? value)
         {
             ValidateProperty(ReservationTo, nameof(ReservationTo));
+            if (!HasErrors)
+                CalculateTotalPrice();
         }
 
         [ObservableProperty]
@@ -40,6 +44,11 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnAdd))]
         [NotifyDataErrorInfo]
         private DateTime? reservationTo;
+        partial void OnReservationToChanged(DateTime? value)
+        {
+            if (!HasErrors)
+                CalculateTotalPrice();
+        }
 
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
@@ -57,13 +66,21 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         [ObservableProperty]
         private string totalPrice;
+        public decimal PricePerNight { get; }
 
         public IRelayCommand SubmitCommand { get; }
+        private readonly UnitReservationService _unitReservationService;
         private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
+        private readonly AccommodationUnitStore _accommodationUnitStore;
 
-        public UnitReservationAddDialogViewModel(DialogHostService dialogHostService)
+        public UnitReservationAddDialogViewModel(UnitReservationService unitReservationService, UserStore userStore, AccommodationUnitStore accommodationUnitStore, DialogHostService dialogHostService)
         {
+            _unitReservationService = unitReservationService;
+            _userStore = userStore;
+            _accommodationUnitStore = accommodationUnitStore;
             _dialogHostService = dialogHostService;
+
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
             dialogTitle = "Add Accommodation Unit Reservation";
             onName = string.Empty;
@@ -71,7 +88,8 @@ namespace EBooking.WPF.Dialogs.ViewModels
             reservationTo = null;
             numberOfAdults = string.Empty;
             numberOfChildren = string.Empty;
-            totalPrice = string.Empty;
+            totalPrice = "0.0";
+            PricePerNight = accommodationUnitStore.SelectedAccommodationUnit?.PricePerNight ?? 0.0m;
         }
 
         private bool CanSubmit()
@@ -86,8 +104,28 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         private async Task Submit()
         {
+            var unitReservation = new UnitReservation()
+            {
+                OnName = OnName,
+                EmployeeId = _userStore.CurrentUser?.UserId ?? 0,
+                UnitId = _accommodationUnitStore.SelectedAccommodationUnit?.UnitId ?? 0,
+                ReservationFrom = ReservationFrom ?? DateTime.Now,
+                ReservationTo = ReservationTo ?? DateTime.Now,
+                NumberOfAdults = int.Parse(NumberOfAdults),
+                NumberOfChildren = int.Parse(NumberOfChildren),
+                TotalPrice = decimal.Parse(TotalPrice)
+            };
+            await _unitReservationService.AddUnitReservation(unitReservation);
             _dialogHostService.CloseDialogHost();
         }
 
+
+        private void CalculateTotalPrice()
+        {
+            if (ReservationFrom == null || ReservationTo == null)
+                return;
+            int numOfDays = ReservationTo.Value.Subtract(ReservationFrom.Value).Days;
+            TotalPrice = $"{numOfDays * PricePerNight}";
+        }
     }
 }

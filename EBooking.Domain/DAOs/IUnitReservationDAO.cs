@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace EBooking.Domain.DAOs
 {
-    public interface IUnitReservationDAO : IGenericDAO<TripReservation, int>
+    public interface IUnitReservationDAO : IGenericDAO<UnitReservation, int>
     {
+        Task<IEnumerable<UnitReservation>> LoadReservationsForAccommodation(int id);
     }
 }

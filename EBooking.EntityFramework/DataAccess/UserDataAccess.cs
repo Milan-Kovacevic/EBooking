@@ -137,7 +137,7 @@ namespace EBooking.EntityFramework.DataAccess
                     .Include(x=> x.TripReservations)
                     .Include(x=> x.UnitReservations)
                     .FirstOrDefaultAsync(x => x.UserId == entity.UserId);
-                return Mapper.Map(entity).ToANew<Employee>();
+                return Mapper.Map(result).ToANew<Employee>();
             }
             else if (entity is AdministratorEntity)
             {

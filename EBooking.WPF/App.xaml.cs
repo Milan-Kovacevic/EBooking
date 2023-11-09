@@ -29,12 +29,14 @@ namespace EBooking.WPF
         private readonly UnitFeaturesStore unitFeaturesStore;
         private readonly AccommodationStore accommodationStore;
         private readonly AccommodationUnitStore accommodationUnitStore;
+        private readonly UnitReservationStore unitReservationStore;
 
         private readonly UserService userService;
         private readonly LocationsService locationsService;
         private readonly UnitFeaturesService unitFeaturesService;
         private readonly AccommodationService accommodationService;
         private readonly AccommodationUnitService accommodationUnitService;
+        private readonly UnitReservationService unitReservationService;
         private readonly SettingsService settingsService;
         private readonly MessageQueueService messageQueueService;
 
@@ -78,12 +80,14 @@ namespace EBooking.WPF
             unitFeaturesStore = new UnitFeaturesStore(daoFactory.UnitFeatureDao);
             accommodationStore = new AccommodationStore(daoFactory.AccommodationDao);
             accommodationUnitStore = new AccommodationUnitStore(daoFactory.AccommodationUnitDao);
+            unitReservationStore = new UnitReservationStore(daoFactory.UnitReservationDao);
             messageQueueStore = new MessageQueueStore(new SnackbarMessageQueue(TimeSpan.FromSeconds(2)));
             userService = new UserService(userStore);
             locationsService = new LocationsService(locationsStore);
             unitFeaturesService = new UnitFeaturesService(unitFeaturesStore);
             accommodationService = new AccommodationService(accommodationStore);
             accommodationUnitService = new AccommodationUnitService(accommodationUnitStore);
+            unitReservationService = new UnitReservationService(unitReservationStore);
             messageQueueService = new MessageQueueService(messageQueueStore);
             navigateToLoginViewModel = new NavigationService(navigationStore, CreateLoginViewModel);
             navigateToRegisterViewModel = new NavigationService(navigationStore, CreateRegisterViewModel);
@@ -185,7 +189,7 @@ namespace EBooking.WPF
 
         private UnitReservationsViewModel CreateUnitReservationsViewModel()
         {
-            return new UnitReservationsViewModel(dialogHostService);
+            return new UnitReservationsViewModel(accommodationStore, unitReservationStore, userStore, unitReservationService, dialogHostService);
         }
 
         private FlightsViewModel CreateFlightsViewModel()
@@ -268,7 +272,7 @@ namespace EBooking.WPF
         }
         public UnitReservationAddDialogViewModel CreateUnitReservationAddDialogViewModel()
         {
-            return new UnitReservationAddDialogViewModel(dialogHostService);
+            return new UnitReservationAddDialogViewModel(unitReservationService, userStore, accommodationUnitStore, dialogHostService);
         }
         #endregion
     }

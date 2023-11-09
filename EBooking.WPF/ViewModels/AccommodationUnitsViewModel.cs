@@ -93,12 +93,6 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenAccommodationUnitAddDialog();
         }
 
-        [RelayCommand]
-        public void MakeUnitReservation(object param)
-        {
-            _dialogHostService.OpenUnitReservationAddDialog();
-        }
-
         #endregion
     }
 }
