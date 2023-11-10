@@ -22,7 +22,7 @@
                 UniformCornerRadius="10"
                 Padding="10"
                 MaxWidth="1140"
-                MaxHeight="720"
+                MaxHeight="690"
                 Margin="25">
                 <Grid>
                     <Grid.RowDefinitions>

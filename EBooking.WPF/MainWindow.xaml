@@ -22,7 +22,7 @@
     lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
     lex:ResxLocalizationProvider.DefaultDictionary="Language"
     FontSize="16"
-    Height="800"
+    Height="860"
     Width="1280">
     <Window.Resources>
         <DataTemplate

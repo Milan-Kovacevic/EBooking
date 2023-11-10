@@ -12,14 +12,7 @@
     d:DesignWidth="800">
     <Grid
         x:Name="AccommodationUnitsGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="auto" />
-        </Grid.ColumnDefinitions>
         <Button
-            Grid.Column="1"
             HorizontalAlignment="Right"
             Margin=" 0 20 20 0"
             VerticalAlignment="Top"
@@ -37,8 +30,21 @@
                 Width="20"
                 Height="20" />
         </Button>
+        <materialDesign:ColorZone
+            Panel.ZIndex="1"
+            Visibility="{Binding AccommodationUnits.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"
+            Background="Transparent"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center">
+            <TextBlock
+                Margin="0 100 0 0"
+                Text="There are no accommodation units to show"
+                FontWeight="Medium"
+                FontSize="17"
+                FontStyle="Italic">
+            </TextBlock>
+        </materialDesign:ColorZone>
         <Border
-            Grid.Column="0"
             Padding="12">
             <ScrollViewer
                 materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
@@ -47,6 +53,23 @@
                 <ItemsControl
                     x:Name="AccommodationUnitsControl"
                     ItemsSource="{Binding AccommodationUnits, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl.Style>
+                        <Style
+                            TargetType="{x:Type ItemsControl}">
+                            <Setter
+                                Property="Visibility"
+                                Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding AccommodationUnits.IsEmpty}"
+                                    Value="False">
+                                    <Setter
+                                        Property="Visibility"
+                                        Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ItemsControl.Style>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <components:AccommodationUnitItemCard />
