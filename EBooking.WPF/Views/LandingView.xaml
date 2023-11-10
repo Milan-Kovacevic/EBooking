@@ -7,6 +7,9 @@
     xmlns:local="clr-namespace:EBooking.WPF.Views"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
@@ -30,7 +33,7 @@
                         Width="44"
                         Height="44" />
                     <TextBlock
-                        Text="Welcome to E-Booking"
+                        Text="{lex:Loc Landing_WelcomeTitle}"
                         FontSize="36"
                         FontWeight="Medium"
                         Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -42,7 +45,7 @@
                     Orientation="Horizontal"
                     Margin="15 15 15 0">
                     <TextBlock
-                        Text="Are you new here?"
+                        Text="{lex:Loc Landing_RegisterDiscoveryLabel}"
                         FontSize="17"
                         FontStyle="Normal"
                         FontWeight="Medium"
@@ -51,7 +54,7 @@
                     <materialDesign:ColorZone>
                         <TextBlock
                             x:Name="RegisterLink"
-                            Text="REGISTER"
+                            Text="{lex:Loc Landing_RegisterLinkText}"
                             MouseDown="RegisterLink_MouseDown"
                             FontSize="16"
                             FontStyle="Italic"
@@ -66,7 +69,7 @@
                     Orientation="Horizontal"
                     Margin="15 0 15 0">
                     <TextBlock
-                        Text="Or"
+                        Text="{lex:Loc Landing_LoginDiscoveryLabel}"
                         FontSize="17"
                         FontStyle="Normal"
                         FontWeight="Medium"
@@ -75,7 +78,7 @@
                     <materialDesign:ColorZone>
                         <TextBlock
                             x:Name="LoginLink"
-                            Text="LOGIN"
+                            Text="{lex:Loc Landing_LoginLinkText}"
                             MouseDown="LoginLink_MouseDown"
                             FontSize="16"
                             FontStyle="Italic"
@@ -91,7 +94,7 @@
                     <TextBlock
                         x:Name="UserManualLink"
                         Margin="15 10 15 0"
-                        Text="Click here to read application manual"
+                        Text="{lex:Loc Landing_ReadDocumentationLinkText}"
                         MouseDown="UserManualLink_MouseDown"
                         FontSize="16"
                         FontStyle="Italic"

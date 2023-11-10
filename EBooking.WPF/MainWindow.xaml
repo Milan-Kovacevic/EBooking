@@ -182,7 +182,7 @@
                             <TextBlock
                                 FontSize="18"
                                 FontWeight="Medium"
-                                Text="MAIN MENU" />
+                                Text="{lex:Loc Menu_TitleText}" />
                         </materialDesign:ColorZone>
                         <ToggleButton
                             Grid.Column="1"
@@ -255,7 +255,7 @@
                             DockPanel.Dock="Left"
                             Orientation="Horizontal">
                             <ToggleButton
-                                ToolTip="Open main menu"
+                                ToolTip="{lex:Loc Main_MenuButtonTooltip}"
                                 Cursor="Hand"
                                 x:Name="MenuToggleButton"
                                 IsChecked="False"
@@ -275,7 +275,7 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <TextBlock
-                                    Text="Theme:"
+                                    Text="{lex:Loc Main_ThemeSelectorText}"
                                     FontSize="15"
                                     Margin="16 2" />
                                 <Grid
@@ -293,7 +293,7 @@
                                         FontSize="13"
                                         Grid.Column="0"
                                         Margin="0 0 12 0"
-                                        Text="Light" />
+                                        Text="{lex:Loc Main_ThemeLightText}" />
                                     <ToggleButton
                                         Grid.Column="1"
                                         Cursor="Hand"
@@ -303,14 +303,14 @@
                                         FontSize="13"
                                         Grid.Column="2"
                                         Margin="12 0 2 0"
-                                        Text="Dark" />
+                                        Text="{lex:Loc Main_ThemeDarkText}" />
                                 </Grid>
                                 <Separator
                                     Grid.Row="2"
                                     Grid.ColumnSpan="3"
                                     Margin="2 8" />
                                 <Button
-                                    Content="EXIT"
+                                    Content="{lex:Loc Main_ExitButtonText}"
                                     Command="{Binding ExitApplicationCommand}"
                                     Grid.Row="3"
                                     Margin="0 2 12 0"
@@ -322,7 +322,7 @@
                         </materialDesign:PopupBox>
                         <Button
                             Margin="16 -4 8 -4"
-                            ToolTip="Logout"
+                            ToolTip="{lex:Loc Main_LogoutButtonTooltip}"
                             Visibility="{Binding IsLogoutEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                             DockPanel.Dock="Right"
                             Command="{Binding LogoutCommand}"
@@ -342,7 +342,7 @@
                             Margin="16 -4 0 -4"
                             Width="36"
                             Height="36"
-                            ToolTip="Go to landing page"
+                            ToolTip="{lex:Loc Main_HomePageButtonTooltip}"
                             Command="{Binding HomeCommand}"
                             Style="{DynamicResource MaterialDesignIconForegroundButton}"
                             Cursor="Hand"
@@ -360,7 +360,7 @@
                             AutomationProperties.Name=""
                             FontSize="17"
                             FontWeight="Medium"
-                            Text="{lex:Loc MainWindow_Title}" />
+                            Text="{lex:Loc Main_SloganText}" />
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Grid>

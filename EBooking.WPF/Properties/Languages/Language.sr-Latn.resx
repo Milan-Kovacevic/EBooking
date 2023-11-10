@@ -132,8 +132,80 @@
   <data name="en-US" xml:space="preserve">
     <value>Engleski</value>
   </data>
-  <data name="MainWindow_Title" xml:space="preserve">
-    <value>Rezervišite Vaše sledeće putovanje ili smještaj sa E-Booking</value>
+  <data name="GLOBAL_InvalidLogin" xml:space="preserve">
+    <value>Neispravno korisničko ime ili lozinka</value>
+  </data>
+  <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
+    <value>Nije moguće registrovati nalog sa unesenim podacima</value>
+  </data>
+  <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
+    <value>Obavezno polje*</value>
+  </data>
+  <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
+    <value>Prijava je bila uspješna!</value>
+  </data>
+  <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
+    <value>Uspješno ste registrovali vaš nalog</value>
+  </data>
+  <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
+    <value>Dobrodošli nazad!</value>
+  </data>
+  <data name="Landing_LoginDiscoveryLabel" xml:space="preserve">
+    <value>...Ili</value>
+  </data>
+  <data name="Landing_LoginLinkText" xml:space="preserve">
+    <value>PRIJAVITE SE</value>
+  </data>
+  <data name="Landing_ReadDocumentationLinkText" xml:space="preserve">
+    <value>Kliknite ovdje da biste pročitali dokumentaciju</value>
+  </data>
+  <data name="Landing_RegisterDiscoveryLabel" xml:space="preserve">
+    <value>Da li ste novi ovdje?</value>
+  </data>
+  <data name="Landing_RegisterLinkText" xml:space="preserve">
+    <value>REGISTRUJTE SE</value>
+  </data>
+  <data name="Landing_WelcomeTitle" xml:space="preserve">
+    <value>Dobrodošli na "E-Booking"</value>
+  </data>
+  <data name="Login_LoginButtonText" xml:space="preserve">
+    <value>Prijava</value>
+  </data>
+  <data name="Login_PasswordFieldPlaceholder" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
+  <data name="Login_RegisterButtonText" xml:space="preserve">
+    <value>Registracija</value>
+  </data>
+  <data name="Login_Title" xml:space="preserve">
+    <value>Molimo Vas, prijavite se da biste koristili ovaj sistem</value>
+  </data>
+  <data name="Login_UsernameFieldPlaceholder" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
+  <data name="Main_ExitButtonText" xml:space="preserve">
+    <value>NAPUSTI</value>
+  </data>
+  <data name="Main_HomePageButtonTooltip" xml:space="preserve">
+    <value>Idite na početnu stranicu</value>
+  </data>
+  <data name="Main_LogoutButtonTooltip" xml:space="preserve">
+    <value>Odjavi se...</value>
+  </data>
+  <data name="Main_MenuButtonTooltip" xml:space="preserve">
+    <value>Otvorite glavni meni</value>
+  </data>
+  <data name="Main_SloganText" xml:space="preserve">
+    <value>Rezervišite Vaše sljedeće putovanje ili smještaj uz E-Booking</value>
+  </data>
+  <data name="Main_ThemeDarkText" xml:space="preserve">
+    <value>Tamna</value>
+  </data>
+  <data name="Main_ThemeLightText" xml:space="preserve">
+    <value>Svijetla</value>
+  </data>
+  <data name="Main_ThemeSelectorText" xml:space="preserve">
+    <value>Tema</value>
   </data>
   <data name="Menu_AccommodationsTitle" xml:space="preserve">
     <value>Smještaji</value>
@@ -153,11 +225,56 @@
   <data name="Menu_SettingsTitle" xml:space="preserve">
     <value>Postavke</value>
   </data>
+  <data name="Menu_TitleText" xml:space="preserve">
+    <value>GLAVNI MENI</value>
+  </data>
+  <data name="Register_AdminTabItemHeaderText" xml:space="preserve">
+    <value>Kao administrator</value>
+  </data>
+  <data name="Register_DisplayNameFieldPlaceholder" xml:space="preserve">
+    <value>Ime za prikaz</value>
+  </data>
+  <data name="Register_EmployeeTabItemHeaderText" xml:space="preserve">
+    <value>Kao zaposleni</value>
+  </data>
+  <data name="Register_FirstNameFieldPlaceholder" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="Register_LastNameFieldPlaceholder" xml:space="preserve">
+    <value>Prezime</value>
+  </data>
+  <data name="Register_PasswordFieldPlaceholder" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
+  <data name="Register_RegisterButtonText" xml:space="preserve">
+    <value>REGISTRUJ SE</value>
+  </data>
+  <data name="Register_RepeatPasswordFieldPlaceholder" xml:space="preserve">
+    <value>Potvrdite lozinku</value>
+  </data>
+  <data name="Register_Subtitle" xml:space="preserve">
+    <value>Kreirajte novi nalog</value>
+  </data>
+  <data name="Register_Title" xml:space="preserve">
+    <value>Registracija</value>
+  </data>
+  <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
   <data name="Settings_InfoTitle" xml:space="preserve">
     <value>Informacije o nalogu</value>
   </data>
   <data name="Settings_LookAndFeelTitle" xml:space="preserve">
     <value>Izgled i osjećaj aplikacije</value>
+  </data>
+  <data name="Settings_RevertChangesButtonText" xml:space="preserve">
+    <value>Poništite izmjene</value>
+  </data>
+  <data name="Settings_SaveChangesButtonText" xml:space="preserve">
+    <value>Sačuvajte izmjene</value>
+  </data>
+  <data name="Settings_SaveSettingsReminderText" xml:space="preserve">
+    <value>Potrebno je sačuvati izmjene*</value>
   </data>
   <data name="Settings_SelectLanguageLabel" xml:space="preserve">
     <value>Izaberite jezik za prikaz</value>

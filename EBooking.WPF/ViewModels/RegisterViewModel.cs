@@ -95,9 +95,9 @@ namespace EBooking.WPF.ViewModels
                 isSuccessfull = await _userService.RegisterAsEmployee(Username, Password, EmployeeFirstName, EmployeeLastName);
 
             if(isSuccessfull)
-                _messageQueueService.Enqueue("Registration was successfull!");
+                _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_REGISTRATION);
             else
-                _messageQueueService.Enqueue("Registration was unsuccessfull!");
+                _messageQueueService.Enqueue(LanguageTranslator.MessageType.INVALID_REGISTRATION);
 
         }
 

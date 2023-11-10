@@ -55,11 +55,11 @@ namespace EBooking.WPF.ViewModels
             bool isSuccessfull = await _userService.Login(Username, Password);
             if (isSuccessfull)
             {
-                _messageQueueService.Enqueue("Login was successfull!");
+                _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_LOGIN);
                 _navigateToLandingViewModel.Navigate();
             }   
             else
-                _messageQueueService.Enqueue("Invalid login credentials. Please, try again.");
+                _messageQueueService.Enqueue(LanguageTranslator.MessageType.INVALID_LOGIN);
             IsLoading = false;
         }
         

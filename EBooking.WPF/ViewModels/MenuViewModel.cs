@@ -86,7 +86,7 @@ namespace EBooking.WPF.ViewModels
                 new MenuViewItem(string.Empty, PackIconKind.Hotel, NavigateToAccommodations),
                 new MenuViewItem(string.Empty, PackIconKind.Flight, NavigateToFlights),
                 new MenuViewItem(string.Empty, PackIconKind.BookAdd, NavigateToCodebook),
-                new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings),
+                new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings) { IsEnabled = true},
             };
             selectedItem = null;
             currentViewModelKey = string.Empty;
@@ -160,7 +160,7 @@ namespace EBooking.WPF.ViewModels
             MenuItems.ElementAt(2).IsEnabled = false;
             MenuItems.ElementAt(3).IsEnabled = false;
             MenuItems.ElementAt(4).IsEnabled = false;
-            MenuItems.ElementAt(5).IsEnabled = false;
+            MenuItems.ElementAt(5).IsEnabled = true;
         }
         #endregion
 

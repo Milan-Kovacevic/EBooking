@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+﻿using AgileObjects.AgileMapper.Extensions;
+using CommunityToolkit.Mvvm.Messaging;
 using EBooking.WPF.Messages;
 using EBooking.WPF.Models;
 using System;
@@ -14,7 +15,6 @@ namespace EBooking.WPF.Utility
     internal class LanguageProvider
     {
         private readonly Dictionary<Language, string> applicationLanguages;
-
         public static LanguageProvider Instance { get; } = new LanguageProvider();
 
         public IEnumerable<LanguageItem> Languages { get => applicationLanguages.Values.Select(l => new LanguageItem(l, Util.GetLocalizedValue(l))); }
@@ -30,7 +30,7 @@ namespace EBooking.WPF.Utility
 
         private LanguageProvider()
         {
-            applicationLanguages = new Dictionary<Language, string>
+            applicationLanguages = new Dictionary<Language, string>()
             {
                 { Language.ENGLISH_US, "en-US" },
                 { Language.SERBIAN_LATIN, "sr-Latn" },
@@ -61,6 +61,7 @@ namespace EBooking.WPF.Utility
         {
             return applicationLanguages.FirstOrDefault(x => x.Value.Equals(languageCode)).Key;
         }
+
         #endregion
     }
 }

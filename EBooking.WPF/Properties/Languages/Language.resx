@@ -132,8 +132,80 @@
   <data name="en-US" xml:space="preserve">
     <value>English</value>
   </data>
-  <data name="MainWindow_Title" xml:space="preserve">
+  <data name="GLOBAL_InvalidLogin" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
+  <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
+    <value>Unable to register account with entered data</value>
+  </data>
+  <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
+    <value>Required*</value>
+  </data>
+  <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
+    <value>Login was successful!</value>
+  </data>
+  <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
+    <value>You have successfully registered your account!</value>
+  </data>
+  <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
+    <value>Welcome Back!</value>
+  </data>
+  <data name="Landing_LoginDiscoveryLabel" xml:space="preserve">
+    <value>...Or</value>
+  </data>
+  <data name="Landing_LoginLinkText" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="Landing_ReadDocumentationLinkText" xml:space="preserve">
+    <value>Click here to read application manual</value>
+  </data>
+  <data name="Landing_RegisterDiscoveryLabel" xml:space="preserve">
+    <value>Are you new here?</value>
+  </data>
+  <data name="Landing_RegisterLinkText" xml:space="preserve">
+    <value>REGISTER</value>
+  </data>
+  <data name="Landing_WelcomeTitle" xml:space="preserve">
+    <value>Welcome to "E-Booking"</value>
+  </data>
+  <data name="Login_LoginButtonText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_PasswordFieldPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login_RegisterButtonText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Login_Title" xml:space="preserve">
+    <value>Please, login to start using this system </value>
+  </data>
+  <data name="Login_UsernameFieldPlaceholder" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Main_ExitButtonText" xml:space="preserve">
+    <value>EXIT</value>
+  </data>
+  <data name="Main_HomePageButtonTooltip" xml:space="preserve">
+    <value>Go to landing page</value>
+  </data>
+  <data name="Main_LogoutButtonTooltip" xml:space="preserve">
+    <value>Log out...</value>
+  </data>
+  <data name="Main_MenuButtonTooltip" xml:space="preserve">
+    <value>Open main menu</value>
+  </data>
+  <data name="Main_SloganText" xml:space="preserve">
     <value>Book your next trip or accommodation with E-Booking</value>
+  </data>
+  <data name="Main_ThemeDarkText" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Main_ThemeLightText" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Main_ThemeSelectorText" xml:space="preserve">
+    <value>Theme</value>
   </data>
   <data name="Menu_AccommodationsTitle" xml:space="preserve">
     <value>Accommodations</value>
@@ -153,11 +225,56 @@
   <data name="Menu_SettingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Menu_TitleText" xml:space="preserve">
+    <value>MAIN MENU</value>
+  </data>
+  <data name="Register_AdminTabItemHeaderText" xml:space="preserve">
+    <value>As Administrator</value>
+  </data>
+  <data name="Register_DisplayNameFieldPlaceholder" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="Register_EmployeeTabItemHeaderText" xml:space="preserve">
+    <value>As Employee</value>
+  </data>
+  <data name="Register_FirstNameFieldPlaceholder" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Register_LastNameFieldPlaceholder" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Register_PasswordFieldPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Register_RegisterButtonText" xml:space="preserve">
+    <value>REGISTER</value>
+  </data>
+  <data name="Register_RepeatPasswordFieldPlaceholder" xml:space="preserve">
+    <value>Repeat Password</value>
+  </data>
+  <data name="Register_Subtitle" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="Register_Title" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
+    <value>Username</value>
+  </data>
   <data name="Settings_InfoTitle" xml:space="preserve">
     <value>Account Informations</value>
   </data>
   <data name="Settings_LookAndFeelTitle" xml:space="preserve">
     <value>Application Look and Feel</value>
+  </data>
+  <data name="Settings_RevertChangesButtonText" xml:space="preserve">
+    <value>Revert Changes</value>
+  </data>
+  <data name="Settings_SaveChangesButtonText" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Settings_SaveSettingsReminderText" xml:space="preserve">
+    <value>Save is required*</value>
   </data>
   <data name="Settings_SelectLanguageLabel" xml:space="preserve">
     <value>Select Display Language</value>

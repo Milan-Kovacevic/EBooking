@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EBooking.WPF.Utility.LanguageTranslator;
 
 namespace EBooking.WPF.Services
 {
@@ -18,6 +19,12 @@ namespace EBooking.WPF.Services
 
         public void Enqueue(string message)
         {
+            _messageQueueStore.SnackbarMessageQueue.Enqueue(message, true);
+        }
+
+        public void Enqueue(MessageType messageType)
+        {
+            var message = Translate(messageType);
             _messageQueueStore.SnackbarMessageQueue.Enqueue(message, true);
         }
     }

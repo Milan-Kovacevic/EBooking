@@ -22,7 +22,7 @@
                 UniformCornerRadius="10"
                 Padding="10"
                 MaxWidth="680"
-                MaxHeight="540"
+                MaxHeight="560"
                 Margin="25">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -47,13 +47,14 @@
                         <TextBlock
                             FontSize="24"
                             TextWrapping="Wrap"
+                            Margin="80 0"
                             FontWeight="Medium"
                             FontStyle="Italic"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Style="{DynamicResource MaterialDesignTextBlock}"
-                            Text="Please, Log in to start using this system" />
+                            Text="{lex:Loc Login_Title}" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="1"
@@ -63,7 +64,7 @@
                             Margin="2 20 2 2"
                             Padding="4 2 4 2"
                             FontSize="16"
-                            materialDesign:HintAssist.HelperText="Required*"
+                            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
                             materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                             materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
@@ -84,7 +85,7 @@
                                     <Label
                                         Style="{DynamicResource MaterialDesignLabel}"
                                         VerticalAlignment="Stretch"
-                                        Content="Username" />
+                                        Content="{lex:Loc Login_UsernameFieldPlaceholder}" />
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </TextBox>
@@ -92,7 +93,7 @@
                             Margin="2 18 2 2"
                             Padding="4 2 4 2"
                             FontSize="16"
-                            materialDesign:HintAssist.HelperText="Required*"
+                            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
                             materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                             materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
@@ -113,7 +114,7 @@
                                     <Label
                                         Style="{DynamicResource MaterialDesignLabel}"
                                         VerticalAlignment="Stretch"
-                                        Content="Password" />
+                                        Content="{lex:Loc Login_PasswordFieldPlaceholder}" />
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </PasswordBox>
@@ -143,7 +144,7 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontWeight="Medium"
-                                    Text="Login"
+                                    Text="{lex:Loc Login_LoginButtonText}"
                                     FontSize="17"
                                     Margin="6 2 0 2"
                                     Style="{DynamicResource MaterialDesignBody1TextBlock}" />
@@ -165,7 +166,7 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontWeight="Medium"
-                                    Text="Register"
+                                    Text="{lex:Loc Login_RegisterButtonText}"
                                     FontSize="17"
                                     Margin="6 2 0 2"
                                     Style="{DynamicResource MaterialDesignBody1TextBlock}" />

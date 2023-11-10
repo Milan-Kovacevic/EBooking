@@ -35,13 +35,13 @@ namespace EBooking.WPF.Utility
             {
                 { "color-blue", Color.FromRgb(11, 98, 152) },
                 { "color-red",Color.FromRgb(190, 49, 68) },
-                { "color-purple", Color.FromRgb(159, 90, 253) },
+                { "color-teal", Color.FromRgb(0, 102, 102) },
             };
 
             secondaryColors = new Dictionary<string, Color>()
             {
-                { "color-red", Color.FromRgb(220, 121, 134) },
                 { "color-blue", Color.FromRgb(27, 158, 238) },
+                { "color-red", Color.FromRgb(220, 121, 134) },
                 { "color-teal", Color.FromRgb(100, 204, 197) },
             };
         }

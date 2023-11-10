@@ -66,6 +66,8 @@ namespace EBooking.WPF.ViewModels
             _settingsService.ChangeSecondaryColor(AvailableSecondaryColors.ElementAt(value).Key);
         }
 
+        public bool IsUserLoggedIn { get; set; }
+
         [RelayCommand]
         public void SaveSettings()
         {
@@ -90,18 +92,21 @@ namespace EBooking.WPF.ViewModels
         private readonly MessageQueueService _messageQueueService;
         private readonly SettingsService _settingsService;
         private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
 
-        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService, DialogHostService dialogHostService)
+        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService, DialogHostService dialogHostService, UserStore userStore)
         {
             _settingsService = settingsService;
             _messageQueueService = messageQueueService;
             _settingsStore = settingsStore;
             _dialogHostService = dialogHostService;
+            _userStore = userStore;
             availableLanguages = new();
             availablePrimaryColors = new();
             availableSecondaryColors = new();
             RebindSettingsProperties();
             settingsChanged = false;
+            IsUserLoggedIn = userStore.IsLoggedIn;
         }
 
         private void RebindSettingsProperties()

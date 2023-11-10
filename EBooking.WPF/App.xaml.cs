@@ -12,6 +12,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using static EBooking.WPF.Utility.LanguageTranslator;
 
 namespace EBooking.WPF
 {
@@ -143,7 +144,7 @@ namespace EBooking.WPF
             navigationStore.CurrentViewModel = CreateLandingViewModel();
             // Displaying main window
             MainWindow.Show();
-            messageQueueService.Enqueue("Welcome back!");
+            messageQueueService.Enqueue(MessageType.WELCOME_MESSAGE);
         }
 
         // TODO: ADD DEPENDENCY INJECTION
@@ -175,7 +176,7 @@ namespace EBooking.WPF
 
         private SettingsViewModel CreateSettingsViewModel()
         {
-            return new SettingsViewModel(messageQueueService, settingsStore, settingsService,dialogHostService);
+            return new SettingsViewModel(messageQueueService, settingsStore, settingsService,dialogHostService, userStore);
         }
 
         private AccommodationsViewModel CreateAccommodationsViewModel()

@@ -106,11 +106,227 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid username or password.
+        /// </summary>
+        internal static string GLOBAL_InvalidLogin {
+            get {
+                return ResourceManager.GetString("GLOBAL_InvalidLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to register account with entered data.
+        /// </summary>
+        internal static string GLOBAL_InvalidRegistration {
+            get {
+                return ResourceManager.GetString("GLOBAL_InvalidRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required*.
+        /// </summary>
+        internal static string GLOBAL_RequiredInputHint {
+            get {
+                return ResourceManager.GetString("GLOBAL_RequiredInputHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login was successful!.
+        /// </summary>
+        internal static string GLOBAL_SuccessfulLogin {
+            get {
+                return ResourceManager.GetString("GLOBAL_SuccessfulLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully registered your account!.
+        /// </summary>
+        internal static string GLOBAL_SuccessfulRegistration {
+            get {
+                return ResourceManager.GetString("GLOBAL_SuccessfulRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome Back!.
+        /// </summary>
+        internal static string GLOBAL_WelcomeMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_WelcomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ...Or.
+        /// </summary>
+        internal static string Landing_LoginDiscoveryLabel {
+            get {
+                return ResourceManager.GetString("Landing_LoginDiscoveryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOGIN.
+        /// </summary>
+        internal static string Landing_LoginLinkText {
+            get {
+                return ResourceManager.GetString("Landing_LoginLinkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to read application manual.
+        /// </summary>
+        internal static string Landing_ReadDocumentationLinkText {
+            get {
+                return ResourceManager.GetString("Landing_ReadDocumentationLinkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you new here?.
+        /// </summary>
+        internal static string Landing_RegisterDiscoveryLabel {
+            get {
+                return ResourceManager.GetString("Landing_RegisterDiscoveryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to REGISTER.
+        /// </summary>
+        internal static string Landing_RegisterLinkText {
+            get {
+                return ResourceManager.GetString("Landing_RegisterLinkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to &quot;E-Booking&quot;.
+        /// </summary>
+        internal static string Landing_WelcomeTitle {
+            get {
+                return ResourceManager.GetString("Landing_WelcomeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string Login_LoginButtonText {
+            get {
+                return ResourceManager.GetString("Login_LoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Login_PasswordFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_PasswordFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Login_RegisterButtonText {
+            get {
+                return ResourceManager.GetString("Login_RegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please, login to start using this system .
+        /// </summary>
+        internal static string Login_Title {
+            get {
+                return ResourceManager.GetString("Login_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string Login_UsernameFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_UsernameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EXIT.
+        /// </summary>
+        internal static string Main_ExitButtonText {
+            get {
+                return ResourceManager.GetString("Main_ExitButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to landing page.
+        /// </summary>
+        internal static string Main_HomePageButtonTooltip {
+            get {
+                return ResourceManager.GetString("Main_HomePageButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out....
+        /// </summary>
+        internal static string Main_LogoutButtonTooltip {
+            get {
+                return ResourceManager.GetString("Main_LogoutButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open main menu.
+        /// </summary>
+        internal static string Main_MenuButtonTooltip {
+            get {
+                return ResourceManager.GetString("Main_MenuButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Book your next trip or accommodation with E-Booking.
         /// </summary>
-        internal static string MainWindow_Title {
+        internal static string Main_SloganText {
             get {
-                return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+                return ResourceManager.GetString("Main_SloganText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        internal static string Main_ThemeDarkText {
+            get {
+                return ResourceManager.GetString("Main_ThemeDarkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string Main_ThemeLightText {
+            get {
+                return ResourceManager.GetString("Main_ThemeLightText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string Main_ThemeSelectorText {
+            get {
+                return ResourceManager.GetString("Main_ThemeSelectorText", resourceCulture);
             }
         }
         
@@ -169,6 +385,114 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MAIN MENU.
+        /// </summary>
+        internal static string Menu_TitleText {
+            get {
+                return ResourceManager.GetString("Menu_TitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As Administrator.
+        /// </summary>
+        internal static string Register_AdminTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Register_AdminTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string Register_DisplayNameFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_DisplayNameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As Employee.
+        /// </summary>
+        internal static string Register_EmployeeTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Register_EmployeeTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        internal static string Register_FirstNameFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_FirstNameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        internal static string Register_LastNameFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_LastNameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Register_PasswordFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_PasswordFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to REGISTER.
+        /// </summary>
+        internal static string Register_RegisterButtonText {
+            get {
+                return ResourceManager.GetString("Register_RegisterButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat Password.
+        /// </summary>
+        internal static string Register_RepeatPasswordFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_RepeatPasswordFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new account.
+        /// </summary>
+        internal static string Register_Subtitle {
+            get {
+                return ResourceManager.GetString("Register_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Register_Title {
+            get {
+                return ResourceManager.GetString("Register_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string Register_UsernameFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Register_UsernameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Informations.
         /// </summary>
         internal static string Settings_InfoTitle {
@@ -183,6 +507,33 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string Settings_LookAndFeelTitle {
             get {
                 return ResourceManager.GetString("Settings_LookAndFeelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revert Changes.
+        /// </summary>
+        internal static string Settings_RevertChangesButtonText {
+            get {
+                return ResourceManager.GetString("Settings_RevertChangesButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Changes.
+        /// </summary>
+        internal static string Settings_SaveChangesButtonText {
+            get {
+                return ResourceManager.GetString("Settings_SaveChangesButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save is required*.
+        /// </summary>
+        internal static string Settings_SaveSettingsReminderText {
+            get {
+                return ResourceManager.GetString("Settings_SaveSettingsReminderText", resourceCulture);
             }
         }
         
