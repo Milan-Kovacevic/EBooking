@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Dialogs
+namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for SaveSettingsAlertDialog.xaml
+    /// Interaction logic for SaveSettingsDialog.xaml
     /// </summary>
-    public partial class SaveSettingsAlertDialog : UserControl
+    public partial class SaveSettingsDialog : UserControl
     {
-        public SaveSettingsAlertDialog()
+        public SaveSettingsDialog()
         {
             InitializeComponent();
         }

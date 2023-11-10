@@ -31,6 +31,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToUnitReservationAddDialogViewModel;
         private readonly DialogNavigationService _navigateToUnitReservationEditDialogViewModel;
         private readonly DialogNavigationService _navigateToUnitReservationDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateTSaveSettingsDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -49,7 +50,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToAccommodationUnitEditDialogViewModel,
             DialogNavigationService navigateToUnitReservationAddDialogViewModel,
             DialogNavigationService navigateToUnitReservationEditDialogViewModel,
-            DialogNavigationService navigateToUnitReservationDeleteDialogViewModel)
+            DialogNavigationService navigateToUnitReservationDeleteDialogViewModel,
+            DialogNavigationService navigateTSaveSettingsDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -68,6 +70,7 @@ namespace EBooking.WPF.Services
             _navigateToUnitReservationAddDialogViewModel = navigateToUnitReservationAddDialogViewModel;
             _navigateToUnitReservationEditDialogViewModel = navigateToUnitReservationEditDialogViewModel;
             _navigateToUnitReservationDeleteDialogViewModel = navigateToUnitReservationDeleteDialogViewModel;
+            _navigateTSaveSettingsDialogViewModel = navigateTSaveSettingsDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -153,6 +156,11 @@ namespace EBooking.WPF.Services
         public void OpenUnitReservationDeleteDialog()
         {
             _navigateToUnitReservationDeleteDialogViewModel.Navigate();
+        }
+
+        public void OpenSaveSettingsDialog()
+        {
+            _navigateTSaveSettingsDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

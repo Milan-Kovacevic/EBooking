@@ -126,6 +126,10 @@
             DataType="{x:Type dialogVms:UnitReservationDeleteDialogViewModel}">
             <dialogViews:ConfirmDeleteDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:SaveSettingsDialogViewModel}">
+            <dialogViews:SaveSettingsDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"

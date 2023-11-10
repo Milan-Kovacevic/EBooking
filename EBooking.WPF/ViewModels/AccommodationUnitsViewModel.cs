@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.Domain.DTOs;
+using EBooking.WPF.ItemViewModels;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using System;

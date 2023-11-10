@@ -89,12 +89,14 @@ namespace EBooking.WPF.ViewModels
         private readonly SettingsStore _settingsStore;
         private readonly MessageQueueService _messageQueueService;
         private readonly SettingsService _settingsService;
+        private readonly DialogHostService _dialogHostService;
 
-        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService)
+        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService, DialogHostService dialogHostService)
         {
             _settingsService = settingsService;
             _messageQueueService = messageQueueService;
             _settingsStore = settingsStore;
+            _dialogHostService = dialogHostService;
             availableLanguages = new();
             availablePrimaryColors = new();
             availableSecondaryColors = new();
@@ -137,8 +139,7 @@ namespace EBooking.WPF.ViewModels
         {
             if (SettingsChanged)
             {
-                var dialogContent = new SaveSettingsAlertDialog();
-                DialogHost.Show(dialogContent, "RootDialog");
+                _dialogHostService.OpenSaveSettingsDialog();
                 return false;
             }
             return true;

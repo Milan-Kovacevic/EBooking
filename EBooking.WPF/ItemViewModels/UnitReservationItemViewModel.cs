@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EBooking.WPF.ViewModels
+namespace EBooking.WPF.ItemViewModels
 {
     public partial class UnitReservationItemViewModel : ObservableObject
     {

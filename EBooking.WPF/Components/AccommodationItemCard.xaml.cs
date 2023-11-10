@@ -1,4 +1,4 @@
-﻿using EBooking.WPF.ViewModels;
+﻿using EBooking.WPF.ItemViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
