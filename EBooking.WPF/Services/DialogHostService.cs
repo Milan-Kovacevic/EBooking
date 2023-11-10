@@ -29,6 +29,8 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToAccommodationUnitDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToAccommodationUnitEditDialogViewModel;
         private readonly DialogNavigationService _navigateToUnitReservationAddDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitReservationEditDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitReservationDeleteDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -45,7 +47,9 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToAccommodationUnitAddDialogViewModel,
             DialogNavigationService navigateToAccommodationUnitDeleteDialogViewModel,
             DialogNavigationService navigateToAccommodationUnitEditDialogViewModel,
-            DialogNavigationService navigateToUnitReservationAddDialogViewModel)
+            DialogNavigationService navigateToUnitReservationAddDialogViewModel,
+            DialogNavigationService navigateToUnitReservationEditDialogViewModel,
+            DialogNavigationService navigateToUnitReservationDeleteDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -62,6 +66,8 @@ namespace EBooking.WPF.Services
             _navigateToAccommodationUnitDeleteDialogViewModel = navigateToAccommodationUnitDeleteDialogViewModel;
             _navigateToAccommodationUnitEditDialogViewModel = navigateToAccommodationUnitEditDialogViewModel;
             _navigateToUnitReservationAddDialogViewModel = navigateToUnitReservationAddDialogViewModel;
+            _navigateToUnitReservationEditDialogViewModel = navigateToUnitReservationEditDialogViewModel;
+            _navigateToUnitReservationDeleteDialogViewModel = navigateToUnitReservationDeleteDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -137,6 +143,16 @@ namespace EBooking.WPF.Services
         public void OpenUnitReservationAddDialog()
         {
             _navigateToUnitReservationAddDialogViewModel.Navigate();
+        }
+
+        public void OpenUnitReservationEditDialog()
+        {
+            _navigateToUnitReservationEditDialogViewModel.Navigate();
+        }
+
+        public void OpenUnitReservationDeleteDialog()
+        {
+            _navigateToUnitReservationDeleteDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

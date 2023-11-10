@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class UnitReservationAddDialogViewModel : ObservableValidator, IViewModelBase
+    public partial class UnitReservationEditDialogViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
         private string dialogTitle;
-
+        public int UnitReservationId { get; set; }
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
@@ -41,7 +41,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnAdd))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnEdit))]
         [NotifyDataErrorInfo]
         private DateTime? reservationTo;
         partial void OnReservationToChanged(DateTime? value)
@@ -70,28 +70,30 @@ namespace EBooking.WPF.Dialogs.ViewModels
         public decimal PricePerNight { get; }
 
         public IRelayCommand SubmitCommand { get; }
+        private readonly UnitReservationStore _unitReservationStore;
         private readonly UnitReservationService _unitReservationService;
         private readonly DialogHostService _dialogHostService;
         private readonly UserStore _userStore;
-        private readonly AccommodationUnitStore _accommodationUnitStore;
 
-        public UnitReservationAddDialogViewModel(UnitReservationService unitReservationService, UserStore userStore, AccommodationUnitStore accommodationUnitStore, DialogHostService dialogHostService)
+        public UnitReservationEditDialogViewModel(UnitReservationStore unitReservationStore, UnitReservationService unitReservationService, UserStore userStore, DialogHostService dialogHostService)
         {
+            _unitReservationStore = unitReservationStore;
             _unitReservationService = unitReservationService;
             _userStore = userStore;
-            _accommodationUnitStore = accommodationUnitStore;
             _dialogHostService = dialogHostService;
 
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Add Accommodation Unit Reservation";
-            onName = string.Empty;
-            reservationFrom = null;
-            reservationTo = null;
-            numberOfAdults = string.Empty;
-            numberOfChildren = string.Empty;
-            totalPrice = "0.0";
-            PricePerNight = accommodationUnitStore.SelectedAccommodationUnit?.PricePerNight ?? 0.0m;
-            UnitName = accommodationUnitStore.SelectedAccommodationUnit?.Name ?? string.Empty;
+            dialogTitle = "Edit Accommodation Unit Reservation";
+            var unitReservation = unitReservationStore.SelectedUnitReservation;
+            UnitReservationId = unitReservation?.UnitReservationId ?? 0;
+            onName = unitReservation?.OnName ?? string.Empty;
+            reservationFrom = unitReservation?.ReservationFrom ?? null;
+            reservationTo = unitReservation?.ReservationTo ?? null;
+            numberOfAdults = unitReservation?.NumberOfAdults.ToString() ?? string.Empty;
+            numberOfChildren = unitReservation?.NumberOfChildren.ToString() ?? string.Empty;
+            totalPrice = unitReservation?.TotalPrice.ToString() ?? "0.0";
+            PricePerNight = unitReservation?.Unit?.PricePerNight ?? 0.0m;
+            UnitName = unitReservation?.Unit?.Name ?? string.Empty;
         }
 
         private bool CanSubmit()
@@ -108,16 +110,17 @@ namespace EBooking.WPF.Dialogs.ViewModels
         {
             var unitReservation = new UnitReservation()
             {
+                UnitReservationId = UnitReservationId,
                 OnName = OnName,
                 EmployeeId = _userStore.CurrentUser?.UserId ?? 0,
-                UnitId = _accommodationUnitStore.SelectedAccommodationUnit?.UnitId ?? 0,
+                UnitId = _unitReservationStore?.SelectedUnitReservation?.UnitId ?? 0,
                 ReservationFrom = ReservationFrom ?? DateTime.Now,
                 ReservationTo = ReservationTo ?? DateTime.Now,
                 NumberOfAdults = int.Parse(NumberOfAdults),
                 NumberOfChildren = int.Parse(NumberOfChildren),
                 TotalPrice = decimal.Parse(TotalPrice)
             };
-            await _unitReservationService.AddUnitReservation(unitReservation);
+            await _unitReservationService.UpdateUnitReservation(unitReservation);
             _dialogHostService.CloseDialogHost();
         }
 

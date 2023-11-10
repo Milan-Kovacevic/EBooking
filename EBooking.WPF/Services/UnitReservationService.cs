@@ -29,12 +29,22 @@ namespace EBooking.WPF.Services
             return Task.CompletedTask;
         }
 
-        public Task DeleteAccommodationUnit(int unitReservationId)
+        public Task DeleteUnitReservation(int unitReservationId)
         {
             if (_unitReservationStore.UnitReservations.Any(x => x.UnitReservationId == unitReservationId))
                 return _unitReservationStore.Delete(unitReservationId);
             return Task.CompletedTask;
         }
 
+        public UnitReservation? GetSelectedUnitReservation()
+        {
+            return _unitReservationStore.SelectedUnitReservation;
+        }
+
+        public void SetSelectedUnitReservation(int unitReservationId)
+        {
+            var result = _unitReservationStore.UnitReservations.FirstOrDefault(x => x.UnitReservationId == unitReservationId);
+            _unitReservationStore.SelectedUnitReservation = result;
+        }
     }
 }

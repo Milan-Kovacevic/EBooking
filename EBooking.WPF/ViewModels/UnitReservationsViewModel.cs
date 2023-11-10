@@ -1,7 +1,9 @@
 ﻿using AgileObjects.AgileMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using EBooking.Domain.DTOs;
+using EBooking.WPF.Messages;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using System;
@@ -15,7 +17,7 @@ using System.Windows.Data;
 
 namespace EBooking.WPF.ViewModels
 {
-    public partial class UnitReservationsViewModel : ObservableObject, IViewModelBase
+    public partial class UnitReservationsViewModel : ObservableObject, IViewModelBase, IRecipient<DeleteSelectedDialogResultMessage>
     {
         [ObservableProperty]
         private string searchText;
@@ -70,6 +72,7 @@ namespace EBooking.WPF.ViewModels
             UnitReservations = CollectionViewSource.GetDefaultView(_unitReservations);
             UnitReservations.Filter = FilterUnitReservations;
             LoadUnitReservations();
+            WeakReferenceMessenger.Default.RegisterAll(this);
         }
 
         [ObservableProperty]
@@ -81,6 +84,7 @@ namespace EBooking.WPF.ViewModels
             _unitReservationStore.UnitReservationAdded -= OnUnitReservationAdded;
             _unitReservationStore.UnitReservationUpdated -= OnUnitReservationUpdated;
             _unitReservationStore.UnitReservationDeleted -= OnUnitReservationDeleted;
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
         #region Unit Reservations CRUD Commands
@@ -137,6 +141,8 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not UnitReservationItemViewModel vm)
                 return;
+            _unitReservationService.SetSelectedUnitReservation(vm.UnitReservationId);
+            _dialogHostService.OpenUnitReservationEditDialog();
         }
 
         [RelayCommand]
@@ -144,6 +150,8 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not UnitReservationItemViewModel vm)
                 return;
+            _unitReservationService.SetSelectedUnitReservation(vm.UnitReservationId);
+            _dialogHostService.OpenUnitReservationDeleteDialog();
         }
 
         [RelayCommand]
@@ -152,6 +160,21 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenConfirmMultiDeleteDialog();
         }
 
+        public async void Receive(DeleteSelectedDialogResultMessage message)
+        {
+            if (message.DialogResult == false)
+                return;
+            List<Task> tasks = new List<Task>();
+            for (int i = _unitReservations.Count - 1; i >= 0; i--)
+            {
+                if (_unitReservations[i].IsSelected)
+                {
+                    tasks.Add(_unitReservationService.DeleteUnitReservation(_unitReservations[i].UnitReservationId));
+                }
+            }
+            await Task.WhenAll(tasks);
+            IsAllItemsSelected = false;
+        }
         #endregion
 
         #region ViewModel Helper Functions
@@ -175,6 +198,7 @@ namespace EBooking.WPF.ViewModels
                 }
             }
         }
+
         #endregion
     }
 }

@@ -43,7 +43,7 @@ namespace EBooking.WPF.Utility
 
         public static ValidationResult? ValidateAvailableToDateOnEdit(DateTime date, ValidationContext context)
         {
-            var instance = (AccommodationUnitAddDialogViewModel)context.ObjectInstance;
+            var instance = (AccommodationUnitEditDialogViewModel)context.ObjectInstance;
             var isValid = date > instance.AvailableFrom;
             if (isValid)
                 return ValidationResult.Success;
@@ -54,6 +54,16 @@ namespace EBooking.WPF.Utility
         public static ValidationResult? ValidateReservationToDateOnAdd(DateTime date, ValidationContext context)
         {
             var instance = (UnitReservationAddDialogViewModel)context.ObjectInstance;
+            var isValid = date > instance.ReservationFrom;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Must be higher than from date");
+        }
+
+        public static ValidationResult? ValidateReservationToDateOnEdit(DateTime date, ValidationContext context)
+        {
+            var instance = (UnitReservationEditDialogViewModel)context.ObjectInstance;
             var isValid = date > instance.ReservationFrom;
             if (isValid)
                 return ValidationResult.Success;

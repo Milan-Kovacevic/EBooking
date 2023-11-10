@@ -118,6 +118,14 @@
             DataType="{x:Type dialogVms:UnitReservationAddDialogViewModel}">
             <dialogViews:AccommodationUnitReservationDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitReservationEditDialogViewModel}">
+            <dialogViews:AccommodationUnitReservationDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitReservationDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"
