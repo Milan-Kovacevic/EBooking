@@ -92,7 +92,7 @@ namespace EBooking.WPF.ViewModels
 
         private void AddNewAccommodationItem(Accommodation accommodation)
         {
-            var accommodationItem = new AccommodationItemViewModel(_accommodationService, _dialogHostService);
+            var accommodationItem = new AccommodationItemViewModel(_accommodationService, _dialogHostService, _navigateToAccommodationDetailsViewModel);
             Mapper.Map(accommodation).Over(accommodationItem);
             accommodationItem.IsOwner = _userStore.CurrentUser?.UserId == accommodation.UserId;
             accommodationItem.NumOfUnits = accommodation.AccommodationUnits.Count;
@@ -136,14 +136,6 @@ namespace EBooking.WPF.ViewModels
             await Task.Delay(200);
         }
 
-        public void ShowAccommodationDetails(object param)
-        {
-            if (param is not AccommodationItemViewModel vm)
-                return;
-
-            _accommodationService.SetSelectedAccommodation(vm.AccommodationId);
-            _navigateToAccommodationDetailsViewModel.Navigate();
-        }
         #endregion
 
         private bool FilterAccommodations(object obj)

@@ -14,16 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Views
+namespace EBooking.WPF.Components
 {
     /// <summary>
-    /// Interaction logic for AccommodationsView.xaml
+    /// Interaction logic for AccommodationItemCard.xaml
     /// </summary>
-    public partial class AccommodationsView : UserControl
+    public partial class AccommodationItemCard : UserControl
     {
-        public AccommodationsView()
+        public AccommodationItemCard()
         {
             InitializeComponent();
+        }
+
+        private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is AccommodationItemViewModel vm)
+            {
+                vm.ShowAccommodationDetails();
+            }
         }
     }
 }

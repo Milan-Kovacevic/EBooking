@@ -1,5 +1,4 @@
-﻿using EBooking.WPF.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EBooking.WPF.Views
+namespace EBooking.WPF.Components
 {
     /// <summary>
-    /// Interaction logic for AccommodationsView.xaml
+    /// Interaction logic for AccommodationUnitItemCard.xaml
     /// </summary>
-    public partial class AccommodationsView : UserControl
+    public partial class AccommodationUnitItemCard : UserControl
     {
-        public AccommodationsView()
+        public AccommodationUnitItemCard()
         {
             InitializeComponent();
         }

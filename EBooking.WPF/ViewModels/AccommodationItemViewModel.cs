@@ -58,8 +58,9 @@ namespace EBooking.WPF.ViewModels
 
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
+        private readonly NavigationService _navigateToAccommodationDetailsViewModel;
 
-        public AccommodationItemViewModel(AccommodationService accommodationService, DialogHostService dialogHostService)
+        public AccommodationItemViewModel(AccommodationService accommodationService, DialogHostService dialogHostService, NavigationService navigateToAccommodationDetailsViewModel)
         {
             isOwner = false;
             name = string.Empty;
@@ -72,6 +73,7 @@ namespace EBooking.WPF.ViewModels
             isApartment = false;
             _accommodationService = accommodationService;
             _dialogHostService = dialogHostService;
+            _navigateToAccommodationDetailsViewModel = navigateToAccommodationDetailsViewModel;
         }
 
         private void SetIsApartment(AccommodationType? value)
@@ -100,5 +102,10 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenAccommodationEditDialog();
         }
 
+        public void ShowAccommodationDetails()
+        {
+            _accommodationService.SetSelectedAccommodation(AccommodationId);
+            _navigateToAccommodationDetailsViewModel.Navigate();
+        }
     }
 }

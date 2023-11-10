@@ -21,8 +21,8 @@
                 materialDesign:ElevationAssist.Elevation="Dp8"
                 UniformCornerRadius="10"
                 Padding="10"
-                MaxWidth="700"
-                MaxHeight="570"
+                MaxWidth="680"
+                MaxHeight="540"
                 Margin="25">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -39,9 +39,9 @@
                         HorizontalAlignment="Center"
                         Orientation="Vertical">
                         <materialDesign:PackIcon
-                            Foreground="{DynamicResource PrimaryHueLightBrush}"
-                            Width="95"
-                            Height="95"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                            Width="100"
+                            Height="100"
                             HorizontalAlignment="Center"
                             Kind="AccountLock" />
                         <TextBlock
@@ -58,7 +58,7 @@
                     <StackPanel
                         Grid.Row="1"
                         MaxWidth="480"
-                        Margin="10 20 10 20">
+                        Margin="10 10 10 10">
                         <TextBox
                             Margin="2 20 2 2"
                             Padding="4 2 4 2"
@@ -117,9 +117,7 @@
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </PasswordBox>
-
                     </StackPanel>
-
                     <StackPanel
                         Margin="5 30 5 20"
                         MaxWidth="420"
