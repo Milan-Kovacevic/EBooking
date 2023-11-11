@@ -31,6 +31,15 @@ namespace EBooking.WPF.Utility
             return new ValidationResult("Future date required");
         }
 
+        public static ValidationResult? ValidateDepartureDate(DateTime date, ValidationContext context)
+        {
+            var isValid = date >= DateTime.Now.Date;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Future date required");
+        }
+
         public static ValidationResult? ValidateAvailableToDateOnAdd(DateTime date, ValidationContext context)
         {
             var instance = (AccommodationUnitAddDialogViewModel)context.ObjectInstance;
@@ -69,6 +78,46 @@ namespace EBooking.WPF.Utility
                 return ValidationResult.Success;
 
             return new ValidationResult("Must be higher than from date");
+        }
+
+        public static ValidationResult? ValidateArrivalDateOnAdd(DateTime date, ValidationContext context)
+        {
+            var instance = (FlightAddDialogViewModel)context.ObjectInstance;
+            var isValid = date >= instance.DepartureDate;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Must be higher or equal than departure date");
+        }
+
+        public static ValidationResult? ValidateArrivalDateOnEdit(DateTime date, ValidationContext context)
+        {
+            var instance = (FlightEditDialogViewModel)context.ObjectInstance;
+            var isValid = date >= instance.DepartureDate;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Must be higher or equal than departure date");
+        }
+
+        public static ValidationResult? ValidateArrivalTimeOnAdd(DateTime time, ValidationContext context)
+        {
+            var instance = (FlightAddDialogViewModel)context.ObjectInstance;
+            var isValid = (instance.DepartureDate?.Date == instance.ArrivalDate?.Date && time > instance.DepartureTime) || (instance.DepartureDate?.Date < instance.ArrivalDate?.Date);
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Must be greater than departure time");
+        }
+
+        public static ValidationResult? ValidateArrivalTimeOnEdit(DateTime time, ValidationContext context)
+        {
+            var instance = (FlightEditDialogViewModel)context.ObjectInstance;
+            var isValid = (instance.DepartureDate?.Date == instance.ArrivalDate?.Date && time > instance.DepartureTime) || (instance.DepartureDate?.Date < instance.ArrivalDate?.Date);
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult("Must be greater than departure time");
         }
 
         public static ValidationResult? ValidatePositiveDecimalNumber(string number, ValidationContext context)

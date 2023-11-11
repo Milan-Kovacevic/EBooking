@@ -130,6 +130,18 @@
             DataType="{x:Type dialogVms:SaveSettingsDialogViewModel}">
             <dialogViews:SaveSettingsDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:FlightAddDialogViewModel}">
+            <dialogViews:FlightSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:FlightEditDialogViewModel}">
+            <dialogViews:FlightSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:FlightDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"

@@ -149,7 +149,7 @@
                         ItemsSource="{Binding Flights, UpdateSourceTrigger=PropertyChanged}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <components:AccommodationItemCard
+                                <components:FlightItemCard
                                     Margin="10 10 10 10" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
