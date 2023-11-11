@@ -137,6 +137,24 @@ namespace EBooking.WPF.Utility
                 return new ValidationResult("Positive integer number is required");
             return ValidationResult.Success;
         }
+
+        public static ValidationResult? ValidateRepeatPassword(string password, ValidationContext context)
+        {
+            var instance = (ChangePasswordDialogViewModel)context.ObjectInstance;
+            bool isValid = instance.NewPassword == password;
+            if (!isValid)
+                return new ValidationResult("Must match new password");
+            return ValidationResult.Success;
+        }
+
+        public static ValidationResult? ValidateNewPassword(string password, ValidationContext context)
+        {
+            var instance = (ChangePasswordDialogViewModel)context.ObjectInstance;
+            bool isValid = instance.CurrentPassword != password;
+            if (!isValid)
+                return new ValidationResult("Cannot be same as current password");
+            return ValidationResult.Success;
+        }
         #endregion
     }
 }

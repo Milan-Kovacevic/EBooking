@@ -153,6 +153,9 @@
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Neispravno korisničko ime ili lozinka</value>
   </data>
+  <data name="GLOBAL_InvalidPasswordChange" xml:space="preserve">
+    <value>Nije moguće promijeniti lozinku</value>
+  </data>
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Nije moguće registrovati nalog sa unesenim podacima</value>
   </data>
@@ -162,8 +165,14 @@
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
     <value>Prijava je bila uspješna!</value>
   </data>
+  <data name="GLOBAL_SuccessfulPasswordChange" xml:space="preserve">
+    <value>Lozinka je uspješno promijenjena</value>
+  </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>Uspješno ste registrovali vaš nalog</value>
+  </data>
+  <data name="GLOBAL_SuccessfulSettingsChange" xml:space="preserve">
+    <value>Postavke uspješno promijenjene</value>
   </data>
   <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
     <value>Uspješno dodavanje rezervacije smještaja za</value>
@@ -288,8 +297,23 @@
   <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
     <value>Korisničko ime</value>
   </data>
+  <data name="Settings_ChangeInfoButtonText" xml:space="preserve">
+    <value>IZMIJENITE KORISNIČKE INFORMACIJE</value>
+  </data>
+  <data name="Settings_ChangePasswordButtonText" xml:space="preserve">
+    <value>IZMIJENITE LOZINKU</value>
+  </data>
+  <data name="Settings_DisplayNameLabel" xml:space="preserve">
+    <value>Ime za prikaz:</value>
+  </data>
+  <data name="Settings_FirstNameLabel" xml:space="preserve">
+    <value>Ime:</value>
+  </data>
   <data name="Settings_InfoTitle" xml:space="preserve">
     <value>Informacije o nalogu</value>
+  </data>
+  <data name="Settings_LastNameLabel" xml:space="preserve">
+    <value>Prezime:</value>
   </data>
   <data name="Settings_LookAndFeelTitle" xml:space="preserve">
     <value>Izgled i osjećaj aplikacije</value>
@@ -314,6 +338,9 @@
   </data>
   <data name="Settings_Title" xml:space="preserve">
     <value>Promijenite informacije o nalogu ili prilagodite izgled i osjećaj aplikacije</value>
+  </data>
+  <data name="Settings_UsernameLabel" xml:space="preserve">
+    <value>Korisničko ime:</value>
   </data>
   <data name="sr-Cyrl" xml:space="preserve">
     <value>Srpski ćirilica</value>

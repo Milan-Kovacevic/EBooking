@@ -73,6 +73,7 @@ namespace EBooking.WPF
         private readonly DialogNavigationService navigateToFlightAddDialogViewModel;
         private readonly DialogNavigationService navigateToFlightEditDialogViewModel;
         private readonly DialogNavigationService navigateToFlightDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToChangePasswordDialogViewModel;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -129,7 +130,8 @@ namespace EBooking.WPF
             navigateToFlightAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateFlightAddDialogViewModel);
             navigateToFlightEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateFlightEditDialogViewModel);
             navigateToFlightDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateFlightDeleteDialogViewModel);
-            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel);
+            navigateToChangePasswordDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateChangePasswordDialogViewModel);
+            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel, navigateToChangePasswordDialogViewModel);
         }
 
         private async void InitStores()
@@ -314,6 +316,10 @@ namespace EBooking.WPF
         public FlightDeleteDialogViewModel CreateFlightDeleteDialogViewModel()
         {
             return new FlightDeleteDialogViewModel(flightService, dialogHostService);
+        }
+        public ChangePasswordDialogViewModel CreateChangePasswordDialogViewModel()
+        {
+            return new ChangePasswordDialogViewModel(userService, dialogHostService, messageQueueService);
         }
         #endregion
     }

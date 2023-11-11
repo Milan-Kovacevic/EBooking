@@ -35,6 +35,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToFlightAddDialogViewModel;
         private readonly DialogNavigationService _navigateToFlightEditDialogViewModel;
         private readonly DialogNavigationService _navigateToFlightDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToChangePasswordDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -57,7 +58,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToSaveSettingsDialogViewModel,
             DialogNavigationService navigateToFlightAddDialogViewModel,
             DialogNavigationService navigateToFlightEditDialogViewModel,
-            DialogNavigationService navigateToFlightDeleteDialogViewModel)
+            DialogNavigationService navigateToFlightDeleteDialogViewModel,
+            DialogNavigationService navigateToChangePasswordDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -80,6 +82,7 @@ namespace EBooking.WPF.Services
             _navigateToFlightAddDialogViewModel = navigateToFlightAddDialogViewModel;
             _navigateToFlightEditDialogViewModel = navigateToFlightEditDialogViewModel;
             _navigateToFlightDeleteDialogViewModel = navigateToFlightDeleteDialogViewModel;
+            _navigateToChangePasswordDialogViewModel = navigateToChangePasswordDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -185,6 +188,11 @@ namespace EBooking.WPF.Services
         public void OpenSaveSettingsDialog()
         {
             _navigateToSaveSettingsDialogViewModel.Navigate();
+        }
+
+        public void OpenChangePasswordDialog()
+        {
+            _navigateToChangePasswordDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

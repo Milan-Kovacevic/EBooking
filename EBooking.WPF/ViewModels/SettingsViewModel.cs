@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EBooking.Domain.DTOs;
 using EBooking.WPF.Dialogs;
 using EBooking.WPF.Models;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
 using EBooking.WPF.Utility;
 using MaterialDesignThemes.Wpf;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +19,14 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class SettingsViewModel : ObservableObject, IViewModelBase
     {
+        [ObservableProperty]
+        private string firstName = string.Empty;
+        [ObservableProperty]
+        private string lastName = string.Empty;
+        [ObservableProperty]
+        private string displayName = string.Empty;
+        [ObservableProperty]
+        private string username = string.Empty;
         [ObservableProperty]
         private bool settingsChanged;
         [ObservableProperty]
@@ -66,7 +76,9 @@ namespace EBooking.WPF.ViewModels
             _settingsService.ChangeSecondaryColor(AvailableSecondaryColors.ElementAt(value).Key);
         }
 
-        public bool IsUserLoggedIn { get; set; }
+        public bool IsUserLoggedIn { get; }
+        public bool IsAdmin { get; }
+        public bool IsEmployee { get; }
 
         [RelayCommand]
         public void SaveSettings()
@@ -77,7 +89,7 @@ namespace EBooking.WPF.ViewModels
             RebindSettingsProperties();
             SettingsChanged = false;
 
-            _messageQueueService.Enqueue("Settings saved successfully!");
+            _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_SETTINGS_CHANGE);
         }
 
         [RelayCommand]
@@ -86,6 +98,12 @@ namespace EBooking.WPF.ViewModels
             _settingsService.RevertSavedSettings();
             RebindSettingsProperties();
             SettingsChanged = false;
+        }
+
+        [RelayCommand]
+        public void ChangePassword()
+        {
+            _dialogHostService.OpenChangePasswordDialog();
         }
 
         private readonly SettingsStore _settingsStore;
@@ -101,12 +119,17 @@ namespace EBooking.WPF.ViewModels
             _settingsStore = settingsStore;
             _dialogHostService = dialogHostService;
             _userStore = userStore;
+            _userStore.UserUpdated += OnUserUpdated;
             availableLanguages = new();
             availablePrimaryColors = new();
             availableSecondaryColors = new();
-            RebindSettingsProperties();
-            settingsChanged = false;
             IsUserLoggedIn = userStore.IsLoggedIn;
+            IsAdmin = userStore.IsAdmin;
+            IsEmployee = userStore.IsEmployee;
+            RebindSettingsProperties();
+            if (userStore.IsLoggedIn && userStore.CurrentUser is not null)
+                RebindUserInformation(userStore.CurrentUser);
+            settingsChanged = false;
         }
 
         private void RebindSettingsProperties()
@@ -132,10 +155,33 @@ namespace EBooking.WPF.ViewModels
             SelectedSecondaryColorIndex = AvailableSecondaryColors.FindIndex(l => l.Key == secondaryColorCode);
         }
 
+        private void RebindUserInformation(User user)
+        {
+            if (user is Employee employee)
+            {
+                FirstName = employee?.FirstName ?? string.Empty;
+                LastName = employee?.LastName ?? string.Empty;
+                Username = employee?.Username ?? string.Empty;
+                DisplayName = string.Empty;
+            }
+            else if (user is Administrator admin)
+            {
+                FirstName = string.Empty;
+                LastName = string.Empty;
+                DisplayName = admin?.Name ?? string.Empty;
+                Username = admin?.Username ?? string.Empty;
+            }
+        }
+
+        public void OnUserUpdated(User user)
+        {
+            RebindUserInformation(user);
+            _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_PASSWORD_CHANGE);
+        }
+
         public void Dispose()
         {
-            if (SettingsChanged)
-                RevertSettings();
+            _userStore.UserUpdated -= OnUserUpdated;
         }
 
         public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.SETTINGS);

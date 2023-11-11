@@ -169,6 +169,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to change your password.
+        /// </summary>
+        internal static string GLOBAL_InvalidPasswordChange {
+            get {
+                return ResourceManager.GetString("GLOBAL_InvalidPasswordChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to register account with entered data.
         /// </summary>
         internal static string GLOBAL_InvalidRegistration {
@@ -196,11 +205,29 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password changed successfully.
+        /// </summary>
+        internal static string GLOBAL_SuccessfulPasswordChange {
+            get {
+                return ResourceManager.GetString("GLOBAL_SuccessfulPasswordChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have successfully registered your account!.
         /// </summary>
         internal static string GLOBAL_SuccessfulRegistration {
             get {
                 return ResourceManager.GetString("GLOBAL_SuccessfulRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings changed successfully.
+        /// </summary>
+        internal static string GLOBAL_SuccessfulSettingsChange {
+            get {
+                return ResourceManager.GetString("GLOBAL_SuccessfulSettingsChange", resourceCulture);
             }
         }
         
@@ -574,11 +601,56 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHANGE USER INFORMATIONS.
+        /// </summary>
+        internal static string Settings_ChangeInfoButtonText {
+            get {
+                return ResourceManager.GetString("Settings_ChangeInfoButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE PASSWORD.
+        /// </summary>
+        internal static string Settings_ChangePasswordButtonText {
+            get {
+                return ResourceManager.GetString("Settings_ChangePasswordButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string Settings_DisplayNameLabel {
+            get {
+                return ResourceManager.GetString("Settings_DisplayNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name:.
+        /// </summary>
+        internal static string Settings_FirstNameLabel {
+            get {
+                return ResourceManager.GetString("Settings_FirstNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Informations.
         /// </summary>
         internal static string Settings_InfoTitle {
             get {
                 return ResourceManager.GetString("Settings_InfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name:.
+        /// </summary>
+        internal static string Settings_LastNameLabel {
+            get {
+                return ResourceManager.GetString("Settings_LastNameLabel", resourceCulture);
             }
         }
         
@@ -651,6 +723,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string Settings_Title {
             get {
                 return ResourceManager.GetString("Settings_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username:.
+        /// </summary>
+        internal static string Settings_UsernameLabel {
+            get {
+                return ResourceManager.GetString("Settings_UsernameLabel", resourceCulture);
             }
         }
         

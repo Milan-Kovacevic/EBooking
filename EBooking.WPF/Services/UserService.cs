@@ -41,6 +41,17 @@ namespace EBooking.WPF.Services
             return _userStore.Register(employee);
         }
 
+        public async Task<bool> UpdatePassword(string oldPassword, string newPassword)
+        {
+            var user = _userStore.CurrentUser;
+            if (user == null)
+                return false;
+            if (Util.ComputeHash(oldPassword) != user.Password)
+                return false;
+            user.Password = Util.ComputeHash(newPassword);
+            await _userStore.Update(user);
+            return true;
+        }
 
         public async Task<bool> Login(string username, string password)
         {

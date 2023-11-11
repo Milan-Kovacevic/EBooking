@@ -153,6 +153,9 @@
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
+  <data name="GLOBAL_InvalidPasswordChange" xml:space="preserve">
+    <value>Unable to change your password</value>
+  </data>
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Unable to register account with entered data</value>
   </data>
@@ -162,8 +165,14 @@
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
     <value>Login was successful!</value>
   </data>
+  <data name="GLOBAL_SuccessfulPasswordChange" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>You have successfully registered your account!</value>
+  </data>
+  <data name="GLOBAL_SuccessfulSettingsChange" xml:space="preserve">
+    <value>Settings changed successfully</value>
   </data>
   <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
     <value>Successfully added unit reservation for</value>
@@ -288,8 +297,23 @@
   <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="Settings_ChangeInfoButtonText" xml:space="preserve">
+    <value>CHANGE USER INFORMATIONS</value>
+  </data>
+  <data name="Settings_ChangePasswordButtonText" xml:space="preserve">
+    <value>CHANGE PASSWORD</value>
+  </data>
+  <data name="Settings_DisplayNameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Settings_FirstNameLabel" xml:space="preserve">
+    <value>First Name:</value>
+  </data>
   <data name="Settings_InfoTitle" xml:space="preserve">
     <value>Account Informations</value>
+  </data>
+  <data name="Settings_LastNameLabel" xml:space="preserve">
+    <value>Last Name:</value>
   </data>
   <data name="Settings_LookAndFeelTitle" xml:space="preserve">
     <value>Application Look and Feel</value>
@@ -314,6 +338,9 @@
   </data>
   <data name="Settings_Title" xml:space="preserve">
     <value>Change account informations or customize application look and feel</value>
+  </data>
+  <data name="Settings_UsernameLabel" xml:space="preserve">
+    <value>Username:</value>
   </data>
   <data name="sr-Cyrl" xml:space="preserve">
     <value>Serbian Cyrilic</value>

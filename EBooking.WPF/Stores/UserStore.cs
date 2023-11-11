@@ -15,6 +15,10 @@ namespace EBooking.WPF.Stores
         private readonly IUserDAO _userDao;
         private List<User> _users;
         public IEnumerable<User> Users { get => _users; }
+        public event Action? UserLoaded;
+        public event Action<User>? UserAdded;
+        public event Action<User>? UserUpdated;
+        public event Action<int>? UserDeleted;
 
         private User? _user;
         public User? CurrentUser
@@ -77,6 +81,18 @@ namespace EBooking.WPF.Stores
             {
                 return false;
             }
+        }
+
+        public async Task Update(User user)
+        {
+            await _userDao.Update(user);
+            int userIndex = _users.FindIndex(f => f.UserId == user.UserId);
+            if (userIndex == -1)
+                _users.Add(user);
+            else
+                _users[userIndex] = user;
+
+            UserUpdated?.Invoke(user);
         }
     }
 }

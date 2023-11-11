@@ -25,6 +25,9 @@ namespace EBooking.WPF.Utility
             { MessageType.UNIT_RESERVATION_ADDED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationAdded" },
             { MessageType.UNIT_RESERVATION_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationUpdated" },
             { MessageType.UNIT_RESERVATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationDeleted" },
+            { MessageType.INVALID_PASSWORD_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "InvalidPasswordChange" },
+            { MessageType.SUCCESSFUL_PASSWORD_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulPasswordChange" },
+            { MessageType.SUCCESSFUL_SETTINGS_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulSettingsChange" },
         };
 
         public enum MessageType
@@ -43,6 +46,9 @@ namespace EBooking.WPF.Utility
             UNIT_RESERVATION_ADDED,
             UNIT_RESERVATION_UPDATED,
             UNIT_RESERVATION_DELETED,
+            INVALID_PASSWORD_CHANGE,
+            SUCCESSFUL_PASSWORD_CHANGE,
+            SUCCESSFUL_SETTINGS_CHANGE,
         }
 
         public static string Translate(MessageType message)

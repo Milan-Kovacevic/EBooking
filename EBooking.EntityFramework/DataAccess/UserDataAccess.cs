@@ -134,8 +134,6 @@ namespace EBooking.EntityFramework.DataAccess
             if (entity is EmployeeEntity)
             {
                 var result = await context.Employees
-                    .Include(x=> x.TripReservations)
-                    .Include(x=> x.UnitReservations)
                     .FirstOrDefaultAsync(x => x.UserId == entity.UserId);
                 return Mapper.Map(result).ToANew<Employee>();
             }
