@@ -18,8 +18,12 @@ namespace EBooking.Domain.DTOs
         public int FlightCapacity { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
-        public required Administrator Administrator { get; set; }
-        public required Location FromLocation { get; set; }
-        public required Location ToLocation { get; set; }
+
+        public int UserId { get; set; }
+        public Administrator? Administrator { get; set; }
+        public int FromLocationId { get; set; }
+        public Location? FromLocation { get; set; }
+        public int ToLocationId { get; set; }
+        public Location? ToLocation { get; set; }
     }
 }
