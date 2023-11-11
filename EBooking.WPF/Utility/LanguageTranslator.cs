@@ -16,6 +16,15 @@ namespace EBooking.WPF.Utility
             { MessageType.INVALID_LOGIN, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "InvalidLogin" },
             { MessageType.SUCCESSFUL_REGISTRATION, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulRegistration" },
             { MessageType.INVALID_REGISTRATION, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "InvalidRegistration" },
+            { MessageType.ACCOMMODATION_ADDED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationAdded" },
+            { MessageType.ACCOMMODATION_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationUpdated" },
+            { MessageType.ACCOMMODATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationDeleted" },
+            { MessageType.ACCOMMODATION_UNIT_ADDED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationUnitAdded" },
+            { MessageType.ACCOMMODATION_UNIT_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationUnitUpdated" },
+            { MessageType.ACCOMMODATION_UNIT_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationUnitDeleted" },
+            { MessageType.UNIT_RESERVATION_ADDED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationAdded" },
+            { MessageType.UNIT_RESERVATION_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationUpdated" },
+            { MessageType.UNIT_RESERVATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationDeleted" },
         };
 
         public enum MessageType
@@ -25,6 +34,15 @@ namespace EBooking.WPF.Utility
             INVALID_LOGIN,
             SUCCESSFUL_REGISTRATION,
             INVALID_REGISTRATION,
+            ACCOMMODATION_ADDED,
+            ACCOMMODATION_UPDATED,
+            ACCOMMODATION_DELETED,
+            ACCOMMODATION_UNIT_ADDED,
+            ACCOMMODATION_UNIT_UPDATED,
+            ACCOMMODATION_UNIT_DELETED,
+            UNIT_RESERVATION_ADDED,
+            UNIT_RESERVATION_UPDATED,
+            UNIT_RESERVATION_DELETED,
         }
 
         public static string Translate(MessageType message)

@@ -132,6 +132,24 @@
   <data name="en-US" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="GLOBAL_AccommodationAdded" xml:space="preserve">
+    <value>Successfully added accommodation</value>
+  </data>
+  <data name="GLOBAL_AccommodationDeleted" xml:space="preserve">
+    <value>Successfully deleted accommodation</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
+    <value>Successfully added accommodation unit</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitDeleted" xml:space="preserve">
+    <value>Successfully deleted accommodation unit</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitUpdated" xml:space="preserve">
+    <value>Successfully updated accommodation unit</value>
+  </data>
+  <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
+    <value>Successfully updated accommodation</value>
+  </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
@@ -146,6 +164,15 @@
   </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>You have successfully registered your account!</value>
+  </data>
+  <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
+    <value>Successfully added unit reservation for</value>
+  </data>
+  <data name="GLOBAL_UnitReservationDeleted" xml:space="preserve">
+    <value>Successfully deleted unit reservation for</value>
+  </data>
+  <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
+    <value>Successfully updated unit reservation for</value>
   </data>
   <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
     <value>Welcome Back!</value>

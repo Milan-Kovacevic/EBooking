@@ -5,6 +5,7 @@ using EBooking.Domain.DTOs;
 using EBooking.WPF.ItemViewModels;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,12 +25,15 @@ namespace EBooking.WPF.ViewModels
         private readonly AccommodationUnitStore _accommodationUnitStore;
         private readonly DialogHostService _dialogHostService;
         private readonly AccommodationUnitService _accommodationUnitService;
+        private readonly MessageQueueService _messageQueueService;
 
-        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, AccommodationUnitStore accommodationUnitStore, UserStore userStore, DialogHostService dialogHostService, AccommodationUnitService accommodationUnitService)
+        public AccommodationUnitsViewModel(AccommodationStore accommodationStore, AccommodationUnitStore accommodationUnitStore, UserStore userStore, DialogHostService dialogHostService, AccommodationUnitService accommodationUnitService, MessageQueueService messageQueueService)
         {
             _accommodationUnitStore = accommodationUnitStore;
             _dialogHostService = dialogHostService;
             _accommodationUnitService = accommodationUnitService;
+            _messageQueueService = messageQueueService;
+
             _accommodationUnitStore.AccommodationUnitLoaded += OnAccommodationUnitsLoaded;
             _accommodationUnitStore.AccommodationUnitAdded += OnAccommodationUnitAdded;
             _accommodationUnitStore.AccommodationUnitUpdated += OnAccommodationUnitsUpdated;
@@ -40,6 +44,7 @@ namespace EBooking.WPF.ViewModels
             isAdminOwner = accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
             isEmployee = userStore.IsEmployee;
             _accommodationUnitStore.CurrentAccommodation = accommodationStore.SelectedAccommodation;
+            
         }
 
         public void Dispose()
@@ -66,6 +71,8 @@ namespace EBooking.WPF.ViewModels
         private void OnAccommodationUnitAdded(AccommodationUnit accommodationUnit)
         {
             AddNewAccommodationUnitItem(accommodationUnit);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UNIT_ADDED);
+            _messageQueueService.Enqueue($"{message} ' {accommodationUnit.Name} '");
         }
 
         private void AddNewAccommodationUnitItem(AccommodationUnit accommodationUnit)
@@ -79,13 +86,19 @@ namespace EBooking.WPF.ViewModels
         {
             var accommodationUnitItemVm = _accommodationUnits.FirstOrDefault(f => f.UnitId == accommodationUnit.UnitId);
             Mapper.Map(accommodationUnit).Over(accommodationUnitItemVm);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UNIT_UPDATED);
+            _messageQueueService.Enqueue($"{message} ' {accommodationUnit.Name} '");
         }
 
         private void OnAccommodationUnitsDeleted(int unitId)
         {
             var accommodationUnitItemVm = _accommodationUnits.FirstOrDefault(f => f.UnitId == unitId);
             if (accommodationUnitItemVm is not null)
+            {
                 _accommodationUnits.Remove(accommodationUnitItemVm);
+                var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UNIT_DELETED);
+                _messageQueueService.Enqueue($"{message} ' {accommodationUnitItemVm.Name} '");
+            }              
         }
 
         [RelayCommand]

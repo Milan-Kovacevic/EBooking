@@ -40,14 +40,17 @@ namespace EBooking.WPF.ViewModels
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
         private readonly NavigationService _navigateToAccommodationDetailsViewModel;
+        private readonly MessageQueueService _messageQueueService;
 
-        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationDetailsViewModel)
+        public AccommodationsViewModel(AccommodationStore accommodationStore, AccommodationService accommodationService, DialogHostService dialogHostService, UserStore userStore, NavigationService navigateToAccommodationDetailsViewModel, MessageQueueService messageQueueService)
         {
             _accommodationStore = accommodationStore;
             _userStore = userStore;
             _accommodationService = accommodationService;
             _dialogHostService = dialogHostService;
             _navigateToAccommodationDetailsViewModel = navigateToAccommodationDetailsViewModel;
+            _messageQueueService = messageQueueService;
+
             _accommodationStore.AccommodationLoaded += OnAccommodationLoaded;
             _accommodationStore.AccommodationAdded += OnAccommodationAdded;
             _accommodationStore.AccommodationUpdated += OnAccommodationUpdated;
@@ -86,6 +89,8 @@ namespace EBooking.WPF.ViewModels
         private void OnAccommodationAdded(Accommodation accommodation)
         {
             AddNewAccommodationItem(accommodation);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_ADDED);
+            _messageQueueService.Enqueue($"{message} ' {accommodation.Name} '");
         }
 
         private void AddNewAccommodationItem(Accommodation accommodation)
@@ -101,13 +106,19 @@ namespace EBooking.WPF.ViewModels
         {
             var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == accommodation.AccommodationId);
             Mapper.Map(accommodation).Over(accommodationItemVm);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UPDATED);
+            _messageQueueService.Enqueue($"{message} ' {accommodation.Name} '");
         }
 
         private void OnAccommodationDeleted(int id)
         {
             var accommodationItemVm = _accommodations.FirstOrDefault(f => f.AccommodationId == id);
             if (accommodationItemVm is not null)
+            {
                 _accommodations.Remove(accommodationItemVm);
+                var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_DELETED);
+                _messageQueueService.Enqueue($"{message} ' {accommodationItemVm.Name} '");
+            }  
         }
 
         [RelayCommand]

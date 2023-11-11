@@ -106,6 +106,60 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully added accommodation.
+        /// </summary>
+        internal static string GLOBAL_AccommodationAdded {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted accommodation.
+        /// </summary>
+        internal static string GLOBAL_AccommodationDeleted {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully added accommodation unit.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitAdded {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted accommodation unit.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitDeleted {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated accommodation unit.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitUpdated {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated accommodation.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUpdated {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
         internal static string GLOBAL_InvalidLogin {
@@ -147,6 +201,33 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_SuccessfulRegistration {
             get {
                 return ResourceManager.GetString("GLOBAL_SuccessfulRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully added unit reservation for.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationAdded {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted unit reservation for.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationDeleted {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated unit reservation for.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationUpdated {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationUpdated", resourceCulture);
             }
         }
         

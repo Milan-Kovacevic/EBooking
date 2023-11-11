@@ -7,6 +7,7 @@ using EBooking.WPF.ItemViewModels;
 using EBooking.WPF.Messages;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,14 +55,16 @@ namespace EBooking.WPF.ViewModels
         private readonly UserStore _userStore;
         private readonly UnitReservationService _unitReservationService;
         private readonly DialogHostService _dialogHostService;
+        private readonly MessageQueueService _messageQueueService;
 
-        public UnitReservationsViewModel(AccommodationStore accommodationStore, UnitReservationStore unitReservationStore, UserStore userStore, UnitReservationService unitReservationService, DialogHostService dialogHostService)
+        public UnitReservationsViewModel(AccommodationStore accommodationStore, UnitReservationStore unitReservationStore, UserStore userStore, UnitReservationService unitReservationService, DialogHostService dialogHostService, MessageQueueService messageQueueService)
         {
             _accommodationStore = accommodationStore;
             _unitReservationStore = unitReservationStore;
             _userStore = userStore;
             _unitReservationService = unitReservationService;
             _dialogHostService = dialogHostService;
+            _messageQueueService = messageQueueService;
 
             _unitReservationStore.UnitReservationLoaded += OnUnitReservationLoaded;
             _unitReservationStore.UnitReservationAdded += OnUnitReservationAdded;
@@ -105,6 +108,8 @@ namespace EBooking.WPF.ViewModels
         private void OnUnitReservationAdded(UnitReservation unitReservation)
         {
             AddNewUnitReservationItem(unitReservation);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_ADDED);
+            _messageQueueService.Enqueue($"{message} ' {unitReservation.OnName} '");
         }
 
         private void AddNewUnitReservationItem(UnitReservation unitReservation)
@@ -117,13 +122,19 @@ namespace EBooking.WPF.ViewModels
         {
             var unitReservationItem = _unitReservations.FirstOrDefault(f => f.UnitReservationId == unitReservation.UnitReservationId);
             Mapper.Map(unitReservation).Over(unitReservationItem);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_UPDATED);
+            _messageQueueService.Enqueue($"{message} ' {unitReservation.OnName} '");
         }
 
         private void OnUnitReservationDeleted(int unitReservationId)
         {
             var unitReservationItemVm = _unitReservations.FirstOrDefault(f => f.UnitReservationId == unitReservationId);
             if (unitReservationItemVm is not null)
+            {
                 _unitReservations.Remove(unitReservationItemVm);
+                var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_DELETED);
+                _messageQueueService.Enqueue($"{message} ' {unitReservationItemVm.OnName} '");
+            }
         }
 
         [RelayCommand]

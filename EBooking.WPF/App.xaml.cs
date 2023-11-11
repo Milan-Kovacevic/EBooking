@@ -191,7 +191,7 @@ namespace EBooking.WPF
 
         private AccommodationsViewModel CreateAccommodationsViewModel()
         {
-            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore, navigateToAccommodationDetailsViewModel);
+            return new AccommodationsViewModel(accommodationStore, accommodationService, dialogHostService, userStore, navigateToAccommodationDetailsViewModel, messageQueueService);
         }
 
         private AccommodationDetailsViewModel CreateAccommodationDetailsViewModel()
@@ -201,12 +201,12 @@ namespace EBooking.WPF
 
         private AccommodationUnitsViewModel CreateAccommodationUnitsViewModel()
         {
-            return new AccommodationUnitsViewModel(accommodationStore, accommodationUnitStore, userStore, dialogHostService, accommodationUnitService);
+            return new AccommodationUnitsViewModel(accommodationStore, accommodationUnitStore, userStore, dialogHostService, accommodationUnitService, messageQueueService);
         }
 
         private UnitReservationsViewModel CreateUnitReservationsViewModel()
         {
-            return new UnitReservationsViewModel(accommodationStore, unitReservationStore, userStore, unitReservationService, dialogHostService);
+            return new UnitReservationsViewModel(accommodationStore, unitReservationStore, userStore, unitReservationService, dialogHostService, messageQueueService);
         }
 
         private FlightsViewModel CreateFlightsViewModel()

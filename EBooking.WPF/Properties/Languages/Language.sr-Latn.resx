@@ -132,6 +132,24 @@
   <data name="en-US" xml:space="preserve">
     <value>Engleski</value>
   </data>
+  <data name="GLOBAL_AccommodationAdded" xml:space="preserve">
+    <value>Uspješno dodavanje smještaja</value>
+  </data>
+  <data name="GLOBAL_AccommodationDeleted" xml:space="preserve">
+    <value>Uspješno brisanje smještaja</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
+    <value>Uspješno dodavanje smještajne jedinice</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitDeleted" xml:space="preserve">
+    <value>Uspješno brisanje smještajne jedinice</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitUpdated" xml:space="preserve">
+    <value>Uspješna izmjena smještajne jedinice</value>
+  </data>
+  <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
+    <value>Uspješna izmjena smještaja</value>
+  </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Neispravno korisničko ime ili lozinka</value>
   </data>
@@ -146,6 +164,15 @@
   </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>Uspješno ste registrovali vaš nalog</value>
+  </data>
+  <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
+    <value>Uspješno dodavanje rezervacije smještaja za</value>
+  </data>
+  <data name="GLOBAL_UnitReservationDeleted" xml:space="preserve">
+    <value>Uspješno brisanje rezervacije smještaja za</value>
+  </data>
+  <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
+    <value>Uspješna izmjena rezervacije smještaja za</value>
   </data>
   <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
     <value>Dobrodošli nazad!</value>
