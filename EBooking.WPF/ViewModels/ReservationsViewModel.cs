@@ -16,12 +16,6 @@ namespace EBooking.WPF.ViewModels
 
         [ObservableProperty]
         private int selectedTabMenuIndex;
-        partial void OnSelectedTabMenuIndexChanged(int value)
-        {
-            if (IsUnitReservationsView)
-                AccommodationReservationsViewModel.LoadUnitReservations();
-        }
-        private bool IsUnitReservationsView { get => SelectedTabMenuIndex == 1; }
 
         public ReservationsViewModel(AccommodationReservationsViewModel accommodationReservationsViewModel, TripReservationsViewModel tripReservationsViewModel)
         {
@@ -32,6 +26,7 @@ namespace EBooking.WPF.ViewModels
         public void Dispose()
         {
             AccommodationReservationsViewModel?.Dispose();
+            TripReservationsViewModel?.Dispose();
         }
 
         public string GetId() => MenuProvider.GetCode(MenuProvider.MenuItem.RESERVATIONS);

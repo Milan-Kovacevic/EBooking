@@ -19,7 +19,7 @@ using System.Windows.Data;
 
 namespace EBooking.WPF.ViewModels
 {
-    public partial class TripReservationsViewModel : ObservableObject, IViewModelBase
+    public partial class TripReservationsViewModel : ObservableObject, IViewModelBase, IRecipient<DeleteSelectedDialogResultMessage>
     {
         [ObservableProperty]
         private string searchText;
@@ -50,24 +50,29 @@ namespace EBooking.WPF.ViewModels
             }
         }
 
+        private readonly TripReservationStore _tripReservationStore;
+        private readonly TripReservationService _tripReservationService;
         private readonly UserStore _userStore;
         private readonly DialogHostService _dialogHostService;
         private readonly MessageQueueService _messageQueueService;
 
-        public TripReservationsViewModel(UserStore userStore, DialogHostService dialogHostService, MessageQueueService messageQueueService)
+        public TripReservationsViewModel(TripReservationStore tripReservationStore, TripReservationService tripReservationService, UserStore userStore, DialogHostService dialogHostService, MessageQueueService messageQueueService)
         {
+            _tripReservationStore = tripReservationStore;
+            _tripReservationService = tripReservationService;
             _userStore = userStore;
             _dialogHostService = dialogHostService;
             _messageQueueService = messageQueueService;
 
+            _tripReservationStore.TripReservationLoaded += OnTripReservationLoaded;
+            _tripReservationStore.TripReservationAdded += OnTripReservationAdded;
+            _tripReservationStore.TripReservationUpdated += OnTripReservationUpdated;
+            _tripReservationStore.TripReservationDeleted += OnTripReservationDeleted;
+
             searchText = string.Empty;
             isAdmin = userStore.IsAdmin;
             isEmployee = userStore.IsEmployee;
-            _tripReservations = new ObservableCollection<TripReservationItemViewModel>()
-            {
-                new TripReservationItemViewModel(){ IsOwner = true, TripType="One-Way", OnName = "Marko Markovic", NumberOfSeats = 1, ReservedBy = "Test1", TotalPrice = 100.99m, TripSummary = "Belgrade - Banja Luka"},
-                new TripReservationItemViewModel(){ IsOwner = true, TripType="Two-Way", OnName = "Stefan Markovic", NumberOfSeats = 2, ReservedBy = "Test2", TotalPrice = 320.99m, TripSummary = "Belgrade - Banja Luka"}
-            };
+            _tripReservations = new ObservableCollection<TripReservationItemViewModel>();
             TripReservations = CollectionViewSource.GetDefaultView(_tripReservations);
             TripReservations.Filter = FilterTripReservations;
             LoadTripReservations();
@@ -81,13 +86,57 @@ namespace EBooking.WPF.ViewModels
 
         public void Dispose()
         {
+            _tripReservationStore.TripReservationLoaded -= OnTripReservationLoaded;
+            _tripReservationStore.TripReservationAdded -= OnTripReservationAdded;
+            _tripReservationStore.TripReservationUpdated -= OnTripReservationUpdated;
+            _tripReservationStore.TripReservationDeleted -= OnTripReservationDeleted;
             WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
         #region Unit Reservations CRUD Commands
         public async void LoadTripReservations()
         {
+            await _tripReservationStore.Load();
+        }
 
+        private void OnTripReservationLoaded()
+        {
+            _tripReservations.Clear();
+            foreach (var item in _tripReservationStore.TripReservations)
+                AddNewTripReservationItem(item);
+        }
+
+        private void OnTripReservationAdded(TripReservation tripReservation)
+        {
+            AddNewTripReservationItem(tripReservation);
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_ADDED);
+            _messageQueueService.Enqueue($"{message} ' {tripReservation.OnName} '");
+        }
+
+        private void AddNewTripReservationItem(TripReservation tripReservation)
+        {
+            var tripReservationItem = new TripReservationItemViewModel(tripReservation, _userStore.CurrentUser);
+            _tripReservations.Add(tripReservationItem);
+        }
+
+        private void OnTripReservationUpdated(TripReservation tripReservation)
+        {
+            var tripReservationItem = _tripReservations.FirstOrDefault(f => f.TripReservationId == tripReservation.TripReservationId);
+            Mapper.Map(tripReservation).Over(tripReservationItem);
+            tripReservationItem.SetTripSummary();
+            var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_UPDATED);
+            _messageQueueService.Enqueue($"{message} ' {tripReservation.OnName} '");
+        }
+
+        private void OnTripReservationDeleted(int tripReservationId)
+        {
+            var tripReservationItemVm = _tripReservations.FirstOrDefault(f => f.TripReservationId == tripReservationId);
+            if (tripReservationItemVm is not null)
+            {
+                _tripReservations.Remove(tripReservationItemVm);
+                var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_DELETED);
+                _messageQueueService.Enqueue($"{message} ' {tripReservationItemVm.OnName} '");
+            }
         }
 
         [RelayCommand]
@@ -104,7 +153,7 @@ namespace EBooking.WPF.ViewModels
         [RelayCommand]
         public void AddTripReservation()
         {
-            _dialogHostService.OpenAddTripReservation();
+            _dialogHostService.OpenTripReservationAdd();
         }
 
         [RelayCommand]
@@ -112,6 +161,8 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not TripReservationItemViewModel vm)
                 return;
+            _tripReservationService.SetSelectedTripReservation(vm.TripReservationId);
+            _dialogHostService.OpenTripReservationEdit();
         }
 
         [RelayCommand]
@@ -119,6 +170,8 @@ namespace EBooking.WPF.ViewModels
         {
             if (param is not TripReservationItemViewModel vm)
                 return;
+            _tripReservationService.SetSelectedTripReservation(vm.TripReservationId);
+            _dialogHostService.OpenTripReservationDelete();
         }
 
         [RelayCommand]
@@ -136,7 +189,7 @@ namespace EBooking.WPF.ViewModels
             {
                 if (_tripReservations[i].IsSelected)
                 {
-                    //tasks.Add(_unitReservationService.DeleteUnitReservation(_tripReservations[i].TripReservationId));
+                    tasks.Add(_tripReservationService.DeleteTripReservation(_tripReservations[i].TripReservationId));
                 }
             }
             await Task.WhenAll(tasks);

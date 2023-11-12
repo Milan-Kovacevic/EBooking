@@ -122,7 +122,7 @@
             IsReadOnly="False"
             VerticalAlignment="Top"
             FontSize="15"
-            MaxHeight="270"
+            MaxHeight="300"
             CanUserReorderColumns="False"
             materialDesign:DataGridAssist.ColumnHeaderPadding="14 12 14 12"
             materialDesign:DataGridAssist.CellPadding="14 6 14 6"
@@ -189,7 +189,7 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <materialDesign:DataGridTextColumn
-                    MinWidth="270"
+                    Width="*"
                     FontSize="14"
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
@@ -209,7 +209,7 @@
                     </materialDesign:DataGridTextColumn.ElementStyle>
                 </materialDesign:DataGridTextColumn>
                 <materialDesign:DataGridTextColumn
-                    MinWidth="280"
+                    Width="*"
                     FontSize="14"
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
@@ -229,7 +229,7 @@
                     </materialDesign:DataGridTextColumn.ElementStyle>
                 </materialDesign:DataGridTextColumn>
                 <DataGridTemplateColumn
-                    MinWidth="80"
+                    MinWidth="100"
                     IsReadOnly="True"
                     Header="Action">
                     <DataGridTemplateColumn.HeaderStyle>

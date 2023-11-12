@@ -232,6 +232,33 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully added trip reservation for.
+        /// </summary>
+        internal static string GLOBAL_TripReservationAdded {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully deleted trip reservation for.
+        /// </summary>
+        internal static string GLOBAL_TripReservationDeleted {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated trip reservation for.
+        /// </summary>
+        internal static string GLOBAL_TripReservationUpdated {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added unit reservation for.
         /// </summary>
         internal static string GLOBAL_UnitReservationAdded {

@@ -225,7 +225,7 @@
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
                     Header="Trip Type"
                     HeaderStyle="{StaticResource TableColumnTextWrappingStyle}"
-                    Binding="{Binding TripType}">
+                    Binding="{Binding TripTypeText}">
                     <materialDesign:DataGridTextColumn.ElementStyle>
                         <Style
                             TargetType="{x:Type TextBlock}"

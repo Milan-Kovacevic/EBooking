@@ -46,7 +46,11 @@ namespace EBooking.EntityFramework.DataAccess
                 return await context.TripReservations
                     .Include(x => x.Employee)
                     .Include(x => x.Flights)
-                    .ThenInclude(f => f.Flight)
+                        .ThenInclude(f => f.Flight)
+                            .ThenInclude(d => d.FromLocation)
+                    .Include(x => x.Flights)
+                        .ThenInclude(f => f.Flight)
+                            .ThenInclude(d => d.ToLocation)
                     .Select(x => MapTripReservationEntityToDTO(x)).ToListAsync();
             }
         }
@@ -58,7 +62,11 @@ namespace EBooking.EntityFramework.DataAccess
                 var entity = await context.TripReservations
                     .Include(x => x.Employee)
                     .Include(x => x.Flights)
-                    .ThenInclude(f => f.Flight)
+                        .ThenInclude(f => f.Flight)
+                            .ThenInclude(d => d.FromLocation)
+                    .Include(x => x.Flights)
+                        .ThenInclude(f => f.Flight)
+                            .ThenInclude(d => d.ToLocation)
                     .FirstOrDefaultAsync(x => x.TripReservationId == id);
                 if (entity is null)
                     throw new DataAccessException();
@@ -110,7 +118,7 @@ namespace EBooking.EntityFramework.DataAccess
             }
         }
 
-        private TripReservation MapTripReservationEntityToDTO(TripReservationEntity entity)
+        private static TripReservation MapTripReservationEntityToDTO(TripReservationEntity entity)
         {
             var tripReservation = Mapper.Map(entity).ToANew<TripReservation>();
             entity.Flights.Sort((x1, x2) => x1.SerialNumber - x2.SerialNumber);

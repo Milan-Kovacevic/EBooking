@@ -1,30 +1,30 @@
-﻿using AgileObjects.AgileMapper;
-using AgileObjects.AgileMapper.Extensions;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using EBooking.Domain.DTOs;
-using EBooking.Domain.Enums;
-using EBooking.WPF.Dialogs.Models;
-using EBooking.WPF.Services;
-using EBooking.WPF.Stores;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
+using EBooking.WPF.Dialogs.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using System.Windows.Data;
+using EBooking.WPF.Stores;
+using EBooking.WPF.Services;
+using AgileObjects.AgileMapper;
+using EBooking.Domain.DTOs;
+using EBooking.Domain.Enums;
+using AgileObjects.AgileMapper.Extensions;
 
 namespace EBooking.WPF.Dialogs.ViewModels
 {
-    public partial class TripReservationAddDialogViewModel : ObservableValidator, IViewModelBase
+    public partial class TripReservationEditDialogViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
         private string dialogTitle;
+        public int TripReservationId { get; set; }
 
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
@@ -70,7 +70,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private readonly DialogHostService _dialogHostService;
         private readonly UserStore _userStore;
 
-        public TripReservationAddDialogViewModel(FlightStore flightStore, TripReservationService tripReservationService, DialogHostService dialogHostService, UserStore userStore)
+        public TripReservationEditDialogViewModel(FlightStore flightStore, TripReservationService tripReservationService, DialogHostService dialogHostService, UserStore userStore)
         {
             _flightStore = flightStore;
             _tripReservationService = tripReservationService;
@@ -78,7 +78,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _userStore = userStore;
 
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Create Trip Reservation";
+            dialogTitle = "Edit Trip Reservation";
             TripTypes = new List<TripTypeModel>()
             {
                 new TripTypeModel(TripType.ONE_WAY),
@@ -86,15 +86,18 @@ namespace EBooking.WPF.Dialogs.ViewModels
                 new TripTypeModel(TripType.MULTI_CITY),
             };
             AvailableFlights = new List<FlightModel>();
-            _addedFlights = new ObservableCollection<FlightModel>();
+            var tripReservation = tripReservationService.GetSelectedTripReservation();
+            _addedFlights = new ObservableCollection<FlightModel>(tripReservation?.Flights.Select(x => Mapper.Map(x).ToANew<FlightModel>()) ?? Array.Empty<FlightModel>());
             AddedFlightsCollection = new ListCollectionView(_addedFlights);
+
+            onName = tripReservation?.OnName ?? string.Empty;
+            numberOfSeats = tripReservation?.NumberOfSeats.ToString() ?? string.Empty;
+            selectedTripType = new TripTypeModel(tripReservation?.Type ?? TripType.ONE_WAY);
+            totalPrice = tripReservation?.TotalPrice.ToString() ?? "0.0";
             selectedAddedFlightIndex = -1;
+            TripReservationId = tripReservation?.TripReservationId ?? 0;
             selectedFlightDate = null;
             selectedFlight = null;
-            onName = string.Empty;
-            numberOfSeats = string.Empty;
-            selectedTripType = null;
-            totalPrice = "0.0";
             FilterAvailableFlights();
         }
 
@@ -110,14 +113,15 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private async Task Submit()
         {
             var flights = new List<Flight>(_addedFlights.Select(x => Mapper.Map(x).ToANew<Flight>()));
-            await _tripReservationService.AddTripReservation(new TripReservation()
+            await _tripReservationService.UpdateTripReservation(new TripReservation()
             {
+                TripReservationId = TripReservationId,
                 OnName = OnName,
                 EmployeeId = _userStore.CurrentUser?.UserId ?? 0,
                 NumberOfSeats = int.Parse(NumberOfSeats),
                 TotalPrice = decimal.Parse(TotalPrice),
-                Type = SelectedTripType?.Type ?? Domain.Enums.TripType.ONE_WAY,
-                Flights = flights
+                Type = SelectedTripType?.Type ?? TripType.ONE_WAY,
+                Flights = flights,
             });
             _dialogHostService.CloseDialogHost();
         }

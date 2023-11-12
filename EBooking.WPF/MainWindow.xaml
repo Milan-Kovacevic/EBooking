@@ -154,6 +154,14 @@
             DataType="{x:Type dialogVms:TripReservationAddDialogViewModel}">
             <dialogViews:TripReservationSubmitDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:TripReservationEditDialogViewModel}">
+            <dialogViews:TripReservationSubmitDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:TripReservationDeleteDialogViewModel}">
+            <dialogViews:ConfirmDeleteDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"

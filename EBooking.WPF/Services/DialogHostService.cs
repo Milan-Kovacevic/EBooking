@@ -37,6 +37,8 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToFlightDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToChangePasswordDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationAddDialogViewModel;
+        private readonly DialogNavigationService _navigateToTripReservationEditDialogViewModel;
+        private readonly DialogNavigationService _navigateToTripReservationDeleteDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -61,7 +63,9 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToFlightEditDialogViewModel,
             DialogNavigationService navigateToFlightDeleteDialogViewModel,
             DialogNavigationService navigateToChangePasswordDialogViewModel,
-            DialogNavigationService navigateToTripReservationAddDialogViewModel)
+            DialogNavigationService navigateToTripReservationAddDialogViewModel,
+            DialogNavigationService navigateToTripReservationEditDialogViewModel,
+            DialogNavigationService navigateToTripReservationDeleteDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -86,6 +90,8 @@ namespace EBooking.WPF.Services
             _navigateToFlightDeleteDialogViewModel = navigateToFlightDeleteDialogViewModel;
             _navigateToChangePasswordDialogViewModel = navigateToChangePasswordDialogViewModel;
             _navigateToTripReservationAddDialogViewModel = navigateToTripReservationAddDialogViewModel;
+            _navigateToTripReservationEditDialogViewModel = navigateToTripReservationEditDialogViewModel;
+            _navigateToTripReservationDeleteDialogViewModel = navigateToTripReservationDeleteDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -198,9 +204,19 @@ namespace EBooking.WPF.Services
             _navigateToChangePasswordDialogViewModel.Navigate();
         }
 
-        public void OpenAddTripReservation()
+        public void OpenTripReservationAdd()
         {
             _navigateToTripReservationAddDialogViewModel.Navigate();
+        }
+
+        public void OpenTripReservationEdit()
+        {
+            _navigateToTripReservationEditDialogViewModel.Navigate();
+        }
+
+        public void OpenTripReservationDelete()
+        {
+            _navigateToTripReservationDeleteDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()
