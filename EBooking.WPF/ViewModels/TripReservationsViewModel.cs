@@ -62,6 +62,7 @@ namespace EBooking.WPF.ViewModels
 
             searchText = string.Empty;
             isAdmin = userStore.IsAdmin;
+            isEmployee = userStore.IsEmployee;
             _tripReservations = new ObservableCollection<TripReservationItemViewModel>()
             {
                 new TripReservationItemViewModel(){ IsOwner = true, TripType="One-Way", OnName = "Marko Markovic", NumberOfSeats = 1, ReservedBy = "Test1", TotalPrice = 100.99m, TripSummary = "Belgrade - Banja Luka"},
@@ -75,6 +76,8 @@ namespace EBooking.WPF.ViewModels
 
         [ObservableProperty]
         private bool isAdmin;
+        [ObservableProperty]
+        private bool isEmployee;
 
         public void Dispose()
         {

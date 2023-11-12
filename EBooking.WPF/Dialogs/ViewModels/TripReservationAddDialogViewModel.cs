@@ -9,10 +9,12 @@ using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace EBooking.WPF.Dialogs.ViewModels
 {
@@ -53,7 +55,8 @@ namespace EBooking.WPF.Dialogs.ViewModels
         public IRelayCommand SubmitCommand { get; }
         public IEnumerable<TripTypeModel> TripTypes { get; }
         public List<FlightModel> AvailableFlights { get; }
-        public ObservableCollection<FlightModel> AddedFlights { get; }
+        private ObservableCollection<FlightModel> _addedFlights;
+        public ICollectionView AddedFlights { get; }
 
         private readonly FlightStore _flightStore;
         private readonly DialogHostService _dialogHostService;
@@ -71,8 +74,8 @@ namespace EBooking.WPF.Dialogs.ViewModels
                 new TripTypeModel(Domain.Enums.TripType.MULTI_CITY),
             };
             AvailableFlights = new List<FlightModel>();
-            AddedFlights = new ObservableCollection<FlightModel>();
-
+            _addedFlights = new ObservableCollection<FlightModel>();
+            AddedFlights = CollectionViewSource.GetDefaultView(_addedFlights);
             selectedAddedFlightIndex = -1;
             selectedFlightDate = null;
             selectedFlight = null;
@@ -110,15 +113,17 @@ namespace EBooking.WPF.Dialogs.ViewModels
         public void AddSelectedFlight()
         {
             if (SelectedFlight != null && !AddedFlights.Contains(SelectedFlight))
-                AddedFlights.Add(SelectedFlight);
+            {
+                _addedFlights.Add(SelectedFlight);
+            }    
         }
 
         [RelayCommand]
         public void RemoveSelectedFlight()
         {
-            if (SelectedAddedFlightIndex < 0 || SelectedAddedFlightIndex >= AddedFlights.Count)
+            if (SelectedAddedFlightIndex < 0 || SelectedAddedFlightIndex >= _addedFlights.Count)
                 return;
-            AddedFlights.RemoveAt(SelectedAddedFlightIndex);
+            _addedFlights.RemoveAt(SelectedAddedFlightIndex);
         }
     }
 }

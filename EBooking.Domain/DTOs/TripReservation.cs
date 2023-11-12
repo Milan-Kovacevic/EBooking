@@ -11,12 +11,13 @@ namespace EBooking.Domain.DTOs
 {
     public class TripReservation
     {
-        public int TripId { get; set; }
+        public int TripReservationId { get; set; }
         public required string OnName { get; set; }
         public TripType Type { get; set; }
         public int NumberOfSeats { get; set; }
         public decimal TotalPrice { get; set; }
-        public required Employee Employee { get; set; }
+        public int EmployeeId { get; set; }
+        public Employee? Employee { get; set; }
         public List<Flight> Flights { get; set; } = new();
     }
 }

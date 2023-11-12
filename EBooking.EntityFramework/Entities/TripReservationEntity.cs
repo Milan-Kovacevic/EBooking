@@ -14,7 +14,7 @@ namespace EBooking.EntityFramework.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TripId { get; set; }
+        public int TripReservationId { get; set; }
         [Required]
         public string OnName { get; set; }
         [Required]

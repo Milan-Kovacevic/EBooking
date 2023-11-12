@@ -15,7 +15,6 @@ namespace EBooking.Domain.DTOs
         public FlightClass FlightClass { get; set; }
         public required string AvioCompanyName { get; set; }
         public decimal TicketPrice { get; set; }
-        public int FlightCapacity { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
 

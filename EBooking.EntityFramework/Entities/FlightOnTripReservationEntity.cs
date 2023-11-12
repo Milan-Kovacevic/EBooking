@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace EBooking.EntityFramework.Entities
 {
-    [PrimaryKey(nameof(TripId), nameof(FlightId))]
+    [PrimaryKey(nameof(TripReservationId), nameof(FlightId))]
     [Table("FlightOnTripReservation")]
     internal class FlightOnTripReservationEntity
     {
         [Key]
         [Column(Order = 1)]
         [ForeignKey("TripReservation")]
-        public int TripId { get; set; }
+        public int TripReservationId { get; set; }
         [Key]
         [Column(Order = 2)]
         [ForeignKey("Flight")]
@@ -24,5 +24,7 @@ namespace EBooking.EntityFramework.Entities
 
         public TripReservationEntity TripReservation { get; set; }
         public FlightEntity Flight { get; set; }
+
+        public int SerialNumber { get; set; }
     }
 }

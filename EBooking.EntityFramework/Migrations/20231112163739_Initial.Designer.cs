@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EBooking.EntityFramework.Migrations
 {
     [DbContext(typeof(EBookingDbContext))]
-    [Migration("20231107164735_Initial")]
+    [Migration("20231112163739_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -163,9 +163,6 @@ namespace EBooking.EntityFramework.Migrations
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("FlightCapacity")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("FlightClass")
                         .HasColumnType("INTEGER");
 
@@ -196,7 +193,7 @@ namespace EBooking.EntityFramework.Migrations
 
             modelBuilder.Entity("EBooking.EntityFramework.Entities.FlightOnTripReservationEntity", b =>
                 {
-                    b.Property<int>("TripId")
+                    b.Property<int>("TripReservationId")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(1);
 
@@ -204,7 +201,10 @@ namespace EBooking.EntityFramework.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(2);
 
-                    b.HasKey("TripId", "FlightId");
+                    b.Property<int>("SerialNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TripReservationId", "FlightId");
 
                     b.HasIndex("FlightId");
 
@@ -234,7 +234,7 @@ namespace EBooking.EntityFramework.Migrations
 
             modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
                 {
-                    b.Property<int>("TripId")
+                    b.Property<int>("TripReservationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -254,11 +254,11 @@ namespace EBooking.EntityFramework.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("TripId");
+                    b.HasKey("TripReservationId");
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("TripId");
+                    b.HasIndex("TripReservationId");
 
                     b.ToTable("TripReservation");
                 });
@@ -366,7 +366,7 @@ namespace EBooking.EntityFramework.Migrations
             modelBuilder.Entity("EBooking.EntityFramework.Entities.AccommodationUnitReservationEntity", b =>
                 {
                     b.HasOne("EBooking.EntityFramework.Entities.EmployeeEntity", "Employee")
-                        .WithMany("UnitReservations")
+                        .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -438,7 +438,7 @@ namespace EBooking.EntityFramework.Migrations
 
                     b.HasOne("EBooking.EntityFramework.Entities.TripReservationEntity", "TripReservation")
                         .WithMany("Flights")
-                        .HasForeignKey("TripId")
+                        .HasForeignKey("TripReservationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -450,7 +450,7 @@ namespace EBooking.EntityFramework.Migrations
             modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
                 {
                     b.HasOne("EBooking.EntityFramework.Entities.EmployeeEntity", "Employee")
-                        .WithMany("TripReservations")
+                        .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -489,13 +489,6 @@ namespace EBooking.EntityFramework.Migrations
             modelBuilder.Entity("EBooking.EntityFramework.Entities.TripReservationEntity", b =>
                 {
                     b.Navigation("Flights");
-                });
-
-            modelBuilder.Entity("EBooking.EntityFramework.Entities.EmployeeEntity", b =>
-                {
-                    b.Navigation("TripReservations");
-
-                    b.Navigation("UnitReservations");
                 });
 #pragma warning restore 612, 618
         }

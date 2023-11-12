@@ -16,7 +16,6 @@ namespace EBooking.Domain.DTOs
         public DateTime AvailableTo { get; set; }
         public int NumberOfBeds { get; set; }
         public decimal PricePerNight { get; set; }
-        public decimal? UnitSize { get; set; }
         public int AccommodationId { get; set; }
         public Accommodation? Accommodation { get; set; }
         public List<UnitFeature> Features { get; set; } = new();

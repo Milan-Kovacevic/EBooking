@@ -23,8 +23,6 @@ namespace EBooking.EntityFramework.Entities
         [Required]
         public decimal TicketPrice { get; set; }
         [Required]
-        public int FlightCapacity { get; set; }
-        [Required]
         public DateTime DepartureTime { get; set; }
         [Required]
         public DateTime ArrivalTime { get; set; }

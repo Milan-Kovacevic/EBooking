@@ -15,8 +15,5 @@ namespace EBooking.EntityFramework.Entities
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-
-        public List<AccommodationUnitReservationEntity> UnitReservations { get; set; }
-        public List<TripReservationEntity> TripReservations { get; set; }
     }
 }

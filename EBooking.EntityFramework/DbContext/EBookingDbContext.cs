@@ -36,7 +36,7 @@ namespace EBooking.EntityFramework.DbContext
             modelBuilder.Entity<UnitFeatureEntity>().HasIndex(x => x.FeatureId);
             modelBuilder.Entity<FlightEntity>().HasIndex(x => x.FlightId);
             modelBuilder.Entity<AccommodationUnitReservationEntity>().HasIndex(x => x.UnitReservationId);
-            modelBuilder.Entity<TripReservationEntity>().HasIndex(x => x.TripId);
+            modelBuilder.Entity<TripReservationEntity>().HasIndex(x => x.TripReservationId);
             base.OnModelCreating(modelBuilder);
         }
     }
