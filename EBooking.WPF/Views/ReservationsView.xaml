@@ -1,0 +1,147 @@
+﻿<UserControl
+    x:Class="EBooking.WPF.Views.ReservationsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Views"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+    d:DesignHeight="700"
+    d:DesignWidth="1100">
+    <ScrollViewer
+        materialDesign:ElevationAssist.Elevation="Dp8"
+        materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+        HorizontalScrollBarVisibility="Auto"
+        VerticalScrollBarVisibility="Auto">
+        <Grid
+            Background="{DynamicResource MaterialDesignPaper}">
+            <materialDesign:Card
+                materialDesign:ElevationAssist.Elevation="Dp8"
+                UniformCornerRadius="10"
+                Padding="12"
+                MaxWidth="1160"
+                MaxHeight="700"
+                Margin="25">
+                <materialDesign:Card
+                    UniformCornerRadius="8"
+                    materialDesign:ElevationAssist.Elevation="Dp0">
+                    <TabControl
+                        MinWidth="780"
+                        TabStripPlacement="Bottom"
+                        HorizontalContentAlignment="Center"
+                        materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+                        materialDesign:ElevationAssist.Elevation="Dp2"
+                        SelectedIndex="{Binding DataContext.SelectedTabMenuIndex, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        Style="{StaticResource MaterialDesignFilledUniformTabControl}">
+                        <TabItem>
+                            <TabItem.Header>
+                                <materialDesign:ColorZone
+                                    Mode="PrimaryMid"
+                                    MinWidth="200"
+                                    HorizontalContentAlignment="Center"
+                                    Background="Transparent">
+                                    <StackPanel
+                                        Cursor="Hand"
+                                        Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            VerticalAlignment="Center"
+                                            Kind="BookSearch" />
+                                        <TextBlock
+                                            Margin="6 0 0 0"
+                                            VerticalAlignment="Center"
+                                            Text="UNIT RESERVATIONS"
+                                            FontWeight="Medium"
+                                            FontSize="13" />
+                                    </StackPanel>
+                                </materialDesign:ColorZone>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="auto" />
+                                    <RowDefinition
+                                        Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Margin="20 5 20 15"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        FontSize="26"
+                                        TextWrapping="Wrap"
+                                        FontWeight="Medium"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Center"
+                                        Foreground="{DynamicResource PrimaryHueLightBrush}"
+                                        Style="{DynamicResource MaterialDesignTextBlock}"
+                                        Text="Accommodation Unit Reservations" />
+                                </StackPanel>
+                                <local:UnitsReservationsView
+                                    Grid.Row="1"
+                                    DataContext="{Binding AccommodationReservationsViewModel}" />
+                            </Grid>
+
+                        </TabItem>
+                        <TabItem>
+                            <TabItem.Header>
+                                <materialDesign:ColorZone
+                                    MinWidth="200"
+                                    Mode="PrimaryMid"
+                                    HorizontalContentAlignment="Center"
+                                    Background="Transparent">
+                                    <StackPanel
+                                        HorizontalAlignment="Center"
+                                        Cursor="Hand"
+                                        Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            Width="22"
+                                            Height="22"
+                                            VerticalAlignment="Center"
+                                            Kind="AirplaneFind" />
+                                        <TextBlock
+                                            Margin="6 0 0 0"
+                                            VerticalAlignment="Center"
+                                            Text="TRIP RESERVATIONS"
+                                            FontWeight="Medium"
+                                            FontSize="13" />
+                                    </StackPanel>
+                                </materialDesign:ColorZone>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="auto" />
+                                    <RowDefinition
+                                        Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Margin="20 5 20 15"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        FontSize="26"
+                                        TextWrapping="Wrap"
+                                        FontWeight="Medium"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Center"
+                                        Foreground="{DynamicResource PrimaryHueLightBrush}"
+                                        Style="{DynamicResource MaterialDesignTextBlock}"
+                                        Text="Trip Reservations" />
+                                </StackPanel>
+                                <local:TripsReservationsView
+                                    Grid.Row="1"
+                                    DataContext="{Binding TripReservationsViewModel}" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </materialDesign:Card>
+            </materialDesign:Card>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -258,6 +258,9 @@
   <data name="Menu_RegisterTitle" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="Menu_ReservationsTitle" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
   <data name="Menu_SettingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>

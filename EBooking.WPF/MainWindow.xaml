@@ -57,6 +57,10 @@
             DataType="{x:Type vms:FlightsViewModel}">
             <views:FlightsView />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type vms:ReservationsViewModel}">
+            <views:ReservationsView />
+        </DataTemplate>
 
         <DataTemplate
             DataType="{x:Type dialogVms:ExitApplicationDialogViewModel}">
@@ -145,6 +149,10 @@
         <DataTemplate
             DataType="{x:Type dialogVms:ChangePasswordDialogViewModel}">
             <dialogViews:ChangePasswordDialog />
+        </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:TripReservationAddDialogViewModel}">
+            <dialogViews:TripReservationSubmitDialog />
         </DataTemplate>
 
         <Style

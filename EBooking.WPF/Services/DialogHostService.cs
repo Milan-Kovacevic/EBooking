@@ -36,6 +36,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToFlightEditDialogViewModel;
         private readonly DialogNavigationService _navigateToFlightDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToChangePasswordDialogViewModel;
+        private readonly DialogNavigationService _navigateToTripReservationAddDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -59,7 +60,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToFlightAddDialogViewModel,
             DialogNavigationService navigateToFlightEditDialogViewModel,
             DialogNavigationService navigateToFlightDeleteDialogViewModel,
-            DialogNavigationService navigateToChangePasswordDialogViewModel)
+            DialogNavigationService navigateToChangePasswordDialogViewModel,
+            DialogNavigationService navigateToTripReservationAddDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -83,6 +85,7 @@ namespace EBooking.WPF.Services
             _navigateToFlightEditDialogViewModel = navigateToFlightEditDialogViewModel;
             _navigateToFlightDeleteDialogViewModel = navigateToFlightDeleteDialogViewModel;
             _navigateToChangePasswordDialogViewModel = navigateToChangePasswordDialogViewModel;
+            _navigateToTripReservationAddDialogViewModel = navigateToTripReservationAddDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -193,6 +196,11 @@ namespace EBooking.WPF.Services
         public void OpenChangePasswordDialog()
         {
             _navigateToChangePasswordDialogViewModel.Navigate();
+        }
+
+        public void OpenAddTripReservation()
+        {
+            _navigateToTripReservationAddDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

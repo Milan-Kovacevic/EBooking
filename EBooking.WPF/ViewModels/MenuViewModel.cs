@@ -67,9 +67,10 @@ namespace EBooking.WPF.ViewModels
         private readonly NavigationService _navigateToCodebookViewModel;
         private readonly NavigationService _navigateToAccommodationsViewModel;
         private readonly NavigationService _navigateToFlightsViewModel;
+        private readonly NavigationService _navigateToReservationsViewModel;
         private readonly UserStore _userStore;
 
-        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel, NavigationService navigateToCodebookViewModel, NavigationService navigateToAccommodationsViewModel, NavigationService navigateToFlightsViewModel)
+        public MenuViewModel(UserStore userStore, NavigationService navigateToSettingsViewModel, NavigationService navigateToLoginViewModel, NavigationService navigateToRegisterViewModel, NavigationService navigateToCodebookViewModel, NavigationService navigateToAccommodationsViewModel, NavigationService navigateToFlightsViewModel, NavigationService navigateToReservationsViewModel)
         {
             _navigateToSettingsViewModel = navigateToSettingsViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;
@@ -77,6 +78,7 @@ namespace EBooking.WPF.ViewModels
             _navigateToCodebookViewModel = navigateToCodebookViewModel;
             _navigateToAccommodationsViewModel = navigateToAccommodationsViewModel;
             _navigateToFlightsViewModel = navigateToFlightsViewModel;
+            _navigateToReservationsViewModel = navigateToReservationsViewModel;
             _userStore = userStore;
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
             menuItems = new ObservableCollection<MenuViewItem>()
@@ -85,7 +87,8 @@ namespace EBooking.WPF.ViewModels
                 new MenuViewItem(string.Empty, PackIconKind.Register, NavigateToRegister) { IsEnabled = true},
                 new MenuViewItem(string.Empty, PackIconKind.Hotel, NavigateToAccommodations),
                 new MenuViewItem(string.Empty, PackIconKind.Flight, NavigateToFlights),
-                new MenuViewItem(string.Empty, PackIconKind.BookAdd, NavigateToCodebook),
+                new MenuViewItem(string.Empty, PackIconKind.BookOpenPageVariant, NavigateToReservations),
+                new MenuViewItem(string.Empty, PackIconKind.BookSearch, NavigateToCodebook),
                 new MenuViewItem(string.Empty, PackIconKind.Settings, NavigateToSettings) { IsEnabled = true},
             };
             selectedItem = null;
@@ -129,6 +132,11 @@ namespace EBooking.WPF.ViewModels
             _navigateToFlightsViewModel.Navigate();
         }
 
+        public void NavigateToReservations()
+        {
+            _navigateToReservationsViewModel.Navigate();
+        }
+
         public void NavigateToCodebook()
         {
             _navigateToCodebookViewModel.Navigate();
@@ -143,6 +151,7 @@ namespace EBooking.WPF.ViewModels
             MenuItems.ElementAt(3).IsEnabled = true;
             MenuItems.ElementAt(4).IsEnabled = true;
             MenuItems.ElementAt(5).IsEnabled = true;
+            MenuItems.ElementAt(6).IsEnabled = true;
         }
         private void EnableEmployeeMenuItems()
         {
@@ -150,8 +159,9 @@ namespace EBooking.WPF.ViewModels
             MenuItems.ElementAt(1).IsEnabled = true;
             MenuItems.ElementAt(2).IsEnabled = true;
             MenuItems.ElementAt(3).IsEnabled = true;
-            MenuItems.ElementAt(4).IsEnabled = false;
-            MenuItems.ElementAt(5).IsEnabled = true;
+            MenuItems.ElementAt(4).IsEnabled = true;
+            MenuItems.ElementAt(5).IsEnabled = false;
+            MenuItems.ElementAt(6).IsEnabled = true;
         }
         private void EnableLoggedOfUserMenuItems()
         {
@@ -160,7 +170,8 @@ namespace EBooking.WPF.ViewModels
             MenuItems.ElementAt(2).IsEnabled = false;
             MenuItems.ElementAt(3).IsEnabled = false;
             MenuItems.ElementAt(4).IsEnabled = false;
-            MenuItems.ElementAt(5).IsEnabled = true;
+            MenuItems.ElementAt(5).IsEnabled = false;
+            MenuItems.ElementAt(6).IsEnabled = true;
         }
         #endregion
 

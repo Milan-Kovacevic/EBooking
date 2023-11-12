@@ -121,7 +121,6 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _dialogHostService.CloseDialogHost();
         }
 
-
         private void CalculateTotalPrice()
         {
             if (ReservationFrom == null || ReservationTo == null)

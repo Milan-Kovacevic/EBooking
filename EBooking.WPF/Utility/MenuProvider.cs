@@ -15,6 +15,7 @@ namespace EBooking.WPF.Utility
             SETTINGS,
             ACCOMMODATIONS,
             FLIGHTS,
+            RESERVATIONS,
             CODEBOOK
         }
 
@@ -30,6 +31,7 @@ namespace EBooking.WPF.Utility
                 { MenuItem.REGISTER, "Menu_RegisterTitle" },
                 { MenuItem.ACCOMMODATIONS, "Menu_AccommodationsTitle" },
                 { MenuItem.FLIGHTS, "Menu_FlightsTitle" },
+                { MenuItem.RESERVATIONS, "Menu_ReservationsTitle" },
                 { MenuItem.CODEBOOK, "Menu_CodebookTitle" },
                 { MenuItem.SETTINGS, "Menu_SettingsTitle" },
             };
