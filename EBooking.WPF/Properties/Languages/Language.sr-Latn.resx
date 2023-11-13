@@ -159,20 +159,23 @@
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Nije moguće registrovati nalog sa unesenim podacima</value>
   </data>
+  <data name="GLOBAL_PasswordMissmatch" xml:space="preserve">
+    <value>Neispravna lozinka. Molimo vas, probajte ponovo</value>
+  </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
     <value>Obavezno polje*</value>
   </data>
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
     <value>Prijava je bila uspješna!</value>
   </data>
-  <data name="GLOBAL_SuccessfulPasswordChange" xml:space="preserve">
-    <value>Lozinka je uspješno promijenjena</value>
-  </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>Uspješno ste registrovali vaš nalog</value>
   </data>
   <data name="GLOBAL_SuccessfulSettingsChange" xml:space="preserve">
     <value>Postavke uspješno promijenjene</value>
+  </data>
+  <data name="GLOBAL_SuccessfulUserInfoChange" xml:space="preserve">
+    <value>Korisničke informacije uspješno promijenjene</value>
   </data>
   <data name="GLOBAL_TripReservationAdded" xml:space="preserve">
     <value>Uspješno dodavanje rezervacije putovanja za</value>
@@ -191,6 +194,9 @@
   </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije smještaja za</value>
+  </data>
+  <data name="GLOBAL_UsernameTaken" xml:space="preserve">
+    <value>Korisničko ime je zauzeto</value>
   </data>
   <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
     <value>Dobrodošli nazad!</value>

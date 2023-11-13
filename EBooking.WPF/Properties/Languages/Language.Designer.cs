@@ -187,6 +187,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect password. Please, try again.
+        /// </summary>
+        internal static string GLOBAL_PasswordMissmatch {
+            get {
+                return ResourceManager.GetString("GLOBAL_PasswordMissmatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required*.
         /// </summary>
         internal static string GLOBAL_RequiredInputHint {
@@ -205,15 +214,6 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password changed successfully.
-        /// </summary>
-        internal static string GLOBAL_SuccessfulPasswordChange {
-            get {
-                return ResourceManager.GetString("GLOBAL_SuccessfulPasswordChange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You have successfully registered your account!.
         /// </summary>
         internal static string GLOBAL_SuccessfulRegistration {
@@ -228,6 +228,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_SuccessfulSettingsChange {
             get {
                 return ResourceManager.GetString("GLOBAL_SuccessfulSettingsChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User information changed successfully.
+        /// </summary>
+        internal static string GLOBAL_SuccessfulUserInfoChange {
+            get {
+                return ResourceManager.GetString("GLOBAL_SuccessfulUserInfoChange", resourceCulture);
             }
         }
         
@@ -282,6 +291,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_UnitReservationUpdated {
             get {
                 return ResourceManager.GetString("GLOBAL_UnitReservationUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username is already taken.
+        /// </summary>
+        internal static string GLOBAL_UsernameTaken {
+            get {
+                return ResourceManager.GetString("GLOBAL_UsernameTaken", resourceCulture);
             }
         }
         

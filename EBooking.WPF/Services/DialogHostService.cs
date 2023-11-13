@@ -36,6 +36,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToFlightEditDialogViewModel;
         private readonly DialogNavigationService _navigateToFlightDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToChangePasswordDialogViewModel;
+        private readonly DialogNavigationService _navigateToChangeUserInfoDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationAddDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationEditDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationDeleteDialogViewModel;
@@ -65,7 +66,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToChangePasswordDialogViewModel,
             DialogNavigationService navigateToTripReservationAddDialogViewModel,
             DialogNavigationService navigateToTripReservationEditDialogViewModel,
-            DialogNavigationService navigateToTripReservationDeleteDialogViewModel)
+            DialogNavigationService navigateToTripReservationDeleteDialogViewModel,
+            DialogNavigationService navigateToChangeUserInfoDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -92,6 +94,7 @@ namespace EBooking.WPF.Services
             _navigateToTripReservationAddDialogViewModel = navigateToTripReservationAddDialogViewModel;
             _navigateToTripReservationEditDialogViewModel = navigateToTripReservationEditDialogViewModel;
             _navigateToTripReservationDeleteDialogViewModel = navigateToTripReservationDeleteDialogViewModel;
+            _navigateToChangeUserInfoDialogViewModel = navigateToChangeUserInfoDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -202,6 +205,11 @@ namespace EBooking.WPF.Services
         public void OpenChangePasswordDialog()
         {
             _navigateToChangePasswordDialogViewModel.Navigate();
+        }
+
+        public void OpenChangeUserInfoDialog()
+        {
+            _navigateToChangeUserInfoDialogViewModel.Navigate();
         }
 
         public void OpenTripReservationAdd()

@@ -190,7 +190,7 @@
                                 Height="38"
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Style="{DynamicResource MaterialDesignFlatAccentButton}"
-                                Command="{Binding SaveSettingsCommand}">
+                                Command="{Binding ChangeUserInformationsCommand}">
                                 <StackPanel
                                     Orientation="Horizontal">
                                     <materialDesign:PackIcon

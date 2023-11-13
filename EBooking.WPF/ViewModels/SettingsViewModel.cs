@@ -106,6 +106,12 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenChangePasswordDialog();
         }
 
+        [RelayCommand]
+        public void ChangeUserInformations()
+        {
+            _dialogHostService.OpenChangeUserInfoDialog();
+        }
+
         private readonly SettingsStore _settingsStore;
         private readonly MessageQueueService _messageQueueService;
         private readonly SettingsService _settingsService;
@@ -176,7 +182,7 @@ namespace EBooking.WPF.ViewModels
         public void OnUserUpdated(User user)
         {
             RebindUserInformation(user);
-            _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_PASSWORD_CHANGE);
+            _messageQueueService.Enqueue(LanguageTranslator.MessageType.SUCCESSFUL_USER_INFO_CHANGE);
         }
 
         public void Dispose()

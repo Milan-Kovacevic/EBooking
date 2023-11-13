@@ -151,6 +151,10 @@
             <dialogViews:ChangePasswordDialog />
         </DataTemplate>
         <DataTemplate
+            DataType="{x:Type dialogVms:ChangeUserInfoDialogViewModel}">
+            <dialogViews:ChangeUserInfoDialog />
+        </DataTemplate>
+        <DataTemplate
             DataType="{x:Type dialogVms:TripReservationAddDialogViewModel}">
             <dialogViews:TripReservationSubmitDialog />
         </DataTemplate>

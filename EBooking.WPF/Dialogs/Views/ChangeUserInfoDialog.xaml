@@ -1,0 +1,240 @@
+﻿<UserControl
+    x:Class="EBooking.WPF.Dialogs.Views.ChangeUserInfoDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
+    <Grid
+        Margin="20"
+        MinWidth="460"
+        Background="{DynamicResource MaterialDesignPaper}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="DialogTitle"
+            Margin="25 10 25 15"
+            Grid.Row="0"
+            Text="Change your informations"
+            FontSize="26"
+            HorizontalAlignment="Center"
+            Foreground="{DynamicResource PrimaryHueLightBrush}"
+            TextWrapping="Wrap" />
+        <StackPanel
+            Margin="26 10 26 20"
+            Grid.Row="1">
+            <TextBox
+                Margin="2 0 2 2"
+                Padding="4 2 4 2"
+                FontSize="15"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                MaxLength="80"
+                Text="{Binding EmployeeFirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <TextBox.Style>
+                    <Style
+                        TargetType="{x:Type TextBox}"
+                        BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <Setter
+                            Property="Visibility"
+                            Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsAdmin}"
+                                Value="False">
+                                <Setter
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Stretch"
+                            Margin="0 0 4 0"
+                            Kind="User"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                        <Label
+                            Style="{DynamicResource MaterialDesignLabel}"
+                            VerticalAlignment="Stretch"
+                            Content="First Name" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox
+                Margin="2 18 2 2"
+                Padding="4 2 4 2"
+                FontSize="15"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                MaxLength="80"
+                Text="{Binding EmployeeLastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <TextBox.Style>
+                    <Style
+                        TargetType="{x:Type TextBox}"
+                        BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <Setter
+                            Property="Visibility"
+                            Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsAdmin}"
+                                Value="False">
+                                <Setter
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Stretch"
+                            Margin="0 0 4 0"
+                            Kind="User"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                        <Label
+                            Style="{DynamicResource MaterialDesignLabel}"
+                            VerticalAlignment="Stretch"
+                            Content="Last Name" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox
+                Margin="2 0 2 2"
+                Padding="4 2 4 2"
+                FontSize="15"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                MaxLength="80"
+                Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="{Binding AdminName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Stretch"
+                            Margin="0 0 4 0"
+                            Kind="User"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                        <Label
+                            Style="{DynamicResource MaterialDesignLabel}"
+                            VerticalAlignment="Stretch"
+                            Content="Display Name" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox
+                Margin="2 18 2 2"
+                Padding="4 2 4 2"
+                FontSize="15"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                MaxLength="80"
+                Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Stretch"
+                            Margin="0 0 4 0"
+                            Kind="User"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                        <Label
+                            Style="{DynamicResource MaterialDesignLabel}"
+                            VerticalAlignment="Stretch"
+                            Content="Username" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <PasswordBox
+                Margin="2 18 2 2"
+                Padding="4 2 4 2"
+                FontSize="15"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
+                materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+                materialDesign:PasswordBoxAssist.Password="{Binding ConfirmPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                materialDesign:HintAssist.FloatingOffset="0 -16"
+                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Stretch"
+                            Margin="0 0 4 0"
+                            Kind="PasswordOutline"
+                            Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                        <Label
+                            Style="{DynamicResource MaterialDesignLabel}"
+                            VerticalAlignment="Stretch"
+                            Content="Confirm Password" />
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </PasswordBox>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="2"
+            Margin="15 28 15 8"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                HorizontalAlignment="Right"
+                Margin="0 0 2 0"
+                MinWidth="120"
+                FontSize="13"
+                IsDefault="True"
+                Content="SUBMIT"
+                Command="{Binding SubmitCommand}"
+                Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+            <Button
+                HorizontalAlignment="Right"
+                MinWidth="100"
+                FontSize="13"
+                Margin="8 0 0 0"
+                Content="CANCEL"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatSecondaryButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

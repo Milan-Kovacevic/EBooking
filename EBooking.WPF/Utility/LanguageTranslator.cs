@@ -26,11 +26,13 @@ namespace EBooking.WPF.Utility
             { MessageType.UNIT_RESERVATION_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationUpdated" },
             { MessageType.UNIT_RESERVATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitReservationDeleted" },
             { MessageType.INVALID_PASSWORD_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "InvalidPasswordChange" },
-            { MessageType.SUCCESSFUL_PASSWORD_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulPasswordChange" },
+            { MessageType.SUCCESSFUL_USER_INFO_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulUserInfoChange" },
             { MessageType.SUCCESSFUL_SETTINGS_CHANGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "SuccessfulSettingsChange" },
             { MessageType.TRIP_RESERVATION_ADDED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationAdded" },
             { MessageType.TRIP_RESERVATION_UPDATED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationUpdated" },
             { MessageType.TRIP_RESERVATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationDeleted" },
+            { MessageType.PASSWORD_MISSMATCH, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "PasswordMissmatch" },
+            { MessageType.USERNAME_TAKEN, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UsernameTaken" },
         };
 
         public enum MessageType
@@ -50,11 +52,13 @@ namespace EBooking.WPF.Utility
             UNIT_RESERVATION_UPDATED,
             UNIT_RESERVATION_DELETED,
             INVALID_PASSWORD_CHANGE,
-            SUCCESSFUL_PASSWORD_CHANGE,
+            SUCCESSFUL_USER_INFO_CHANGE,
             SUCCESSFUL_SETTINGS_CHANGE,
             TRIP_RESERVATION_ADDED,
             TRIP_RESERVATION_UPDATED,
             TRIP_RESERVATION_DELETED,
+            PASSWORD_MISSMATCH,
+            USERNAME_TAKEN,
         }
 
         public static string Translate(MessageType message)

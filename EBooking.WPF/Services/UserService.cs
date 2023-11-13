@@ -1,4 +1,6 @@
-﻿using EBooking.Domain.DTOs;
+﻿using AgileObjects.AgileMapper;
+using EBooking.Domain.DTOs;
+using EBooking.WPF.Exceptions;
 using EBooking.WPF.Stores;
 using EBooking.WPF.Utility;
 using System;
@@ -51,6 +53,41 @@ namespace EBooking.WPF.Services
             user.Password = Util.ComputeHash(newPassword);
             await _userStore.Update(user);
             return true;
+        }
+
+        public async Task UpdateEmployeeInformations(string firstName, string lastName, string username, string confirmPassword)
+        {
+            var currUser = _userStore.CurrentUser;
+            if (currUser is not Employee employee)
+                return;
+
+            if (employee.Password != Util.ComputeHash(confirmPassword))
+                throw new PasswordMissmatchException();
+            var foundUser = await _userStore.SearchByUsername(username);
+            if (foundUser is not null && foundUser?.UserId != employee.UserId)
+                throw new UsernameAlreadyTakenException();
+
+            employee.FirstName = firstName;
+            employee.LastName = lastName;
+            employee.Username = username;
+            await _userStore.Update(employee);
+        }
+
+        public async Task UpdateAdministratorInformations(string name, string username, string confirmPassword)
+        {
+            var currUser = _userStore.CurrentUser;
+            if (currUser is not Administrator admin)
+                return;
+
+            if (admin.Password != Util.ComputeHash(confirmPassword))
+                throw new PasswordMissmatchException();
+            var foundUser = await _userStore.SearchByUsername(username);
+            if (foundUser is not null && foundUser?.UserId != admin.UserId)
+                throw new UsernameAlreadyTakenException();
+
+            admin.Name = name;
+            admin.Username = username;
+            await _userStore.Update(admin);
         }
 
         public async Task<bool> Login(string username, string password)

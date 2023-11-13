@@ -159,20 +159,23 @@
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Unable to register account with entered data</value>
   </data>
+  <data name="GLOBAL_PasswordMissmatch" xml:space="preserve">
+    <value>Incorrect password. Please, try again</value>
+  </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
     <value>Required*</value>
   </data>
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
     <value>Login was successful!</value>
   </data>
-  <data name="GLOBAL_SuccessfulPasswordChange" xml:space="preserve">
-    <value>Password changed successfully</value>
-  </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
     <value>You have successfully registered your account!</value>
   </data>
   <data name="GLOBAL_SuccessfulSettingsChange" xml:space="preserve">
     <value>Settings changed successfully</value>
+  </data>
+  <data name="GLOBAL_SuccessfulUserInfoChange" xml:space="preserve">
+    <value>User information changed successfully</value>
   </data>
   <data name="GLOBAL_TripReservationAdded" xml:space="preserve">
     <value>Successfully added trip reservation for</value>
@@ -191,6 +194,9 @@
   </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
     <value>Successfully updated unit reservation for</value>
+  </data>
+  <data name="GLOBAL_UsernameTaken" xml:space="preserve">
+    <value>Username is already taken</value>
   </data>
   <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
     <value>Welcome Back!</value>
