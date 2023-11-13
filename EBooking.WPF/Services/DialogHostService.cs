@@ -40,6 +40,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToTripReservationAddDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationEditDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationDeleteDialogViewModel;
+        private readonly DialogNavigationService _navigateToTripReservationDetailsDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -67,7 +68,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToTripReservationAddDialogViewModel,
             DialogNavigationService navigateToTripReservationEditDialogViewModel,
             DialogNavigationService navigateToTripReservationDeleteDialogViewModel,
-            DialogNavigationService navigateToChangeUserInfoDialogViewModel)
+            DialogNavigationService navigateToChangeUserInfoDialogViewModel,
+            DialogNavigationService navigateToTripReservationDetailsDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -95,6 +97,7 @@ namespace EBooking.WPF.Services
             _navigateToTripReservationEditDialogViewModel = navigateToTripReservationEditDialogViewModel;
             _navigateToTripReservationDeleteDialogViewModel = navigateToTripReservationDeleteDialogViewModel;
             _navigateToChangeUserInfoDialogViewModel = navigateToChangeUserInfoDialogViewModel;
+            _navigateToTripReservationDetailsDialogViewModel = navigateToTripReservationDetailsDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -225,6 +228,11 @@ namespace EBooking.WPF.Services
         public void OpenTripReservationDelete()
         {
             _navigateToTripReservationDeleteDialogViewModel.Navigate();
+        }
+
+        public void OpenTripReservationDetails()
+        {
+            _navigateToTripReservationDetailsDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

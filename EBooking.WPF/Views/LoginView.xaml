@@ -7,6 +7,9 @@
     xmlns:local="clr-namespace:EBooking.WPF.Views"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
@@ -21,8 +24,9 @@
                 materialDesign:ElevationAssist.Elevation="Dp8"
                 UniformCornerRadius="10"
                 Padding="10"
-                MaxWidth="680"
-                MaxHeight="560"
+                MaxWidth="660"
+                MinHeight="520"
+                VerticalAlignment="Center"
                 Margin="25">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -35,7 +39,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel
                         Grid.Row="0"
-                        Margin="20 10 20 10"
+                        Margin="20 0 20 10"
                         HorizontalAlignment="Center"
                         Orientation="Vertical">
                         <materialDesign:PackIcon
@@ -47,7 +51,7 @@
                         <TextBlock
                             FontSize="24"
                             TextWrapping="Wrap"
-                            Margin="80 0"
+                            Margin="70 0"
                             FontWeight="Medium"
                             FontStyle="Italic"
                             VerticalAlignment="Center"
@@ -59,7 +63,8 @@
                     <StackPanel
                         Grid.Row="1"
                         MaxWidth="480"
-                        Margin="10 10 10 10">
+                        VerticalAlignment="Top"
+                        Margin="10 5 10 80">
                         <TextBox
                             Margin="2 20 2 2"
                             Padding="4 2 4 2"
@@ -120,7 +125,7 @@
                         </PasswordBox>
                     </StackPanel>
                     <StackPanel
-                        Margin="5 30 5 20"
+                        Margin="5 0 5 20"
                         MaxWidth="420"
                         Orientation="Vertical"
                         Grid.Row="2">

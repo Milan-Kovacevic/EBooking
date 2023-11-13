@@ -81,6 +81,7 @@ namespace EBooking.WPF
         private readonly DialogNavigationService navigateToTripReservationAddDialogViewModel;
         private readonly DialogNavigationService navigateToTripReservationEditDialogViewModel;
         private readonly DialogNavigationService navigateToTripReservationDeleteDialogViewModel;
+        private readonly DialogNavigationService navigateToTripReservationDetailsDialogViewModel;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -145,7 +146,8 @@ namespace EBooking.WPF
             navigateToTripReservationAddDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationAddDialogViewModel);
             navigateToTripReservationEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationEditDialogViewModel);
             navigateToTripReservationDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationDeleteDialogViewModel);
-            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel, navigateToChangePasswordDialogViewModel, navigateToTripReservationAddDialogViewModel, navigateToTripReservationEditDialogViewModel, navigateToTripReservationDeleteDialogViewModel, navigateToChangeUserInfoDialogViewModel);
+            navigateToTripReservationDetailsDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationDetailsDialogViewModel);
+            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel, navigateToChangePasswordDialogViewModel, navigateToTripReservationAddDialogViewModel, navigateToTripReservationEditDialogViewModel, navigateToTripReservationDeleteDialogViewModel, navigateToChangeUserInfoDialogViewModel, navigateToTripReservationDetailsDialogViewModel);
         }
 
         private async void InitStores()
@@ -369,6 +371,10 @@ namespace EBooking.WPF
         public TripReservationDeleteDialogViewModel CreateTripReservationDeleteDialogViewModel()
         {
             return new TripReservationDeleteDialogViewModel(tripReservationService, dialogHostService);
+        }
+        public TripReservationDetailsDialogViewModel CreateTripReservationDetailsDialogViewModel()
+        {
+            return new TripReservationDetailsDialogViewModel(tripReservationService);
         }
         #endregion
     }

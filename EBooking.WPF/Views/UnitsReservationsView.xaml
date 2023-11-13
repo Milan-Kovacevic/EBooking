@@ -114,7 +114,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Center">
             <TextBlock
-                Margin="0 100 0 0"
+                Margin="0 150 0 0"
                 Text="There are currently no reservations"
                 FontWeight="Medium"
                 FontSize="17"

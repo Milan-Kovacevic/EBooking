@@ -7,7 +7,11 @@
     xmlns:local="clr-namespace:EBooking.WPF.Components"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
+    Validation.ErrorTemplate="{x:Null}"
     d:DesignHeight="450"
     d:DesignWidth="800">
     <StackPanel>
@@ -36,7 +40,7 @@
                     <Label
                         Style="{DynamicResource MaterialDesignLabel}"
                         VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_DisplayNameFieldPlaceholder, FallbackBehavior=EmptyString}" />
+                        Content="{lex:Loc Register_DisplayNameFieldPlaceholder}" />
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
@@ -65,7 +69,7 @@
                     <Label
                         Style="{DynamicResource MaterialDesignLabel}"
                         VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_UsernameFieldPlaceholder, FallbackBehavior=EmptyString}" />
+                        Content="{lex:Loc Register_UsernameFieldPlaceholder}" />
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
@@ -94,7 +98,7 @@
                     <Label
                         Style="{DynamicResource MaterialDesignLabel}"
                         VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_PasswordFieldPlaceholder, FallbackBehavior=EmptyString}" />
+                        Content="{lex:Loc Register_PasswordFieldPlaceholder}" />
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </PasswordBox>
@@ -123,7 +127,7 @@
                     <Label
                         Style="{DynamicResource MaterialDesignLabel}"
                         VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_RepeatPasswordFieldPlaceholder, FallbackBehavior=EmptyString}" />
+                        Content="{lex:Loc Register_RepeatPasswordFieldPlaceholder}" />
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </PasswordBox>

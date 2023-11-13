@@ -9,12 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\EBooking-Dark.png" />
-    <None Remove="Resources\EBooking-Light.png" />
+    <None Remove="Resources\EBooking User Manual.pdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\EBooking.ico" />
+    <Content Include="Resources\EBooking User Manual.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EBooking.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -30,18 +34,6 @@
   <ItemGroup>
     <ProjectReference Include="..\EBooking.Domain\EBooking.Domain.csproj" />
     <ProjectReference Include="..\EBooking.EntityFramework\EBooking.EntityFramework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\EBooking-Dark.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\EBooking-Light.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

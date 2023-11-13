@@ -166,6 +166,10 @@
             DataType="{x:Type dialogVms:TripReservationDeleteDialogViewModel}">
             <dialogViews:ConfirmDeleteDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:TripReservationDetailsDialogViewModel}">
+            <dialogViews:TripReservationDetailsDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"
@@ -192,7 +196,8 @@
         CloseOnClickAway="False"
         SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
         <materialDesign:DialogHost.DialogContent>
-            <ContentControl
+            <ContentPresenter
+                Validation.ErrorTemplate="{x:Null}"
                 Margin="0"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
@@ -404,7 +409,8 @@
                         <RowDefinition
                             Height="*" />
                     </Grid.RowDefinitions>
-                    <ContentControl
+                    <ContentPresenter
+                        Validation.ErrorTemplate="{x:Null}"
                         Margin="5"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"

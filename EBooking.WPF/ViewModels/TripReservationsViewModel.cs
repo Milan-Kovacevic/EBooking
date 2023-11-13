@@ -123,7 +123,7 @@ namespace EBooking.WPF.ViewModels
         {
             var tripReservationItem = _tripReservations.FirstOrDefault(f => f.TripReservationId == tripReservation.TripReservationId);
             Mapper.Map(tripReservation).Over(tripReservationItem);
-            tripReservationItem.SetTripSummary();
+            tripReservationItem?.SetTripSummary();
             var message = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_UPDATED);
             _messageQueueService.Enqueue($"{message} ' {tripReservation.OnName} '");
         }
@@ -195,6 +195,13 @@ namespace EBooking.WPF.ViewModels
             await Task.WhenAll(tasks);
             IsAllItemsSelected = false;
         }
+
+
+        public void ShowReservationDetailsFor(TripReservationItemViewModel selectedItem)
+        {
+            _tripReservationService.SetSelectedTripReservation(selectedItem.TripReservationId);
+            _dialogHostService.OpenTripReservationDetails();
+        }
         #endregion
 
         #region ViewModel Helper Functions
@@ -218,7 +225,6 @@ namespace EBooking.WPF.ViewModels
                 }
             }
         }
-
         #endregion
     }
 }

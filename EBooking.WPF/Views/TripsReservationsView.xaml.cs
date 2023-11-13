@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EBooking.WPF.ItemViewModels;
+using EBooking.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,22 @@ namespace EBooking.WPF.Views
         public TripsReservationsView()
         {
             InitializeComponent();
+        }
+
+        private void UnitReservationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && DataContext is TripReservationsViewModel vm)
+            {
+                var dataGrid = (DataGrid)sender;
+                var selectedRowItem = dataGrid.SelectedItem;
+
+                // Check if an item is selected
+                if (selectedRowItem != null)
+                {
+                    var selectedData = (TripReservationItemViewModel)selectedRowItem;
+                    vm.ShowReservationDetailsFor(selectedData);
+                }
+            }
         }
     }
 }

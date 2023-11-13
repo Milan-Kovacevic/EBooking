@@ -8,6 +8,9 @@
     xmlns:components="clr-namespace:EBooking.WPF.Components"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1000">
@@ -34,6 +37,7 @@
                         <RowDefinition
                             Height="auto" />
                     </Grid.RowDefinitions>
+                   
                     <StackPanel
                         Grid.Row="0"
                         Margin="20 5 20 5"
@@ -91,8 +95,8 @@
                                 </StackPanel>
                             </TabItem.Header>
                             <components:EmployeeRegisterTabItem
-                                DataContext="{Binding}"
                                 MaxWidth="500"
+                                DataContext="{Binding}"
                                 Margin="25 22 25 10" />
                         </TabItem>
                         <TabItem>
@@ -116,8 +120,8 @@
                                 </StackPanel>
                             </TabItem.Header>
                             <components:AdminRegisterTabItem
-                                DataContext="{Binding}"
                                 MaxWidth="500"
+                                DataContext="{Binding}"
                                 Margin="25 22 25 10" />
                         </TabItem>
                     </TabControl>

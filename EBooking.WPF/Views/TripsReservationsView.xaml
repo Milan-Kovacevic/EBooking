@@ -132,7 +132,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Center">
             <TextBlock
-                Margin="0 160 0 0"
+                Margin="0 150 0 0"
                 Text="There are currently no reservations"
                 FontWeight="Medium"
                 FontSize="17"
@@ -158,6 +158,7 @@
             materialDesign:DataGridAssist.ColumnHeaderPadding="14 12 14 8"
             materialDesign:DataGridAssist.CellPadding="14 6 14 6"
             ItemsSource="{Binding TripReservations}"
+            MouseDoubleClick="UnitReservationsDataGrid_MouseDoubleClick"
             SelectionUnit="FullRow">
             <DataGrid.Style>
                 <Style
@@ -309,6 +310,7 @@
                     FontSize="14"
                     Width="*"
                     IsReadOnly="True"
+                    
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
                     Header="Trip Summary"
                     Binding="{Binding TripSummary}">

@@ -75,7 +75,7 @@ namespace EBooking.WPF.ViewModels
         {
             _messageQueueService = messageQueueService;
             _userService = userService;
-            selectedTabIndex = 0;
+            selectedTabIndex = 1;
             employeeFirstName = string.Empty;
             employeeLastName = string.Empty;
             adminDisplayName = string.Empty;

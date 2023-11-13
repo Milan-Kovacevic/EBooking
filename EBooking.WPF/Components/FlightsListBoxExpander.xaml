@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Components"
     mc:Ignorable="d"
+    Validation.ErrorTemplate="{x:Null}"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800">
@@ -71,7 +72,7 @@
                 <ListBox.InputBindings>
                     <KeyBinding
                         Key="Delete"
-                        Command="{Binding RemoveSelectedFlightCommand}" />
+                        Command="{Binding RemoveSelectedFlightCommand, FallbackValue={x:Null}}" />
                 </ListBox.InputBindings>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -216,7 +217,6 @@
                                         VerticalAlignment="Center" />
                                 </Grid>
                             </Grid>
-
                         </materialDesign:Card>
                         <DataTemplate.Triggers>
                             <Trigger
