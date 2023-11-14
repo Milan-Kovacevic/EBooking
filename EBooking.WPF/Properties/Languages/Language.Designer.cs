@@ -61,6 +61,96 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new accommodation.
+        /// </summary>
+        internal static string Accommodations_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("Accommodations_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of units:.
+        /// </summary>
+        internal static string Accommodations_CardItemNumberOfUnitsLabel {
+            get {
+                return ResourceManager.GetString("Accommodations_CardItemNumberOfUnitsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search accommodations.
+        /// </summary>
+        internal static string Accommodations_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("Accommodations_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find accommodations....
+        /// </summary>
+        internal static string Accommodations_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("Accommodations_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string Accommodations_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("Accommodations_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address Name.
+        /// </summary>
+        internal static string Accommodations_SubmitAddressFieldHint {
+            get {
+                return ResourceManager.GetString("Accommodations_SubmitAddressFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Location.
+        /// </summary>
+        internal static string Accommodations_SubmitLocationComboBoxHint {
+            get {
+                return ResourceManager.GetString("Accommodations_SubmitLocationComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodation Name.
+        /// </summary>
+        internal static string Accommodations_SubmitNameFieldHint {
+            get {
+                return ResourceManager.GetString("Accommodations_SubmitNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Type.
+        /// </summary>
+        internal static string Accommodations_SubmitTypeComboBoxHint {
+            get {
+                return ResourceManager.GetString("Accommodations_SubmitTypeComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodations.
+        /// </summary>
+        internal static string Accommodations_Title {
+            get {
+                return ResourceManager.GetString("Accommodations_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blue.
         /// </summary>
         internal static string color_blue {
@@ -106,6 +196,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Accommodation.
+        /// </summary>
+        internal static string GLOBAL_AccommodationAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added accommodation.
         /// </summary>
         internal static string GLOBAL_AccommodationAdded {
@@ -120,6 +219,24 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_AccommodationDeleted {
             get {
                 return ResourceManager.GetString("GLOBAL_AccommodationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected accommodation?.
+        /// </summary>
+        internal static string GLOBAL_AccommodationDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Accommodation.
+        /// </summary>
+        internal static string GLOBAL_AccommodationEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationEditDialogTitle", resourceCulture);
             }
         }
         
@@ -156,6 +273,42 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_AccommodationUpdated {
             get {
                 return ResourceManager.GetString("GLOBAL_AccommodationUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE.
+        /// </summary>
+        internal static string GLOBAL_DeleteButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DeleteButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CANCEL.
+        /// </summary>
+        internal static string GLOBAL_DialogCancelButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogCancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUBMIT.
+        /// </summary>
+        internal static string GLOBAL_DialogSubmitButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogSubmitButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDIT.
+        /// </summary>
+        internal static string GLOBAL_EditButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_EditButtonText", resourceCulture);
             }
         }
         
@@ -201,6 +354,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_RequiredInputHint {
             get {
                 return ResourceManager.GetString("GLOBAL_RequiredInputHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field is required!.
+        /// </summary>
+        internal static string GLOBAL_RequiredPropertyMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_RequiredPropertyMessage", resourceCulture);
             }
         }
         

@@ -136,6 +136,7 @@
             FontSize="14"
             VerticalAlignment="Top"
             CanUserReorderColumns="False"
+            HorizontalScrollBarVisibility="Hidden"
             materialDesign:DataGridAssist.ColumnHeaderPadding="14 12 14 8"
             materialDesign:DataGridAssist.CellPadding="14 6 14 6"
             ItemsSource="{Binding UnitReservations}"

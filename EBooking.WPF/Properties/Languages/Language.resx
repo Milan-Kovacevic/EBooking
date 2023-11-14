@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accommodations_AddButtonTooltip" xml:space="preserve">
+    <value>Add new accommodation</value>
+  </data>
+  <data name="Accommodations_CardItemNumberOfUnitsLabel" xml:space="preserve">
+    <value>Number of units:</value>
+  </data>
+  <data name="Accommodations_SearchButtonTooltip" xml:space="preserve">
+    <value>Search accommodations</value>
+  </data>
+  <data name="Accommodations_SearchFieldHelperText" xml:space="preserve">
+    <value>Find accommodations...</value>
+  </data>
+  <data name="Accommodations_SearchFieldHint" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Accommodations_SubmitAddressFieldHint" xml:space="preserve">
+    <value>Address Name</value>
+  </data>
+  <data name="Accommodations_SubmitLocationComboBoxHint" xml:space="preserve">
+    <value>Select Location</value>
+  </data>
+  <data name="Accommodations_SubmitNameFieldHint" xml:space="preserve">
+    <value>Accommodation Name</value>
+  </data>
+  <data name="Accommodations_SubmitTypeComboBoxHint" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+  <data name="Accommodations_Title" xml:space="preserve">
+    <value>Accommodations</value>
+  </data>
   <data name="color-blue" xml:space="preserve">
     <value>Blue</value>
   </data>
@@ -132,11 +162,20 @@
   <data name="en-US" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="GLOBAL_AccommodationAddDialogTitle" xml:space="preserve">
+    <value>Create New Accommodation</value>
+  </data>
   <data name="GLOBAL_AccommodationAdded" xml:space="preserve">
     <value>Successfully added accommodation</value>
   </data>
   <data name="GLOBAL_AccommodationDeleted" xml:space="preserve">
     <value>Successfully deleted accommodation</value>
+  </data>
+  <data name="GLOBAL_AccommodationDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected accommodation?</value>
+  </data>
+  <data name="GLOBAL_AccommodationEditDialogTitle" xml:space="preserve">
+    <value>Edit Accommodation</value>
   </data>
   <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
     <value>Successfully added accommodation unit</value>
@@ -149,6 +188,18 @@
   </data>
   <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
     <value>Successfully updated accommodation</value>
+  </data>
+  <data name="GLOBAL_DeleteButtonText" xml:space="preserve">
+    <value>DELETE</value>
+  </data>
+  <data name="GLOBAL_DialogCancelButtonText" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="GLOBAL_DialogSubmitButtonText" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="GLOBAL_EditButtonText" xml:space="preserve">
+    <value>EDIT</value>
   </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Invalid username or password</value>
@@ -164,6 +215,9 @@
   </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
     <value>Required*</value>
+  </data>
+  <data name="GLOBAL_RequiredPropertyMessage" xml:space="preserve">
+    <value>This field is required!</value>
   </data>
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
     <value>Login was successful!</value>

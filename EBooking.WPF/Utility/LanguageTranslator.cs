@@ -33,6 +33,10 @@ namespace EBooking.WPF.Utility
             { MessageType.TRIP_RESERVATION_DELETED, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationDeleted" },
             { MessageType.PASSWORD_MISSMATCH, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "PasswordMissmatch" },
             { MessageType.USERNAME_TAKEN, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UsernameTaken" },
+            { MessageType.ACCOMMODATION_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationAddDialogTitle" },
+            { MessageType.ACCOMMODATION_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationEditDialogTitle" },
+            { MessageType.ACCOMMODATION_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "AccommodationDeleteDialogMessage" },
+            { MessageType.REQUIRED_PROPERTY_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "RequiredPropertyMessage" },
         };
 
         public enum MessageType
@@ -59,6 +63,10 @@ namespace EBooking.WPF.Utility
             TRIP_RESERVATION_DELETED,
             PASSWORD_MISSMATCH,
             USERNAME_TAKEN,
+            ACCOMMODATION_ADD_DIALOG_TITLE,
+            ACCOMMODATION_EDIT_DIALOG_TITLE,
+            ACCOMMODATION_DELETE_DIALOG_MESSAGE,
+            REQUIRED_PROPERTY_MESSAGE,
         }
 
         public static string Translate(MessageType message)

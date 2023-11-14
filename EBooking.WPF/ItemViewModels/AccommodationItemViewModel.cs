@@ -78,12 +78,8 @@ namespace EBooking.WPF.ItemViewModels
 
         private void SetIsApartment(AccommodationType? value)
         {
-            if (value is null)
-                IsApartment = false;
-            else if (value == AccommodationType.APARTMENT)
+            if (value is not null && value == AccommodationType.APARTMENT)
                 IsApartment = true;
-            else if (value == AccommodationType.HOTEL)
-                IsApartment = false;
             else
                 IsApartment = false;
         }

@@ -29,6 +29,36 @@ namespace EBooking.WPF.ViewModels
         private string username = string.Empty;
         [ObservableProperty]
         private bool settingsChanged;
+
+        public ObservableCollection<LanguageItem> AvailableLanguagesCollection { get; }
+
+        private readonly SettingsStore _settingsStore;
+        private readonly MessageQueueService _messageQueueService;
+        private readonly SettingsService _settingsService;
+        private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
+
+        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService, DialogHostService dialogHostService, UserStore userStore)
+        {
+            _settingsService = settingsService;
+            _messageQueueService = messageQueueService;
+            _settingsStore = settingsStore;
+            _dialogHostService = dialogHostService;
+            _userStore = userStore;
+            _userStore.UserUpdated += OnUserUpdated;
+            availableLanguages = new();
+            availablePrimaryColors = new();
+            availableSecondaryColors = new();
+            AvailableLanguagesCollection = new ObservableCollection<LanguageItem>(LanguageProvider.Instance.Languages);
+            IsUserLoggedIn = userStore.IsLoggedIn;
+            IsAdmin = userStore.IsAdmin;
+            IsEmployee = userStore.IsEmployee;
+            RebindSettingsProperties();
+            if (userStore.IsLoggedIn && userStore.CurrentUser is not null)
+                RebindUserInformation(userStore.CurrentUser);
+            settingsChanged = false;
+        }
+
         [ObservableProperty]
         private List<LanguageItem> availableLanguages;
         [ObservableProperty]
@@ -112,32 +142,6 @@ namespace EBooking.WPF.ViewModels
             _dialogHostService.OpenChangeUserInfoDialog();
         }
 
-        private readonly SettingsStore _settingsStore;
-        private readonly MessageQueueService _messageQueueService;
-        private readonly SettingsService _settingsService;
-        private readonly DialogHostService _dialogHostService;
-        private readonly UserStore _userStore;
-
-        public SettingsViewModel(MessageQueueService messageQueueService, SettingsStore settingsStore, SettingsService settingsService, DialogHostService dialogHostService, UserStore userStore)
-        {
-            _settingsService = settingsService;
-            _messageQueueService = messageQueueService;
-            _settingsStore = settingsStore;
-            _dialogHostService = dialogHostService;
-            _userStore = userStore;
-            _userStore.UserUpdated += OnUserUpdated;
-            availableLanguages = new();
-            availablePrimaryColors = new();
-            availableSecondaryColors = new();
-            IsUserLoggedIn = userStore.IsLoggedIn;
-            IsAdmin = userStore.IsAdmin;
-            IsEmployee = userStore.IsEmployee;
-            RebindSettingsProperties();
-            if (userStore.IsLoggedIn && userStore.CurrentUser is not null)
-                RebindUserInformation(userStore.CurrentUser);
-            settingsChanged = false;
-        }
-
         private void RebindSettingsProperties()
         {
             AvailableLanguages = new List<LanguageItem>(LanguageProvider.Instance.Languages);
@@ -178,7 +182,7 @@ namespace EBooking.WPF.ViewModels
                 Username = admin?.Username ?? string.Empty;
             }
         }
-
+        
         public void OnUserUpdated(User user)
         {
             RebindUserInformation(user);

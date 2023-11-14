@@ -13,6 +13,14 @@ namespace EBooking.WPF.Utility
     {
         #region Custom Validations
 
+        public static ValidationResult? ValidateRequiredProperty(object value, ValidationContext context)
+        {
+            if(value == null || value.ToString() == string.Empty)
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.REQUIRED_PROPERTY_MESSAGE));
+
+            return ValidationResult.Success;
+        }
+
         public static ValidationResult? ValidateAvailableFromDate(DateTime date, ValidationContext context)
         {
             var isValid = date >= DateTime.Now.Date;

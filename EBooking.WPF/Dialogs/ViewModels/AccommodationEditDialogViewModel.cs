@@ -6,6 +6,7 @@ using EBooking.Domain.Enums;
 using EBooking.WPF.Dialogs.Models;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,23 +22,27 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [ObservableProperty]
         private string dialogTitle;
         public int AccommodationId { get; set; }
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string name;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private AccommodationTypeModel? type;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private LocationModel? location;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string address;
@@ -65,7 +70,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
                  new AccommodationTypeModel(AccommodationType.HOTEL),
             };
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Edit Accommodation";
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_EDIT_DIALOG_TITLE);
             var accommodation = accommodationService.GetSelectedAccommodation();
             name = accommodation?.Name ?? string.Empty;
             type = new AccommodationTypeModel(accommodation?.Type ?? AccommodationType.APARTMENT);

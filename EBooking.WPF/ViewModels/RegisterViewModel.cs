@@ -22,37 +22,39 @@ namespace EBooking.WPF.ViewModels
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string employeeFirstName;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string employeeLastName;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string adminDisplayName;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string username;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
-        [NotifyPropertyChangedFor(nameof(RepeatPassword))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string password;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
-        [NotifyPropertyChangedFor(nameof(Password))]
-        [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
         [CustomValidation(typeof(RegisterViewModel), nameof(ValidateRepeatPassword))]
+        [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
+        [NotifyDataErrorInfo]
         private string repeatPassword;
 
         // Custom validation

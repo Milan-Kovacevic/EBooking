@@ -44,7 +44,6 @@ namespace EBooking.WPF.ViewModels
             isAdminOwner = accommodationStore.SelectedAccommodation?.UserId == userStore.CurrentUser?.UserId;
             isEmployee = userStore.IsEmployee;
             _accommodationUnitStore.CurrentAccommodation = accommodationStore.SelectedAccommodation;
-            
         }
 
         public void Dispose()

@@ -6,6 +6,7 @@ using EBooking.Domain.Enums;
 using EBooking.WPF.Dialogs.Models;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,23 +21,27 @@ namespace EBooking.WPF.Dialogs.ViewModels
     {
         [ObservableProperty]
         private string dialogTitle;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string name;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private AccommodationTypeModel? type;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private LocationModel? location;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string address;
@@ -64,7 +69,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
                 new AccommodationTypeModel(AccommodationType.HOTEL),
             };
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Create New Accommodation";
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_ADD_DIALOG_TITLE);
             name = string.Empty;
             type = null;
             location = null;

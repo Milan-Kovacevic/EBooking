@@ -14,15 +14,17 @@ namespace EBooking.WPF.ViewModels
     public partial class LoginViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(LoginCommand))]
+        [NotifyDataErrorInfo]
         private string username;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyDataErrorInfo]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(LoginCommand))]
+        [NotifyDataErrorInfo]
         private string password;
+
         [ObservableProperty]
         private bool isLoading;
 

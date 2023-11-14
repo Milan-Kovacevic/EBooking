@@ -8,7 +8,11 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:components="clr-namespace:EBooking.WPF.Components"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     d:DesignHeight="700"
     d:DesignWidth="1000">
     <Grid
@@ -27,7 +31,7 @@
             <Grid
                 Grid.Row="0">
                 <TextBlock
-                    Text="Accommodations"
+                    Text="{lex:Loc Accommodations_Title}"
                     VerticalAlignment="Center"
                     Foreground="{DynamicResource PrimaryHueLightBrush}"
                     FontWeight="Medium"
@@ -38,6 +42,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Right"
                 Margin="5 10 10 10"
+                ToolTip="{lex:Loc Accommodations_AddButtonTooltip}"
                 VerticalAlignment="Bottom"
                 FontWeight="Regular"
                 Width="36"
@@ -66,8 +71,8 @@
                     VerticalContentAlignment="Center"
                     VerticalAlignment="Center"
                     materialDesign:TextFieldAssist.HasClearButton="True"
-                    materialDesign:HintAssist.HelperText="Find accommodations.."
-                    materialDesign:HintAssist.Hint="Search..."
+                    materialDesign:HintAssist.HelperText="{lex:Loc Accommodations_SearchFieldHelperText}"
+                    materialDesign:HintAssist.Hint="{lex:Loc Accommodations_SearchFieldHint}"
                     materialDesign:TextFieldAssist.HasLeadingIcon="True"
                     materialDesign:TextFieldAssist.LeadingIcon="Search"
                     materialDesign:TextFieldAssist.LeadingIconSize="23"
@@ -92,9 +97,9 @@
                     Foreground="{DynamicResource SecondaryHueMidBrush}"
                     Style="{DynamicResource MaterialDesignIconButton}"
                     BorderThickness="0"
-                    ToolTip="Search accommodations">
+                    ToolTip="{lex:Loc Accommodations_SearchButtonTooltip}">
                     <materialDesign:PackIcon
-                        Kind="SearchExpand"
+                        Kind="MagnifyExpand"
                         Width="25"
                         Height="25" />
                 </Button>

@@ -36,9 +36,9 @@ namespace EBooking.WPF.ViewModels
         private bool isAdmin;
 
         private readonly AccommodationStore _accommodationStore;
-        private readonly UserStore _userStore;
         private readonly AccommodationService _accommodationService;
         private readonly DialogHostService _dialogHostService;
+        private readonly UserStore _userStore;
         private readonly NavigationService _navigateToAccommodationDetailsViewModel;
         private readonly MessageQueueService _messageQueueService;
 
