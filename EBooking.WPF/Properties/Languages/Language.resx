@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccommodationDetails_DetailsForLabel" xml:space="preserve">
+    <value>For Accommodation:</value>
+  </data>
+  <data name="AccommodationDetails_ReservationsTabItemHeaderText" xml:space="preserve">
+    <value>UNIT RESERVATIONS</value>
+  </data>
+  <data name="AccommodationDetails_ReturnButtonTooltip" xml:space="preserve">
+    <value>Return back</value>
+  </data>
+  <data name="AccommodationDetails_Title" xml:space="preserve">
+    <value>Accommodation Details</value>
+  </data>
+  <data name="AccommodationDetails_UnitsTabItemHeaderText" xml:space="preserve">
+    <value>ACCOMMODATION UNITS</value>
+  </data>
   <data name="Accommodations_AddButtonTooltip" xml:space="preserve">
     <value>Add new accommodation</value>
   </data>
@@ -146,6 +161,57 @@
   </data>
   <data name="Accommodations_Title" xml:space="preserve">
     <value>Accommodations</value>
+  </data>
+  <data name="AccommodationUnits_AddButtonTooltip" xml:space="preserve">
+    <value>Add New Accommodation Unit</value>
+  </data>
+  <data name="AccommodationUnits_CardItemAvailabilityPeriodLabel" xml:space="preserve">
+    <value>Availability period:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemNumberOfBedsLabel" xml:space="preserve">
+    <value>Number of beds:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemPricePerNightLabel" xml:space="preserve">
+    <value>Price per night:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemReserveButtonTooltip" xml:space="preserve">
+    <value>Book here</value>
+  </data>
+  <data name="AccommodationUnits_CardItemUnitFeaturesExpanderHeader" xml:space="preserve">
+    <value>Unit Features</value>
+  </data>
+  <data name="AccommodationUnits_NoUnitItemsLabel" xml:space="preserve">
+    <value>There are no accommodation units to show</value>
+  </data>
+  <data name="AccommodationUnits_SubmitAvailableFromDatePickerHint" xml:space="preserve">
+    <value>Available From</value>
+  </data>
+  <data name="AccommodationUnits_SubmitAvailableToDatePickerHint" xml:space="preserve">
+    <value>Available To</value>
+  </data>
+  <data name="AccommodationUnits_SubmitBasicInformationsTitle" xml:space="preserve">
+    <value>Basic Informations</value>
+  </data>
+  <data name="AccommodationUnits_SubmitNoFeaturesAddedLabel" xml:space="preserve">
+    <value>There are currently no features added</value>
+  </data>
+  <data name="AccommodationUnits_SubmitNumberOfBedsFieldHint" xml:space="preserve">
+    <value>Number Of Beds</value>
+  </data>
+  <data name="AccommodationUnits_SubmitPricePerNightFieldHint" xml:space="preserve">
+    <value>Price Per Night</value>
+  </data>
+  <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHelperText" xml:space="preserve">
+    <value>Add features to this unit...</value>
+  </data>
+  <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHint" xml:space="preserve">
+    <value>Select Feature</value>
+  </data>
+  <data name="AccommodationUnits_SubmitUnitFeaturesTitle" xml:space="preserve">
+    <value>Unit Features</value>
+  </data>
+  <data name="AccommodationUnits_SubmitUnitNameFieldHint" xml:space="preserve">
+    <value>Unit Name</value>
   </data>
   <data name="color-blue" xml:space="preserve">
     <value>Blue</value>
@@ -177,11 +243,20 @@
   <data name="GLOBAL_AccommodationEditDialogTitle" xml:space="preserve">
     <value>Edit Accommodation</value>
   </data>
+  <data name="GLOBAL_AccommodationUnitAddDialogTitle" xml:space="preserve">
+    <value>Create New Accommodation Unit</value>
+  </data>
   <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
     <value>Successfully added accommodation unit</value>
   </data>
   <data name="GLOBAL_AccommodationUnitDeleted" xml:space="preserve">
     <value>Successfully deleted accommodation unit</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected accommodation unit?</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitEditDialogTitle" xml:space="preserve">
+    <value>Edit Accommodation Unit</value>
   </data>
   <data name="GLOBAL_AccommodationUnitUpdated" xml:space="preserve">
     <value>Successfully updated accommodation unit</value>
@@ -201,6 +276,18 @@
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
     <value>EDIT</value>
   </data>
+  <data name="GLOBAL_FutureDateRequiredMessage" xml:space="preserve">
+    <value>Future date is required</value>
+  </data>
+  <data name="GLOBAL_GreaterThanDepartureDateRequiredMessage" xml:space="preserve">
+    <value>Must be greater than or equal to departure date</value>
+  </data>
+  <data name="GLOBAL_GreaterThanDepartureTimeRequiredMessage" xml:space="preserve">
+    <value>Must be greater than departure time</value>
+  </data>
+  <data name="GLOBAL_GreaterThanFromDateRequiredMessage" xml:space="preserve">
+    <value>Must be greater than from date</value>
+  </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
@@ -210,8 +297,20 @@
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Unable to register account with entered data</value>
   </data>
+  <data name="GLOBAL_NotSameAsCurrentPasswordMessage" xml:space="preserve">
+    <value>Password can not be same as current one</value>
+  </data>
   <data name="GLOBAL_PasswordMissmatch" xml:space="preserve">
     <value>Incorrect password. Please, try again</value>
+  </data>
+  <data name="GLOBAL_PasswordsMustMatchMessage" xml:space="preserve">
+    <value>Passwords must match</value>
+  </data>
+  <data name="GLOBAL_PositiveDecimalNumberRequiredMessage" xml:space="preserve">
+    <value>Positive decimal number is required</value>
+  </data>
+  <data name="GLOBAL_PositiveIntegerNumberRequiredMessage" xml:space="preserve">
+    <value>Positive integer number is required</value>
   </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
     <value>Required*</value>
@@ -240,11 +339,20 @@
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
     <value>Successfully updated trip reservation for</value>
   </data>
+  <data name="GLOBAL_UnitReservationAddDialogTitle" xml:space="preserve">
+    <value>Add New Accommodation Unit Reservation</value>
+  </data>
   <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
     <value>Successfully added unit reservation for</value>
   </data>
   <data name="GLOBAL_UnitReservationDeleted" xml:space="preserve">
     <value>Successfully deleted unit reservation for</value>
+  </data>
+  <data name="GLOBAL_UnitReservationDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected unit reservation?</value>
+  </data>
+  <data name="GLOBAL_UnitReservationEditDialogTitle" xml:space="preserve">
+    <value>Edit Accommodation Unit Reservation</value>
   </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
     <value>Successfully updated unit reservation for</value>
@@ -419,5 +527,71 @@
   </data>
   <data name="sr-Latn" xml:space="preserve">
     <value>Serbian Latin</value>
+  </data>
+  <data name="UnitReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Delete selected unit reservations</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderNumberOfPeopleLabel" xml:space="preserve">
+    <value>Number Of People</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationFromLabel" xml:space="preserve">
+    <value>Reserved From</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationOnNameLabel" xml:space="preserve">
+    <value>Reservation On Name</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationToLabel" xml:space="preserve">
+    <value>Reserved To</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservedByLabel" xml:space="preserve">
+    <value>Reserved By</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderTotalPriceLabel" xml:space="preserve">
+    <value>Total Price</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderUnitNameLabel" xml:space="preserve">
+    <value>Unit Name</value>
+  </data>
+  <data name="UnitReservations_NoItemsToShowLabel" xml:space="preserve">
+    <value>There are currently no unit reservations to show</value>
+  </data>
+  <data name="UnitReservations_SearchButtonTooltip" xml:space="preserve">
+    <value>Search unit reservations</value>
+  </data>
+  <data name="UnitReservations_SearchFieldHelperText" xml:space="preserve">
+    <value>Find unit reservations...</value>
+  </data>
+  <data name="UnitReservations_SearchFieldHint" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="UnitReservations_SubmitNumberOfAdultsFieldHint" xml:space="preserve">
+    <value>Number Of Adults</value>
+  </data>
+  <data name="UnitReservations_SubmitNumberOfChildrenFieldHint" xml:space="preserve">
+    <value>Number Of Children</value>
+  </data>
+  <data name="UnitReservations_SubmitPricePerNightLabel" xml:space="preserve">
+    <value>Unit Price Per Night:</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationFromDatePickerHint" xml:space="preserve">
+    <value>Reservation From</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationOnNameFieldHint" xml:space="preserve">
+    <value>Reservation On Name</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationToDatePickerHint" xml:space="preserve">
+    <value>Reservation To</value>
+  </data>
+  <data name="UnitReservations_SubmitTotalPriceLabel" xml:space="preserve">
+    <value>Total Price:</value>
+  </data>
+  <data name="UnitReservations_SubmitUnitAvailabilityLabel" xml:space="preserve">
+    <value>Availability Period:</value>
+  </data>
+  <data name="UnitReservations_SubmitUnitNameLabel" xml:space="preserve">
+    <value>Selected Unit Name:</value>
   </data>
 </root>

@@ -16,6 +16,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace EBooking.WPF.Dialogs.ViewModels
 {
@@ -25,53 +26,53 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private string dialogTitle;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string name;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
-        [NotifyPropertyChangedFor(nameof(AvailableTo))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDate))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? availableFrom;
         partial void OnAvailableFromChanged(DateTime? value)
         {
-            ValidateProperty(AvailableTo, nameof(AvailableTo));
+            if (AvailableTo is not null)
+                ValidateProperty(AvailableTo, nameof(AvailableTo));
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
-        [NotifyPropertyChangedFor(nameof(AvailableFrom))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateAvailableToDateOnAdd))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? availableTo;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         private string numberOfBeds;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveDecimalNumber))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string pricePerNight;
 
         [ObservableProperty]
-        private UnitFeatureModel? selectedFeature;
+        private UnitFeatureModel? selectedUnitFeature;
         [ObservableProperty]
         private int selectedAddedFeatureIndex;
 
         public IRelayCommand SubmitCommand { get; }
-        public IEnumerable<UnitFeatureModel> UnitFeatures { get; }
-        public ObservableCollection<UnitFeatureModel> SelectedFeatures { get; }
+        public IEnumerable<UnitFeatureModel> AvailableUnitFeatures { get; }
+        private readonly ObservableCollection<UnitFeatureModel> _addedUnitFeatures;
+        public ListCollectionView AddedUnitFeatures { get; }
 
         private readonly UnitFeaturesStore _unitFeaturesStore;
         private readonly AccommodationUnitService _accommodationUnitService;
@@ -82,16 +83,18 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _unitFeaturesStore = unitFeaturesStore;
             _accommodationUnitService = accommodationUnitService;
             _dialogHostService = dialogHostService;
-            UnitFeatures = _unitFeaturesStore.UnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeatureModel>());
-            SelectedFeatures = new ObservableCollection<UnitFeatureModel>();
-            dialogTitle = "Add New Accommodation Unit";
+            AvailableUnitFeatures = _unitFeaturesStore.UnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeatureModel>());
+            _addedUnitFeatures = new ObservableCollection<UnitFeatureModel>();
+            AddedUnitFeatures = new ListCollectionView(_addedUnitFeatures);
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UNIT_ADD_DIALOG_TITLE);
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
+
             name = string.Empty;
             availableFrom = null;
             availableTo = null;
             numberOfBeds = string.Empty;
             pricePerNight = string.Empty;
-            selectedFeature = null;
+            selectedUnitFeature = null;
             selectedAddedFeatureIndex = -1;
         }
 
@@ -108,7 +111,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private async Task Submit()
         {
             var accommodationId = _accommodationUnitService.GetCurrentAccommodation()?.AccommodationId ?? 0;
-            var features = new List<UnitFeature>(SelectedFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeature>()));
+            var features = new List<UnitFeature>(_addedUnitFeatures.Select(x => Mapper.Map(x).ToANew<UnitFeature>()));
             await _accommodationUnitService.AddAccommodationUnit(new AccommodationUnit()
             {
                 AccommodationId = accommodationId,
@@ -125,16 +128,16 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [RelayCommand]
         public void AddFeature()
         {
-            if (SelectedFeature != null && !SelectedFeatures.Contains(SelectedFeature))
-                SelectedFeatures.Add(SelectedFeature);
+            if (SelectedUnitFeature != null && !_addedUnitFeatures.Contains(SelectedUnitFeature))
+                _addedUnitFeatures.Add(SelectedUnitFeature);
         }
 
         [RelayCommand]
         public void RemoveSelectedFeature()
         {
-            if (SelectedAddedFeatureIndex < 0 || SelectedAddedFeatureIndex >= SelectedFeatures.Count)
+            if (SelectedAddedFeatureIndex < 0 || SelectedAddedFeatureIndex >= _addedUnitFeatures.Count)
                 return;
-            SelectedFeatures.RemoveAt(SelectedAddedFeatureIndex);
+            _addedUnitFeatures.RemoveAt(SelectedAddedFeatureIndex);
         }
     }
 }

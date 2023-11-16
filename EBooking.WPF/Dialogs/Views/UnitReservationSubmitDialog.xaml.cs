@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for AccommodationUnitReservationDialog.xaml
+    /// Interaction logic for UnitReservationSubmitDialog.xaml
     /// </summary>
-    public partial class AccommodationUnitReservationDialog : UserControl
+    public partial class UnitReservationSubmitDialog : UserControl
     {
-        public AccommodationUnitReservationDialog()
+        public UnitReservationSubmitDialog()
         {
             InitializeComponent();
         }

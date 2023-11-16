@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Services;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         {
             _accommodationUnitService = accommodationUnitService;
             _dialogHostService = dialogHostService;
-            messageText = "Are you sure you want to delete selected accommodation unit?";
+            messageText = LanguageTranslator.Translate(LanguageTranslator.MessageType.ACCOMMODATION_UNIT_DELETE_DIALOG_MESSAGE);
         }
 
         [RelayCommand]

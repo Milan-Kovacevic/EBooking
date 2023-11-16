@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,7 +16,8 @@ namespace EBooking.WPF.ViewModels
 {
     public partial class LandingViewModel : ObservableObject, IViewModelBase
     {
-        private static readonly string DOCUMENTATION_FILE_CONFIGURATION_KEY = "UserManualFileName";
+        private static readonly string USER_MANUAL_FILE_NAME_KEY = "UserManualBaseFileName";
+        private static readonly string USER_MANUAL_FILE_EXTENSION_KEY = "UserManualFileExtension";
         [ObservableProperty]
         private bool isLoginEnabled;
 
@@ -33,10 +35,19 @@ namespace EBooking.WPF.ViewModels
         {
             try
             {
-                var userManualFileName = ConfigurationManager.AppSettings[DOCUMENTATION_FILE_CONFIGURATION_KEY];
-                if (userManualFileName is null)
+                var userManualFileName = ConfigurationManager.AppSettings[USER_MANUAL_FILE_NAME_KEY];
+                var userManualFileExtension = ConfigurationManager.AppSettings[USER_MANUAL_FILE_EXTENSION_KEY];
+                if (userManualFileName is null || userManualFileExtension is null)
                     return;
-                var filePath = Path.Combine(".", "Resources", userManualFileName);
+                var exactFileName = $"{userManualFileName} {_settingsStore.CurrentSettings.LanguageCode}.{userManualFileExtension}";
+                var filePath = Path.Combine(".", "Resources", exactFileName);
+
+                if (!Path.Exists(filePath))
+                {
+                    exactFileName = $"{userManualFileName} {LanguageProvider.Instance.Languages.ElementAt(0).Key}.{userManualFileExtension}";
+                    filePath = Path.Combine(".", "Resources", exactFileName);
+                }
+
                 ProcessStartInfo processStartInfo = new ProcessStartInfo
                 {
                     FileName = filePath,
@@ -46,17 +57,19 @@ namespace EBooking.WPF.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                MessageBox.Show($"{ex.Message}");
             }
         }
 
         private readonly UserStore _userStore;
+        private readonly SettingsStore _settingsStore;
         private readonly NavigationService _navigateToRegisterViewModel;
         private readonly NavigationService _navigateToLoginViewModel;
 
-        public LandingViewModel(UserStore userStore, NavigationService navigateToRegisterViewModel, NavigationService navigateToLoginViewModel)
+        public LandingViewModel(UserStore userStore, SettingsStore settingsStore, NavigationService navigateToRegisterViewModel, NavigationService navigateToLoginViewModel)
         {
             _userStore = userStore;
+            _settingsStore = settingsStore;
             _userStore.CurrentUserChanged += OnCurrentUserChanged;
             _navigateToRegisterViewModel = navigateToRegisterViewModel;
             _navigateToLoginViewModel = navigateToLoginViewModel;

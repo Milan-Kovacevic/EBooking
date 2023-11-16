@@ -16,32 +16,35 @@ namespace EBooking.WPF.Dialogs.ViewModels
 {
     public partial class UnitReservationEditDialogViewModel : ObservableValidator, IViewModelBase
     {
+        public int UnitReservationId { get; set; }
+
         [ObservableProperty]
         private string dialogTitle;
-        public int UnitReservationId { get; set; }
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string onName;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDate))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? reservationFrom;
         partial void OnReservationFromChanged(DateTime? value)
         {
-            ValidateProperty(ReservationTo, nameof(ReservationTo));
+            if (ReservationTo is not null)
+                ValidateProperty(ReservationTo, nameof(ReservationTo));
             if (!HasErrors)
                 CalculateTotalPrice();
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationToDateOnEdit))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? reservationTo;
         partial void OnReservationToChanged(DateTime? value)
@@ -51,22 +54,24 @@ namespace EBooking.WPF.Dialogs.ViewModels
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         private string numberOfAdults;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
         private string numberOfChildren;
 
         [ObservableProperty]
         private string totalPrice;
+
         public string UnitName { get; }
+        public string UnitAvailability { get; }
         public decimal PricePerNight { get; }
 
         public IRelayCommand SubmitCommand { get; }
@@ -81,9 +86,9 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _unitReservationService = unitReservationService;
             _userStore = userStore;
             _dialogHostService = dialogHostService;
-
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_EDIT_DIALOG_TITLE);
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Edit Accommodation Unit Reservation";
+
             var unitReservation = unitReservationStore.SelectedUnitReservation;
             UnitReservationId = unitReservation?.UnitReservationId ?? 0;
             onName = unitReservation?.OnName ?? string.Empty;
@@ -92,8 +97,10 @@ namespace EBooking.WPF.Dialogs.ViewModels
             numberOfAdults = unitReservation?.NumberOfAdults.ToString() ?? string.Empty;
             numberOfChildren = unitReservation?.NumberOfChildren.ToString() ?? string.Empty;
             totalPrice = unitReservation?.TotalPrice.ToString() ?? "0.0";
-            PricePerNight = unitReservation?.Unit?.PricePerNight ?? 0.0m;
-            UnitName = unitReservation?.Unit?.Name ?? string.Empty;
+            var accommodationUnit = unitReservation?.Unit;
+            PricePerNight = accommodationUnit?.PricePerNight ?? 0.0m;
+            UnitName = accommodationUnit?.Name ?? string.Empty;
+            UnitAvailability = $"{accommodationUnit?.AvailableFrom.ToLongDateString()} - {accommodationUnit?.AvailableTo.ToLongDateString()}";
         }
 
         private bool CanSubmit()

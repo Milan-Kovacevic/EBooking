@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccommodationDetails_DetailsForLabel" xml:space="preserve">
+    <value>Za smještaj:</value>
+  </data>
+  <data name="AccommodationDetails_ReservationsTabItemHeaderText" xml:space="preserve">
+    <value>REZERVACIJE JEDINICA</value>
+  </data>
+  <data name="AccommodationDetails_ReturnButtonTooltip" xml:space="preserve">
+    <value>Vrati se nazad</value>
+  </data>
+  <data name="AccommodationDetails_Title" xml:space="preserve">
+    <value>Detalji o smještaju</value>
+  </data>
+  <data name="AccommodationDetails_UnitsTabItemHeaderText" xml:space="preserve">
+    <value>SMJEŠTAJNE JEDINICE</value>
+  </data>
   <data name="Accommodations_AddButtonTooltip" xml:space="preserve">
     <value>Dodaj novi smještaj</value>
   </data>
@@ -146,6 +161,57 @@
   </data>
   <data name="Accommodations_Title" xml:space="preserve">
     <value>Smještaji</value>
+  </data>
+  <data name="AccommodationUnits_AddButtonTooltip" xml:space="preserve">
+    <value>Dodajte novu smještajnu jedinicu</value>
+  </data>
+  <data name="AccommodationUnits_CardItemAvailabilityPeriodLabel" xml:space="preserve">
+    <value>Period dostupnosti:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemNumberOfBedsLabel" xml:space="preserve">
+    <value>Broj kreveta:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemPricePerNightLabel" xml:space="preserve">
+    <value>Cijena po noći:</value>
+  </data>
+  <data name="AccommodationUnits_CardItemReserveButtonTooltip" xml:space="preserve">
+    <value>Rezervišite ovdje</value>
+  </data>
+  <data name="AccommodationUnits_CardItemUnitFeaturesExpanderHeader" xml:space="preserve">
+    <value>Karakteristike jedinice</value>
+  </data>
+  <data name="AccommodationUnits_NoUnitItemsLabel" xml:space="preserve">
+    <value>Nema smještajnih jedinica za prikaz</value>
+  </data>
+  <data name="AccommodationUnits_SubmitAvailableFromDatePickerHint" xml:space="preserve">
+    <value>Dostupno od</value>
+  </data>
+  <data name="AccommodationUnits_SubmitAvailableToDatePickerHint" xml:space="preserve">
+    <value>Dostupno do</value>
+  </data>
+  <data name="AccommodationUnits_SubmitBasicInformationsTitle" xml:space="preserve">
+    <value>Osnovne informacije</value>
+  </data>
+  <data name="AccommodationUnits_SubmitNoFeaturesAddedLabel" xml:space="preserve">
+    <value>Trenutno nema dodatih karakteristika</value>
+  </data>
+  <data name="AccommodationUnits_SubmitNumberOfBedsFieldHint" xml:space="preserve">
+    <value>Broj kreveta</value>
+  </data>
+  <data name="AccommodationUnits_SubmitPricePerNightFieldHint" xml:space="preserve">
+    <value>Cijena po noći</value>
+  </data>
+  <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHelperText" xml:space="preserve">
+    <value>Dodajte karakteristiku ovoj jedinici...</value>
+  </data>
+  <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHint" xml:space="preserve">
+    <value>Izaberite karakteristiku</value>
+  </data>
+  <data name="AccommodationUnits_SubmitUnitFeaturesTitle" xml:space="preserve">
+    <value>Karakteristike jedinice</value>
+  </data>
+  <data name="AccommodationUnits_SubmitUnitNameFieldHint" xml:space="preserve">
+    <value>Naziv jedinice</value>
   </data>
   <data name="color-blue" xml:space="preserve">
     <value>Plava</value>
@@ -177,11 +243,20 @@
   <data name="GLOBAL_AccommodationEditDialogTitle" xml:space="preserve">
     <value>Uredite smještaj</value>
   </data>
+  <data name="GLOBAL_AccommodationUnitAddDialogTitle" xml:space="preserve">
+    <value>Dodajte novu smještajnu jedinicu</value>
+  </data>
   <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
     <value>Uspješno dodavanje smještajne jedinice</value>
   </data>
   <data name="GLOBAL_AccommodationUnitDeleted" xml:space="preserve">
     <value>Uspješno brisanje smještajne jedinice</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabranu smještajnu jedinicu?</value>
+  </data>
+  <data name="GLOBAL_AccommodationUnitEditDialogTitle" xml:space="preserve">
+    <value>Uredite smještajnu jedinicu</value>
   </data>
   <data name="GLOBAL_AccommodationUnitUpdated" xml:space="preserve">
     <value>Uspješna izmjena smještajne jedinice</value>
@@ -201,6 +276,18 @@
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
     <value>UREDI</value>
   </data>
+  <data name="GLOBAL_FutureDateRequiredMessage" xml:space="preserve">
+    <value>Potreban je budući datum</value>
+  </data>
+  <data name="GLOBAL_GreaterThanDepartureDateRequiredMessage" xml:space="preserve">
+    <value>Mora biti veći ili jednak datumu polaska</value>
+  </data>
+  <data name="GLOBAL_GreaterThanDepartureTimeRequiredMessage" xml:space="preserve">
+    <value>Mora biti veći od vremena polaska</value>
+  </data>
+  <data name="GLOBAL_GreaterThanFromDateRequiredMessage" xml:space="preserve">
+    <value>Mora biti veći od "Datuma od"</value>
+  </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
     <value>Neispravno korisničko ime ili lozinka</value>
   </data>
@@ -210,8 +297,20 @@
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Nije moguće registrovati nalog sa unesenim podacima</value>
   </data>
+  <data name="GLOBAL_NotSameAsCurrentPasswordMessage" xml:space="preserve">
+    <value>Lozinka ne može biti ista kao trenutna</value>
+  </data>
   <data name="GLOBAL_PasswordMissmatch" xml:space="preserve">
     <value>Neispravna lozinka. Molimo vas, probajte ponovo</value>
+  </data>
+  <data name="GLOBAL_PasswordsMustMatchMessage" xml:space="preserve">
+    <value>Lozinke moraju da se podudaraju</value>
+  </data>
+  <data name="GLOBAL_PositiveDecimalNumberRequiredMessage" xml:space="preserve">
+    <value>Pozitivan decimalni broj je obavezan</value>
+  </data>
+  <data name="GLOBAL_PositiveIntegerNumberRequiredMessage" xml:space="preserve">
+    <value>Pozitivan cijeli broj je obavezan</value>
   </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
     <value>Obavezno polje*</value>
@@ -240,11 +339,20 @@
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije putovanja za</value>
   </data>
+  <data name="GLOBAL_UnitReservationAddDialogTitle" xml:space="preserve">
+    <value>Dodajte novu rezervaciju smještajne jedinice</value>
+  </data>
   <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
     <value>Uspješno dodavanje rezervacije smještaja za</value>
   </data>
   <data name="GLOBAL_UnitReservationDeleted" xml:space="preserve">
     <value>Uspješno brisanje rezervacije smještaja za</value>
+  </data>
+  <data name="GLOBAL_UnitReservationDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabranu rezervaciju smještajne jedinice?</value>
+  </data>
+  <data name="GLOBAL_UnitReservationEditDialogTitle" xml:space="preserve">
+    <value>Uredite rezervaciju smještajne jedinice</value>
   </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije smještaja za</value>
@@ -419,5 +527,71 @@
   </data>
   <data name="sr-Latn" xml:space="preserve">
     <value>Srpski latinica</value>
+  </data>
+  <data name="UnitReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Obriši izabrane rezervacije smještajnih jedinica</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderNumberOfPeopleLabel" xml:space="preserve">
+    <value>Broj ljudi</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationFromLabel" xml:space="preserve">
+    <value>Rezervisano od</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationOnNameLabel" xml:space="preserve">
+    <value>Rezervacija na ime</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservationToLabel" xml:space="preserve">
+    <value>Reservisano do</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderReservedByLabel" xml:space="preserve">
+    <value>Rezervisao</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena</value>
+  </data>
+  <data name="UnitReservations_GridColumnHeaderUnitNameLabel" xml:space="preserve">
+    <value>Naziv jedinice</value>
+  </data>
+  <data name="UnitReservations_NoItemsToShowLabel" xml:space="preserve">
+    <value>Trenutno nema rezervacija smještajnih jedinica za prikaz</value>
+  </data>
+  <data name="UnitReservations_SearchButtonTooltip" xml:space="preserve">
+    <value>Pretraži rezervacije smještajnih jedinica</value>
+  </data>
+  <data name="UnitReservations_SearchFieldHelperText" xml:space="preserve">
+    <value>Pronađi rezervacije smještajnih jedinica</value>
+  </data>
+  <data name="UnitReservations_SearchFieldHint" xml:space="preserve">
+    <value>Pretraga...</value>
+  </data>
+  <data name="UnitReservations_SubmitNumberOfAdultsFieldHint" xml:space="preserve">
+    <value>Broj odraslih</value>
+  </data>
+  <data name="UnitReservations_SubmitNumberOfChildrenFieldHint" xml:space="preserve">
+    <value>Broj djece</value>
+  </data>
+  <data name="UnitReservations_SubmitPricePerNightLabel" xml:space="preserve">
+    <value>Cijena jedinice po noći:</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationFromDatePickerHint" xml:space="preserve">
+    <value>Reservacija od</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationOnNameFieldHint" xml:space="preserve">
+    <value>Rezervacija na ime</value>
+  </data>
+  <data name="UnitReservations_SubmitReservationToDatePickerHint" xml:space="preserve">
+    <value>Rezervacija do</value>
+  </data>
+  <data name="UnitReservations_SubmitTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena:</value>
+  </data>
+  <data name="UnitReservations_SubmitUnitAvailabilityLabel" xml:space="preserve">
+    <value>Period dostupnosti:</value>
+  </data>
+  <data name="UnitReservations_SubmitUnitNameLabel" xml:space="preserve">
+    <value>Naziv odabrane jedinice:</value>
   </data>
 </root>

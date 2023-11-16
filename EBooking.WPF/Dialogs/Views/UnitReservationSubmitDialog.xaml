@@ -1,16 +1,20 @@
 ﻿<UserControl
-    x:Class="EBooking.WPF.Dialogs.Views.AccommodationUnitReservationDialog"
+    x:Class="EBooking.WPF.Dialogs.Views.UnitReservationSubmitDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
-    FontFamily="{DynamicResource MaterialDesignFont}"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid
         Margin="10 20"
-        MinWidth="440"
+        MinWidth="460"
         Background="{DynamicResource MaterialDesignPaper}">
         <Grid.RowDefinitions>
             <RowDefinition
@@ -22,47 +26,91 @@
         </Grid.RowDefinitions>
         <TextBlock
             x:Name="DialogTitle"
-            Margin="25 10 25 18"
+            Margin="30 10 30 22"
             Width="380"
             TextAlignment="Center"
             Grid.Row="0"
-            FontWeight="Medium"
+            FontWeight="Regular"
             Text="{Binding DialogTitle,Mode=OneTime}"
-            FontSize="24"
+            FontSize="25"
             HorizontalAlignment="Center"
             Foreground="{DynamicResource PrimaryHueLightBrush}"
             TextWrapping="Wrap" />
         <StackPanel
             Grid.Row="1"
-            Margin="20 10 20 15"
-            Width="370"
+            Margin="10 10 10 20"
+            Width="390"
             Grid.Column="0">
-            <StackPanel
-                Margin="0 0 0 8"
-                Orientation="Horizontal">
-                <TextBlock
-                    Text="Unit Name: "
-                    FontSize="14"
-                    Margin="6 0 4 0"
-                    VerticalAlignment="Center"
-                    Foreground="{DynamicResource PrimaryHueLightBrush}" />
-                <materialDesign:ColorZone
-                    VerticalAlignment="Center"
-                    Background="Transparent">
+            <Grid
+                Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="auto"
+                            SharedSizeGroup="GridLabelName" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock
-                        FontWeight="Medium"
-                        TextWrapping="Wrap"
+                        Grid.Column="0"
+                        Text="{lex:Loc UnitReservations_SubmitUnitNameLabel}"
+                        FontSize="14"
+                        Margin="6 0 6 0"
+                        VerticalAlignment="Top"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}" />
+                    <materialDesign:ColorZone
+                        Grid.Column="1"
                         VerticalAlignment="Center"
-                        Text="{Binding UnitName}"
-                        FontSize="16" />
-                </materialDesign:ColorZone>
-            </StackPanel>
+                        Background="Transparent">
+                        <TextBlock
+                            FontWeight="Medium"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center"
+                            Text="{Binding UnitName}"
+                            FontSize="15" />
+                    </materialDesign:ColorZone>
+                </Grid>
+
+                <Grid
+                    Margin="0 4 0 0"
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="auto"
+                            SharedSizeGroup="GridLabelName" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="{lex:Loc UnitReservations_SubmitUnitAvailabilityLabel}"
+                        FontSize="14"
+                        Margin="6 0 6 0"
+                        VerticalAlignment="Top"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}" />
+                    <materialDesign:ColorZone
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Background="Transparent">
+                        <TextBlock
+                            FontWeight="Regular"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center"
+                            Text="{Binding UnitAvailability}"
+                            FontSize="13" />
+                    </materialDesign:ColorZone>
+                </Grid>
+            </Grid>
             <TextBox
-                Margin="2 0 2 2"
+                Margin="2 10 2 2"
                 Padding="4 2 4 2"
                 FontSize="14"
-                materialDesign:HintAssist.HelperText="Required*"
-                materialDesign:HintAssist.Hint="Reservation On Name"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Hint="{lex:Loc UnitReservations_SubmitReservationOnNameFieldHint}"
                 materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                 materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -76,8 +124,8 @@
                 Margin="2 20 2 2"
                 Padding="4 2 4 2"
                 FontSize="14"
-                materialDesign:HintAssist.HelperText="Required*"
-                materialDesign:HintAssist.Hint="Reservation From"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Hint="{lex:Loc UnitReservations_SubmitReservationFromDatePickerHint}"
                 materialDesign:HintAssist.FloatingOffset="0 -16"
                 materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
                 Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -88,8 +136,8 @@
                 Margin="2 20 2 2"
                 Padding="4 2 4 2"
                 FontSize="14"
-                materialDesign:HintAssist.HelperText="Required*"
-                materialDesign:HintAssist.Hint="Reservation To"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Hint="{lex:Loc UnitReservations_SubmitReservationToDatePickerHint}"
                 materialDesign:HintAssist.FloatingOffset="0 -16"
                 materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
                 Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -100,8 +148,8 @@
                 Margin="2 20 2 2"
                 Padding="4 2 4 2"
                 FontSize="14"
-                materialDesign:HintAssist.HelperText="Required*"
-                materialDesign:HintAssist.Hint="Number Of Adults"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Hint="{lex:Loc UnitReservations_SubmitNumberOfAdultsFieldHint}"
                 materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                 materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -114,8 +162,8 @@
                 Margin="2 20 2 2"
                 Padding="4 2 4 2"
                 FontSize="14"
-                materialDesign:HintAssist.HelperText="Required*"
-                materialDesign:HintAssist.Hint="Number Of Children"
+                materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                materialDesign:HintAssist.Hint="{lex:Loc UnitReservations_SubmitNumberOfChildrenFieldHint}"
                 materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                 materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -125,13 +173,13 @@
                 Foreground="{DynamicResource PrimaryHueMidBrush}">
             </TextBox>
             <StackPanel
-                Margin="6 20 2 0"
+                Margin="6 26 2 0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 Orientation="Horizontal">
                 <TextBlock
                     Foreground="{DynamicResource SecondaryHueMidBrush}"
-                    Text="Price per night:"
+                    Text="{lex:Loc UnitReservations_SubmitPricePerNightLabel}"
                     Margin="0 0 4 0"
                     VerticalAlignment="Center"
                     FontSize="13" />
@@ -156,9 +204,9 @@
                 Orientation="Horizontal"
                 Margin="6 2 2 0">
                 <TextBlock
-                    Text="Total Price: "
+                    Text="{lex:Loc UnitReservations_SubmitTotalPriceLabel}"
                     FontSize="14"
-                    Margin="0 0 2 0"
+                    Margin="0 0 4 0"
                     VerticalAlignment="Center"
                     Foreground="{DynamicResource PrimaryHueLightBrush}" />
                 <materialDesign:ColorZone
@@ -191,7 +239,7 @@
                 MinWidth="120"
                 FontSize="14"
                 IsDefault="True"
-                Content="SUBMIT"
+                Content="{lex:Loc GLOBAL_DialogSubmitButtonText}"
                 Command="{Binding SubmitCommand}"
                 Style="{StaticResource MaterialDesignFlatMidBgButton}" />
             <Button
@@ -199,7 +247,7 @@
                 MinWidth="100"
                 FontSize="14"
                 Margin="8 0 0 0"
-                Content="CANCEL"
+                Content="{lex:Loc GLOBAL_DialogCancelButtonText}"
                 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                 IsCancel="True"
                 Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}" />

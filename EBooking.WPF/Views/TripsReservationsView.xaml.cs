@@ -35,7 +35,7 @@ namespace EBooking.WPF.Views
                 var selectedRowItem = dataGrid.SelectedItem;
 
                 // Check if an item is selected
-                if (selectedRowItem != null)
+                if (selectedRowItem != null && dataGrid.CurrentColumn is not DataGridCheckBoxColumn && dataGrid.CurrentColumn is not DataGridTemplateColumn)
                 {
                     var selectedData = (TripReservationItemViewModel)selectedRowItem;
                     vm.ShowReservationDetailsFor(selectedData);

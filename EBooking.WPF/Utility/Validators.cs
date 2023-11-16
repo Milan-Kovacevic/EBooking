@@ -27,7 +27,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Future date required");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.FUTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateReservationFromDate(DateTime date, ValidationContext context)
@@ -36,7 +36,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Future date required");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.FUTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateDepartureDate(DateTime date, ValidationContext context)
@@ -45,7 +45,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Future date required");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.FUTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateAvailableToDateOnAdd(DateTime date, ValidationContext context)
@@ -55,7 +55,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher than from date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateAvailableToDateOnEdit(DateTime date, ValidationContext context)
@@ -65,7 +65,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher than from date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateReservationToDateOnAdd(DateTime date, ValidationContext context)
@@ -75,7 +75,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher than from date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateReservationToDateOnEdit(DateTime date, ValidationContext context)
@@ -85,7 +85,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher than from date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateArrivalDateOnAdd(DateTime date, ValidationContext context)
@@ -95,7 +95,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher or equal than departure date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_DEPARTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateArrivalDateOnEdit(DateTime date, ValidationContext context)
@@ -105,7 +105,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be higher or equal than departure date");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_DEPARTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateArrivalTimeOnAdd(DateTime time, ValidationContext context)
@@ -115,7 +115,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be greater than departure time");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_DEPARTURE_TIME_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidateArrivalTimeOnEdit(DateTime time, ValidationContext context)
@@ -125,7 +125,7 @@ namespace EBooking.WPF.Utility
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult("Must be greater than departure time");
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_DEPARTURE_TIME_REQUIRED_PROPERTY_MESSAGE));
         }
 
         public static ValidationResult? ValidatePositiveDecimalNumber(string number, ValidationContext context)
@@ -133,7 +133,7 @@ namespace EBooking.WPF.Utility
             bool isDecimal = decimal.TryParse(number, out var result);
             bool isValid = isDecimal && result >= 0;
             if (!isValid)
-                return new ValidationResult("Positive decimal number is required");
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.POSITIVE_DECIMAL_NUMBER_REQUIRED_MESSAGE));
             return ValidationResult.Success;
         }
 
@@ -142,7 +142,7 @@ namespace EBooking.WPF.Utility
             bool isNumber = int.TryParse(number, out var result);
             bool isValid = isNumber && result >= 0;
             if (!isValid)
-                return new ValidationResult("Positive integer number is required");
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.POSITIVE_INTEGER_NUMBER_REQUIRED_MESSAGE));
             return ValidationResult.Success;
         }
 
@@ -151,7 +151,7 @@ namespace EBooking.WPF.Utility
             var instance = (ChangePasswordDialogViewModel)context.ObjectInstance;
             bool isValid = instance.NewPassword == password;
             if (!isValid)
-                return new ValidationResult("Must match new password");
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.PASSWORDS_MUST_MATCH_MESSAGE));
             return ValidationResult.Success;
         }
 
@@ -160,7 +160,7 @@ namespace EBooking.WPF.Utility
             var instance = (ChangePasswordDialogViewModel)context.ObjectInstance;
             bool isValid = instance.CurrentPassword != password;
             if (!isValid)
-                return new ValidationResult("Cannot be same as current password");
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.NOT_SAME_AS_CURRENT_PASSWORD_MESSAGE));
             return ValidationResult.Success;
         }
         #endregion

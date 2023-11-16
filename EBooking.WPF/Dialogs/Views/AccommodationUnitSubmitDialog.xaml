@@ -5,8 +5,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
-    mc:Ignorable="d"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
     <Grid
         Margin="10 20"
         MinWidth="650"
@@ -21,17 +26,17 @@
         </Grid.RowDefinitions>
         <TextBlock
             x:Name="DialogTitle"
-            Margin="25 10 25 20"
+            Margin="25 10 25 18"
             Grid.Row="0"
-            FontWeight="Medium"
+            FontWeight="Regular"
             Text="{Binding DialogTitle,Mode=OneTime}"
-            FontSize="26"
+            FontSize="27"
             HorizontalAlignment="Center"
             Foreground="{DynamicResource PrimaryHueLightBrush}"
             TextWrapping="Wrap" />
         <Grid
             Grid.Row="1"
-            Margin="20 15 10 35">
+            Margin="20 15 10 30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="4*" />
@@ -40,21 +45,36 @@
             </Grid.ColumnDefinitions>
             <StackPanel
                 Width="300"
-                Margin="10 0 30 0"
+                Margin="5 0 25 0"
                 Grid.Column="0">
-                <TextBlock
-                    Margin="5 0 0 8"
-                    Text="Basic Informations"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
-                    Foreground="{DynamicResource PrimaryHueLightBrush}"
-                    TextWrapping="Wrap" />
+                <StackPanel
+                    Grid.Row="0"
+                    Margin="5 0 5 8"
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        VerticalAlignment="Center"
+                        Kind="Circle"
+                        Height="8"
+                        Margin="0 0 5 0"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                        Width="8" />
+                    <TextBlock
+                        FontSize="16"
+                        TextWrapping="Wrap"
+                        FontWeight="Medium"
+                        FontStyle="Italic"
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                        Style="{DynamicResource MaterialDesignTextBlock}"
+                        Text="{lex:Loc AccommodationUnits_SubmitBasicInformationsTitle}" />
+                </StackPanel>
                 <TextBox
                     Margin="2 0 2 2"
                     Padding="4 2 4 2"
                     FontSize="14"
-                    materialDesign:HintAssist.HelperText="Required*"
-                    materialDesign:HintAssist.Hint="Unit Name"
+                    materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                    materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitUnitNameFieldHint}"
                     materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                     materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                     materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -68,8 +88,8 @@
                     Margin="2 20 2 2"
                     Padding="4 2 4 2"
                     FontSize="14"
-                    materialDesign:HintAssist.HelperText="Required*"
-                    materialDesign:HintAssist.Hint="Available From"
+                    materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                    materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitAvailableFromDatePickerHint}"
                     materialDesign:HintAssist.FloatingOffset="0 -16"
                     materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
                     Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -80,8 +100,8 @@
                     Margin="2 20 2 2"
                     Padding="4 2 4 2"
                     FontSize="14"
-                    materialDesign:HintAssist.HelperText="Required*"
-                    materialDesign:HintAssist.Hint="Available To"
+                    materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                    materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitAvailableToDatePickerHint}"
                     materialDesign:HintAssist.FloatingOffset="0 -16"
                     materialDesign:TextFieldAssist.TextBoxViewMargin="0 2 0 2"
                     Foreground="{DynamicResource PrimaryHueMidBrush}"
@@ -92,8 +112,8 @@
                     Margin="2 20 2 2"
                     Padding="4 2 4 2"
                     FontSize="14"
-                    materialDesign:HintAssist.HelperText="Required*"
-                    materialDesign:HintAssist.Hint="Number Of Beds"
+                    materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                    materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitNumberOfBedsFieldHint}"
                     materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                     materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                     materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -106,8 +126,8 @@
                     Margin="2 20 2 2"
                     Padding="4 2 4 2"
                     FontSize="14"
-                    materialDesign:HintAssist.HelperText="Required*"
-                    materialDesign:HintAssist.Hint="Price Per Night"
+                    materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
+                    materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitPricePerNightFieldHint}"
                     materialDesign:HintAssist.Background="{DynamicResource PrimaryAccentBrush}"
                     materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                     materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
@@ -118,14 +138,30 @@
                 </TextBox>
             </StackPanel>
             <StackPanel
+                MaxWidth="260"
                 Grid.Column="1">
-                <TextBlock
-                    Margin="5 0 0 8"
-                    Text="Unit Features"
-                    FontSize="16"
-                    HorizontalAlignment="Left"
-                    Foreground="{DynamicResource PrimaryHueLightBrush}"
-                    TextWrapping="Wrap" />
+                <StackPanel
+                    Grid.Row="0"
+                    Margin="5 0 5 8"
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        VerticalAlignment="Center"
+                        Kind="Circle"
+                        Height="8"
+                        Margin="0 0 5 0"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                        Width="8" />
+                    <TextBlock
+                        FontSize="16"
+                        TextWrapping="Wrap"
+                        FontWeight="Medium"
+                        FontStyle="Italic"
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Foreground="{DynamicResource SecondaryHueDarkBrush}"
+                        Style="{DynamicResource MaterialDesignTextBlock}"
+                        Text="{lex:Loc AccommodationUnits_SubmitUnitFeaturesTitle}" />
+                </StackPanel>
                 <StackPanel
                     HorizontalAlignment="Stretch"
                     Orientation="Horizontal">
@@ -136,14 +172,15 @@
                         FontSize="14"
                         Width="215"
                         IsEditable="True"
-                        materialDesign:HintAssist.HelperText="Add features to this unit..."
-                        materialDesign:HintAssist.Hint="Select Feature"
+                        MaxDropDownHeight="200"
+                        materialDesign:HintAssist.HelperText="{lex:Loc AccommodationUnits_SubmitSelectFeatureComboBoxHelperText}"
+                        materialDesign:HintAssist.Hint="{lex:Loc AccommodationUnits_SubmitSelectFeatureComboBoxHint}"
                         materialDesign:ComboBoxAssist.ShowSelectedItem="True"
                         materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
                         materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 0 4"
                         materialDesign:HintAssist.FloatingOffset="0 -14"
-                        ItemsSource="{Binding UnitFeatures}"
-                        SelectedItem="{Binding SelectedFeature, Mode=TwoWay}"
+                        ItemsSource="{Binding AvailableUnitFeatures}"
+                        SelectedItem="{Binding SelectedUnitFeature, Mode=TwoWay}"
                         Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
                         Foreground="{DynamicResource PrimaryHueMidBrush}">
                     </ComboBox>
@@ -164,42 +201,82 @@
                 <ScrollViewer
                     materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
                     VerticalScrollBarVisibility="Auto"
+                    VerticalContentAlignment="Stretch"
                     HorizontalScrollBarVisibility="Disabled"
                     Margin="5 30 15 0">
-                    <ListBox
-                        Height="220"
-                        materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
-                        SelectedIndex="{Binding SelectedAddedFeatureIndex}"
-                        ItemsSource="{Binding SelectedFeatures}">
-                        <ListBox.InputBindings>
-                            <KeyBinding
-                                Key="Delete"
-                                Command="{Binding RemoveSelectedFeatureCommand}"/>
-                        </ListBox.InputBindings>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel
-                                    Margin="0 0"
-                                    Cursor="Hand"
-                                    Orientation="Horizontal">
-                                    <materialDesign:PackIcon
-                                        Kind="CircleBox"
-                                        Width="10"
-                                        Height="10"
-                                        Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                        Margin="2 0 6 0"
-                                        VerticalAlignment="Center" />
-                                    <TextBlock
-                                        Foreground="{DynamicResource MaterialDesignBody}"
-                                        FontSize="14"
-                                        FontWeight="Regular"
-                                        VerticalAlignment="Center"
-                                        Text="{Binding Name}"
-                                        Style="{DynamicResource HorizontalExpanderContentTextBlock}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <Grid>
+                        <materialDesign:ColorZone
+                            Panel.ZIndex="1"
+                            Visibility="{Binding AddedUnitFeatures.IsEmpty,  Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Background="Transparent"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center">
+                            <TextBlock
+                                Text="{lex:Loc AccommodationUnits_SubmitNoFeaturesAddedLabel}"
+                                Margin="0 50 0 0"
+                                FontWeight="Regular"
+                                TextAlignment="Center"
+                                TextWrapping="Wrap"
+                                FontSize="15"
+                                FontStyle="Italic">
+                            </TextBlock>
+                        </materialDesign:ColorZone>
+                        <ListBox
+                            Height="210"
+                            VerticalAlignment="Stretch"
+                            materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                            SelectedIndex="{Binding SelectedAddedFeatureIndex}"
+                            ItemsSource="{Binding AddedUnitFeatures}">
+                            <ListBox.Style>
+                                <Style
+                                    TargetType="{x:Type ListBox}"
+                                    BasedOn="{StaticResource MaterialDesignListBox}">
+                                    <Setter
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding AddedUnitFeatures.IsEmpty}"
+                                            Value="False">
+                                            <Setter
+                                                Property="Visibility"
+                                                Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.Style>
+                            <ListBox.InputBindings>
+                                <KeyBinding
+                                    Key="Delete"
+                                    Command="{Binding RemoveSelectedFeatureCommand}" />
+                            </ListBox.InputBindings>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel
+                                        Margin="0 0"
+                                        Cursor="Hand"
+                                        Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            Kind="CircleBox"
+                                            Width="10"
+                                            Height="10"
+                                            Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                            Margin="2 0 6 0"
+                                            VerticalAlignment="Center" />
+                                        <TextBlock
+                                            Foreground="{DynamicResource MaterialDesignBody}"
+                                            FontSize="14"
+                                            FontWeight="Regular"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name}"
+                                            Style="{DynamicResource HorizontalExpanderContentTextBlock}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    
                 </ScrollViewer>
             </StackPanel>
         </Grid>
@@ -215,7 +292,7 @@
                 MinWidth="120"
                 FontSize="14"
                 IsDefault="True"
-                Content="SUBMIT"
+                Content="{lex:Loc GLOBAL_DialogSubmitButtonText}"
                 Command="{Binding SubmitCommand}"
                 Style="{StaticResource MaterialDesignFlatMidBgButton}" />
             <Button
@@ -223,7 +300,7 @@
                 MinWidth="100"
                 FontSize="14"
                 Margin="8 0 0 0"
-                Content="CANCEL"
+                Content="{lex:Loc GLOBAL_DialogCancelButtonText}"
                 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                 IsCancel="True"
                 Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}" />

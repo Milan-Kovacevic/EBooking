@@ -187,7 +187,7 @@ namespace EBooking.WPF
 
         private LandingViewModel CreateLandingViewModel()
         {
-            return new LandingViewModel(userStore, navigateToRegisterViewModel, navigateToLoginViewModel);
+            return new LandingViewModel(userStore, settingsStore, navigateToRegisterViewModel, navigateToLoginViewModel);
         }
 
         private MainViewModel CreateMainViewModel()

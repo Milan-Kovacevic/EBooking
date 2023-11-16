@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\EBooking Manual en-US.docx" />
+    <None Remove="Resources\EBooking Manual sr-Latn.docx" />
     <None Remove="Resources\EBooking User Manual.pdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\EBooking User Manual.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Resources\EBooking Manual en-US.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EBooking.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -34,6 +36,12 @@
   <ItemGroup>
     <ProjectReference Include="..\EBooking.Domain\EBooking.Domain.csproj" />
     <ProjectReference Include="..\EBooking.EntityFramework\EBooking.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\EBooking Manual sr-Latn.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

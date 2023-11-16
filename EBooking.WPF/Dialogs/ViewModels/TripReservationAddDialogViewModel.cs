@@ -62,7 +62,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         public IRelayCommand SubmitCommand { get; }
         public IEnumerable<TripTypeModel> TripTypes { get; }
         public List<FlightModel> AvailableFlights { get; }
-        private ObservableCollection<FlightModel> _addedFlights;
+        private readonly ObservableCollection<FlightModel> _addedFlights;
         public ListCollectionView AddedFlightsCollection { get; set; }
 
         private readonly FlightStore _flightStore;

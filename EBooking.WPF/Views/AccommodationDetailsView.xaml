@@ -7,6 +7,10 @@
     xmlns:local="clr-namespace:EBooking.WPF.Views"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d"
     d:DesignHeight="700"
     d:DesignWidth="1100">
@@ -37,7 +41,7 @@
                         Grid.Row="0"
                         Width="32"
                         Height="32"
-                        ToolTip="Return back"
+                        ToolTip="{lex:Loc AccommodationDetails_ReturnButtonTooltip}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Command="{Binding ReturnBackCommand}"
@@ -60,7 +64,7 @@
                             TextAlignment="Center"
                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Style="{DynamicResource MaterialDesignTextBlock}"
-                            Text="Accommodation Units" />
+                            Text="{lex:Loc AccommodationDetails_Title}" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="1"
@@ -70,17 +74,17 @@
                             <StackPanel
                                 Orientation="Horizontal">
                                 <TextBlock
-                                    VerticalAlignment="Center"
+                                    VerticalAlignment="Bottom"
                                     HorizontalAlignment="Stretch"
                                     FontSize="13"
                                     FontStyle="Italic"
-                                    Text="For: "
-                                    Margin="0 0 2 0"
+                                    Text="{lex:Loc AccommodationDetails_DetailsForLabel}"
+                                    Margin="0 0 6 1"
                                     TextWrapping="Wrap" />
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Stretch"
-                                    FontSize="16"
+                                    FontSize="17"
                                     TextDecorations="Underline"
                                     FontWeight="Medium"
                                     Text="{Binding AccommodationName, Mode=OneTime}"
@@ -103,7 +107,7 @@
                                 FontSize="13"
                                 VerticalAlignment="Center"
                                 FontWeight="Medium"
-                                Foreground="{DynamicResource PrimaryHueLightBrush}"
+                                Foreground="{DynamicResource SecondaryHueMidBrush}"
                                 Text="{Binding AccommodationAddress, Mode=OneTime}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
@@ -111,8 +115,8 @@
                             HorizontalAlignment="Stretch"
                             FontStyle="Italic"
                             FontSize="13"
-                            FontWeight="Medium"
-                            Foreground="{DynamicResource PrimaryHueLightBrush}"
+                            FontWeight="Regular"
+                            Foreground="{DynamicResource SecondaryHueMidBrush}"
                             Text="{Binding AccommodationLocation, Mode=OneTime}"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -149,7 +153,7 @@
                                             <TextBlock
                                                 Margin="6 0 0 0"
                                                 VerticalAlignment="Center"
-                                                Text="ACCOMMODATION UNITS"
+                                                Text="{lex:Loc AccommodationDetails_UnitsTabItemHeaderText}"
                                                 FontWeight="Medium"
                                                 FontSize="13" />
                                         </StackPanel>
@@ -176,7 +180,7 @@
                                             <TextBlock
                                                 Margin="6 0 0 0"
                                                 VerticalAlignment="Center"
-                                                Text="UNIT RESERVATIONS"
+                                                Text="{lex:Loc AccommodationDetails_ReservationsTabItemHeaderText}"
                                                 FontWeight="Medium"
                                                 FontSize="13" />
                                         </StackPanel>

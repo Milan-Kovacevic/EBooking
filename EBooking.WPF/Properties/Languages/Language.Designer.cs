@@ -61,6 +61,51 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For Accommodation:.
+        /// </summary>
+        internal static string AccommodationDetails_DetailsForLabel {
+            get {
+                return ResourceManager.GetString("AccommodationDetails_DetailsForLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UNIT RESERVATIONS.
+        /// </summary>
+        internal static string AccommodationDetails_ReservationsTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("AccommodationDetails_ReservationsTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return back.
+        /// </summary>
+        internal static string AccommodationDetails_ReturnButtonTooltip {
+            get {
+                return ResourceManager.GetString("AccommodationDetails_ReturnButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodation Details.
+        /// </summary>
+        internal static string AccommodationDetails_Title {
+            get {
+                return ResourceManager.GetString("AccommodationDetails_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACCOMMODATION UNITS.
+        /// </summary>
+        internal static string AccommodationDetails_UnitsTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("AccommodationDetails_UnitsTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new accommodation.
         /// </summary>
         internal static string Accommodations_AddButtonTooltip {
@@ -147,6 +192,159 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string Accommodations_Title {
             get {
                 return ResourceManager.GetString("Accommodations_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Accommodation Unit.
+        /// </summary>
+        internal static string AccommodationUnits_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Availability period:.
+        /// </summary>
+        internal static string AccommodationUnits_CardItemAvailabilityPeriodLabel {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_CardItemAvailabilityPeriodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of beds:.
+        /// </summary>
+        internal static string AccommodationUnits_CardItemNumberOfBedsLabel {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_CardItemNumberOfBedsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price per night:.
+        /// </summary>
+        internal static string AccommodationUnits_CardItemPricePerNightLabel {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_CardItemPricePerNightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book here.
+        /// </summary>
+        internal static string AccommodationUnits_CardItemReserveButtonTooltip {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_CardItemReserveButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Features.
+        /// </summary>
+        internal static string AccommodationUnits_CardItemUnitFeaturesExpanderHeader {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_CardItemUnitFeaturesExpanderHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no accommodation units to show.
+        /// </summary>
+        internal static string AccommodationUnits_NoUnitItemsLabel {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_NoUnitItemsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available From.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitAvailableFromDatePickerHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitAvailableFromDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available To.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitAvailableToDatePickerHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitAvailableToDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Informations.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitBasicInformationsTitle {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitBasicInformationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no features added.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitNoFeaturesAddedLabel {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitNoFeaturesAddedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Beds.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitNumberOfBedsFieldHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitNumberOfBedsFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price Per Night.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitPricePerNightFieldHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitPricePerNightFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add features to this unit....
+        /// </summary>
+        internal static string AccommodationUnits_SubmitSelectFeatureComboBoxHelperText {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitSelectFeatureComboBoxHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Feature.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitSelectFeatureComboBoxHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitSelectFeatureComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Features.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitUnitFeaturesTitle {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitUnitFeaturesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Name.
+        /// </summary>
+        internal static string AccommodationUnits_SubmitUnitNameFieldHint {
+            get {
+                return ResourceManager.GetString("AccommodationUnits_SubmitUnitNameFieldHint", resourceCulture);
             }
         }
         
@@ -241,6 +439,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Accommodation Unit.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added accommodation unit.
         /// </summary>
         internal static string GLOBAL_AccommodationUnitAdded {
@@ -255,6 +462,24 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_AccommodationUnitDeleted {
             get {
                 return ResourceManager.GetString("GLOBAL_AccommodationUnitDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected accommodation unit?.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Accommodation Unit.
+        /// </summary>
+        internal static string GLOBAL_AccommodationUnitEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_AccommodationUnitEditDialogTitle", resourceCulture);
             }
         }
         
@@ -313,6 +538,42 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Future date is required.
+        /// </summary>
+        internal static string GLOBAL_FutureDateRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_FutureDateRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be greater than or equal to departure date.
+        /// </summary>
+        internal static string GLOBAL_GreaterThanDepartureDateRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_GreaterThanDepartureDateRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be greater than departure time.
+        /// </summary>
+        internal static string GLOBAL_GreaterThanDepartureTimeRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_GreaterThanDepartureTimeRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be greater than from date.
+        /// </summary>
+        internal static string GLOBAL_GreaterThanFromDateRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_GreaterThanFromDateRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
         internal static string GLOBAL_InvalidLogin {
@@ -340,11 +601,47 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password can not be same as current one.
+        /// </summary>
+        internal static string GLOBAL_NotSameAsCurrentPasswordMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_NotSameAsCurrentPasswordMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect password. Please, try again.
         /// </summary>
         internal static string GLOBAL_PasswordMissmatch {
             get {
                 return ResourceManager.GetString("GLOBAL_PasswordMissmatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords must match.
+        /// </summary>
+        internal static string GLOBAL_PasswordsMustMatchMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_PasswordsMustMatchMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Positive decimal number is required.
+        /// </summary>
+        internal static string GLOBAL_PositiveDecimalNumberRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_PositiveDecimalNumberRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Positive integer number is required.
+        /// </summary>
+        internal static string GLOBAL_PositiveIntegerNumberRequiredMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_PositiveIntegerNumberRequiredMessage", resourceCulture);
             }
         }
         
@@ -430,6 +727,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Accommodation Unit Reservation.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added unit reservation for.
         /// </summary>
         internal static string GLOBAL_UnitReservationAdded {
@@ -444,6 +750,24 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_UnitReservationDeleted {
             get {
                 return ResourceManager.GetString("GLOBAL_UnitReservationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected unit reservation?.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Accommodation Unit Reservation.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationEditDialogTitle", resourceCulture);
             }
         }
         
@@ -966,6 +1290,204 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string sr_Latn {
             get {
                 return ResourceManager.GetString("sr-Latn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected unit reservations.
+        /// </summary>
+        internal static string UnitReservations_DeleteSelectedButtonTooltip {
+            get {
+                return ResourceManager.GetString("UnitReservations_DeleteSelectedButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderActionLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of People.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderNumberOfPeopleLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderNumberOfPeopleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved From.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderReservationFromLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderReservationFromLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderReservationOnNameLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderReservationOnNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved To.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderReservationToLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderReservationToLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved By.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderReservedByLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderReservedByLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderTotalPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Name.
+        /// </summary>
+        internal static string UnitReservations_GridColumnHeaderUnitNameLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_GridColumnHeaderUnitNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no unit reservations to show.
+        /// </summary>
+        internal static string UnitReservations_NoItemsToShowLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_NoItemsToShowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search unit reservations.
+        /// </summary>
+        internal static string UnitReservations_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("UnitReservations_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find unit reservations....
+        /// </summary>
+        internal static string UnitReservations_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("UnitReservations_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string UnitReservations_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Adults.
+        /// </summary>
+        internal static string UnitReservations_SubmitNumberOfAdultsFieldHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitNumberOfAdultsFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Children.
+        /// </summary>
+        internal static string UnitReservations_SubmitNumberOfChildrenFieldHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitNumberOfChildrenFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Price Per Night:.
+        /// </summary>
+        internal static string UnitReservations_SubmitPricePerNightLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitPricePerNightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation From.
+        /// </summary>
+        internal static string UnitReservations_SubmitReservationFromDatePickerHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitReservationFromDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name.
+        /// </summary>
+        internal static string UnitReservations_SubmitReservationOnNameFieldHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitReservationOnNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation To.
+        /// </summary>
+        internal static string UnitReservations_SubmitReservationToDatePickerHint {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitReservationToDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price:.
+        /// </summary>
+        internal static string UnitReservations_SubmitTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitTotalPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Availability Period:.
+        /// </summary>
+        internal static string UnitReservations_SubmitUnitAvailabilityLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitUnitAvailabilityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Unit Name:.
+        /// </summary>
+        internal static string UnitReservations_SubmitUnitNameLabel {
+            get {
+                return ResourceManager.GetString("UnitReservations_SubmitUnitNameLabel", resourceCulture);
             }
         }
     }

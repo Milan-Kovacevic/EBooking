@@ -120,11 +120,11 @@
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitReservationAddDialogViewModel}">
-            <dialogViews:AccommodationUnitReservationDialog />
+            <dialogViews:UnitReservationSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitReservationEditDialogViewModel}">
-            <dialogViews:AccommodationUnitReservationDialog />
+            <dialogViews:UnitReservationSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitReservationDeleteDialogViewModel}">

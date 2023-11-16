@@ -1,12 +1,19 @@
-﻿<UserControl x:Class="EBooking.WPF.Components.AccommodationUnitItemCard"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EBooking.WPF.Components"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="EBooking.WPF.Components.AccommodationUnitItemCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EBooking.WPF.Components"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d"
+    d:DesignHeight="450"
+    d:DesignWidth="800">
     <Grid>
         <Button
             Visibility="{Binding ElementName=AccommodationUnitsGrid, Path=DataContext.IsEmployee, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -18,7 +25,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
             Margin="0 2 0 0"
-            ToolTip="Book Now"
+            ToolTip="{lex:Loc AccommodationUnits_CardItemReserveButtonTooltip}"
             Command="{Binding MakeUnitReservationCommand}"
             CommandParameter="{Binding}"
             Background="{DynamicResource PrimaryHueLightBrush}">
@@ -72,7 +79,7 @@
                                 Grid.Row="1">
                                 <TextBlock
                                     Foreground="{DynamicResource PrimaryHueLightBrush}"
-                                    Text="Availability period:"
+                                    Text="{lex:Loc AccommodationUnits_CardItemAvailabilityPeriodLabel}"
                                     VerticalAlignment="Center"
                                     FontSize="12" />
                                 <materialDesign:ColorZone
@@ -100,7 +107,7 @@
                                     Orientation="Horizontal">
                                     <TextBlock
                                         Foreground="{DynamicResource SecondaryHueMidBrush}"
-                                        Text="Number of beds:"
+                                        Text="{lex:Loc AccommodationUnits_CardItemNumberOfBedsLabel}"
                                         Margin="0 0 4 0"
                                         VerticalAlignment="Center"
                                         FontSize="12" />
@@ -119,7 +126,7 @@
                                     Orientation="Horizontal">
                                     <TextBlock
                                         Foreground="{DynamicResource PrimaryHueLightBrush}"
-                                        Text="Price per night:"
+                                        Text="{lex:Loc AccommodationUnits_CardItemPricePerNightLabel}"
                                         Margin="0 0 4 0"
                                         VerticalAlignment="Center"
                                         FontSize="12" />
@@ -156,7 +163,7 @@
                                     <TextBlock
                                         Height="20"
                                         RenderTransformOrigin="200,.5"
-                                        Text="Unit Features"
+                                        Text="{lex:Loc AccommodationUnits_CardItemUnitFeaturesExpanderHeader}"
                                         HorizontalAlignment="Left"
                                         FontSize="13"
                                         FontWeight="Medium"
@@ -211,7 +218,7 @@
                                 <StackPanel
                                     MinWidth="120">
                                     <Button
-                                        Content="EDIT"
+                                        Content="{lex:Loc GLOBAL_EditButtonText}"
                                         Grid.Row="0"
                                         Height="28"
                                         FontSize="14"
@@ -226,7 +233,7 @@
                                         Grid.ColumnSpan="3"
                                         Margin="10 0" />
                                     <Button
-                                        Content="DELETE"
+                                        Content="{lex:Loc GLOBAL_DeleteButtonText}"
                                         Grid.Row="2"
                                         Height="28"
                                         FontSize="14"
