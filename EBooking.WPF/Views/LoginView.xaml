@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:EBooking.WPF.Views"
+    xmlns:components="clr-namespace:EBooking.WPF.Components"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     lex:LocalizeDictionary.DesignCulture="en-US"
@@ -65,35 +65,17 @@
                         MaxWidth="480"
                         VerticalAlignment="Top"
                         Margin="10 5 10 80">
-                        <TextBox
-                            Margin="2 20 2 2"
-                            Padding="4 2 4 2"
+                        <components:IconTextBox
                             FontSize="16"
-                            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
-                            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
-                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
-                            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
-                            MaxLength="64"
-                            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-                            materialDesign:HintAssist.FloatingOffset="0 -16"
-                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                            Foreground="{DynamicResource PrimaryHueMidBrush}">
-                            <materialDesign:HintAssist.Hint>
-                                <StackPanel
-                                    HorizontalAlignment="Stretch"
-                                    Orientation="Horizontal">
-                                    <materialDesign:PackIcon
-                                        VerticalAlignment="Stretch"
-                                        Margin="0 0 4 0"
-                                        Kind="UserOutline"
-                                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                                    <Label
-                                        Style="{DynamicResource MaterialDesignLabel}"
-                                        VerticalAlignment="Stretch"
-                                        Content="{lex:Loc Login_UsernameFieldPlaceholder}" />
-                                </StackPanel>
-                            </materialDesign:HintAssist.Hint>
-                        </TextBox>
+                            Margin="2 14 2 2"
+                            IconKind="UserOutline"
+                            HintText="{lex:Loc Login_UsernameFieldPlaceholder}"
+                            FieldMaxLength="64"
+                            Text="{Binding DataContext.Username,
+                            RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                            Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}" />
                         <PasswordBox
                             Margin="2 18 2 2"
                             Padding="4 2 4 2"
@@ -105,6 +87,8 @@
                             MaxLength="64"
                             materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
                             materialDesign:HintAssist.FloatingOffset="0 -16"
+                            Validation.ErrorTemplate="{DynamicResource MaterialDesignValidationErrorTemplate}"
+                            materialDesign:ValidationAssist.Background="{DynamicResource MaterialDesignCardBackground}"
                             Foreground="{DynamicResource PrimaryHueMidBrush}"
                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                             <materialDesign:HintAssist.Hint>

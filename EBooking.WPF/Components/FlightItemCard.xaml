@@ -4,8 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:EBooking.WPF.Components"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800">
@@ -70,7 +73,7 @@
                     <StackPanel
                         MinWidth="120">
                         <Button
-                            Content="EDIT"
+                            Content="{lex:Loc GLOBAL_EditButtonText}"
                             Grid.Row="0"
                             Height="28"
                             FontSize="14"
@@ -85,7 +88,7 @@
                             Grid.ColumnSpan="3"
                             Margin="10 0" />
                         <Button
-                            Content="DELETE"
+                            Content="{lex:Loc GLOBAL_DeleteButtonText}"
                             Grid.Row="2"
                             Height="28"
                             FontSize="14"
@@ -183,7 +186,9 @@
                             <RowDefinition
                                 Height="auto" />
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" Margin="0 2 0 4">
+                        <StackPanel
+                            Grid.Row="0"
+                            Margin="0 2 0 4">
                             <StackPanel
                                 VerticalAlignment="Top">
                                 <WrapPanel
@@ -199,7 +204,7 @@
                                         Foreground="{DynamicResource PrimaryHueLightBrush}"
                                         FontWeight="Medium"
                                         VerticalAlignment="Center"
-                                        Text="TAKE-OFF"
+                                        Text="{lex:Loc Flights_CardItemTakeOffLabel}"
                                         FontSize="13" />
                                 </WrapPanel>
                                 <materialDesign:ColorZone
@@ -275,7 +280,7 @@
                                         Foreground="{DynamicResource PrimaryHueLightBrush}"
                                         FontWeight="Medium"
                                         VerticalAlignment="Center"
-                                        Text="LANDING"
+                                        Text="{lex:Loc Flights_CardItemLandingLabel}"
                                         FontSize="13" />
                                 </WrapPanel>
                                 <materialDesign:ColorZone
@@ -336,7 +341,6 @@
                                 </materialDesign:ColorZone>
                             </StackPanel>
                         </StackPanel>
- 
                         <StackPanel
                             Grid.Row="1"
                             VerticalAlignment="Center"
@@ -345,7 +349,7 @@
                             Orientation="Horizontal">
                             <TextBlock
                                 Foreground="{DynamicResource SecondaryHueMidBrush}"
-                                Text="Ticket Price:"
+                                Text="{lex:Loc Flights_CardItemTicketPriceLabel}"
                                 Margin="0 0 4 0"
                                 VerticalAlignment="Center"
                                 FontSize="12" />

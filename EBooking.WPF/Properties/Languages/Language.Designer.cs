@@ -394,6 +394,159 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new flight.
+        /// </summary>
+        internal static string Flights_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("Flights_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LANDING.
+        /// </summary>
+        internal static string Flights_CardItemLandingLabel {
+            get {
+                return ResourceManager.GetString("Flights_CardItemLandingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TAKE-OFF.
+        /// </summary>
+        internal static string Flights_CardItemTakeOffLabel {
+            get {
+                return ResourceManager.GetString("Flights_CardItemTakeOffLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket price:.
+        /// </summary>
+        internal static string Flights_CardItemTicketPriceLabel {
+            get {
+                return ResourceManager.GetString("Flights_CardItemTicketPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search flights.
+        /// </summary>
+        internal static string Flights_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("Flights_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find flights....
+        /// </summary>
+        internal static string Flights_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("Flights_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string Flights_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("Flights_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival date.
+        /// </summary>
+        internal static string Flights_SubmitArrivalDatePickerHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitArrivalDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival Location.
+        /// </summary>
+        internal static string Flights_SubmitArrivalLocationComboBoxHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitArrivalLocationComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival time.
+        /// </summary>
+        internal static string Flights_SubmitArrivalTimePickerHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitArrivalTimePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avio Company Name.
+        /// </summary>
+        internal static string Flights_SubmitAvioCompanyNameFieldHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitAvioCompanyNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure date.
+        /// </summary>
+        internal static string Flights_SubmitDepartureDatePickerHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitDepartureDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure Location.
+        /// </summary>
+        internal static string Flights_SubmitDepartureLocationComboBoxHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitDepartureLocationComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure time.
+        /// </summary>
+        internal static string Flights_SubmitDepartureTimePickerHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitDepartureTimePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Flight Class.
+        /// </summary>
+        internal static string Flights_SubmitFlightClassComboBoxHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitFlightClassComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket Price.
+        /// </summary>
+        internal static string Flights_SubmitTicketPriceFieldHint {
+            get {
+                return ResourceManager.GetString("Flights_SubmitTicketPriceFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flights.
+        /// </summary>
+        internal static string Flights_Title {
+            get {
+                return ResourceManager.GetString("Flights_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New Accommodation.
         /// </summary>
         internal static string GLOBAL_AccommodationAddDialogTitle {
@@ -534,6 +687,33 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_EditButtonText {
             get {
                 return ResourceManager.GetString("GLOBAL_EditButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Flight.
+        /// </summary>
+        internal static string GLOBAL_FlightAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_FlightAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected flight?.
+        /// </summary>
+        internal static string GLOBAL_FlightDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_FlightDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Flight.
+        /// </summary>
+        internal static string GLOBAL_FlightEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_FlightEditDialogTitle", resourceCulture);
             }
         }
         

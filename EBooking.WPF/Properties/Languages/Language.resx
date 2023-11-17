@@ -228,6 +228,57 @@
   <data name="en-US" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Flights_AddButtonTooltip" xml:space="preserve">
+    <value>Add new flight</value>
+  </data>
+  <data name="Flights_CardItemLandingLabel" xml:space="preserve">
+    <value>LANDING</value>
+  </data>
+  <data name="Flights_CardItemTakeOffLabel" xml:space="preserve">
+    <value>TAKE-OFF</value>
+  </data>
+  <data name="Flights_CardItemTicketPriceLabel" xml:space="preserve">
+    <value>Ticket price:</value>
+  </data>
+  <data name="Flights_SearchButtonTooltip" xml:space="preserve">
+    <value>Search flights</value>
+  </data>
+  <data name="Flights_SearchFieldHelperText" xml:space="preserve">
+    <value>Find flights...</value>
+  </data>
+  <data name="Flights_SearchFieldHint" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Flights_SubmitArrivalDatePickerHint" xml:space="preserve">
+    <value>Arrival date</value>
+  </data>
+  <data name="Flights_SubmitArrivalLocationComboBoxHint" xml:space="preserve">
+    <value>Arrival Location</value>
+  </data>
+  <data name="Flights_SubmitArrivalTimePickerHint" xml:space="preserve">
+    <value>Arrival time</value>
+  </data>
+  <data name="Flights_SubmitAvioCompanyNameFieldHint" xml:space="preserve">
+    <value>Avio Company Name</value>
+  </data>
+  <data name="Flights_SubmitDepartureDatePickerHint" xml:space="preserve">
+    <value>Departure date</value>
+  </data>
+  <data name="Flights_SubmitDepartureLocationComboBoxHint" xml:space="preserve">
+    <value>Departure Location</value>
+  </data>
+  <data name="Flights_SubmitDepartureTimePickerHint" xml:space="preserve">
+    <value>Departure time</value>
+  </data>
+  <data name="Flights_SubmitFlightClassComboBoxHint" xml:space="preserve">
+    <value>Select Flight Class</value>
+  </data>
+  <data name="Flights_SubmitTicketPriceFieldHint" xml:space="preserve">
+    <value>Ticket Price</value>
+  </data>
+  <data name="Flights_Title" xml:space="preserve">
+    <value>Flights</value>
+  </data>
   <data name="GLOBAL_AccommodationAddDialogTitle" xml:space="preserve">
     <value>Create New Accommodation</value>
   </data>
@@ -275,6 +326,15 @@
   </data>
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
     <value>EDIT</value>
+  </data>
+  <data name="GLOBAL_FlightAddDialogTitle" xml:space="preserve">
+    <value>Add New Flight</value>
+  </data>
+  <data name="GLOBAL_FlightDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected flight?</value>
+  </data>
+  <data name="GLOBAL_FlightEditDialogTitle" xml:space="preserve">
+    <value>Edit Flight</value>
   </data>
   <data name="GLOBAL_FutureDateRequiredMessage" xml:space="preserve">
     <value>Future date is required</value>

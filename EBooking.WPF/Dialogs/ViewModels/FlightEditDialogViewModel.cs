@@ -19,77 +19,82 @@ namespace EBooking.WPF.Dialogs.ViewModels
 {
     public partial class FlightEditDialogViewModel : ObservableValidator, IViewModelBase
     {
-        public int FlightId { get; set; }
         [ObservableProperty]
         private string dialogTitle;
+        public int FlightId { get; set; }
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string avioCompanyName;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private FlightClassModel? flightClassModel;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private LocationModel? fromLocation;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private LocationModel? toLocation;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveDecimalNumber))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveDecimalNumber))]
         private string ticketPrice;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateDepartureDate))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? departureDate;
         partial void OnDepartureDateChanged(DateTime? value)
         {
-            ValidateProperty(ArrivalDate, nameof(ArrivalDate));
-            ValidateProperty(ArrivalTime, nameof(ArrivalTime));
+            if (ArrivalDate != null)
+                ValidateProperty(ArrivalDate, nameof(ArrivalDate));
+            if (ArrivalTime != null)
+                ValidateProperty(ArrivalTime, nameof(ArrivalTime));
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateArrivalDateOnEdit))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? arrivalDate;
         partial void OnArrivalDateChanged(DateTime? value)
         {
-            ValidateProperty(ArrivalTime, nameof(ArrivalTime));
+            if (ArrivalTime != null)
+                ValidateProperty(ArrivalTime, nameof(ArrivalTime));
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? departureTime;
         partial void OnDepartureTimeChanged(DateTime? value)
         {
-            ValidateProperty(ArrivalTime, nameof(ArrivalTime));
+            if (ArrivalTime != null)
+                ValidateProperty(ArrivalTime, nameof(ArrivalTime));
         }
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
-        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateArrivalTimeOnEdit))]
+        [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? arrivalTime;
 
@@ -119,7 +124,8 @@ namespace EBooking.WPF.Dialogs.ViewModels
                 new FlightClassModel(FlightClass.ECO_FLY),
             };
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Edit Flight";
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.FLIGHT_EDIT_DIALOG_TITLE);
+
             var flight = flightService.GetSelectedFlight();
             FlightId = flight?.FlightId ?? 0;
             avioCompanyName = flight?.AvioCompanyName ?? string.Empty;
