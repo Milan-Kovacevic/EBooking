@@ -14,107 +14,53 @@
     Validation.ErrorTemplate="{x:Null}"
     d:DesignHeight="450"
     d:DesignWidth="800">
-    <StackPanel>
-        <TextBox
+    <StackPanel
+        Background="{DynamicResource MaterialDesignCardBackground}">
+        <local:IconTextBox
             Margin="2 0 2 2"
-            Padding="4 2 4 2"
-            FontSize="15"
-            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
-            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
-            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
-            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
-            MaxLength="80"
-            Text="{Binding EmployeeFirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-            materialDesign:HintAssist.FloatingOffset="0 -16"
-            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-            Foreground="{DynamicResource PrimaryHueMidBrush}">
-            <materialDesign:HintAssist.Hint>
-                <StackPanel
-                    HorizontalAlignment="Stretch"
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        VerticalAlignment="Stretch"
-                        Margin="0 0 4 0"
-                        Kind="UserOutline"
-                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Label
-                        Style="{DynamicResource MaterialDesignLabel}"
-                        VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_FirstNameFieldPlaceholder}" />
-                </StackPanel>
-            </materialDesign:HintAssist.Hint>
-        </TextBox>
-        <TextBox
+            IconKind="UserOutline"
+            HintText="{lex:Loc Register_FirstNameFieldPlaceholder}"
+            FieldMaxLength="80"
+            Text="{Binding DataContext.EmployeeFirstName,
+            RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+            Mode=TwoWay, 
+            UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True}" />
+        <local:IconTextBox
             Margin="2 14 2 2"
-            Padding="4 2 4 2"
-            FontSize="15"
-            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
-            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
-            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
-            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
-            MaxLength="80"
-            Text="{Binding EmployeeLastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-            materialDesign:HintAssist.FloatingOffset="0 -16"
-            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-            Foreground="{DynamicResource PrimaryHueMidBrush}">
-            <materialDesign:HintAssist.Hint>
-                <StackPanel
-                    HorizontalAlignment="Stretch"
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        VerticalAlignment="Stretch"
-                        Margin="0 0 4 0"
-                        Kind="UserOutline"
-                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Label
-                        Style="{DynamicResource MaterialDesignLabel}"
-                        VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_LastNameFieldPlaceholder}" />
-                </StackPanel>
-            </materialDesign:HintAssist.Hint>
-        </TextBox>
-        <TextBox
+            IconKind="UserOutline"
+            HintText="{lex:Loc Register_LastNameFieldPlaceholder}"
+            FieldMaxLength="80"
+            Text="{Binding DataContext.EmployeeLastName,
+            RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+            Mode=TwoWay, 
+            UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True}" />
+        <local:IconTextBox
             Margin="2 14 2 2"
-            Padding="4 2 4 2"
-            FontSize="15"
-            materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
-            materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
-            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
-            materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
-            MaxLength="64"
-            Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-            materialDesign:HintAssist.FloatingOffset="0 -16"
-            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-            Foreground="{DynamicResource PrimaryHueMidBrush}">
-            <materialDesign:HintAssist.Hint>
-                <StackPanel
-                    HorizontalAlignment="Stretch"
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        VerticalAlignment="Stretch"
-                        Margin="0 0 4 0"
-                        Kind="UserOutline"
-                        Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Label
-                        Style="{DynamicResource MaterialDesignLabel}"
-                        VerticalAlignment="Stretch"
-                        Content="{lex:Loc Register_UsernameFieldPlaceholder}" />
-                </StackPanel>
-            </materialDesign:HintAssist.Hint>
-        </TextBox>
+            IconKind="UserOutline"
+            HintText="{lex:Loc Register_UsernameFieldPlaceholder}"
+            FieldMaxLength="64"
+            Text="{Binding DataContext.Username,
+            RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+            Mode=TwoWay, 
+            UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True}" />
         <PasswordBox
+            FontSize="15"
             Margin="2 14 2 2"
             Padding="4 2 4 2"
-            FontSize="15"
             materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
             materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
             materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
             materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+            materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             MaxLength="64"
-            materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
             materialDesign:HintAssist.FloatingOffset="0 -16"
-            Foreground="{DynamicResource PrimaryHueMidBrush}"
-            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+            Validation.ErrorTemplate="{DynamicResource MaterialDesignValidationErrorTemplate}"
+            materialDesign:ValidationAssist.Background="{DynamicResource MaterialDesignCardBackground}"
+            Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}"
+            Foreground="{DynamicResource PrimaryHueMidBrush}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel
                     HorizontalAlignment="Stretch"
@@ -132,18 +78,20 @@
             </materialDesign:HintAssist.Hint>
         </PasswordBox>
         <PasswordBox
+            FontSize="15"
             Margin="2 14 2 2"
             Padding="4 2 4 2"
-            FontSize="15"
             materialDesign:HintAssist.HelperText="{lex:Loc GLOBAL_RequiredInputHint}"
             materialDesign:HintAssist.Background="{DynamicResource SecondaryAccentBrush}"
             materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
             materialDesign:TextFieldAssist.TextBoxViewMargin="0 6 0 4"
+            materialDesign:PasswordBoxAssist.Password="{Binding RepeatPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             MaxLength="64"
-            materialDesign:PasswordBoxAssist.Password="{Binding RepeatPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
             materialDesign:HintAssist.FloatingOffset="0 -16"
-            Foreground="{DynamicResource PrimaryHueMidBrush}"
-            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+            Validation.ErrorTemplate="{DynamicResource MaterialDesignValidationErrorTemplate}"
+            materialDesign:ValidationAssist.Background="{DynamicResource MaterialDesignCardBackground}"
+            Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}"
+            Foreground="{DynamicResource PrimaryHueMidBrush}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel
                     HorizontalAlignment="Stretch"

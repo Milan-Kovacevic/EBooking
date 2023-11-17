@@ -29,7 +29,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         [ObservableProperty]
         [Required(ErrorMessage = "!")]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRepeatPassword))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRepeatPasswordOnChange))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string repeatNewPassword;

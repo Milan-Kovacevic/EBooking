@@ -52,20 +52,15 @@ namespace EBooking.WPF.ViewModels
         private string password;
 
         [ObservableProperty]
-        [CustomValidation(typeof(RegisterViewModel), nameof(ValidateRepeatPassword))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRepeatPasswordOnRegister))]
         [NotifyCanExecuteChangedFor(nameof(RegisterCommand))]
         [NotifyDataErrorInfo]
         private string repeatPassword;
 
-        // Custom validation
-        public static ValidationResult? ValidateRepeatPassword(string password, ValidationContext context)
+        partial void OnPasswordChanged(string value)
         {
-            var instance = (RegisterViewModel)context.ObjectInstance;
-            var isValid = instance.Password == password;
-
-            if (isValid)
-                return ValidationResult.Success;
-            return new ValidationResult("Passwords must match!");
+            if (RepeatPassword != string.Empty)
+                ValidateProperty(RepeatPassword, nameof(RepeatPassword));
         }
 
         public IRelayCommand RegisterCommand { get; }

@@ -1,4 +1,5 @@
 ﻿using EBooking.WPF.Dialogs.ViewModels;
+using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -146,10 +147,19 @@ namespace EBooking.WPF.Utility
             return ValidationResult.Success;
         }
 
-        public static ValidationResult? ValidateRepeatPassword(string password, ValidationContext context)
+        public static ValidationResult? ValidateRepeatPasswordOnChange(string password, ValidationContext context)
         {
             var instance = (ChangePasswordDialogViewModel)context.ObjectInstance;
             bool isValid = instance.NewPassword == password;
+            if (!isValid)
+                return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.PASSWORDS_MUST_MATCH_MESSAGE));
+            return ValidationResult.Success;
+        }
+
+        public static ValidationResult? ValidateRepeatPasswordOnRegister(string password, ValidationContext context)
+        {
+            var instance = (RegisterViewModel)context.ObjectInstance;
+            bool isValid = instance.Password == password;
             if (!isValid)
                 return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.PASSWORDS_MUST_MATCH_MESSAGE));
             return ValidationResult.Success;

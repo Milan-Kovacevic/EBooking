@@ -12,6 +12,7 @@
     lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
     lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     d:DesignHeight="700"
     d:DesignWidth="1000">
     <ScrollViewer
