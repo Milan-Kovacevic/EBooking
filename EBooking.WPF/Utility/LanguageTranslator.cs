@@ -54,6 +54,12 @@ namespace EBooking.WPF.Utility
             { MessageType.FLIGHT_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "FlightAddDialogTitle" },
             { MessageType.FLIGHT_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "FlightEditDialogTitle" },
             { MessageType.FLIGHT_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "FlightDeleteDialogMessage" },
+            { MessageType.LOCATION_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "LocationAddDialogTitle" },
+            { MessageType.LOCATION_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "LocationEditDialogTitle" },
+            { MessageType.LOCATION_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "LocationDeleteDialogMessage" },
+            { MessageType.UNIT_FEATURE_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureAddDialogTitle" },
+            { MessageType.UNIT_FEATURE_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureEditDialogTitle" },
+            { MessageType.UNIT_FEATURE_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureDeleteDialogMessage" },
         };
 
         public enum MessageType
@@ -101,6 +107,12 @@ namespace EBooking.WPF.Utility
             FLIGHT_ADD_DIALOG_TITLE,
             FLIGHT_EDIT_DIALOG_TITLE,
             FLIGHT_DELETE_DIALOG_MESSAGE,
+            LOCATION_ADD_DIALOG_TITLE,
+            LOCATION_EDIT_DIALOG_TITLE,
+            LOCATION_DELETE_DIALOG_MESSAGE,
+            UNIT_FEATURE_ADD_DIALOG_TITLE,
+            UNIT_FEATURE_EDIT_DIALOG_TITLE,
+            UNIT_FEATURE_DELETE_DIALOG_MESSAGE,
         }
 
         public static string Translate(MessageType message)

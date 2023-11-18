@@ -15,20 +15,20 @@ namespace EBooking.WPF.Dialogs.ViewModels
     public partial class ChangePasswordDialogViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string currentPassword;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateNewPassword))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string newPassword;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateRepeatPasswordOnChange))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
@@ -36,12 +36,14 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         partial void OnNewPasswordChanged(string value)
         {
-            ValidateProperty(RepeatNewPassword, nameof(RepeatNewPassword));
+            if (RepeatNewPassword != string.Empty)
+                ValidateProperty(RepeatNewPassword, nameof(RepeatNewPassword));
         }
 
         partial void OnCurrentPasswordChanged(string value)
         {
-            ValidateProperty(NewPassword, nameof(NewPassword));
+            if (RepeatNewPassword != string.Empty)
+                ValidateProperty(NewPassword, nameof(NewPassword));
         }
 
         private readonly UserService _userService;

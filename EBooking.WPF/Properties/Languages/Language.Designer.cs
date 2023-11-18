@@ -349,6 +349,42 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LOCATIONS.
+        /// </summary>
+        internal static string Codebook_LocationsTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Codebook_LocationsTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage application coodebooks.
+        /// </summary>
+        internal static string Codebook_Subtitle {
+            get {
+                return ResourceManager.GetString("Codebook_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Codebooks.
+        /// </summary>
+        internal static string Codebook_Title {
+            get {
+                return ResourceManager.GetString("Codebook_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UNIT FEATURES.
+        /// </summary>
+        internal static string Codebook_UnitFeaturesTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Codebook_UnitFeaturesTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blue.
         /// </summary>
         internal static string color_blue {
@@ -673,11 +709,38 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NO.
+        /// </summary>
+        internal static string GLOBAL_DialogNoButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogNoButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string GLOBAL_DialogOkButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogOkButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SUBMIT.
         /// </summary>
         internal static string GLOBAL_DialogSubmitButtonText {
             get {
                 return ResourceManager.GetString("GLOBAL_DialogSubmitButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YES.
+        /// </summary>
+        internal static string GLOBAL_DialogYesButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogYesButtonText", resourceCulture);
             }
         }
         
@@ -777,6 +840,33 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_InvalidRegistration {
             get {
                 return ResourceManager.GetString("GLOBAL_InvalidRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Location.
+        /// </summary>
+        internal static string GLOBAL_LocationAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_LocationAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected location?.
+        /// </summary>
+        internal static string GLOBAL_LocationDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_LocationDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Location.
+        /// </summary>
+        internal static string GLOBAL_LocationEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_LocationEditDialogTitle", resourceCulture);
             }
         }
         
@@ -907,6 +997,33 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Unit Feature.
+        /// </summary>
+        internal static string GLOBAL_UnitFeatureAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitFeatureAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected unit feature?.
+        /// </summary>
+        internal static string GLOBAL_UnitFeatureDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitFeatureDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Unit Feature.
+        /// </summary>
+        internal static string GLOBAL_UnitFeatureEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitFeatureEditDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Accommodation Unit Reservation.
         /// </summary>
         internal static string GLOBAL_UnitReservationAddDialogTitle {
@@ -1033,6 +1150,114 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new location.
+        /// </summary>
+        internal static string Locations_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("Locations_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected locations.
+        /// </summary>
+        internal static string Locations_DeleteSelectedButtonTooltip {
+            get {
+                return ResourceManager.GetString("Locations_DeleteSelectedButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string Locations_GridColumnHeaderActionLabel {
+            get {
+                return ResourceManager.GetString("Locations_GridColumnHeaderActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string Locations_GridColumnHeaderCityLabel {
+            get {
+                return ResourceManager.GetString("Locations_GridColumnHeaderCityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Locations_GridColumnHeaderCountryLabel {
+            get {
+                return ResourceManager.GetString("Locations_GridColumnHeaderCountryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no locations to show.
+        /// </summary>
+        internal static string Locations_NoItemsToShowLabel {
+            get {
+                return ResourceManager.GetString("Locations_NoItemsToShowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search locations.
+        /// </summary>
+        internal static string Locations_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("Locations_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find locations....
+        /// </summary>
+        internal static string Locations_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("Locations_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string Locations_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("Locations_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City Name.
+        /// </summary>
+        internal static string Locations_SubmitCityNameFieldHint {
+            get {
+                return ResourceManager.GetString("Locations_SubmitCityNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country Name.
+        /// </summary>
+        internal static string Locations_SubmitCountryNameFieldHint {
+            get {
+                return ResourceManager.GetString("Locations_SubmitCountryNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations codebook....
+        /// </summary>
+        internal static string Locations_Title {
+            get {
+                return ResourceManager.GetString("Locations_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Login_LoginButtonText {
@@ -1074,6 +1299,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string Login_UsernameFieldPlaceholder {
             get {
                 return ResourceManager.GetString("Login_UsernameFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to exit application?.
+        /// </summary>
+        internal static string Main_ConfirmExitDialogMessage {
+            get {
+                return ResourceManager.GetString("Main_ConfirmExitDialogMessage", resourceCulture);
             }
         }
         
@@ -1339,6 +1573,96 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Password.
+        /// </summary>
+        internal static string Settings_ChangePasswordCurrentPasswordFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangePasswordCurrentPasswordFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        internal static string Settings_ChangePasswordNewPasswordFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangePasswordNewPasswordFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat New Password.
+        /// </summary>
+        internal static string Settings_ChangePasswordRepeatNewPasswordFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangePasswordRepeatNewPasswordFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Your Password.
+        /// </summary>
+        internal static string Settings_ChangePasswordTitle {
+            get {
+                return ResourceManager.GetString("Settings_ChangePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoAdminNameFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoAdminNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoEmployeeFirstNameFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoEmployeeFirstNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoEmployeeLastNameFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoEmployeeLastNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoPasswordFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoPasswordFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Your Informations.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoTitle {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string Settings_ChangeUserInfoUsernameFieldHint {
+            get {
+                return ResourceManager.GetString("Settings_ChangeUserInfoUsernameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name:.
         /// </summary>
         internal static string Settings_DisplayNameLabel {
@@ -1398,6 +1722,15 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string Settings_SaveChangesButtonText {
             get {
                 return ResourceManager.GetString("Settings_SaveChangesButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please, save your settings changes before leaving..
+        /// </summary>
+        internal static string Settings_SaveSettingsDialogMessage {
+            get {
+                return ResourceManager.GetString("Settings_SaveSettingsDialogMessage", resourceCulture);
             }
         }
         
@@ -1470,6 +1803,96 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string sr_Latn {
             get {
                 return ResourceManager.GetString("sr-Latn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new unit feature.
+        /// </summary>
+        internal static string UnitFeatures_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("UnitFeatures_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected unit features.
+        /// </summary>
+        internal static string UnitFeatures_DeleteSelectedButtonTooltip {
+            get {
+                return ResourceManager.GetString("UnitFeatures_DeleteSelectedButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string UnitFeatures_GridColumnHeaderActionLabel {
+            get {
+                return ResourceManager.GetString("UnitFeatures_GridColumnHeaderActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feature Name.
+        /// </summary>
+        internal static string UnitFeatures_GridColumnHeaderFeatureNameLabel {
+            get {
+                return ResourceManager.GetString("UnitFeatures_GridColumnHeaderFeatureNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no unit features to show.
+        /// </summary>
+        internal static string UnitFeatures_NoItemsToShowLabel {
+            get {
+                return ResourceManager.GetString("UnitFeatures_NoItemsToShowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search unit features.
+        /// </summary>
+        internal static string UnitFeatures_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("UnitFeatures_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find accommodation unit features....
+        /// </summary>
+        internal static string UnitFeatures_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("UnitFeatures_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string UnitFeatures_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("UnitFeatures_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feature Name.
+        /// </summary>
+        internal static string UnitFeatures_SubmitFeatureNameFieldHint {
+            get {
+                return ResourceManager.GetString("UnitFeatures_SubmitFeatureNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodation Unit Features Codebook....
+        /// </summary>
+        internal static string UnitFeatures_Title {
+            get {
+                return ResourceManager.GetString("UnitFeatures_Title", resourceCulture);
             }
         }
         

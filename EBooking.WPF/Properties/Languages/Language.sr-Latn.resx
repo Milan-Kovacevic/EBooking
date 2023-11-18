@@ -213,6 +213,18 @@
   <data name="AccommodationUnits_SubmitUnitNameFieldHint" xml:space="preserve">
     <value>Naziv jedinice</value>
   </data>
+  <data name="Codebook_LocationsTabItemHeaderText" xml:space="preserve">
+    <value>MJESTA</value>
+  </data>
+  <data name="Codebook_Subtitle" xml:space="preserve">
+    <value>Upravljajte šifarnicima aplikacije</value>
+  </data>
+  <data name="Codebook_Title" xml:space="preserve">
+    <value>Šifarnici</value>
+  </data>
+  <data name="Codebook_UnitFeaturesTabItemHeaderText" xml:space="preserve">
+    <value>KARAKTERISTIKE JEDINICE</value>
+  </data>
   <data name="color-blue" xml:space="preserve">
     <value>Plava</value>
   </data>
@@ -321,8 +333,17 @@
   <data name="GLOBAL_DialogCancelButtonText" xml:space="preserve">
     <value>OTKAŽI</value>
   </data>
+  <data name="GLOBAL_DialogNoButtonText" xml:space="preserve">
+    <value>NE</value>
+  </data>
+  <data name="GLOBAL_DialogOkButtonText" xml:space="preserve">
+    <value>U REDU</value>
+  </data>
   <data name="GLOBAL_DialogSubmitButtonText" xml:space="preserve">
     <value>PRIHVATI</value>
+  </data>
+  <data name="GLOBAL_DialogYesButtonText" xml:space="preserve">
+    <value>DA</value>
   </data>
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
     <value>UREDI</value>
@@ -356,6 +377,15 @@
   </data>
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Nije moguće registrovati nalog sa unesenim podacima</value>
+  </data>
+  <data name="GLOBAL_LocationAddDialogTitle" xml:space="preserve">
+    <value>Dodajte novo mjesto</value>
+  </data>
+  <data name="GLOBAL_LocationDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabrano mjesto?</value>
+  </data>
+  <data name="GLOBAL_LocationEditDialogTitle" xml:space="preserve">
+    <value>Uredite mjesto</value>
   </data>
   <data name="GLOBAL_NotSameAsCurrentPasswordMessage" xml:space="preserve">
     <value>Lozinka ne može biti ista kao trenutna</value>
@@ -399,6 +429,15 @@
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije putovanja za</value>
   </data>
+  <data name="GLOBAL_UnitFeatureAddDialogTitle" xml:space="preserve">
+    <value>Dodaj novu karakteristiku jedinice</value>
+  </data>
+  <data name="GLOBAL_UnitFeatureDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabranu karakteristiku?</value>
+  </data>
+  <data name="GLOBAL_UnitFeatureEditDialogTitle" xml:space="preserve">
+    <value>Uredi karakteristiku jedinice</value>
+  </data>
   <data name="GLOBAL_UnitReservationAddDialogTitle" xml:space="preserve">
     <value>Dodajte novu rezervaciju smještajne jedinice</value>
   </data>
@@ -441,6 +480,42 @@
   <data name="Landing_WelcomeTitle" xml:space="preserve">
     <value>Dobrodošli na "E-Booking"</value>
   </data>
+  <data name="Locations_AddButtonTooltip" xml:space="preserve">
+    <value>Dodaj novo mjesto</value>
+  </data>
+  <data name="Locations_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Obriši izabrana mjesta</value>
+  </data>
+  <data name="Locations_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="Locations_GridColumnHeaderCityLabel" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Locations_GridColumnHeaderCountryLabel" xml:space="preserve">
+    <value>Država</value>
+  </data>
+  <data name="Locations_NoItemsToShowLabel" xml:space="preserve">
+    <value>Trenutno nema mjesta za prikaz</value>
+  </data>
+  <data name="Locations_SearchButtonTooltip" xml:space="preserve">
+    <value>Pretraži mjesta</value>
+  </data>
+  <data name="Locations_SearchFieldHelperText" xml:space="preserve">
+    <value>Pronađi mjesta...</value>
+  </data>
+  <data name="Locations_SearchFieldHint" xml:space="preserve">
+    <value>Pretraga...</value>
+  </data>
+  <data name="Locations_SubmitCityNameFieldHint" xml:space="preserve">
+    <value>Naziv grada</value>
+  </data>
+  <data name="Locations_SubmitCountryNameFieldHint" xml:space="preserve">
+    <value>Naziv države</value>
+  </data>
+  <data name="Locations_Title" xml:space="preserve">
+    <value>Šifarnik mjesta...</value>
+  </data>
   <data name="Login_LoginButtonText" xml:space="preserve">
     <value>Prijava</value>
   </data>
@@ -455,6 +530,9 @@
   </data>
   <data name="Login_UsernameFieldPlaceholder" xml:space="preserve">
     <value>Korisničko ime</value>
+  </data>
+  <data name="Main_ConfirmExitDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da napustite aplikaciju?</value>
   </data>
   <data name="Main_ExitButtonText" xml:space="preserve">
     <value>NAPUSTI</value>
@@ -543,6 +621,36 @@
   <data name="Settings_ChangePasswordButtonText" xml:space="preserve">
     <value>IZMIJENITE LOZINKU</value>
   </data>
+  <data name="Settings_ChangePasswordCurrentPasswordFieldHint" xml:space="preserve">
+    <value>Trenutna lozinka</value>
+  </data>
+  <data name="Settings_ChangePasswordNewPasswordFieldHint" xml:space="preserve">
+    <value>Nova lozinka</value>
+  </data>
+  <data name="Settings_ChangePasswordRepeatNewPasswordFieldHint" xml:space="preserve">
+    <value>Ponovite novu lozinku</value>
+  </data>
+  <data name="Settings_ChangePasswordTitle" xml:space="preserve">
+    <value>Izmijenite Vašu lozinku</value>
+  </data>
+  <data name="Settings_ChangeUserInfoAdminNameFieldHint" xml:space="preserve">
+    <value>Ime za prikaz</value>
+  </data>
+  <data name="Settings_ChangeUserInfoEmployeeFirstNameFieldHint" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="Settings_ChangeUserInfoEmployeeLastNameFieldHint" xml:space="preserve">
+    <value>Prezime</value>
+  </data>
+  <data name="Settings_ChangeUserInfoPasswordFieldHint" xml:space="preserve">
+    <value>Potvrdite lozinku</value>
+  </data>
+  <data name="Settings_ChangeUserInfoTitle" xml:space="preserve">
+    <value>Izmijenite Vaše informacije</value>
+  </data>
+  <data name="Settings_ChangeUserInfoUsernameFieldHint" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
   <data name="Settings_DisplayNameLabel" xml:space="preserve">
     <value>Ime za prikaz:</value>
   </data>
@@ -563,6 +671,9 @@
   </data>
   <data name="Settings_SaveChangesButtonText" xml:space="preserve">
     <value>Sačuvajte izmjene</value>
+  </data>
+  <data name="Settings_SaveSettingsDialogMessage" xml:space="preserve">
+    <value>Molimo Vas, sačuvate promjene prije napuštanja.</value>
   </data>
   <data name="Settings_SaveSettingsReminderText" xml:space="preserve">
     <value>Potrebno je sačuvati izmjene*</value>
@@ -587,6 +698,36 @@
   </data>
   <data name="sr-Latn" xml:space="preserve">
     <value>Srpski latinica</value>
+  </data>
+  <data name="UnitFeatures_AddButtonTooltip" xml:space="preserve">
+    <value>Dodaj novu karakteristiku</value>
+  </data>
+  <data name="UnitFeatures_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Obriši izabrane karakteristike smještajnih jedinica</value>
+  </data>
+  <data name="UnitFeatures_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="UnitFeatures_GridColumnHeaderFeatureNameLabel" xml:space="preserve">
+    <value>Naziv karakteristike</value>
+  </data>
+  <data name="UnitFeatures_NoItemsToShowLabel" xml:space="preserve">
+    <value>Trenutno nema karakteristika smještajnih jedinica za prikaz</value>
+  </data>
+  <data name="UnitFeatures_SearchButtonTooltip" xml:space="preserve">
+    <value>Pretraži karakteristike jedinica</value>
+  </data>
+  <data name="UnitFeatures_SearchFieldHelperText" xml:space="preserve">
+    <value>Pronađi karakteristike jedinica...</value>
+  </data>
+  <data name="UnitFeatures_SearchFieldHint" xml:space="preserve">
+    <value>Pretraga...</value>
+  </data>
+  <data name="UnitFeatures_SubmitFeatureNameFieldHint" xml:space="preserve">
+    <value>Naziv karakteristike</value>
+  </data>
+  <data name="UnitFeatures_Title" xml:space="preserve">
+    <value>Šifarnik karakteristika smještajne jedinice...</value>
   </data>
   <data name="UnitReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
     <value>Obriši izabrane rezervacije smještajnih jedinica</value>

@@ -72,11 +72,11 @@
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:LocationAddDialogViewModel}">
-            <dialogViews:LocationAddDialog />
+            <dialogViews:LocationSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:LocationEditDialogViewModel}">
-            <dialogViews:LocationEditDialog />
+            <dialogViews:LocationSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitFeatureDeleteDialogViewModel}">
@@ -84,11 +84,11 @@
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitFeatureAddDialogViewModel}">
-            <dialogViews:UnitFeatureAddDialog />
+            <dialogViews:UnitFeatureSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:UnitFeatureEditDialogViewModel}">
-            <dialogViews:UnitFeatureEditDialog />
+            <dialogViews:UnitFeatureSubmitDialog />
         </DataTemplate>
         <DataTemplate
             DataType="{x:Type dialogVms:MultiDeleteDialogViewModel}">

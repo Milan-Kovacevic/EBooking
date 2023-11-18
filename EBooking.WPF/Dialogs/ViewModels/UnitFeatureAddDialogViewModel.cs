@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Services;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ namespace EBooking.WPF.Dialogs.ViewModels
     public partial class UnitFeatureAddDialogViewModel : ObservableValidator, IViewModelBase
     {
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        private string dialogTitle;
+
+        [ObservableProperty]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string featureName;
@@ -27,8 +31,9 @@ namespace EBooking.WPF.Dialogs.ViewModels
         {
             _unitFeatureService = unitFeatureService;
             _dialogHostService = dialogHostService;
-
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_FEATURE_ADD_DIALOG_TITLE);
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
+
             featureName = string.Empty;
         }
 

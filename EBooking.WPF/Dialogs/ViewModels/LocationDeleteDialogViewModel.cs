@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Services;
 using EBooking.WPF.Stores;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
         {
             _locationsService = locationsService;
             _dialogHostService = dialogHostService;
-            messageText = "Are you sure you want to delete selected location/s?";
+            messageText = LanguageTranslator.Translate(LanguageTranslator.MessageType.LOCATION_DELETE_DIALOG_MESSAGE);
         }
 
         [RelayCommand]

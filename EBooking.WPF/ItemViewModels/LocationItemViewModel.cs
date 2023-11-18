@@ -9,10 +9,9 @@ namespace EBooking.WPF.ItemViewModels
 {
     public partial class LocationItemViewModel : ObservableObject
     {
+        public int LocationId { get; set; }
         [ObservableProperty]
         private bool isSelected;
-        [ObservableProperty]
-        private int locationId;
         [ObservableProperty]
         private string country;
         [ObservableProperty]
@@ -20,8 +19,8 @@ namespace EBooking.WPF.ItemViewModels
 
         public LocationItemViewModel()
         {
+            LocationId = 0;
             isSelected = false;
-            locationId = 0;
             country = string.Empty;
             city = string.Empty;
         }

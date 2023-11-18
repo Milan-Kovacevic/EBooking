@@ -6,8 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Views"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     d:DesignHeight="700"
     d:DesignWidth="1000">
     <ScrollViewer
@@ -43,7 +47,7 @@
                             TextAlignment="Center"
                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Style="{DynamicResource MaterialDesignTextBlock}"
-                            Text="Codebooks" />
+                            Text="{lex:Loc Codebook_Title}" />
                         <TextBlock
                             FontSize="20"
                             TextWrapping="Wrap"
@@ -54,7 +58,7 @@
                             TextAlignment="Center"
                             Foreground="{DynamicResource SecondaryHueMidBrush}"
                             Style="{DynamicResource MaterialDesignTextBlock}"
-                            Text="Manage application coodebooks" />
+                            Text="{lex:Loc Codebook_Subtitle}"/>
                     </StackPanel>
 
                     <materialDesign:Card
@@ -88,9 +92,9 @@
                                             <TextBlock
                                                 Margin="4 0 0 0"
                                                 VerticalAlignment="Center"
-                                                Text="LOCATIONS"
+                                                Text="{lex:Loc Codebook_LocationsTabItemHeaderText}"
                                                 FontWeight="Medium"
-                                                FontSize="14" />
+                                                FontSize="13" />
                                         </StackPanel>
                                     </materialDesign:ColorZone>
                                 </TabItem.Header>
@@ -113,9 +117,9 @@
                                             <TextBlock
                                                 Margin="4 0 0 0"
                                                 VerticalAlignment="Center"
-                                                Text="UNIT FEATURES"
+                                                Text="{lex:Loc Codebook_UnitFeaturesTabItemHeaderText}"
                                                 FontWeight="Medium"
-                                                FontSize="14" />
+                                                FontSize="13" />
                                         </StackPanel>
                                     </materialDesign:ColorZone>
                                 </TabItem.Header>

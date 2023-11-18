@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for LocationEditDialog.xaml
+    /// Interaction logic for LocationSubmitDialog.xaml
     /// </summary>
-    public partial class LocationEditDialog : UserControl
+    public partial class LocationSubmitDialog : UserControl
     {
-        public LocationEditDialog()
+        public LocationSubmitDialog()
         {
             InitializeComponent();
         }

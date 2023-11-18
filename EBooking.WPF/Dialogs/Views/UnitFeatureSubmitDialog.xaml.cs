@@ -1,5 +1,4 @@
-﻿using EBooking.Domain.DTOs;
-using EBooking.WPF.ViewModels;
+﻿using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +17,11 @@ using System.Windows.Shapes;
 namespace EBooking.WPF.Dialogs.Views
 {
     /// <summary>
-    /// Interaction logic for LocationAddDialog.xaml
+    /// Interaction logic for UnitFeatureSubmitDialog.xaml
     /// </summary>
-    public partial class LocationAddDialog : UserControl
+    public partial class UnitFeatureSubmitDialog : UserControl
     {
-        public LocationAddDialog()
+        public UnitFeatureSubmitDialog()
         {
             InitializeComponent();
         }

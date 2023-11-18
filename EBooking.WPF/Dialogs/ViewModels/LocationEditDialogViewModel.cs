@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Services;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,18 @@ namespace EBooking.WPF.Dialogs.ViewModels
 {
     public partial class LocationEditDialogViewModel : ObservableValidator, IViewModelBase
     {
-        public int LocationId { get; set; }
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        private string dialogTitle;
+        public int LocationId { get; set; }
+
+        [ObservableProperty]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string countryName;
+
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string cityName;
@@ -33,18 +38,20 @@ namespace EBooking.WPF.Dialogs.ViewModels
         {
             _locationsService = locationsService;
             _dialogHostService = dialogHostService;
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.LOCATION_EDIT_DIALOG_TITLE);
+            SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
+
             var location = locationsService.GetSelectedLocation();
             countryName = location?.Country ?? string.Empty;
             cityName = location?.City ?? string.Empty;
             LocationId = location?.LocationId ?? 0;
-            SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
         }
 
         private bool CanSubmit()
         {
             return CountryName != string.Empty
-                && CityName != string.Empty &&
-                !HasErrors;
+                && CityName != string.Empty
+                && !HasErrors;
         }
 
         private async Task Submit()

@@ -213,6 +213,18 @@
   <data name="AccommodationUnits_SubmitUnitNameFieldHint" xml:space="preserve">
     <value>Unit Name</value>
   </data>
+  <data name="Codebook_LocationsTabItemHeaderText" xml:space="preserve">
+    <value>LOCATIONS</value>
+  </data>
+  <data name="Codebook_Subtitle" xml:space="preserve">
+    <value>Manage application coodebooks</value>
+  </data>
+  <data name="Codebook_Title" xml:space="preserve">
+    <value>Codebooks</value>
+  </data>
+  <data name="Codebook_UnitFeaturesTabItemHeaderText" xml:space="preserve">
+    <value>UNIT FEATURES</value>
+  </data>
   <data name="color-blue" xml:space="preserve">
     <value>Blue</value>
   </data>
@@ -321,8 +333,17 @@
   <data name="GLOBAL_DialogCancelButtonText" xml:space="preserve">
     <value>CANCEL</value>
   </data>
+  <data name="GLOBAL_DialogNoButtonText" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="GLOBAL_DialogOkButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="GLOBAL_DialogSubmitButtonText" xml:space="preserve">
     <value>SUBMIT</value>
+  </data>
+  <data name="GLOBAL_DialogYesButtonText" xml:space="preserve">
+    <value>YES</value>
   </data>
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
     <value>EDIT</value>
@@ -356,6 +377,15 @@
   </data>
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
     <value>Unable to register account with entered data</value>
+  </data>
+  <data name="GLOBAL_LocationAddDialogTitle" xml:space="preserve">
+    <value>Add New Location</value>
+  </data>
+  <data name="GLOBAL_LocationDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected location?</value>
+  </data>
+  <data name="GLOBAL_LocationEditDialogTitle" xml:space="preserve">
+    <value>Edit Location</value>
   </data>
   <data name="GLOBAL_NotSameAsCurrentPasswordMessage" xml:space="preserve">
     <value>Password can not be same as current one</value>
@@ -399,6 +429,15 @@
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
     <value>Successfully updated trip reservation for</value>
   </data>
+  <data name="GLOBAL_UnitFeatureAddDialogTitle" xml:space="preserve">
+    <value>Add New Unit Feature</value>
+  </data>
+  <data name="GLOBAL_UnitFeatureDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected unit feature?</value>
+  </data>
+  <data name="GLOBAL_UnitFeatureEditDialogTitle" xml:space="preserve">
+    <value>Edit Unit Feature</value>
+  </data>
   <data name="GLOBAL_UnitReservationAddDialogTitle" xml:space="preserve">
     <value>Add New Accommodation Unit Reservation</value>
   </data>
@@ -441,6 +480,42 @@
   <data name="Landing_WelcomeTitle" xml:space="preserve">
     <value>Welcome to "E-Booking"</value>
   </data>
+  <data name="Locations_AddButtonTooltip" xml:space="preserve">
+    <value>Add new location</value>
+  </data>
+  <data name="Locations_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Delete selected locations</value>
+  </data>
+  <data name="Locations_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Locations_GridColumnHeaderCityLabel" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Locations_GridColumnHeaderCountryLabel" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Locations_NoItemsToShowLabel" xml:space="preserve">
+    <value>There are currently no locations to show</value>
+  </data>
+  <data name="Locations_SearchButtonTooltip" xml:space="preserve">
+    <value>Search locations</value>
+  </data>
+  <data name="Locations_SearchFieldHelperText" xml:space="preserve">
+    <value>Find locations...</value>
+  </data>
+  <data name="Locations_SearchFieldHint" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Locations_SubmitCityNameFieldHint" xml:space="preserve">
+    <value>City Name</value>
+  </data>
+  <data name="Locations_SubmitCountryNameFieldHint" xml:space="preserve">
+    <value>Country Name</value>
+  </data>
+  <data name="Locations_Title" xml:space="preserve">
+    <value>Locations codebook...</value>
+  </data>
   <data name="Login_LoginButtonText" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -455,6 +530,9 @@
   </data>
   <data name="Login_UsernameFieldPlaceholder" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="Main_ConfirmExitDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to exit application?</value>
   </data>
   <data name="Main_ExitButtonText" xml:space="preserve">
     <value>EXIT</value>
@@ -543,6 +621,36 @@
   <data name="Settings_ChangePasswordButtonText" xml:space="preserve">
     <value>CHANGE PASSWORD</value>
   </data>
+  <data name="Settings_ChangePasswordCurrentPasswordFieldHint" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="Settings_ChangePasswordNewPasswordFieldHint" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Settings_ChangePasswordRepeatNewPasswordFieldHint" xml:space="preserve">
+    <value>Repeat New Password</value>
+  </data>
+  <data name="Settings_ChangePasswordTitle" xml:space="preserve">
+    <value>Change Your Password</value>
+  </data>
+  <data name="Settings_ChangeUserInfoAdminNameFieldHint" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="Settings_ChangeUserInfoEmployeeFirstNameFieldHint" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Settings_ChangeUserInfoEmployeeLastNameFieldHint" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Settings_ChangeUserInfoPasswordFieldHint" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Settings_ChangeUserInfoTitle" xml:space="preserve">
+    <value>Change Your Informations</value>
+  </data>
+  <data name="Settings_ChangeUserInfoUsernameFieldHint" xml:space="preserve">
+    <value>Username</value>
+  </data>
   <data name="Settings_DisplayNameLabel" xml:space="preserve">
     <value>Name:</value>
   </data>
@@ -563,6 +671,9 @@
   </data>
   <data name="Settings_SaveChangesButtonText" xml:space="preserve">
     <value>Save Changes</value>
+  </data>
+  <data name="Settings_SaveSettingsDialogMessage" xml:space="preserve">
+    <value>Please, save your settings changes before leaving.</value>
   </data>
   <data name="Settings_SaveSettingsReminderText" xml:space="preserve">
     <value>Save is required*</value>
@@ -587,6 +698,36 @@
   </data>
   <data name="sr-Latn" xml:space="preserve">
     <value>Serbian Latin</value>
+  </data>
+  <data name="UnitFeatures_AddButtonTooltip" xml:space="preserve">
+    <value>Add new unit feature</value>
+  </data>
+  <data name="UnitFeatures_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Delete selected unit features</value>
+  </data>
+  <data name="UnitFeatures_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="UnitFeatures_GridColumnHeaderFeatureNameLabel" xml:space="preserve">
+    <value>Feature Name</value>
+  </data>
+  <data name="UnitFeatures_NoItemsToShowLabel" xml:space="preserve">
+    <value>There are currently no unit features to show</value>
+  </data>
+  <data name="UnitFeatures_SearchButtonTooltip" xml:space="preserve">
+    <value>Search unit features</value>
+  </data>
+  <data name="UnitFeatures_SearchFieldHelperText" xml:space="preserve">
+    <value>Find accommodation unit features...</value>
+  </data>
+  <data name="UnitFeatures_SearchFieldHint" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="UnitFeatures_SubmitFeatureNameFieldHint" xml:space="preserve">
+    <value>Feature Name</value>
+  </data>
+  <data name="UnitFeatures_Title" xml:space="preserve">
+    <value>Accommodation Unit Features Codebook...</value>
   </data>
   <data name="UnitReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
     <value>Delete selected unit reservations</value>
