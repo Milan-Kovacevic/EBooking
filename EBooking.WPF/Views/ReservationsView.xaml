@@ -5,9 +5,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Views"
-    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
     mc:Ignorable="d"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     d:DesignHeight="700"
     d:DesignWidth="1100">
     <ScrollViewer
@@ -53,7 +57,7 @@
                                         <TextBlock
                                             Margin="6 0 0 0"
                                             VerticalAlignment="Center"
-                                            Text="UNIT RESERVATIONS"
+                                            Text="{lex:Loc Reservations_UnitsTabItemHeaderText}"
                                             FontWeight="Medium"
                                             FontSize="13" />
                                     </StackPanel>
@@ -79,13 +83,12 @@
                                         TextAlignment="Center"
                                         Foreground="{DynamicResource PrimaryHueLightBrush}"
                                         Style="{DynamicResource MaterialDesignTextBlock}"
-                                        Text="Accommodation Unit Reservations" />
+                                        Text="{lex:Loc Reservations_UnitReservationsTitle}" />
                                 </StackPanel>
                                 <local:UnitsReservationsView
                                     Grid.Row="1"
                                     DataContext="{Binding AccommodationReservationsViewModel}" />
                             </Grid>
-
                         </TabItem>
                         <TabItem>
                             <TabItem.Header>
@@ -106,7 +109,7 @@
                                         <TextBlock
                                             Margin="6 0 0 0"
                                             VerticalAlignment="Center"
-                                            Text="TRIP RESERVATIONS"
+                                            Text="{lex:Loc Reservations_TripsTabItemHeaderText}"
                                             FontWeight="Medium"
                                             FontSize="13" />
                                     </StackPanel>
@@ -132,7 +135,7 @@
                                         TextAlignment="Center"
                                         Foreground="{DynamicResource PrimaryHueLightBrush}"
                                         Style="{DynamicResource MaterialDesignTextBlock}"
-                                        Text="Trip Reservations" />
+                                        Text="{lex:Loc Reservations_TripReservationsTitle}" />
                                 </StackPanel>
                                 <local:TripsReservationsView
                                     Grid.Row="1"

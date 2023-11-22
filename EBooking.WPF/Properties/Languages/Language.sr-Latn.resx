@@ -333,6 +333,9 @@
   <data name="GLOBAL_DialogCancelButtonText" xml:space="preserve">
     <value>OTKAŽI</value>
   </data>
+  <data name="GLOBAL_DialogCloseButtonText" xml:space="preserve">
+    <value>ZATVORI</value>
+  </data>
   <data name="GLOBAL_DialogNoButtonText" xml:space="preserve">
     <value>NE</value>
   </data>
@@ -420,11 +423,20 @@
   <data name="GLOBAL_SuccessfulUserInfoChange" xml:space="preserve">
     <value>Korisničke informacije uspješno promijenjene</value>
   </data>
+  <data name="GLOBAL_TripReservationAddDialogTitle" xml:space="preserve">
+    <value>Dodajte novu rezervaciju putovanja</value>
+  </data>
   <data name="GLOBAL_TripReservationAdded" xml:space="preserve">
     <value>Uspješno dodavanje rezervacije putovanja za</value>
   </data>
   <data name="GLOBAL_TripReservationDeleted" xml:space="preserve">
     <value>Uspješno brisanje rezervacije putovanja za</value>
+  </data>
+  <data name="GLOBAL_TripReservationDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabranu rezervaciju putovanja?</value>
+  </data>
+  <data name="GLOBAL_TripReservationEditDialogTitle" xml:space="preserve">
+    <value>Uredite rezervaciju putovanja</value>
   </data>
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije putovanja za</value>
@@ -615,6 +627,18 @@
   <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
     <value>Korisničko ime</value>
   </data>
+  <data name="Reservations_TripReservationsTitle" xml:space="preserve">
+    <value>Rezervacije letova</value>
+  </data>
+  <data name="Reservations_TripsTabItemHeaderText" xml:space="preserve">
+    <value>REZERVACIJE LETOVA</value>
+  </data>
+  <data name="Reservations_UnitReservationsTitle" xml:space="preserve">
+    <value>Rezervacije smještajnih jedinica</value>
+  </data>
+  <data name="Reservations_UnitsTabItemHeaderText" xml:space="preserve">
+    <value>REZERVACIJE JEDINICA</value>
+  </data>
   <data name="Settings_ChangeInfoButtonText" xml:space="preserve">
     <value>IZMIJENITE KORISNIČKE INFORMACIJE</value>
   </data>
@@ -698,6 +722,99 @@
   </data>
   <data name="sr-Latn" xml:space="preserve">
     <value>Srpski latinica</value>
+  </data>
+  <data name="TripReservations_AddButtonTooltip" xml:space="preserve">
+    <value>Dodaj novu rezervaciju putovanja</value>
+  </data>
+  <data name="TripReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
+    <value>Obriši izabrane rezervacije putovanja</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderActionLabel" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderNumberOfSeatsLabel" xml:space="preserve">
+    <value>Broj sjedišta</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderReservationOnNameLabel" xml:space="preserve">
+    <value>Rezervacija na ime</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderReservedByLabel" xml:space="preserve">
+    <value>Rezervisao</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderTripSummaryLabel" xml:space="preserve">
+    <value>Rezime putovanja</value>
+  </data>
+  <data name="TripReservations_GridColumnHeaderTripTypeLabel" xml:space="preserve">
+    <value>Tip putovanja</value>
+  </data>
+  <data name="TripReservations_NoItemsToShowLabel" xml:space="preserve">
+    <value>Trenutno nema rezervacija putovanja za prikaz</value>
+  </data>
+  <data name="TripReservations_SearchButtonTooltip" xml:space="preserve">
+    <value>Pretraži rezervacije putovanja</value>
+  </data>
+  <data name="TripReservations_SearchFieldHelperText" xml:space="preserve">
+    <value>Pronađi rezervacije putovanja</value>
+  </data>
+  <data name="TripReservations_SearchFieldHint" xml:space="preserve">
+    <value>Pretraga...</value>
+  </data>
+  <data name="TripReservations_SubmitBasicInformationsTitle" xml:space="preserve">
+    <value>Osnovne informacije</value>
+  </data>
+  <data name="TripReservations_SubmitFlightsTitle" xml:space="preserve">
+    <value>Letovi</value>
+  </data>
+  <data name="TripReservations_SubmitNumberOfSeatsFieldHint" xml:space="preserve">
+    <value>Broj sjedišta</value>
+  </data>
+  <data name="TripReservations_SubmitReservationOnNameFieldHint" xml:space="preserve">
+    <value>Rezervacija na ime</value>
+  </data>
+  <data name="TripReservations_SubmitSelectFlightDatePickerHelperText" xml:space="preserve">
+    <value>Koristi se za filtriranje letova koji se prikazuju...</value>
+  </data>
+  <data name="TripReservations_SubmitSelectFlightDatePickerHint" xml:space="preserve">
+    <value>Izaberite datum leta</value>
+  </data>
+  <data name="TripReservations_SubmitSelectFlightToAddComboBoxHelperText" xml:space="preserve">
+    <value>Dodajte let na ovo putovanje...</value>
+  </data>
+  <data name="TripReservations_SubmitSelectFlightToAddComboBoxHint" xml:space="preserve">
+    <value>Izaberite let</value>
+  </data>
+  <data name="TripReservations_SubmitSelectTypeComboBoxHint" xml:space="preserve">
+    <value>Tip putovanja</value>
+  </data>
+  <data name="TripReservations_SubmitTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena:</value>
+  </data>
+  <data name="TripReservation_DetailsNumberOfSeatsLabel" xml:space="preserve">
+    <value>Broj sjedišta</value>
+  </data>
+  <data name="TripReservation_DetailsReservationOnNameLabel" xml:space="preserve">
+    <value>Rezervacije na ime:</value>
+  </data>
+  <data name="TripReservation_DetailsReservedByLabel" xml:space="preserve">
+    <value>Rezervisao:</value>
+  </data>
+  <data name="TripReservation_DetailsTitle" xml:space="preserve">
+    <value>Detalji o rezervaciji putovanja</value>
+  </data>
+  <data name="TripReservation_DetailsTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena:</value>
+  </data>
+  <data name="TripReservation_DetailsTripTypeLabel" xml:space="preserve">
+    <value>Tip putovanja:</value>
+  </data>
+  <data name="TripReservation_FlightsListExpanderHeaderText" xml:space="preserve">
+    <value>Lista letova</value>
+  </data>
+  <data name="TripReservation_FlightsListExpanderNoItemsLabel" xml:space="preserve">
+    <value>Nema dodatih letova...</value>
   </data>
   <data name="UnitFeatures_AddButtonTooltip" xml:space="preserve">
     <value>Dodaj novu karakteristiku</value>

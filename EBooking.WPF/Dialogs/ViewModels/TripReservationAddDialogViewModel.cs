@@ -27,13 +27,13 @@ namespace EBooking.WPF.Dialogs.ViewModels
         private string dialogTitle;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private string onName;
 
         [ObservableProperty]
-        [Required(ErrorMessage = "!")]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidatePositiveIntegerNumber))]
@@ -78,7 +78,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _userStore = userStore;
 
             SubmitCommand = new AsyncRelayCommand(Submit, CanSubmit);
-            dialogTitle = "Create Trip Reservation";
+            dialogTitle = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_ADD_DIALOG_TITLE);
             TripTypes = new List<TripTypeModel>()
             {
                 new TripTypeModel(TripType.ONE_WAY),

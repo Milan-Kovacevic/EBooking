@@ -60,6 +60,9 @@ namespace EBooking.WPF.Utility
             { MessageType.UNIT_FEATURE_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureAddDialogTitle" },
             { MessageType.UNIT_FEATURE_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureEditDialogTitle" },
             { MessageType.UNIT_FEATURE_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "UnitFeatureDeleteDialogMessage" },
+            { MessageType.TRIP_RESERVATION_ADD_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationAddDialogTitle" },
+            { MessageType.TRIP_RESERVATION_EDIT_DIALOG_TITLE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationEditDialogTitle" },
+            { MessageType.TRIP_RESERVATION_DELETE_DIALOG_MESSAGE, GLOBAL_LANGUAGE_DICTIONARY_PREFIX + "TripReservationDeleteDialogMessage" },
         };
 
         public enum MessageType
@@ -113,6 +116,9 @@ namespace EBooking.WPF.Utility
             UNIT_FEATURE_ADD_DIALOG_TITLE,
             UNIT_FEATURE_EDIT_DIALOG_TITLE,
             UNIT_FEATURE_DELETE_DIALOG_MESSAGE,
+            TRIP_RESERVATION_ADD_DIALOG_TITLE,
+            TRIP_RESERVATION_EDIT_DIALOG_TITLE,
+            TRIP_RESERVATION_DELETE_DIALOG_MESSAGE,
         }
 
         public static string Translate(MessageType message)

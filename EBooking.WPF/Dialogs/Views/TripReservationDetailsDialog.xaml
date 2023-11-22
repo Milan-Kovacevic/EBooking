@@ -6,9 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
     xmlns:components="clr-namespace:EBooking.WPF.Components"
-    mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    FontFamily="{DynamicResource MaterialDesignFont}">
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
     <Grid
         Margin="10 20"
         MinWidth="500"
@@ -26,7 +30,7 @@
             Margin="25 10 25 16"
             Grid.Row="0"
             FontWeight="Regular"
-            Text="Trip Reservation Details"
+            Text="{lex:Loc TripReservation_DetailsTitle}"
             FontSize="25"
             HorizontalAlignment="Center"
             Foreground="{DynamicResource PrimaryHueLightBrush}"
@@ -55,7 +59,7 @@
                                 Margin="2 0 6 0"
                                 VerticalAlignment="Center" />
                             <TextBlock
-                                Text="Reservation on name: "
+                                Text="{lex:Loc TripReservation_DetailsReservationOnNameLabel}"
                                 FontSize="14"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource SecondaryHueMidBrush}" />
@@ -71,7 +75,7 @@
                                 Margin="2 0 6 0"
                                 VerticalAlignment="Center" />
                             <TextBlock
-                                Text="Trip Type: "
+                                Text="{lex:Loc TripReservation_DetailsTripTypeLabel}"
                                 FontSize="14"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource SecondaryHueMidBrush}" />
@@ -87,7 +91,7 @@
                                 Margin="2 0 6 0"
                                 VerticalAlignment="Center" />
                             <TextBlock
-                                Text="Number of seats: "
+                                Text="{lex:Loc TripReservation_DetailsNumberOfSeatsLabel}"
                                 FontSize="14"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource SecondaryHueMidBrush}" />
@@ -103,7 +107,7 @@
                                 Margin="2 0 6 0"
                                 VerticalAlignment="Center" />
                             <TextBlock
-                                Text="Reserved by: "
+                                Text="{lex:Loc TripReservation_DetailsReservedByLabel}"
                                 FontSize="14"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource SecondaryHueMidBrush}" />
@@ -159,7 +163,7 @@
                     Margin="0 16 0 0"
                     Orientation="Horizontal">
                     <TextBlock
-                        Text="Total Price: "
+                        Text="{lex:Loc TripReservation_DetailsTotalPriceLabel}"
                         FontSize="15"
                         Margin="0 0 3 0"
                         VerticalAlignment="Center"
@@ -186,8 +190,8 @@
                 DataContext="{Binding}"
                 Grid.Row="2"
                 MaxWidth="460"
+                MaxHeight="200"
                 HorizontalAlignment="Stretch"
-                Height="190"
                 Margin="2 14 12 0" />
         </StackPanel>
 
@@ -201,7 +205,7 @@
                 MinWidth="180"
                 FontSize="14"
                 Margin="8 0 0 0"
-                Content="CLOSE"
+                Content="{lex:Loc GLOBAL_DialogCloseButtonText}"
                 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                 IsCancel="True"
                 Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}" />

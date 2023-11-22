@@ -709,6 +709,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CLOSE.
+        /// </summary>
+        internal static string GLOBAL_DialogCloseButtonText {
+            get {
+                return ResourceManager.GetString("GLOBAL_DialogCloseButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string GLOBAL_DialogNoButtonText {
@@ -970,6 +979,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Trip Reservation.
+        /// </summary>
+        internal static string GLOBAL_TripReservationAddDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationAddDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added trip reservation for.
         /// </summary>
         internal static string GLOBAL_TripReservationAdded {
@@ -984,6 +1002,24 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string GLOBAL_TripReservationDeleted {
             get {
                 return ResourceManager.GetString("GLOBAL_TripReservationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected trip reservation?.
+        /// </summary>
+        internal static string GLOBAL_TripReservationDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Trip Reservation.
+        /// </summary>
+        internal static string GLOBAL_TripReservationEditDialogTitle {
+            get {
+                return ResourceManager.GetString("GLOBAL_TripReservationEditDialogTitle", resourceCulture);
             }
         }
         
@@ -1555,6 +1591,42 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trip Reservations.
+        /// </summary>
+        internal static string Reservations_TripReservationsTitle {
+            get {
+                return ResourceManager.GetString("Reservations_TripReservationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TRIP RESERVATIONS.
+        /// </summary>
+        internal static string Reservations_TripsTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Reservations_TripsTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodation Units Reservations.
+        /// </summary>
+        internal static string Reservations_UnitReservationsTitle {
+            get {
+                return ResourceManager.GetString("Reservations_UnitReservationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UNIT RESERVATIONS.
+        /// </summary>
+        internal static string Reservations_UnitsTabItemHeaderText {
+            get {
+                return ResourceManager.GetString("Reservations_UnitsTabItemHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE USER INFORMATIONS.
         /// </summary>
         internal static string Settings_ChangeInfoButtonText {
@@ -1803,6 +1875,285 @@ namespace EBooking.WPF.Properties.Languages {
         internal static string sr_Latn {
             get {
                 return ResourceManager.GetString("sr-Latn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Seats:.
+        /// </summary>
+        internal static string TripReservation_DetailsNumberOfSeatsLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsNumberOfSeatsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name:.
+        /// </summary>
+        internal static string TripReservation_DetailsReservationOnNameLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsReservationOnNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved By:.
+        /// </summary>
+        internal static string TripReservation_DetailsReservedByLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsReservedByLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Reservation Details.
+        /// </summary>
+        internal static string TripReservation_DetailsTitle {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price:.
+        /// </summary>
+        internal static string TripReservation_DetailsTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsTotalPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Type:.
+        /// </summary>
+        internal static string TripReservation_DetailsTripTypeLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_DetailsTripTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flight list.
+        /// </summary>
+        internal static string TripReservation_FlightsListExpanderHeaderText {
+            get {
+                return ResourceManager.GetString("TripReservation_FlightsListExpanderHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no flights added....
+        /// </summary>
+        internal static string TripReservation_FlightsListExpanderNoItemsLabel {
+            get {
+                return ResourceManager.GetString("TripReservation_FlightsListExpanderNoItemsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new trip reservation.
+        /// </summary>
+        internal static string TripReservations_AddButtonTooltip {
+            get {
+                return ResourceManager.GetString("TripReservations_AddButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected trip reservations.
+        /// </summary>
+        internal static string TripReservations_DeleteSelectedButtonTooltip {
+            get {
+                return ResourceManager.GetString("TripReservations_DeleteSelectedButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderActionLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Seats.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderNumberOfSeatsLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderNumberOfSeatsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderReservationOnNameLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderReservationOnNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved By.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderReservedByLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderReservedByLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderTotalPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Summary.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderTripSummaryLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderTripSummaryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Type.
+        /// </summary>
+        internal static string TripReservations_GridColumnHeaderTripTypeLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_GridColumnHeaderTripTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently no trip reservations to show.
+        /// </summary>
+        internal static string TripReservations_NoItemsToShowLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_NoItemsToShowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search trip reservations.
+        /// </summary>
+        internal static string TripReservations_SearchButtonTooltip {
+            get {
+                return ResourceManager.GetString("TripReservations_SearchButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find trip reservations....
+        /// </summary>
+        internal static string TripReservations_SearchFieldHelperText {
+            get {
+                return ResourceManager.GetString("TripReservations_SearchFieldHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string TripReservations_SearchFieldHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SearchFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Informations.
+        /// </summary>
+        internal static string TripReservations_SubmitBasicInformationsTitle {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitBasicInformationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flights.
+        /// </summary>
+        internal static string TripReservations_SubmitFlightsTitle {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitFlightsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Seats.
+        /// </summary>
+        internal static string TripReservations_SubmitNumberOfSeatsFieldHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitNumberOfSeatsFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name.
+        /// </summary>
+        internal static string TripReservations_SubmitReservationOnNameFieldHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitReservationOnNameFieldHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Used to fliter flights that are dispalyed....
+        /// </summary>
+        internal static string TripReservations_SubmitSelectFlightDatePickerHelperText {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitSelectFlightDatePickerHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Flight Date.
+        /// </summary>
+        internal static string TripReservations_SubmitSelectFlightDatePickerHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitSelectFlightDatePickerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add flight to this trip....
+        /// </summary>
+        internal static string TripReservations_SubmitSelectFlightToAddComboBoxHelperText {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitSelectFlightToAddComboBoxHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Flight.
+        /// </summary>
+        internal static string TripReservations_SubmitSelectFlightToAddComboBoxHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitSelectFlightToAddComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Type.
+        /// </summary>
+        internal static string TripReservations_SubmitSelectTypeComboBoxHint {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitSelectTypeComboBoxHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price:.
+        /// </summary>
+        internal static string TripReservations_SubmitTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("TripReservations_SubmitTotalPriceLabel", resourceCulture);
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EBooking.WPF.Services;
+using EBooking.WPF.Utility;
 using EBooking.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         public TripReservationDeleteDialogViewModel(TripReservationService tripReservationService, DialogHostService dialogHostService)
         {
-            messageText = "Are you sure you want to delete selected trip reservation?";
+            messageText = LanguageTranslator.Translate(LanguageTranslator.MessageType.TRIP_RESERVATION_DELETE_DIALOG_MESSAGE);
             _tripReservationService = tripReservationService;
             _dialogHostService = dialogHostService;
         }

@@ -5,9 +5,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Components"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d"
     Validation.ErrorTemplate="{x:Null}"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800">
     <Expander
@@ -21,7 +26,7 @@
         Padding="0">
         <Expander.Header>
             <TextBlock
-                Text="Flight List"
+                Text="{lex:Loc TripReservation_FlightsListExpanderHeaderText}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="13"
@@ -37,7 +42,7 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center">
                 <TextBlock
-                    Text="There are no flights added"
+                    Text="{lex:Loc TripReservation_FlightsListExpanderNoItemsLabel}"
                     Margin="0 50 0 0"
                     FontWeight="Medium"
                     FontSize="15"
