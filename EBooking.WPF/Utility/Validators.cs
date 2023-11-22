@@ -31,13 +31,33 @@ namespace EBooking.WPF.Utility
             return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.FUTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
         }
 
-        public static ValidationResult? ValidateReservationFromDate(DateTime date, ValidationContext context)
+        public static ValidationResult? ValidateFutureDate(DateTime date, ValidationContext context)
         {
             var isValid = date >= DateTime.Now.Date;
             if (isValid)
                 return ValidationResult.Success;
 
             return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.FUTURE_DATE_REQUIRED_PROPERTY_MESSAGE));
+        }
+
+        public static ValidationResult? ValidateReservationFromDateOnAdd(DateTime date, ValidationContext context)
+        {
+            var instance = (UnitReservationAddDialogViewModel)context.ObjectInstance;
+            var isValid = date >= DateTime.Now.Date && date >= instance.SelectedUnit?.AvailableFrom;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_FROM_DATE_VALIDATION_MESSAGE));
+        }
+
+        public static ValidationResult? ValidateReservationFromDateOnEdit(DateTime date, ValidationContext context)
+        {
+            var instance = (UnitReservationEditDialogViewModel)context.ObjectInstance;
+            var isValid = date >= DateTime.Now.Date && date >= instance.SelectedUnit?.AvailableFrom;
+            if (isValid)
+                return ValidationResult.Success;
+
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_FROM_DATE_VALIDATION_MESSAGE));
         }
 
         public static ValidationResult? ValidateDepartureDate(DateTime date, ValidationContext context)
@@ -72,21 +92,21 @@ namespace EBooking.WPF.Utility
         public static ValidationResult? ValidateReservationToDateOnAdd(DateTime date, ValidationContext context)
         {
             var instance = (UnitReservationAddDialogViewModel)context.ObjectInstance;
-            var isValid = date > instance.ReservationFrom;
+            var isValid = date > instance.ReservationFrom && date <= instance.SelectedUnit?.AvailableTo;
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_TO_DATE_VALIDATION_MESSAGE));
         }
 
         public static ValidationResult? ValidateReservationToDateOnEdit(DateTime date, ValidationContext context)
         {
             var instance = (UnitReservationEditDialogViewModel)context.ObjectInstance;
-            var isValid = date > instance.ReservationFrom;
+            var isValid = date > instance.ReservationFrom && date <= instance.SelectedUnit?.AvailableTo;
             if (isValid)
                 return ValidationResult.Success;
 
-            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.GREATER_THAN_FROM_DATE_REQUIRED_PROPERTY_MESSAGE));
+            return new ValidationResult(LanguageTranslator.Translate(LanguageTranslator.MessageType.UNIT_RESERVATION_TO_DATE_VALIDATION_MESSAGE));
         }
 
         public static ValidationResult? ValidateArrivalDateOnAdd(DateTime date, ValidationContext context)

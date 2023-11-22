@@ -1105,6 +1105,24 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date must be greater than or equal to the &quot;unit&apos;s availability from&quot; date.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationFromDateValidationMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationFromDateValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date must be less than or equal to the &quot;unit&apos;s availability to&quot; date.
+        /// </summary>
+        internal static string GLOBAL_UnitReservationToDateValidationMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_UnitReservationToDateValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully updated unit reservation for.
         /// </summary>
         internal static string GLOBAL_UnitReservationUpdated {

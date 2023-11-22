@@ -27,7 +27,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         [ObservableProperty]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDate))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDateOnAdd))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? reservationFrom;
@@ -68,9 +68,10 @@ namespace EBooking.WPF.Dialogs.ViewModels
         [ObservableProperty]
         private string totalPrice;
 
-        public string UnitName { get; }
-        public string UnitAvailability { get; }
-        public decimal PricePerNight { get; }
+        public AccommodationUnit? SelectedUnit { get; }
+        public string UnitName { get => SelectedUnit?.Name ?? string.Empty; }
+        public string UnitAvailability { get => $"{SelectedUnit?.AvailableFrom.ToLongDateString()} - {SelectedUnit?.AvailableTo.ToLongDateString()}"; }
+        public decimal PricePerNight { get => SelectedUnit?.PricePerNight ?? 0.0m; }
 
         public IRelayCommand SubmitCommand { get; }
         private readonly UnitReservationService _unitReservationService;
@@ -93,10 +94,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
             numberOfAdults = string.Empty;
             numberOfChildren = string.Empty;
             totalPrice = "0.0";
-            var accommodationUnit = accommodationUnitStore.SelectedAccommodationUnit;
-            PricePerNight = accommodationUnit?.PricePerNight ?? 0.0m;
-            UnitName = accommodationUnit?.Name ?? string.Empty;
-            UnitAvailability = $"{accommodationUnit?.AvailableFrom.ToLongDateString()} - {accommodationUnit?.AvailableTo.ToLongDateString()}";
+            SelectedUnit = accommodationUnitStore.SelectedAccommodationUnit;
         }
 
         private bool CanSubmit()

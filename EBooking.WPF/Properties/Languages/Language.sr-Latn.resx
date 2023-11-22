@@ -465,6 +465,12 @@
   <data name="GLOBAL_UnitReservationEditDialogTitle" xml:space="preserve">
     <value>Uredite rezervaciju smještajne jedinice</value>
   </data>
+  <data name="GLOBAL_UnitReservationFromDateValidationMessage" xml:space="preserve">
+    <value>Datum mora biti veći ili jednak datumu "dostupnosti od"  jedinice</value>
+  </data>
+  <data name="GLOBAL_UnitReservationToDateValidationMessage" xml:space="preserve">
+    <value>Datum mora biti manji ili jednak datumu "dostupnosti do" jedinice</value>
+  </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
     <value>Uspješna izmjena rezervacije smještaja za</value>
   </data>

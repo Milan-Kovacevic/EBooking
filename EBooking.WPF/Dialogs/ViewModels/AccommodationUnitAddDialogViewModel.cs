@@ -33,7 +33,7 @@ namespace EBooking.WPF.Dialogs.ViewModels
 
         [ObservableProperty]
         [CustomValidation(typeof(Validators), nameof(Validators.ValidateRequiredProperty))]
-        [CustomValidation(typeof(Validators), nameof(Validators.ValidateReservationFromDate))]
+        [CustomValidation(typeof(Validators), nameof(Validators.ValidateFutureDate))]
         [NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
         [NotifyDataErrorInfo]
         private DateTime? availableFrom;
