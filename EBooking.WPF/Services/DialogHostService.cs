@@ -41,6 +41,7 @@ namespace EBooking.WPF.Services
         private readonly DialogNavigationService _navigateToTripReservationEditDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationDeleteDialogViewModel;
         private readonly DialogNavigationService _navigateToTripReservationDetailsDialogViewModel;
+        private readonly DialogNavigationService _navigateToUnitReservationDetailsDialogViewModel;
 
         public DialogHostService(
             DialogNavigationService navigateToExitApplicationDialogViewModel,
@@ -69,7 +70,8 @@ namespace EBooking.WPF.Services
             DialogNavigationService navigateToTripReservationEditDialogViewModel,
             DialogNavigationService navigateToTripReservationDeleteDialogViewModel,
             DialogNavigationService navigateToChangeUserInfoDialogViewModel,
-            DialogNavigationService navigateToTripReservationDetailsDialogViewModel)
+            DialogNavigationService navigateToTripReservationDetailsDialogViewModel,
+            DialogNavigationService navigateToUnitReservationDetailsDialogViewModel)
         {
             _navigateToExitApplicationDialogViewModel = navigateToExitApplicationDialogViewModel;
             _navigateToLocationDeleteDialogViewModel = navigateToLocationDeleteDialogViewModel;
@@ -98,6 +100,7 @@ namespace EBooking.WPF.Services
             _navigateToTripReservationDeleteDialogViewModel = navigateToTripReservationDeleteDialogViewModel;
             _navigateToChangeUserInfoDialogViewModel = navigateToChangeUserInfoDialogViewModel;
             _navigateToTripReservationDetailsDialogViewModel = navigateToTripReservationDetailsDialogViewModel;
+            _navigateToUnitReservationDetailsDialogViewModel = navigateToUnitReservationDetailsDialogViewModel;
         }
 
         public void OpenExitApplicationDialog()
@@ -215,24 +218,29 @@ namespace EBooking.WPF.Services
             _navigateToChangeUserInfoDialogViewModel.Navigate();
         }
 
-        public void OpenTripReservationAdd()
+        public void OpenTripReservationAddDialog()
         {
             _navigateToTripReservationAddDialogViewModel.Navigate();
         }
 
-        public void OpenTripReservationEdit()
+        public void OpenTripReservationEditDialog()
         {
             _navigateToTripReservationEditDialogViewModel.Navigate();
         }
 
-        public void OpenTripReservationDelete()
+        public void OpenTripReservationDeleteDialog()
         {
             _navigateToTripReservationDeleteDialogViewModel.Navigate();
         }
 
-        public void OpenTripReservationDetails()
+        public void OpenTripReservationDetailsDialog()
         {
             _navigateToTripReservationDetailsDialogViewModel.Navigate();
+        }
+
+        public void OpenUnitReservationDetailsDialog()
+        {
+            _navigateToUnitReservationDetailsDialogViewModel.Navigate();
         }
 
         public void CloseDialogHost()

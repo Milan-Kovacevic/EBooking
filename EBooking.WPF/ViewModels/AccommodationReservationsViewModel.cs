@@ -184,6 +184,12 @@ namespace EBooking.WPF.ViewModels
             await Task.WhenAll(tasks);
             IsAllItemsSelected = false;
         }
+
+        public void ShowReservationDetailsFor(UnitReservationItemViewModel selectedItem)
+        {
+            _unitReservationService.SetSelectedUnitReservation(selectedItem.UnitReservationId);
+            _dialogHostService.OpenUnitReservationDetailsDialog();
+        }
         #endregion
 
         #region ViewModel Helper Functions

@@ -170,6 +170,10 @@
             DataType="{x:Type dialogVms:TripReservationDetailsDialogViewModel}">
             <dialogViews:TripReservationDetailsDialog />
         </DataTemplate>
+        <DataTemplate
+            DataType="{x:Type dialogVms:UnitReservationDetailsDialogViewModel}">
+            <dialogViews:UnitReservationDetailsDialog />
+        </DataTemplate>
 
         <Style
             x:Key="DisabledMenuItemStyle"

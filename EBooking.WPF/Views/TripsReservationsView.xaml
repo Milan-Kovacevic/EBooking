@@ -146,7 +146,7 @@
             </TextBlock>
         </materialDesign:ColorZone>
         <DataGrid
-            x:Name="UnitReservationsDataGrid"
+            x:Name="TripReservationsDataGrid"
             Grid.Row="1"
             TextSearch.Text="{Binding SearchText}"
             Margin="20 15 20 20"
@@ -165,7 +165,7 @@
             materialDesign:DataGridAssist.ColumnHeaderPadding="14 12 14 8"
             materialDesign:DataGridAssist.CellPadding="14 6 14 6"
             ItemsSource="{Binding TripReservations}"
-            MouseDoubleClick="UnitReservationsDataGrid_MouseDoubleClick"
+            MouseDoubleClick="TripReservationsDataGrid_MouseDoubleClick"
             SelectionUnit="FullRow">
             <DataGrid.Style>
                 <Style

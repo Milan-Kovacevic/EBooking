@@ -153,7 +153,7 @@ namespace EBooking.WPF.ViewModels
         [RelayCommand]
         public void AddTripReservation()
         {
-            _dialogHostService.OpenTripReservationAdd();
+            _dialogHostService.OpenTripReservationAddDialog();
         }
 
         [RelayCommand]
@@ -162,7 +162,7 @@ namespace EBooking.WPF.ViewModels
             if (param is not TripReservationItemViewModel vm)
                 return;
             _tripReservationService.SetSelectedTripReservation(vm.TripReservationId);
-            _dialogHostService.OpenTripReservationEdit();
+            _dialogHostService.OpenTripReservationEditDialog();
         }
 
         [RelayCommand]
@@ -171,7 +171,7 @@ namespace EBooking.WPF.ViewModels
             if (param is not TripReservationItemViewModel vm)
                 return;
             _tripReservationService.SetSelectedTripReservation(vm.TripReservationId);
-            _dialogHostService.OpenTripReservationDelete();
+            _dialogHostService.OpenTripReservationDeleteDialog();
         }
 
         [RelayCommand]
@@ -196,11 +196,10 @@ namespace EBooking.WPF.ViewModels
             IsAllItemsSelected = false;
         }
 
-
         public void ShowReservationDetailsFor(TripReservationItemViewModel selectedItem)
         {
             _tripReservationService.SetSelectedTripReservation(selectedItem.TripReservationId);
-            _dialogHostService.OpenTripReservationDetails();
+            _dialogHostService.OpenTripReservationDetailsDialog();
         }
         #endregion
 

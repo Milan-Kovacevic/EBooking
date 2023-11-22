@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EBooking.WPF.ItemViewModels;
+using EBooking.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,25 @@ namespace EBooking.WPF.Views
         public UnitsReservationsView()
         {
             InitializeComponent();
+        }
+
+        private void UnitReservationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                var dataGrid = (DataGrid)sender;
+                var selectedRowItem = dataGrid.SelectedItem;
+
+                // Check if an item is selected
+                if (selectedRowItem != null && dataGrid.CurrentColumn is not DataGridCheckBoxColumn && dataGrid.CurrentColumn is not DataGridTemplateColumn)
+                {
+                    var selectedData = (UnitReservationItemViewModel)selectedRowItem;
+                    if (DataContext is AccommodationReservationsViewModel vm1)
+                        vm1.ShowReservationDetailsFor(selectedData);
+                    else if (DataContext is UnitReservationsViewModel vm2)
+                        vm2.ShowReservationDetailsFor(selectedData);
+                }
+            }
         }
     }
 }

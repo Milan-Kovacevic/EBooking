@@ -912,4 +912,43 @@
   <data name="UnitReservations_SubmitUnitNameLabel" xml:space="preserve">
     <value>Naziv odabrane jedinice:</value>
   </data>
+  <data name="UnitReservation_DetailsNumberOfPeopleLabel" xml:space="preserve">
+    <value>Broj ljudi:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationFromLabel" xml:space="preserve">
+    <value>Rezervisano od:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationOnNameLabel" xml:space="preserve">
+    <value>Rezervacija na ime:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationToLabel" xml:space="preserve">
+    <value>Rezervisano do:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservedByLabel" xml:space="preserve">
+    <value>Rezervisao:</value>
+  </data>
+  <data name="UnitReservation_DetailsTitle" xml:space="preserve">
+    <value>Detalji o rezervaciji smještajne jedinice</value>
+  </data>
+  <data name="UnitReservation_DetailsTotalPriceLabel" xml:space="preserve">
+    <value>Ukupna cijena:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitAvailableFromLabel" xml:space="preserve">
+    <value>Dostupno od:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitAvailableToLabel" xml:space="preserve">
+    <value>Dostupno do:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitDetailsTitleLabel" xml:space="preserve">
+    <value>Detalji smještajne jedinice:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitNameLabel" xml:space="preserve">
+    <value>Naziv jedinice:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitNumberOfBedsLabel" xml:space="preserve">
+    <value>Broj kreveta:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitPricePerNightLabel" xml:space="preserve">
+    <value>Cijena po noći:</value>
+  </data>
 </root>

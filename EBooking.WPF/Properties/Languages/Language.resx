@@ -912,4 +912,43 @@
   <data name="UnitReservations_SubmitUnitNameLabel" xml:space="preserve">
     <value>Selected Unit Name:</value>
   </data>
+  <data name="UnitReservation_DetailsNumberOfPeopleLabel" xml:space="preserve">
+    <value>Number Of People:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationFromLabel" xml:space="preserve">
+    <value>Reservation From:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationOnNameLabel" xml:space="preserve">
+    <value>Reservation On Name:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservationToLabel" xml:space="preserve">
+    <value>Reservation To:</value>
+  </data>
+  <data name="UnitReservation_DetailsReservedByLabel" xml:space="preserve">
+    <value>Reserved By:</value>
+  </data>
+  <data name="UnitReservation_DetailsTitle" xml:space="preserve">
+    <value>Unit Reservation Details</value>
+  </data>
+  <data name="UnitReservation_DetailsTotalPriceLabel" xml:space="preserve">
+    <value>Total Price:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitAvailableFromLabel" xml:space="preserve">
+    <value>Available From:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitAvailableToLabel" xml:space="preserve">
+    <value>Available To:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitDetailsTitleLabel" xml:space="preserve">
+    <value>Accommodation Unit Details:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitNameLabel" xml:space="preserve">
+    <value>Unit Name:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitNumberOfBedsLabel" xml:space="preserve">
+    <value>Number Of Beds:</value>
+  </data>
+  <data name="UnitReservation_DetailsUnitPricePerNightLabel" xml:space="preserve">
+    <value>Price Per Night:</value>
+  </data>
 </root>

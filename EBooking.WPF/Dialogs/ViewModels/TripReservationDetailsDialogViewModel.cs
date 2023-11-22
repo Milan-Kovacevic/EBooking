@@ -16,16 +16,18 @@ namespace EBooking.WPF.Dialogs.ViewModels
 {
     public partial class TripReservationDetailsDialogViewModel : ObservableObject, IViewModelBase
     {
-        public string OnName { get; set; }
-        public string TripType { get; set; }
-        public string NumberOfSeats { get; set; }
-        public string ReservedBy { get; set; }
-        public string TotalPrice { get; set; }
+        public string OnName { get; }
+        public string TripType { get; }
+        public string NumberOfSeats { get; }
+        public string ReservedBy { get; }
+        public string TotalPrice { get; }
 
         private readonly List<FlightModel> _flights;
         public ListCollectionView AddedFlightsCollection { get; }
         [ObservableProperty]
         private int selectedAddedFlightIndex;
+
+        private readonly static string DETAILS_PLACEHOLDER_VALUE = "-";
 
         public TripReservationDetailsDialogViewModel(TripReservationService tripReservationService)
         {
@@ -33,9 +35,9 @@ namespace EBooking.WPF.Dialogs.ViewModels
             _flights = new List<FlightModel>(tripReservation?.Flights.Select(x => Mapper.Map(x).ToANew<FlightModel>()) ?? Array.Empty<FlightModel>());
             AddedFlightsCollection = new ListCollectionView(_flights);
 
-            OnName = tripReservation?.OnName ?? string.Empty;
-            NumberOfSeats = tripReservation?.NumberOfSeats.ToString() ?? string.Empty;
-            TripType = tripReservation?.Type.ToString().ToLower().Replace('_', ' ') ?? string.Empty;
+            OnName = tripReservation?.OnName ?? DETAILS_PLACEHOLDER_VALUE;
+            NumberOfSeats = tripReservation?.NumberOfSeats.ToString() ?? DETAILS_PLACEHOLDER_VALUE;
+            TripType = tripReservation?.Type.ToString().ToLower().Replace('_', ' ') ?? DETAILS_PLACEHOLDER_VALUE;
             TotalPrice = tripReservation?.TotalPrice.ToString() ?? "0.0";
             ReservedBy = $"{tripReservation?.Employee?.FirstName} {tripReservation?.Employee?.LastName}";
             selectedAddedFlightIndex = -1;

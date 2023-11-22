@@ -27,7 +27,7 @@ namespace EBooking.WPF.Views
             InitializeComponent();
         }
 
-        private void UnitReservationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void TripReservationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left && DataContext is TripReservationsViewModel vm)
             {

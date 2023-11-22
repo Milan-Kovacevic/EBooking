@@ -2248,6 +2248,123 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number Of People:.
+        /// </summary>
+        internal static string UnitReservation_DetailsNumberOfPeopleLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsNumberOfPeopleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation From:.
+        /// </summary>
+        internal static string UnitReservation_DetailsReservationFromLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsReservationFromLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation On Name:.
+        /// </summary>
+        internal static string UnitReservation_DetailsReservationOnNameLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsReservationOnNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation To:.
+        /// </summary>
+        internal static string UnitReservation_DetailsReservationToLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsReservationToLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved By:.
+        /// </summary>
+        internal static string UnitReservation_DetailsReservedByLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsReservedByLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Reservation Details.
+        /// </summary>
+        internal static string UnitReservation_DetailsTitle {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price:.
+        /// </summary>
+        internal static string UnitReservation_DetailsTotalPriceLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsTotalPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available From:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitAvailableFromLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitAvailableFromLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available To:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitAvailableToLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitAvailableToLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accommodation Unit Details:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitDetailsTitleLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitDetailsTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Name:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitNameLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Beds:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitNumberOfBedsLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitNumberOfBedsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price Per Night:.
+        /// </summary>
+        internal static string UnitReservation_DetailsUnitPricePerNightLabel {
+            get {
+                return ResourceManager.GetString("UnitReservation_DetailsUnitPricePerNightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete selected unit reservations.
         /// </summary>
         internal static string UnitReservations_DeleteSelectedButtonTooltip {

@@ -82,6 +82,7 @@ namespace EBooking.WPF
         private readonly DialogNavigationService navigateToTripReservationEditDialogViewModel;
         private readonly DialogNavigationService navigateToTripReservationDeleteDialogViewModel;
         private readonly DialogNavigationService navigateToTripReservationDetailsDialogViewModel;
+        private readonly DialogNavigationService navigateToUnitReservationDetailsDialogViewModel;
         private readonly IGenericDAOFactory daoFactory;
         private readonly string _connectionString;
 
@@ -147,7 +148,8 @@ namespace EBooking.WPF
             navigateToTripReservationEditDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationEditDialogViewModel);
             navigateToTripReservationDeleteDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationDeleteDialogViewModel);
             navigateToTripReservationDetailsDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateTripReservationDetailsDialogViewModel);
-            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel, navigateToChangePasswordDialogViewModel, navigateToTripReservationAddDialogViewModel, navigateToTripReservationEditDialogViewModel, navigateToTripReservationDeleteDialogViewModel, navigateToChangeUserInfoDialogViewModel, navigateToTripReservationDetailsDialogViewModel);
+            navigateToUnitReservationDetailsDialogViewModel = new DialogNavigationService(dialogNavigationStore, CreateUnitReservationDetailsDialogViewModel);
+            dialogHostService = new DialogHostService(navigateToExitApplicationDialogViewModel, navigateToLocationDeleteDialogViewModel, navigateToLocationAddDialogViewModel, navigateToLocationEditDialogViewModel, navigateToUnitFeatureDeleteDialogViewModel, navigateToUnitFeatureAddDialogViewModel, navigateToUnitFeatureEditDialogViewModel, navigateToMultiDeleteDialogViewModel, navigateToAccommodationAddDialogViewModel, navigateToAccommodationEditDialogViewModel, navigateToAccommodationDeleteDialogViewModel, navigateToAccommodationUnitAddDialogViewModel, navigateToAccommodationUnitDeleteDialogViewModel, navigateToAccommodationUnitEditDialogViewModel, navigateToUnitReservationAddDialogViewModel, navigateToUnitReservationEditDialogViewModel, navigateToUnitReservationDeleteDialogViewModel, navigateToSaveSettingsDialogViewModel, navigateToFlightAddDialogViewModel, navigateToFlightEditDialogViewModel, navigateToFlightDeleteDialogViewModel, navigateToChangePasswordDialogViewModel, navigateToTripReservationAddDialogViewModel, navigateToTripReservationEditDialogViewModel, navigateToTripReservationDeleteDialogViewModel, navigateToChangeUserInfoDialogViewModel, navigateToTripReservationDetailsDialogViewModel, navigateToUnitReservationDetailsDialogViewModel);
         }
 
         private async void InitStores()
@@ -375,6 +377,10 @@ namespace EBooking.WPF
         public TripReservationDetailsDialogViewModel CreateTripReservationDetailsDialogViewModel()
         {
             return new TripReservationDetailsDialogViewModel(tripReservationService);
+        }
+        public UnitReservationDetailsDialogViewModel CreateUnitReservationDetailsDialogViewModel()
+        {
+            return new UnitReservationDetailsDialogViewModel(unitReservationService);
         }
         #endregion
     }
