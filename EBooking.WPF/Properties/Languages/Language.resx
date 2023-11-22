@@ -327,6 +327,9 @@
   <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
     <value>Successfully updated accommodation</value>
   </data>
+  <data name="GLOBAL_ConfirmMultiDeleteDialogMessage" xml:space="preserve">
+    <value>Are you sure you want to delete selected items?</value>
+  </data>
   <data name="GLOBAL_DeleteButtonText" xml:space="preserve">
     <value>DELETE</value>
   </data>

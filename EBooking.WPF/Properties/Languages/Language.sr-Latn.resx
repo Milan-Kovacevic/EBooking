@@ -327,6 +327,9 @@
   <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
     <value>Uspješna izmjena smještaja</value>
   </data>
+  <data name="GLOBAL_ConfirmMultiDeleteDialogMessage" xml:space="preserve">
+    <value>Da li ste sigurni da želite da obrišete odabrane stavke?</value>
+  </data>
   <data name="GLOBAL_DeleteButtonText" xml:space="preserve">
     <value>OBRIŠI</value>
   </data>

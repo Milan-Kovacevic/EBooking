@@ -4,8 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:EBooking.WPF.Dialogs"
+    xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d">
     <Grid
         Margin="20"
@@ -18,7 +23,7 @@
         <TextBlock
             Margin="1"
             Grid.Row="0"
-            Text="Are you sure you want to delete selected items?"
+            Text="{lex:Loc GLOBAL_ConfirmMultiDeleteDialogMessage}"
             TextWrapping="Wrap"
             x:Name="Message" />
         <StackPanel
@@ -30,12 +35,12 @@
                 HorizontalAlignment="Right"
                 Margin="0 0 2 0"
                 IsDefault="True"
-                Content="YES"
+                Content="{lex:Loc GLOBAL_DialogYesButtonText}"
                 Command="{Binding SubmitCommand}"
                 Style="{StaticResource MaterialDesignFlatButton}" />
             <Button
                 HorizontalAlignment="Right"
-                Content="NO"
+                Content="{lex:Loc GLOBAL_DialogNoButtonText}"
                 Command="{Binding CancelCommand}"
                 IsCancel="True"
                 Foreground="{DynamicResource SecondaryHueMidBrush}"

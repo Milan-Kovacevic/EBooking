@@ -691,6 +691,15 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete selected items?.
+        /// </summary>
+        internal static string GLOBAL_ConfirmMultiDeleteDialogMessage {
+            get {
+                return ResourceManager.GetString("GLOBAL_ConfirmMultiDeleteDialogMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DELETE.
         /// </summary>
         internal static string GLOBAL_DeleteButtonText {
