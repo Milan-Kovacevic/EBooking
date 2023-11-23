@@ -490,7 +490,7 @@
     <value>LOGIN</value>
   </data>
   <data name="Landing_ReadDocumentationLinkText" xml:space="preserve">
-    <value>Click here to read application manual</value>
+    <value>Click here to read user manual</value>
   </data>
   <data name="Landing_RegisterDiscoveryLabel" xml:space="preserve">
     <value>Are you new here?</value>

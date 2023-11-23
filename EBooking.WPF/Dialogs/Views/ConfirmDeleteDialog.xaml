@@ -5,8 +5,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EBooking.WPF.Dialogs.Views"
-    mc:Ignorable="d"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    lex:LocalizeDictionary.DesignCulture="en-US"
+    lex:ResxLocalizationProvider.DefaultAssembly="EBooking.WPF"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+    mc:Ignorable="d">
     <Grid
         Margin="20"
         Width="230"
@@ -29,12 +33,12 @@
                 HorizontalAlignment="Right"
                 Margin="0 0 2 0"
                 IsDefault="True"
-                Content="YES"
+                Content="{lex:Loc GLOBAL_DialogYesButtonText}"
                 Command="{Binding DeleteCommand}"
                 Style="{StaticResource MaterialDesignFlatButton}" />
             <Button
                 HorizontalAlignment="Right"
-                Content="NO"
+                Content="{lex:Loc GLOBAL_DialogNoButtonText}"
                 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                 IsCancel="True"
                 Foreground="{DynamicResource SecondaryHueMidBrush}"

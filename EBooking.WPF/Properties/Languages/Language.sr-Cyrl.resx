@@ -118,846 +118,846 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccommodationDetails_DetailsForLabel" xml:space="preserve">
-    <value>Za smještaj:</value>
+    <value>За смјештај:</value>
   </data>
   <data name="AccommodationDetails_ReservationsTabItemHeaderText" xml:space="preserve">
-    <value>REZERVACIJE JEDINICA</value>
+    <value>РЕЗЕРВАЦИЈЕ СМЈЕШТАЈА</value>
   </data>
   <data name="AccommodationDetails_ReturnButtonTooltip" xml:space="preserve">
-    <value>Vrati se nazad</value>
+    <value>Врати се назад</value>
   </data>
   <data name="AccommodationDetails_Title" xml:space="preserve">
-    <value>Detalji o smještaju</value>
+    <value>Детаљи о смјештају</value>
   </data>
   <data name="AccommodationDetails_UnitsTabItemHeaderText" xml:space="preserve">
-    <value>SMJEŠTAJNE JEDINICE</value>
+    <value>СМЈЕШТАЈНЕ ЈЕДИНИЦЕ</value>
   </data>
   <data name="Accommodations_AddButtonTooltip" xml:space="preserve">
-    <value>Dodaj novi smještaj</value>
+    <value>Додај нови смјештај</value>
   </data>
   <data name="Accommodations_CardItemNumberOfUnitsLabel" xml:space="preserve">
-    <value>Broj smještajnih jedinica:</value>
+    <value>Број смјештајних јединица</value>
   </data>
   <data name="Accommodations_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži smještaje</value>
+    <value>Претражи смјештаје</value>
   </data>
   <data name="Accommodations_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi smještaje...</value>
+    <value>Пронађи смјештаје...</value>
   </data>
   <data name="Accommodations_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="Accommodations_SubmitAddressFieldHint" xml:space="preserve">
-    <value>Naziv adrese</value>
+    <value>Назив адресе</value>
   </data>
   <data name="Accommodations_SubmitLocationComboBoxHint" xml:space="preserve">
-    <value>Izaberite lokaciju</value>
+    <value>Изаберите локацију</value>
   </data>
   <data name="Accommodations_SubmitNameFieldHint" xml:space="preserve">
-    <value>Naziv smještaja</value>
+    <value>Назив смјештаја</value>
   </data>
   <data name="Accommodations_SubmitTypeComboBoxHint" xml:space="preserve">
-    <value>Izaberite tip</value>
+    <value>Изаберите тип</value>
   </data>
   <data name="Accommodations_Title" xml:space="preserve">
-    <value>Smještaji</value>
+    <value>Смјештаји</value>
   </data>
   <data name="AccommodationUnits_AddButtonTooltip" xml:space="preserve">
-    <value>Dodajte novu smještajnu jedinicu</value>
+    <value>Додајте нову смјештајну јединицу</value>
   </data>
   <data name="AccommodationUnits_CardItemAvailabilityPeriodLabel" xml:space="preserve">
-    <value>Period dostupnosti:</value>
+    <value>Период доступности:</value>
   </data>
   <data name="AccommodationUnits_CardItemNumberOfBedsLabel" xml:space="preserve">
-    <value>Broj kreveta:</value>
+    <value>Број кревета:</value>
   </data>
   <data name="AccommodationUnits_CardItemPricePerNightLabel" xml:space="preserve">
-    <value>Cijena po noći:</value>
+    <value>Цијена по ноћи:</value>
   </data>
   <data name="AccommodationUnits_CardItemReserveButtonTooltip" xml:space="preserve">
-    <value>Rezervišite ovdje</value>
+    <value>Резервишите овдје</value>
   </data>
   <data name="AccommodationUnits_CardItemUnitFeaturesExpanderHeader" xml:space="preserve">
-    <value>Karakteristike jedinice</value>
+    <value>Карактеристике јединице</value>
   </data>
   <data name="AccommodationUnits_NoUnitItemsLabel" xml:space="preserve">
-    <value>Nema smještajnih jedinica za prikaz</value>
+    <value>Нема смјештајних јединица за приказ</value>
   </data>
   <data name="AccommodationUnits_SubmitAvailableFromDatePickerHint" xml:space="preserve">
-    <value>Dostupno od</value>
+    <value>Доспутно од</value>
   </data>
   <data name="AccommodationUnits_SubmitAvailableToDatePickerHint" xml:space="preserve">
-    <value>Dostupno do</value>
+    <value>Доступно до</value>
   </data>
   <data name="AccommodationUnits_SubmitBasicInformationsTitle" xml:space="preserve">
-    <value>Osnovne informacije</value>
+    <value>Основне информације</value>
   </data>
   <data name="AccommodationUnits_SubmitNoFeaturesAddedLabel" xml:space="preserve">
-    <value>Trenutno nema dodatih karakteristika</value>
+    <value>Тренутно нема додатих карактеристика</value>
   </data>
   <data name="AccommodationUnits_SubmitNumberOfBedsFieldHint" xml:space="preserve">
-    <value>Broj kreveta</value>
+    <value>Број кревета</value>
   </data>
   <data name="AccommodationUnits_SubmitPricePerNightFieldHint" xml:space="preserve">
-    <value>Cijena po noći</value>
+    <value>Цијена по ноћи</value>
   </data>
   <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHelperText" xml:space="preserve">
-    <value>Dodajte karakteristiku ovoj jedinici...</value>
+    <value>Додајте карактеристику овој јединици...</value>
   </data>
   <data name="AccommodationUnits_SubmitSelectFeatureComboBoxHint" xml:space="preserve">
-    <value>Izaberite karakteristiku</value>
+    <value>Изаберите карактеристику</value>
   </data>
   <data name="AccommodationUnits_SubmitUnitFeaturesTitle" xml:space="preserve">
-    <value>Karakteristike jedinice</value>
+    <value>Карактеристике јединице</value>
   </data>
   <data name="AccommodationUnits_SubmitUnitNameFieldHint" xml:space="preserve">
-    <value>Naziv jedinice</value>
+    <value>Назив јединице</value>
   </data>
   <data name="Codebook_LocationsTabItemHeaderText" xml:space="preserve">
-    <value>MJESTA</value>
+    <value>МЈЕСТА</value>
   </data>
   <data name="Codebook_Subtitle" xml:space="preserve">
-    <value>Upravljajte šifarnicima aplikacije</value>
+    <value>Управљајте шифарницима апликације</value>
   </data>
   <data name="Codebook_Title" xml:space="preserve">
-    <value>Šifarnici</value>
+    <value>Шифарници</value>
   </data>
   <data name="Codebook_UnitFeaturesTabItemHeaderText" xml:space="preserve">
-    <value>KARAKTERISTIKE JEDINICE</value>
+    <value>КАРАКТЕРИСТИКЕ ЈЕДИНИЦЕ</value>
   </data>
   <data name="color-blue" xml:space="preserve">
-    <value>Plava</value>
+    <value>Плава</value>
   </data>
   <data name="color-purple" xml:space="preserve">
-    <value>Ljubičasta</value>
+    <value>Љубичаста</value>
   </data>
   <data name="color-red" xml:space="preserve">
-    <value>Crvena</value>
+    <value>Црвена</value>
   </data>
   <data name="color-teal" xml:space="preserve">
-    <value>Plavozelena</value>
+    <value>Плавозелена</value>
   </data>
   <data name="en-US" xml:space="preserve">
-    <value>Engleski</value>
+    <value>Енглески</value>
   </data>
   <data name="Flights_AddButtonTooltip" xml:space="preserve">
-    <value>Dodaj novi let</value>
+    <value>Додај нови лет</value>
   </data>
   <data name="Flights_CardItemLandingLabel" xml:space="preserve">
-    <value>SLIJETANJE</value>
+    <value>СЛИЈЕТАЊЕ</value>
   </data>
   <data name="Flights_CardItemTakeOffLabel" xml:space="preserve">
-    <value>POLIJETANJE</value>
+    <value>ПОЛИЈЕТАЊЕ</value>
   </data>
   <data name="Flights_CardItemTicketPriceLabel" xml:space="preserve">
-    <value>Cijena karte:</value>
+    <value>Цијена карте:</value>
   </data>
   <data name="Flights_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži letove</value>
+    <value>Претражи летове</value>
   </data>
   <data name="Flights_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi letove...</value>
+    <value>Пронађи летове...</value>
   </data>
   <data name="Flights_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="Flights_SubmitArrivalDatePickerHint" xml:space="preserve">
-    <value>Datum dolaska</value>
+    <value>Датум доласка</value>
   </data>
   <data name="Flights_SubmitArrivalLocationComboBoxHint" xml:space="preserve">
-    <value>Mjesto dolaska</value>
+    <value>Мјесто доласка</value>
   </data>
   <data name="Flights_SubmitArrivalTimePickerHint" xml:space="preserve">
-    <value>Vrijeme dolaska</value>
+    <value>Вријеме доласка</value>
   </data>
   <data name="Flights_SubmitAvioCompanyNameFieldHint" xml:space="preserve">
-    <value>Naziv avio kompanije</value>
+    <value>Назив авио компаније</value>
   </data>
   <data name="Flights_SubmitDepartureDatePickerHint" xml:space="preserve">
-    <value>Datum polaska</value>
+    <value>Датум поласка</value>
   </data>
   <data name="Flights_SubmitDepartureLocationComboBoxHint" xml:space="preserve">
-    <value>Mjesto polaska</value>
+    <value>Мјесто поласка</value>
   </data>
   <data name="Flights_SubmitDepartureTimePickerHint" xml:space="preserve">
-    <value>Vrijeme polaska</value>
+    <value>Вријеме поласка</value>
   </data>
   <data name="Flights_SubmitFlightClassComboBoxHint" xml:space="preserve">
-    <value>Izaberite klasu leta</value>
+    <value>Изаберите класу лета</value>
   </data>
   <data name="Flights_SubmitTicketPriceFieldHint" xml:space="preserve">
-    <value>Cijena karte</value>
+    <value>Цијена карте</value>
   </data>
   <data name="Flights_Title" xml:space="preserve">
-    <value>Letovi</value>
+    <value>Летови</value>
   </data>
   <data name="GLOBAL_AccommodationAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novi smještaj</value>
+    <value>Додајте нови смјештај</value>
   </data>
   <data name="GLOBAL_AccommodationAdded" xml:space="preserve">
-    <value>Uspješno dodavanje smještaja</value>
+    <value>Успјешно додавање смјештаја</value>
   </data>
   <data name="GLOBAL_AccommodationDeleted" xml:space="preserve">
-    <value>Uspješno brisanje smještaja</value>
+    <value>Успјешно брисање смјештаја</value>
   </data>
   <data name="GLOBAL_AccommodationDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabrani smještaj?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрани смјештај?</value>
   </data>
   <data name="GLOBAL_AccommodationEditDialogTitle" xml:space="preserve">
-    <value>Uredite smještaj</value>
+    <value>Уредите смјештај</value>
   </data>
   <data name="GLOBAL_AccommodationUnitAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novu smještajnu jedinicu</value>
+    <value>Додајте нову смјештајну јединицу</value>
   </data>
   <data name="GLOBAL_AccommodationUnitAdded" xml:space="preserve">
-    <value>Uspješno dodavanje smještajne jedinice</value>
+    <value>Успјешно додавање смјештајне јединице</value>
   </data>
   <data name="GLOBAL_AccommodationUnitDeleted" xml:space="preserve">
-    <value>Uspješno brisanje smještajne jedinice</value>
+    <value>Успјешно брисање смјештајне јединице</value>
   </data>
   <data name="GLOBAL_AccommodationUnitDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabranu smještajnu jedinicu?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрану смјештајну јединицу?</value>
   </data>
   <data name="GLOBAL_AccommodationUnitEditDialogTitle" xml:space="preserve">
-    <value>Uredite smještajnu jedinicu</value>
+    <value>Уредите смјештајну јединицу</value>
   </data>
   <data name="GLOBAL_AccommodationUnitUpdated" xml:space="preserve">
-    <value>Uspješna izmjena smještajne jedinice</value>
+    <value>Успјешна измјена смјештајне јединице</value>
   </data>
   <data name="GLOBAL_AccommodationUpdated" xml:space="preserve">
-    <value>Uspješna izmjena smještaja</value>
+    <value>Успјешна измјена смјештаја</value>
   </data>
   <data name="GLOBAL_ConfirmMultiDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabrane stavke?</value>
+    <value>Да ли сте сигурни да желите да обришете одабране ставке?</value>
   </data>
   <data name="GLOBAL_DeleteButtonText" xml:space="preserve">
-    <value>OBRIŠI</value>
+    <value>ОБРИШИ</value>
   </data>
   <data name="GLOBAL_DialogCancelButtonText" xml:space="preserve">
-    <value>OTKAŽI</value>
+    <value>ОТКАЖИ</value>
   </data>
   <data name="GLOBAL_DialogCloseButtonText" xml:space="preserve">
-    <value>ZATVORI</value>
+    <value>ЗАТВОРИ</value>
   </data>
   <data name="GLOBAL_DialogNoButtonText" xml:space="preserve">
-    <value>NE</value>
+    <value>НЕ</value>
   </data>
   <data name="GLOBAL_DialogOkButtonText" xml:space="preserve">
-    <value>U REDU</value>
+    <value>У РЕДУ</value>
   </data>
   <data name="GLOBAL_DialogSubmitButtonText" xml:space="preserve">
-    <value>PRIHVATI</value>
+    <value>ПРИХВАТИ</value>
   </data>
   <data name="GLOBAL_DialogYesButtonText" xml:space="preserve">
-    <value>DA</value>
+    <value>ДА</value>
   </data>
   <data name="GLOBAL_EditButtonText" xml:space="preserve">
-    <value>UREDI</value>
+    <value>УРЕДИ</value>
   </data>
   <data name="GLOBAL_FlightAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novi let</value>
+    <value>Додајте нови лет</value>
   </data>
   <data name="GLOBAL_FlightDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabrani let?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрани лет?</value>
   </data>
   <data name="GLOBAL_FlightEditDialogTitle" xml:space="preserve">
-    <value>Uredite let</value>
+    <value>Уредите лет</value>
   </data>
   <data name="GLOBAL_FutureDateRequiredMessage" xml:space="preserve">
-    <value>Potreban je budući datum</value>
+    <value>Потребан је будући датум</value>
   </data>
   <data name="GLOBAL_GreaterThanDepartureDateRequiredMessage" xml:space="preserve">
-    <value>Mora biti veći ili jednak datumu polaska</value>
+    <value>Мора бити већи или једнак датуму поласка</value>
   </data>
   <data name="GLOBAL_GreaterThanDepartureTimeRequiredMessage" xml:space="preserve">
-    <value>Mora biti veći od vremena polaska</value>
+    <value>Мора бити већи од времена поласка</value>
   </data>
   <data name="GLOBAL_GreaterThanFromDateRequiredMessage" xml:space="preserve">
-    <value>Mora biti veći od "Datuma od"</value>
+    <value>Мора бити већи од "Датума од"</value>
   </data>
   <data name="GLOBAL_InvalidLogin" xml:space="preserve">
-    <value>Neispravno korisničko ime ili lozinka</value>
+    <value>Неисправно корисничко име или лозинка</value>
   </data>
   <data name="GLOBAL_InvalidPasswordChange" xml:space="preserve">
-    <value>Nije moguće promijeniti lozinku</value>
+    <value>Није могуће промијенити лозинку</value>
   </data>
   <data name="GLOBAL_InvalidRegistration" xml:space="preserve">
-    <value>Nije moguće registrovati nalog sa unesenim podacima</value>
+    <value>Није могуће регистровати налог са унесеним подацима</value>
   </data>
   <data name="GLOBAL_LocationAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novo mjesto</value>
+    <value>Додајте ново мјесто</value>
   </data>
   <data name="GLOBAL_LocationDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabrano mjesto?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрано место?</value>
   </data>
   <data name="GLOBAL_LocationEditDialogTitle" xml:space="preserve">
-    <value>Uredite mjesto</value>
+    <value>Уредите мјесто</value>
   </data>
   <data name="GLOBAL_NotSameAsCurrentPasswordMessage" xml:space="preserve">
-    <value>Lozinka ne može biti ista kao trenutna</value>
+    <value>Лозинка не може бити иста као тренутна</value>
   </data>
   <data name="GLOBAL_PasswordMissmatch" xml:space="preserve">
-    <value>Neispravna lozinka. Molimo vas, probajte ponovo</value>
+    <value>Неисправна лозинка. Молимо вас, пробајте поново</value>
   </data>
   <data name="GLOBAL_PasswordsMustMatchMessage" xml:space="preserve">
-    <value>Lozinke moraju da se podudaraju</value>
+    <value>Лозинке морају да се подударају</value>
   </data>
   <data name="GLOBAL_PositiveDecimalNumberRequiredMessage" xml:space="preserve">
-    <value>Pozitivan decimalni broj je obavezan</value>
+    <value>Позитиван децимални број је обавезан</value>
   </data>
   <data name="GLOBAL_PositiveIntegerNumberRequiredMessage" xml:space="preserve">
-    <value>Pozitivan cijeli broj je obavezan</value>
+    <value>Позитиван цели број је обавезан</value>
   </data>
   <data name="GLOBAL_RequiredInputHint" xml:space="preserve">
-    <value>Obavezno polje*</value>
+    <value>Обавезно поље*</value>
   </data>
   <data name="GLOBAL_RequiredPropertyMessage" xml:space="preserve">
-    <value>Ovo polje je obavezno!</value>
+    <value>Ово поље је обавезно!</value>
   </data>
   <data name="GLOBAL_SuccessfulLogin" xml:space="preserve">
-    <value>Prijava je bila uspješna!</value>
+    <value>Пријава је успјешна!</value>
   </data>
   <data name="GLOBAL_SuccessfulRegistration" xml:space="preserve">
-    <value>Uspješno ste registrovali vaš nalog</value>
+    <value>Успјешно сте регистровали свој налог</value>
   </data>
   <data name="GLOBAL_SuccessfulSettingsChange" xml:space="preserve">
-    <value>Postavke uspješno promijenjene</value>
+    <value>Поставке успјешно промијењене</value>
   </data>
   <data name="GLOBAL_SuccessfulUserInfoChange" xml:space="preserve">
-    <value>Korisničke informacije uspješno promijenjene</value>
+    <value>Корисничке информације успјешно промијењене</value>
   </data>
   <data name="GLOBAL_TripReservationAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novu rezervaciju putovanja</value>
+    <value>Додајте нову резервацију путовања</value>
   </data>
   <data name="GLOBAL_TripReservationAdded" xml:space="preserve">
-    <value>Uspješno dodavanje rezervacije putovanja za</value>
+    <value>Успјешно додавање резервације путовања за</value>
   </data>
   <data name="GLOBAL_TripReservationDeleted" xml:space="preserve">
-    <value>Uspješno brisanje rezervacije putovanja za</value>
+    <value>Успјешно брисање резервације путовања за</value>
   </data>
   <data name="GLOBAL_TripReservationDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabranu rezervaciju putovanja?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрану резервацију путовања?</value>
   </data>
   <data name="GLOBAL_TripReservationEditDialogTitle" xml:space="preserve">
-    <value>Uredite rezervaciju putovanja</value>
+    <value>Уредите резервацију путовања</value>
   </data>
   <data name="GLOBAL_TripReservationUpdated" xml:space="preserve">
-    <value>Uspješna izmjena rezervacije putovanja za</value>
+    <value>Успјешна измена резервације путовања за</value>
   </data>
   <data name="GLOBAL_UnitFeatureAddDialogTitle" xml:space="preserve">
-    <value>Dodaj novu karakteristiku jedinice</value>
+    <value>Додај нову карактеристику јединице</value>
   </data>
   <data name="GLOBAL_UnitFeatureDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabranu karakteristiku?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрану карактеристику?</value>
   </data>
   <data name="GLOBAL_UnitFeatureEditDialogTitle" xml:space="preserve">
-    <value>Uredi karakteristiku jedinice</value>
+    <value>Уредите карактеристику јединице</value>
   </data>
   <data name="GLOBAL_UnitReservationAddDialogTitle" xml:space="preserve">
-    <value>Dodajte novu rezervaciju smještajne jedinice</value>
+    <value>Додајте нову резервацију смештајне јединице</value>
   </data>
   <data name="GLOBAL_UnitReservationAdded" xml:space="preserve">
-    <value>Uspješno dodavanje rezervacije smještaja za</value>
+    <value>Успешно додавање резервације смештаја за</value>
   </data>
   <data name="GLOBAL_UnitReservationDeleted" xml:space="preserve">
-    <value>Uspješno brisanje rezervacije smještaja za</value>
+    <value>Успешно брисање резервације смештаја за</value>
   </data>
   <data name="GLOBAL_UnitReservationDeleteDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete odabranu rezervaciju smještajne jedinice?</value>
+    <value>Да ли сте сигурни да желите да обришете одабрану резервацију смештајне јединице?</value>
   </data>
   <data name="GLOBAL_UnitReservationEditDialogTitle" xml:space="preserve">
-    <value>Uredite rezervaciju smještajne jedinice</value>
+    <value>Уредите резервацију смештајне јединице</value>
   </data>
   <data name="GLOBAL_UnitReservationFromDateValidationMessage" xml:space="preserve">
-    <value>Datum mora biti veći ili jednak datumu "dostupnosti od"  jedinice</value>
+    <value>Датум мора бити већи или једнак датуму "доступности од" јединице</value>
   </data>
   <data name="GLOBAL_UnitReservationToDateValidationMessage" xml:space="preserve">
-    <value>Datum mora biti manji ili jednak datumu "dostupnosti do" jedinice</value>
+    <value>Датум мора бити мањи или једнак датуму "доступности до" јединице</value>
   </data>
   <data name="GLOBAL_UnitReservationUpdated" xml:space="preserve">
-    <value>Uspješna izmjena rezervacije smještaja za</value>
+    <value>Успешна измена резервације смјештаја за</value>
   </data>
   <data name="GLOBAL_UsernameTaken" xml:space="preserve">
-    <value>Korisničko ime je zauzeto</value>
+    <value>Корисничко име је заузето</value>
   </data>
   <data name="GLOBAL_WelcomeMessage" xml:space="preserve">
-    <value>Dobrodošli nazad!</value>
+    <value>Добродошли назад!</value>
   </data>
   <data name="Landing_LoginDiscoveryLabel" xml:space="preserve">
-    <value>...Ili</value>
+    <value>...Или</value>
   </data>
   <data name="Landing_LoginLinkText" xml:space="preserve">
-    <value>PRIJAVITE SE</value>
+    <value>ПРИЈАВИТЕ СЕ</value>
   </data>
   <data name="Landing_ReadDocumentationLinkText" xml:space="preserve">
-    <value>Kliknite ovdje da biste pročitali korisničko uputstvo</value>
+    <value>Кликните овде да бисте прочитали корисничко упутство</value>
   </data>
   <data name="Landing_RegisterDiscoveryLabel" xml:space="preserve">
-    <value>Da li ste novi ovdje?</value>
+    <value>Да ли сте нови овдје?</value>
   </data>
   <data name="Landing_RegisterLinkText" xml:space="preserve">
-    <value>REGISTRUJTE SE</value>
+    <value>РЕГИСТРУЈТЕ СЕ</value>
   </data>
   <data name="Landing_WelcomeTitle" xml:space="preserve">
-    <value>Dobrodošli na "E-Rezervacije"</value>
+    <value>Добродошли на "Е-Резервације"</value>
   </data>
   <data name="Locations_AddButtonTooltip" xml:space="preserve">
-    <value>Dodaj novo mjesto</value>
+    <value>Додај ново мјесто</value>
   </data>
   <data name="Locations_DeleteSelectedButtonTooltip" xml:space="preserve">
-    <value>Obriši izabrana mjesta</value>
+    <value>Обриши изабрана места</value>
   </data>
   <data name="Locations_GridColumnHeaderActionLabel" xml:space="preserve">
-    <value>Akcije</value>
+    <value>Акције</value>
   </data>
   <data name="Locations_GridColumnHeaderCityLabel" xml:space="preserve">
-    <value>Grad</value>
+    <value>Град</value>
   </data>
   <data name="Locations_GridColumnHeaderCountryLabel" xml:space="preserve">
-    <value>Država</value>
+    <value>Држава</value>
   </data>
   <data name="Locations_NoItemsToShowLabel" xml:space="preserve">
-    <value>Trenutno nema mjesta za prikaz</value>
+    <value>Тренутно нема места за приказ</value>
   </data>
   <data name="Locations_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži mjesta</value>
+    <value>Претражи мјеста</value>
   </data>
   <data name="Locations_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi mjesta...</value>
+    <value>Пронађи мјеста...</value>
   </data>
   <data name="Locations_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="Locations_SubmitCityNameFieldHint" xml:space="preserve">
-    <value>Naziv grada</value>
+    <value>Назив града</value>
   </data>
   <data name="Locations_SubmitCountryNameFieldHint" xml:space="preserve">
-    <value>Naziv države</value>
+    <value>Назив државе</value>
   </data>
   <data name="Locations_Title" xml:space="preserve">
-    <value>Šifarnik mjesta...</value>
+    <value>Шифарник мјеста...</value>
   </data>
   <data name="Login_LoginButtonText" xml:space="preserve">
-    <value>Prijava</value>
+    <value>Пријава</value>
   </data>
   <data name="Login_PasswordFieldPlaceholder" xml:space="preserve">
-    <value>Lozinka</value>
+    <value>Лозинка</value>
   </data>
   <data name="Login_RegisterButtonText" xml:space="preserve">
-    <value>Registracija</value>
+    <value>Регистрација</value>
   </data>
   <data name="Login_Title" xml:space="preserve">
-    <value>Molimo Vas, prijavite se da biste koristili ovaj sistem</value>
+    <value>Молимо Вас, пријавите се да бисте користили овај систем</value>
   </data>
   <data name="Login_UsernameFieldPlaceholder" xml:space="preserve">
-    <value>Korisničko ime</value>
+    <value>Корисничко име</value>
   </data>
   <data name="Main_ConfirmExitDialogMessage" xml:space="preserve">
-    <value>Da li ste sigurni da želite da napustite aplikaciju?</value>
+    <value>Да ли сте сигурни да желите да напустите апликацију?</value>
   </data>
   <data name="Main_ExitButtonText" xml:space="preserve">
-    <value>NAPUSTI</value>
+    <value>НАПУСТИ</value>
   </data>
   <data name="Main_HomePageButtonTooltip" xml:space="preserve">
-    <value>Idite na početnu stranicu</value>
+    <value>Идите на почетну страницу</value>
   </data>
   <data name="Main_LogoutButtonTooltip" xml:space="preserve">
-    <value>Odjavi se...</value>
+    <value>Одјави се...</value>
   </data>
   <data name="Main_MenuButtonTooltip" xml:space="preserve">
-    <value>Otvorite glavni meni</value>
+    <value>Отворите главни мени</value>
   </data>
   <data name="Main_SloganText" xml:space="preserve">
-    <value>Rezervišite Vaše sljedeće putovanje ili smještaj uz E-Rezervacije</value>
+    <value>Резервишите Ваше следеће путовање или смештај уз Е-Резервације</value>
   </data>
   <data name="Main_ThemeDarkText" xml:space="preserve">
-    <value>Tamna</value>
+    <value>Тамна</value>
   </data>
   <data name="Main_ThemeLightText" xml:space="preserve">
-    <value>Svijetla</value>
+    <value>Светла</value>
   </data>
   <data name="Main_ThemeSelectorText" xml:space="preserve">
-    <value>Tema</value>
+    <value>Тема</value>
   </data>
   <data name="Menu_AccommodationsTitle" xml:space="preserve">
-    <value>Smještaji</value>
+    <value>Смештаји</value>
   </data>
   <data name="Menu_CodebookTitle" xml:space="preserve">
-    <value>Šifarnici</value>
+    <value>Шифарници</value>
   </data>
   <data name="Menu_FlightsTitle" xml:space="preserve">
-    <value>Letovi</value>
+    <value>Летови</value>
   </data>
   <data name="Menu_LoginTitle" xml:space="preserve">
-    <value>Prijavi se</value>
+    <value>Пријави се</value>
   </data>
   <data name="Menu_RegisterTitle" xml:space="preserve">
-    <value>Registruj se</value>
+    <value>Региструј се</value>
   </data>
   <data name="Menu_ReservationsTitle" xml:space="preserve">
-    <value>Rezervacije</value>
+    <value>Резервације</value>
   </data>
   <data name="Menu_SettingsTitle" xml:space="preserve">
-    <value>Postavke</value>
+    <value>Поставке</value>
   </data>
   <data name="Menu_TitleText" xml:space="preserve">
-    <value>GLAVNI MENI</value>
+    <value>ГЛАВНИ МЕНИ</value>
   </data>
   <data name="Register_AdminTabItemHeaderText" xml:space="preserve">
-    <value>Kao administrator</value>
+    <value>Као администратор</value>
   </data>
   <data name="Register_DisplayNameFieldPlaceholder" xml:space="preserve">
-    <value>Ime za prikaz</value>
+    <value>Име за приказ</value>
   </data>
   <data name="Register_EmployeeTabItemHeaderText" xml:space="preserve">
-    <value>Kao zaposleni</value>
+    <value>Као запослени</value>
   </data>
   <data name="Register_FirstNameFieldPlaceholder" xml:space="preserve">
-    <value>Ime</value>
+    <value>Име</value>
   </data>
   <data name="Register_LastNameFieldPlaceholder" xml:space="preserve">
-    <value>Prezime</value>
+    <value>Презиме</value>
   </data>
   <data name="Register_PasswordFieldPlaceholder" xml:space="preserve">
-    <value>Lozinka</value>
+    <value>Лозинка</value>
   </data>
   <data name="Register_RegisterButtonText" xml:space="preserve">
-    <value>REGISTRUJ SE</value>
+    <value>РЕГИСТРУЈ СЕ</value>
   </data>
   <data name="Register_RepeatPasswordFieldPlaceholder" xml:space="preserve">
-    <value>Potvrdite lozinku</value>
+    <value>Потврдите лозинку</value>
   </data>
   <data name="Register_Subtitle" xml:space="preserve">
-    <value>Kreirajte novi nalog</value>
+    <value>Креирајте нови налог</value>
   </data>
   <data name="Register_Title" xml:space="preserve">
-    <value>Registracija</value>
+    <value>Регистрације</value>
   </data>
   <data name="Register_UsernameFieldPlaceholder" xml:space="preserve">
-    <value>Korisničko ime</value>
+    <value>Корисничко име</value>
   </data>
   <data name="Reservations_TripReservationsTitle" xml:space="preserve">
-    <value>Rezervacije putovanja</value>
+    <value>Резервације путовања</value>
   </data>
   <data name="Reservations_TripsTabItemHeaderText" xml:space="preserve">
-    <value>REZERVACIJE PUTOVANJA</value>
+    <value>РЕЗЕРВАЦИЈЕ ПУТОВАЊА</value>
   </data>
   <data name="Reservations_UnitReservationsTitle" xml:space="preserve">
-    <value>Rezervacije smještajnih jedinica</value>
+    <value>Резервације смјештајних јединица</value>
   </data>
   <data name="Reservations_UnitsTabItemHeaderText" xml:space="preserve">
-    <value>REZERVACIJE JEDINICA</value>
+    <value>Резервације јединица</value>
   </data>
   <data name="Settings_ChangeInfoButtonText" xml:space="preserve">
-    <value>IZMIJENITE KORISNIČKE INFORMACIJE</value>
+    <value>ИЗМЕНИТЕ КОРИСНИЧКЕ ИНФОРМАЦИЈЕ</value>
   </data>
   <data name="Settings_ChangePasswordButtonText" xml:space="preserve">
-    <value>IZMIJENITE LOZINKU</value>
+    <value>ПРОМЕНИ ЛОЗИНКУ</value>
   </data>
   <data name="Settings_ChangePasswordCurrentPasswordFieldHint" xml:space="preserve">
-    <value>Trenutna lozinka</value>
+    <value>Тренутна лозинка</value>
   </data>
   <data name="Settings_ChangePasswordNewPasswordFieldHint" xml:space="preserve">
-    <value>Nova lozinka</value>
+    <value>Нова лозинка</value>
   </data>
   <data name="Settings_ChangePasswordRepeatNewPasswordFieldHint" xml:space="preserve">
-    <value>Ponovite novu lozinku</value>
+    <value>Поновите нову лозинку</value>
   </data>
   <data name="Settings_ChangePasswordTitle" xml:space="preserve">
-    <value>Izmijenite Vašu lozinku</value>
+    <value>Промените своју лозинку</value>
   </data>
   <data name="Settings_ChangeUserInfoAdminNameFieldHint" xml:space="preserve">
-    <value>Ime za prikaz</value>
+    <value>Име за приказ</value>
   </data>
   <data name="Settings_ChangeUserInfoEmployeeFirstNameFieldHint" xml:space="preserve">
-    <value>Ime</value>
+    <value>Име</value>
   </data>
   <data name="Settings_ChangeUserInfoEmployeeLastNameFieldHint" xml:space="preserve">
-    <value>Prezime</value>
+    <value>Презиме</value>
   </data>
   <data name="Settings_ChangeUserInfoPasswordFieldHint" xml:space="preserve">
-    <value>Potvrdite lozinku</value>
+    <value>Потврдите лозинку</value>
   </data>
   <data name="Settings_ChangeUserInfoTitle" xml:space="preserve">
-    <value>Izmijenite Vaše informacije</value>
+    <value>Измените Ваше информације</value>
   </data>
   <data name="Settings_ChangeUserInfoUsernameFieldHint" xml:space="preserve">
-    <value>Korisničko ime</value>
+    <value>Корисничко име</value>
   </data>
   <data name="Settings_DisplayNameLabel" xml:space="preserve">
-    <value>Ime za prikaz:</value>
+    <value>Име за приказ:</value>
   </data>
   <data name="Settings_FirstNameLabel" xml:space="preserve">
-    <value>Ime:</value>
+    <value>Име:</value>
   </data>
   <data name="Settings_InfoTitle" xml:space="preserve">
-    <value>Informacije o nalogu</value>
+    <value>Информације о налогу</value>
   </data>
   <data name="Settings_LastNameLabel" xml:space="preserve">
-    <value>Prezime:</value>
+    <value>Презиме:</value>
   </data>
   <data name="Settings_LookAndFeelTitle" xml:space="preserve">
-    <value>Izgled i osjećaj aplikacije</value>
+    <value>Изглед и осећај апликације</value>
   </data>
   <data name="Settings_RevertChangesButtonText" xml:space="preserve">
-    <value>Poništite izmjene</value>
+    <value>Поништите измене</value>
   </data>
   <data name="Settings_SaveChangesButtonText" xml:space="preserve">
-    <value>Sačuvajte izmjene</value>
+    <value>Сачувајте измене</value>
   </data>
   <data name="Settings_SaveSettingsDialogMessage" xml:space="preserve">
-    <value>Molimo Vas, sačuvate promjene prije napuštanja.</value>
+    <value>Молимо Вас, сачувајте промене прије напуштања.</value>
   </data>
   <data name="Settings_SaveSettingsReminderText" xml:space="preserve">
-    <value>Potrebno je sačuvati izmjene*</value>
+    <value>Потребно је сачувати измене*</value>
   </data>
   <data name="Settings_SelectLanguageLabel" xml:space="preserve">
-    <value>Izaberite jezik za prikaz</value>
+    <value>Изаберите језик за приказ</value>
   </data>
   <data name="Settings_SelectPrimaryColorLabel" xml:space="preserve">
-    <value>Izaberite osnovnu boju</value>
+    <value>Изаберите основну боју</value>
   </data>
   <data name="Settings_SelectSecondaryColorLabel" xml:space="preserve">
-    <value>Izaberite sporednu boju</value>
+    <value>Изаберите споредну боју</value>
   </data>
   <data name="Settings_Title" xml:space="preserve">
-    <value>Promijenite informacije o nalogu ili prilagodite izgled i osjećaj aplikacije</value>
+    <value>Промените информације о налогу или прилагодите изглед и осећај апликације</value>
   </data>
   <data name="Settings_UsernameLabel" xml:space="preserve">
-    <value>Korisničko ime:</value>
+    <value>Корисничко име:</value>
   </data>
   <data name="sr-Cyrl" xml:space="preserve">
-    <value>Srpski ćirilica</value>
+    <value>Српска ћирилица</value>
   </data>
   <data name="sr-Latn" xml:space="preserve">
-    <value>Srpski latinica</value>
+    <value>Српска латиница</value>
   </data>
   <data name="TripReservations_AddButtonTooltip" xml:space="preserve">
-    <value>Dodaj novu rezervaciju putovanja</value>
+    <value>Додај нову резервацију путовања</value>
   </data>
   <data name="TripReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
-    <value>Obriši izabrane rezervacije putovanja</value>
+    <value>Користи изабране резервације путовања</value>
   </data>
   <data name="TripReservations_GridColumnHeaderActionLabel" xml:space="preserve">
-    <value>Akcije</value>
+    <value>Акције</value>
   </data>
   <data name="TripReservations_GridColumnHeaderNumberOfSeatsLabel" xml:space="preserve">
-    <value>Broj sjedišta</value>
+    <value>Број седишта</value>
   </data>
   <data name="TripReservations_GridColumnHeaderReservationOnNameLabel" xml:space="preserve">
-    <value>Rezervacija na ime</value>
+    <value>Резервација на име</value>
   </data>
   <data name="TripReservations_GridColumnHeaderReservedByLabel" xml:space="preserve">
-    <value>Rezervisao</value>
+    <value>Резервисао</value>
   </data>
   <data name="TripReservations_GridColumnHeaderTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena</value>
+    <value>Укупна цена</value>
   </data>
   <data name="TripReservations_GridColumnHeaderTripSummaryLabel" xml:space="preserve">
-    <value>Rezime putovanja</value>
+    <value>Резиме путовања</value>
   </data>
   <data name="TripReservations_GridColumnHeaderTripTypeLabel" xml:space="preserve">
-    <value>Tip putovanja</value>
+    <value>Тип путовања</value>
   </data>
   <data name="TripReservations_NoItemsToShowLabel" xml:space="preserve">
-    <value>Trenutno nema rezervacija putovanja za prikaz</value>
+    <value>Тренутно нема резервација путовања за приказ</value>
   </data>
   <data name="TripReservations_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži rezervacije putovanja</value>
+    <value>Претражи резервације путовања</value>
   </data>
   <data name="TripReservations_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi rezervacije putovanja</value>
+    <value>Пронађи резервације путовања</value>
   </data>
   <data name="TripReservations_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="TripReservations_SubmitBasicInformationsTitle" xml:space="preserve">
-    <value>Osnovne informacije</value>
+    <value>Основне информације</value>
   </data>
   <data name="TripReservations_SubmitFlightsTitle" xml:space="preserve">
-    <value>Letovi</value>
+    <value>Летови</value>
   </data>
   <data name="TripReservations_SubmitNumberOfSeatsFieldHint" xml:space="preserve">
-    <value>Broj sjedišta</value>
+    <value>Број седишта</value>
   </data>
   <data name="TripReservations_SubmitReservationOnNameFieldHint" xml:space="preserve">
-    <value>Rezervacija na ime</value>
+    <value>Резервација на име</value>
   </data>
   <data name="TripReservations_SubmitSelectFlightDatePickerHelperText" xml:space="preserve">
-    <value>Koristi se za filtriranje letova koji se prikazuju...</value>
+    <value>Користи се за филтрирање летова који се приказују...</value>
   </data>
   <data name="TripReservations_SubmitSelectFlightDatePickerHint" xml:space="preserve">
-    <value>Izaberite datum leta</value>
+    <value>Изаберите датум лета</value>
   </data>
   <data name="TripReservations_SubmitSelectFlightToAddComboBoxHelperText" xml:space="preserve">
-    <value>Dodajte let na ovo putovanje...</value>
+    <value>Додајте лет на ово путовање...</value>
   </data>
   <data name="TripReservations_SubmitSelectFlightToAddComboBoxHint" xml:space="preserve">
-    <value>Izaberite let</value>
+    <value>Изаберите лет</value>
   </data>
   <data name="TripReservations_SubmitSelectTypeComboBoxHint" xml:space="preserve">
-    <value>Tip putovanja</value>
+    <value>Тип путовања</value>
   </data>
   <data name="TripReservations_SubmitTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena:</value>
+    <value>Укупна цена:</value>
   </data>
   <data name="TripReservation_DetailsNumberOfSeatsLabel" xml:space="preserve">
-    <value>Broj sjedišta</value>
+    <value>Број седишта</value>
   </data>
   <data name="TripReservation_DetailsReservationOnNameLabel" xml:space="preserve">
-    <value>Rezervacije na ime:</value>
+    <value>Резервације на име:</value>
   </data>
   <data name="TripReservation_DetailsReservedByLabel" xml:space="preserve">
-    <value>Rezervisao:</value>
+    <value>Резервисао:</value>
   </data>
   <data name="TripReservation_DetailsTitle" xml:space="preserve">
-    <value>Detalji o rezervaciji putovanja</value>
+    <value>Детаљи о резервацији путовања</value>
   </data>
   <data name="TripReservation_DetailsTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena:</value>
+    <value>Укупна цена:</value>
   </data>
   <data name="TripReservation_DetailsTripTypeLabel" xml:space="preserve">
-    <value>Tip putovanja:</value>
+    <value>Тип путовања:</value>
   </data>
   <data name="TripReservation_FlightsListExpanderHeaderText" xml:space="preserve">
-    <value>Lista letova</value>
+    <value>Листа летова</value>
   </data>
   <data name="TripReservation_FlightsListExpanderNoItemsLabel" xml:space="preserve">
-    <value>Nema dodatih letova...</value>
+    <value>Нема додатих летова...</value>
   </data>
   <data name="UnitFeatures_AddButtonTooltip" xml:space="preserve">
-    <value>Dodaj novu karakteristiku</value>
+    <value>Додај нову карактеристику</value>
   </data>
   <data name="UnitFeatures_DeleteSelectedButtonTooltip" xml:space="preserve">
-    <value>Obriši izabrane karakteristike smještajnih jedinica</value>
+    <value>Обриши изабране карактеристике смештајних јединица</value>
   </data>
   <data name="UnitFeatures_GridColumnHeaderActionLabel" xml:space="preserve">
-    <value>Akcije</value>
+    <value>Акције</value>
   </data>
   <data name="UnitFeatures_GridColumnHeaderFeatureNameLabel" xml:space="preserve">
-    <value>Naziv karakteristike</value>
+    <value>Назив карактеристике</value>
   </data>
   <data name="UnitFeatures_NoItemsToShowLabel" xml:space="preserve">
-    <value>Trenutno nema karakteristika smještajnih jedinica za prikaz</value>
+    <value>Тренутно нема карактеристика смештајних јединица за приказ</value>
   </data>
   <data name="UnitFeatures_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži karakteristike jedinica</value>
+    <value>Претражи карактеристике јединица</value>
   </data>
   <data name="UnitFeatures_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi karakteristike jedinica...</value>
+    <value>Пронађи карактеристике јединица...</value>
   </data>
   <data name="UnitFeatures_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="UnitFeatures_SubmitFeatureNameFieldHint" xml:space="preserve">
-    <value>Naziv karakteristike</value>
+    <value>Назив карактеристике</value>
   </data>
   <data name="UnitFeatures_Title" xml:space="preserve">
-    <value>Šifarnik karakteristika smještajne jedinice...</value>
+    <value>Шифарник карактеристика смештајне јединице...</value>
   </data>
   <data name="UnitReservations_DeleteSelectedButtonTooltip" xml:space="preserve">
-    <value>Obriši izabrane rezervacije smještajnih jedinica</value>
+    <value>Обриши изабране резервације смештајних јединица</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderActionLabel" xml:space="preserve">
-    <value>Akcije</value>
+    <value>Акције</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderNumberOfPeopleLabel" xml:space="preserve">
-    <value>Broj ljudi</value>
+    <value>Број људи</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderReservationFromLabel" xml:space="preserve">
-    <value>Rezervisano od</value>
+    <value>Резервисано од</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderReservationOnNameLabel" xml:space="preserve">
-    <value>Rezervacija na ime</value>
+    <value>Резервација на име</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderReservationToLabel" xml:space="preserve">
-    <value>Reservisano do</value>
+    <value>Резервисано до</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderReservedByLabel" xml:space="preserve">
-    <value>Rezervisao</value>
+    <value>Резервисао</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena</value>
+    <value>Укупна цена</value>
   </data>
   <data name="UnitReservations_GridColumnHeaderUnitNameLabel" xml:space="preserve">
-    <value>Naziv jedinice</value>
+    <value>Назив јединице</value>
   </data>
   <data name="UnitReservations_NoItemsToShowLabel" xml:space="preserve">
-    <value>Trenutno nema rezervacija smještajnih jedinica za prikaz</value>
+    <value>Тренутно нема резервација смештајних јединица за приказ</value>
   </data>
   <data name="UnitReservations_SearchButtonTooltip" xml:space="preserve">
-    <value>Pretraži rezervacije smještajnih jedinica</value>
+    <value>Претражи резервације смештајних јединица</value>
   </data>
   <data name="UnitReservations_SearchFieldHelperText" xml:space="preserve">
-    <value>Pronađi rezervacije smještajnih jedinica</value>
+    <value>Пронађи резервације смештајних јединица</value>
   </data>
   <data name="UnitReservations_SearchFieldHint" xml:space="preserve">
-    <value>Pretraga...</value>
+    <value>Претрага...</value>
   </data>
   <data name="UnitReservations_SubmitNumberOfAdultsFieldHint" xml:space="preserve">
-    <value>Broj odraslih</value>
+    <value>Број одраслих</value>
   </data>
   <data name="UnitReservations_SubmitNumberOfChildrenFieldHint" xml:space="preserve">
-    <value>Broj djece</value>
+    <value>Број деце</value>
   </data>
   <data name="UnitReservations_SubmitPricePerNightLabel" xml:space="preserve">
-    <value>Cijena jedinice po noći:</value>
+    <value>Цена јединице по ноћи:</value>
   </data>
   <data name="UnitReservations_SubmitReservationFromDatePickerHint" xml:space="preserve">
-    <value>Reservacija od</value>
+    <value>Резервација од</value>
   </data>
   <data name="UnitReservations_SubmitReservationOnNameFieldHint" xml:space="preserve">
-    <value>Rezervacija na ime</value>
+    <value>Резервација на име</value>
   </data>
   <data name="UnitReservations_SubmitReservationToDatePickerHint" xml:space="preserve">
-    <value>Rezervacija do</value>
+    <value>Резервација до</value>
   </data>
   <data name="UnitReservations_SubmitTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena:</value>
+    <value>Укупна цена:</value>
   </data>
   <data name="UnitReservations_SubmitUnitAvailabilityLabel" xml:space="preserve">
-    <value>Period dostupnosti:</value>
+    <value>Период доступности:</value>
   </data>
   <data name="UnitReservations_SubmitUnitNameLabel" xml:space="preserve">
-    <value>Naziv odabrane jedinice:</value>
+    <value>Назив одабране јединице:</value>
   </data>
   <data name="UnitReservation_DetailsNumberOfPeopleLabel" xml:space="preserve">
-    <value>Broj ljudi:</value>
+    <value>Број људи:</value>
   </data>
   <data name="UnitReservation_DetailsReservationFromLabel" xml:space="preserve">
-    <value>Rezervisano od:</value>
+    <value>Резервисано од:</value>
   </data>
   <data name="UnitReservation_DetailsReservationOnNameLabel" xml:space="preserve">
-    <value>Rezervacija na ime:</value>
+    <value>Резервација на име:</value>
   </data>
   <data name="UnitReservation_DetailsReservationToLabel" xml:space="preserve">
-    <value>Rezervisano do:</value>
+    <value>Резервисано до:</value>
   </data>
   <data name="UnitReservation_DetailsReservedByLabel" xml:space="preserve">
-    <value>Rezervisao:</value>
+    <value>Резервисао:</value>
   </data>
   <data name="UnitReservation_DetailsTitle" xml:space="preserve">
-    <value>Detalji o rezervaciji smještajne jedinice</value>
+    <value>Детаљи о резервацији смештајне јединице</value>
   </data>
   <data name="UnitReservation_DetailsTotalPriceLabel" xml:space="preserve">
-    <value>Ukupna cijena:</value>
+    <value>Укупна цена:</value>
   </data>
   <data name="UnitReservation_DetailsUnitAvailableFromLabel" xml:space="preserve">
-    <value>Dostupno od:</value>
+    <value>Доступно од:</value>
   </data>
   <data name="UnitReservation_DetailsUnitAvailableToLabel" xml:space="preserve">
-    <value>Dostupno do:</value>
+    <value>Доступно до:</value>
   </data>
   <data name="UnitReservation_DetailsUnitDetailsTitleLabel" xml:space="preserve">
-    <value>Detalji smještajne jedinice:</value>
+    <value>Детаљи смештајне јединице:</value>
   </data>
   <data name="UnitReservation_DetailsUnitNameLabel" xml:space="preserve">
-    <value>Naziv jedinice:</value>
+    <value>Назив јединице:</value>
   </data>
   <data name="UnitReservation_DetailsUnitNumberOfBedsLabel" xml:space="preserve">
-    <value>Broj kreveta:</value>
+    <value>Број кревета:</value>
   </data>
   <data name="UnitReservation_DetailsUnitPricePerNightLabel" xml:space="preserve">
-    <value>Cijena po noći:</value>
+    <value>Цена по ноћи:</value>
   </data>
 </root>

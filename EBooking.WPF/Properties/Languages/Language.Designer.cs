@@ -1177,7 +1177,7 @@ namespace EBooking.WPF.Properties.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click here to read application manual.
+        ///   Looks up a localized string similar to Click here to read user manual.
         /// </summary>
         internal static string Landing_ReadDocumentationLinkText {
             get {

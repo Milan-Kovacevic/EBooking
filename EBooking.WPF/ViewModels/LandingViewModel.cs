@@ -17,7 +17,7 @@ namespace EBooking.WPF.ViewModels
     public partial class LandingViewModel : ObservableObject, IViewModelBase
     {
         private static readonly string USER_MANUAL_FILE_NAME_KEY = "UserManualBaseFileName";
-        private static readonly string USER_MANUAL_FILE_EXTENSION_KEY = "UserManualFileExtension";
+        private static readonly string USER_MANUAL_DEFAULT_FILE_KEY = "UserManualDefault";
         [ObservableProperty]
         private bool isLoginEnabled;
 
@@ -36,15 +36,15 @@ namespace EBooking.WPF.ViewModels
             try
             {
                 var userManualFileName = ConfigurationManager.AppSettings[USER_MANUAL_FILE_NAME_KEY];
-                var userManualFileExtension = ConfigurationManager.AppSettings[USER_MANUAL_FILE_EXTENSION_KEY];
-                if (userManualFileName is null || userManualFileExtension is null)
+                var userManualDefault = ConfigurationManager.AppSettings[USER_MANUAL_DEFAULT_FILE_KEY];
+                if (userManualFileName is null || userManualDefault is null)
                     return;
-                var exactFileName = $"{userManualFileName} {_settingsStore.CurrentSettings.LanguageCode}.{userManualFileExtension}";
+                var exactFileName = $"{userManualFileName} {_settingsStore.CurrentSettings.LanguageCode}.pdf";
                 var filePath = Path.Combine(".", "Resources", exactFileName);
 
                 if (!Path.Exists(filePath))
                 {
-                    exactFileName = $"{userManualFileName} {LanguageProvider.Instance.Languages.ElementAt(0).Key}.{userManualFileExtension}";
+                    exactFileName = $"{userManualDefault}";
                     filePath = Path.Combine(".", "Resources", exactFileName);
                 }
 
@@ -57,7 +57,7 @@ namespace EBooking.WPF.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{ex.Message}");
+                MessageBox.Show($"{ex.Message}", "Unable to open user manual", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
