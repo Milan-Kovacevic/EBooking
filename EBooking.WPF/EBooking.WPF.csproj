@@ -9,13 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\EBooking Manual en-US.docx" />
-    <None Remove="Resources\EBooking Manual sr-Latn.docx" />
+    <None Remove="Resources\EBooking Manual.pdf" />
     <None Remove="Resources\EBooking User Manual.pdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\EBooking Manual en-US.docx">
+    <Content Include="Resources\EBooking Manual.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\EBooking.ico">
@@ -36,12 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\EBooking.Domain\EBooking.Domain.csproj" />
     <ProjectReference Include="..\EBooking.EntityFramework\EBooking.EntityFramework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\EBooking Manual sr-Latn.docx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -86,6 +79,12 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Resources\EBooking Manual en-US.docx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\EBooking Manual sr-Latn.docx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
