@@ -1,6 +1,5 @@
 # EBooking
-
-## Desktop Application for Travel Agencies
+* Desktop Application for Travel Agencies
 
 ### About
 EBooking is a user-friendly desktop application tailored for travel agencies. It simplifies the process of booking flights and accommodations.
@@ -18,4 +17,6 @@ EBooking is a user-friendly desktop application tailored for travel agencies. It
 
 ![image5](https://github.com/Milan-Kovacevic/EBooking/assets/93384395/720334c3-2887-4776-a249-732dc7615531)
 
-![image6](https://github.com/Milan-Kovacevic/EBooking/assets/93384395/071c3e75-73d2-4848-ba06-b24557537d43)
+![image6](https://github.com/Milan-Kovacevic/EBooking/assets/93384395/f028d803-56b4-48dc-ac00-3dde9de17f21)
+
+![image7](https://github.com/Milan-Kovacevic/EBooking/assets/93384395/2f5b1bd9-fbdd-47d4-87ac-0d3e2f15e50b)
